@@ -1,0 +1,735 @@
+/*file: styling website pages for Electonic Services of Riyad Emirate*/
+/*By: Mohamed Salem*/
+/*Creation Date: 2022*/
+
+html,
+body {
+  height: 100%;
+  direction: rtl;
+  background: #F5F8FD;
+  text-align: start;
+  font-family: $ar-font;
+  font-weight: 400;
+}
+
+.admin-layout {
+  height: 100%;
+
+  .card,
+  .form-card {
+    background-color: $white;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    border-radius: 10px;
+    border: 1px solid #EBEBEB !important;
+    box-shadow: none !important;
+
+    .form-header {
+      padding: 12px 0 20px !important;
+      border-bottom: 1px solid rgb(0 0 0 / 10%) !important;
+      margin-bottom: 16px !important;
+
+      h5 {
+        font-size: 22px !important;
+        color: $primary-alt-1 !important;
+      }
+    }
+
+    .form-content {
+      .form-lbl {
+        font-size: 14px !important;
+        margin-bottom: 4px !important;
+        color: rgb(0 0 0 / 70%) !important;
+      }
+
+      .form-group {
+        margin-bottom: 16px !important;
+      }
+
+      small {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  h5 {
+    font-size: 22px;
+    font-weight: 600;
+    color: $primary-alt-1 !important;
+  }
+
+  .btn {
+    border-radius: 6px;
+    padding: 10px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .btn.add {
+    border-radius: 6px;
+    padding: 10px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .login-icon {
+    top: 35px;
+    inset-inline-end: 20px;
+    font-size: 24px;
+    color: #00624d;
+  }
+
+  ul {
+    padding-inline-start: 0;
+  }
+
+  .navbar {
+    height: 66px;
+    background-color: $white;
+  }
+
+  .navbar {
+    .bar {
+      font-size: 22px;
+      margin-inline-start: 20px;
+      color: $primary-alt-3;
+      border-radius: 4px;
+      padding: 0;
+      display: flex;
+      cursor: pointer;
+    }
+
+    .profile-dropdown {
+      .dropdown-menu {
+        background: $white;
+        border-radius: 6px;
+        padding: 8px !important;
+        margin: 0;
+        inset-inline-end: 0;
+        inset-inline-start: auto;
+        margin-top: 12px;
+
+        .dropdown-item {
+          display: flex;
+          align-items: center;
+          padding: 7px;
+          font-size: 12px;
+          border-radius: 6px;
+          color: rgb(0 0 0 / 70%);
+          text-decoration: none;
+          cursor: pointer;
+
+          i {
+            font-size: 15px;
+            margin-inline-end: 6px;
+          }
+
+          &:hover {
+            color: rgb(0 0 0 / 90%);
+            background-color: rgba(0, 0, 0, 0.03);
+          }
+        }
+
+        .dropdown-divider {
+          margin: 0.5rem 12px;
+
+        }
+      }
+
+      .menu-icon {
+        width: 14px;
+        height: 27px;
+
+        i {
+          vertical-align: sub;
+        }
+      }
+    }
+  }
+
+  /* up trinagle */
+  .navbar .profile-dropdown .profile-info:after {
+    position: absolute;
+    inset-inline-start: 70%;
+    top: -20px;
+    width: 0;
+    height: 0;
+    content: "";
+    border-inline-end: 12px solid transparent;
+    border-inline-start: 12px solid transparent;
+    border-bottom: 12px solid #00624d;
+  }
+
+  .navbar .dropdown-toggle::after {
+    border-top: 0.4em solid $primary-alt-3;
+    border-inline-start: 0.4em solid transparent;
+    border-bottom: 0;
+    border-inline-end: 0.4em solid transparent;
+    position: absolute;
+    inset-inline-end: 0;
+    top: 44%;
+  }
+
+  .navbar .prrof {
+    line-height: 1.4;
+  }
+
+  /**
+  /* Body and main layout Style
+  **/
+
+  .body-layout {
+    /* background-image: url("../../assets/images/pattern.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main {
+    height: calc(100% - 66px);
+    top: 66px;
+    position: relative;
+  }
+
+  .main .content {
+    position: absolute;
+    inset-inline-start: 220px;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: auto;
+  }
+
+  .main .content.expand {
+    position: absolute;
+    inset-inline-start: 0px;
+    inset-inline-end: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  /**
+  /* Checkbox Style
+  **/
+
+  .container-check {
+    display: inline-block;
+    position: relative;
+    padding-inline-start: 25px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 25px;
+    border-radius: 4px;
+    width: auto;
+  }
+
+  .container-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 2px;
+    inset-inline-start: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid $Primary-1;
+  }
+
+  .container-check input:checked~.checkmark {
+    background-color: $Primary-2;
+    border: 1px solid $Primary-2;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container-check input:checked~.checkmark:after {
+    display: block;
+  }
+
+  .container-check .checkmark:after {
+    inset-inline-start: 7px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  @media (min-width: 768px) {
+
+    .sidebar.collapse li a .nav-label,
+    .sidebar.collapse li a .nav-label+span {
+      /* display: none; */
+      transition: all 0.5s ease-in-out;
+    }
+
+    .sidebar.collapse .sub-menu {
+      display: none;
+    }
+  }
+
+  .sidebar.collapse li .nav-label,
+  .sidebar.collapse li .nav-label+span,
+  .sidebar.collapse li .accordion-button:after {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .sm-logo {
+      display: none !important;
+    }
+
+    .sidebar {
+      background: #fff;
+      position: absolute;
+      inset-inline-start: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .sidebar {
+      width: 0;
+    }
+
+    .sidebar.collapse {
+      width: 220px;
+    }
+
+    .main .content {
+      inset-inline-start: 0;
+      padding: 5px !important;
+    }
+
+    .main .content.expand {
+      inset-inline-start: 0;
+    }
+
+    .sidebar.collapse li a .nav-label {
+      display: inline-block;
+    }
+
+    .sidebar .menu-with-sub:after {
+      content: "\f106";
+      font-family: "Line Awesome Free";
+      position: absolute;
+      top: 13px;
+      inset-inline-end: 10px;
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .sidebar .menu-with-sub.collapsed:after {
+      content: "\f107";
+      font-family: "Line Awesome Free";
+      position: absolute;
+      top: 13px;
+      inset-inline-start: 10px;
+      font-weight: 900;
+      color: #636363;
+    }
+  }
+
+  .sidebar:not(.collapse) .menu-with-sub:after {
+    content: "\f106";
+    font-family: "Line Awesome Free";
+    position: absolute;
+    top: 13px;
+    inset-inline-end: 10px;
+    font-weight: 900;
+    font-size: 16px;
+  }
+
+  .sidebar:not(.collapse) .menu-with-sub.collapsed:after {
+    content: "\f107";
+    font-family: "Line Awesome Free";
+    position: absolute;
+    top: 13px;
+    inset-inline-end: 10px;
+    font-weight: 900;
+    color: #636363;
+  }
+
+  .ui-progress-spinner {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    inset-inline-end: 0;
+    inset-inline-start: 0;
+    background: transparent;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    vertical-align: middle;
+
+    .ui-progress-spinner-svg {
+      width: 50px;
+    }
+  }
+
+  // Form Card
+  .form-card {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    border: 0.1px solid #bdbdbd;
+    border-radius: 6px;
+    position: relative;
+    margin-bottom: 1rem;
+
+    .form-header {
+      padding: 14px;
+      border-bottom: 0.1px solid #bbb;
+
+      h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        color: $text-color;
+      }
+    }
+
+    .form-content {
+      padding: 16px 0;
+
+      .info-col {
+        position: relative;
+        padding-bottom: 16px;
+        display: flex;
+
+        .form-lbl,
+        .form-val {
+          display: inline-block;
+          font-size: 0.8rem;
+          text-align: start;
+        }
+
+        .form-lbl {
+          color: $primary-alt-3;
+          font-weight: 400;
+
+          &.lbl-33 {
+            min-width: 33%;
+          }
+
+          &.lbl-18 {
+            min-width: 18%;
+          }
+        }
+
+        .form-val {
+          color: $text-color;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .separator-af-be {
+      &::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: 0;
+        top: 0;
+        bottom: 0;
+        width: 0.1px;
+        background-color: $dimmed;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline-end: 0;
+        top: 0;
+        bottom: 0;
+        width: 0.1px;
+        background-color: $dimmed;
+      }
+    }
+
+    .form-group {
+      padding-inline-end: 0.9rem;
+      padding-inline-start: 0.9rem;
+      margin-bottom: 1rem;
+      position: relative;
+
+      .form-lbl {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: $primary-alt-3;
+        display: inline-block;
+        margin-bottom: 3px;
+      }
+
+      .form-control {
+        background-color: $light-lighter;
+        border-color: $dimmed;
+        font-size: 0.9rem;
+
+        &:not(textarea) {
+          height: 50px;
+        }
+
+        &:focus {
+          box-shadow: none;
+          border-color: $Primary-2 !important;
+        }
+
+        &.invalid {
+          border-color: $danger !important;
+        }
+      }
+
+      small {
+        font-size: 12px;
+      }
+    }
+  }
+
+  // Form Actions
+  .form-actions {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 26px;
+    flex-wrap: wrap;
+
+    .btn {
+      font-weight: 400;
+      font-size: 14px;
+      padding: 10px 32px !important;
+      margin-inline-start: 16px;
+
+      &:focus {
+        box-shadow: none;
+        outline: 0;
+      }
+    }
+
+    .btn-save {
+      background-color: $primary-alt-1;
+      border-color: $primary-alt-1;
+      color: $white;
+
+      &:hover {
+        background-color: $primary-alt-1;
+        border-color: $primary-alt-1;
+        color: $white;
+      }
+    }
+
+    .btn-draft {
+      background-color: $secondary-1;
+      border-color: $secondary-1;
+      color: $white;
+
+      &:hover {
+        background-color: $secondary-1;
+        border-color: $secondary-1;
+        color: $white;
+      }
+    }
+
+    .btn-cancel {
+      background-color: $secondary-1;
+      border-color: $secondary-1;
+      color: $white;
+
+      &:hover {
+        background-color: $secondary-1;
+        border-color: $secondary-1;
+        color: $white;
+      }
+    }
+
+    .btn-reject {
+      background-color: $danger;
+      color: $white;
+      border-color: $danger;
+
+      &:hover {
+        background-color: $danger;
+      }
+    }
+  }
+
+  // Authentication Module
+  .auth-wrapper {
+    height: 100%;
+    padding: 0;
+    background-color: $white;
+
+    .vision-logo {
+      position: absolute;
+      inset-inline-end: 3%;
+      top: 3%;
+    }
+
+    .auth-card {
+      padding: 20px 10px 10px;
+      text-align: center;
+
+      .title {
+        font-weight: 600;
+        margin: 20px;
+      }
+
+      .lang-btn {
+        font-size: 12px;
+      }
+
+      .forget-pass {
+        font-size: 12px;
+        text-align: end;
+        display: block;
+        margin-top: 11px;
+        font-weight: 500;
+      }
+
+      .form-group {
+        position: relative;
+      }
+
+      .label {
+        transition: 0.3s all ease-in-out;
+        position: absolute;
+        inset-inline-start: 12px;
+        top: 14px;
+        font-size: 11px;
+      }
+
+      .form-control {
+        height: calc(2em + 0.75rem + 2px);
+        color: $dark;
+        background: $light-lighter;
+
+        &:not(:invalid) {
+          + {
+            .label {
+              transition: 0.3s all ease-in-out;
+              position: absolute;
+              inset-inline-start: 6px;
+              top: -9px;
+              padding: 0px 8px;
+              color: $text-color;
+              font-size: 10px;
+            }
+          }
+        }
+
+        &:focus {
+          box-shadow: none;
+
+          + {
+            .label {
+              transition: 0.3s all ease-in-out;
+              position: absolute;
+              inset-inline-start: 6px;
+              top: -9px;
+              padding: 0px 8px;
+              color: $text-color;
+              background-color: $white;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      .dob {
+        .form-control {
+          width: calc(100% - 110px);
+        }
+      }
+
+      .form-switch {
+        position: absolute;
+        inset-inline-end: 0;
+        width: 105px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        top: 8px;
+
+        .form-check-input {
+          height: 1.3em;
+        }
+
+        .form-check-label {
+          font-size: 0.68rem;
+        }
+      }
+
+      .submit {
+        display: block;
+        max-width: 100%;
+        width: 85%;
+        font-size: 13px;
+        font-weight: 600;
+        height: 46px;
+        margin: 30px auto 0;
+      }
+
+      .unifyied-login {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 20%);
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 40px;
+
+        span {
+          font-size: 14px;
+          display: inline-block;
+          width: 45%;
+        }
+      }
+
+      .or {
+        margin: 26px auto 0;
+        border-bottom: 1px solid $light-dark;
+
+        span {
+          display: inline-block;
+          position: relative;
+          top: 9px;
+          background: $white;
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+
+  #searchRow {
+    display: none;
+  }
+}

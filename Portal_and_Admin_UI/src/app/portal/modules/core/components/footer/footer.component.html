@@ -1,0 +1,177 @@
+
+<footer class="footer pt-100">
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-one mb-2">
+      <h5 class="title">ما رأيك في التصميم الجديد للبوابة الإلكترونية ؟</h5>
+      <div class="mb-5">
+        <label class="custom-radio">
+          ممتاز
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="1" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="custom-radio">
+          جيد جدا
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="2" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="custom-radio">
+          جيد
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="3" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="custom-radio">
+          مقبول
+          <input type="radio" name="designEvaluate" [(ngModel)]="designEvaluate" value="4" />
+          <span class="checkmark"></span>
+        </label>
+        <button type="button" class="btn vote-btn me-auto ms-3" (click)="evaluate()">تصويت</button>
+      </div>
+
+      <div class="mb-2">
+        <div class="d-flex align-items-center mb-2">
+          <img src="assets/images/icons/footer/refresh.svg" alt="icon" class="img-fluid" width="18px">
+          <span class="fa-14 fw-normal d-inline-block mx-2">آخر تحديت للموقع فى</span>
+        </div>
+        <h6 class="mb-0 fa-14">{{lastSieUpdate}}</h6>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-6 col-two mb-2">
+      <div class="row mx-0">
+        <div class="col-md-6">
+          <h5 class="title">منصات وبرامج ذات صلة</h5>
+          <div class="platforms">
+            <div>
+              <a href="https://www.my.gov.sa/wps/portal/snp/main" target="_blank">المنصة الوطنية الموحدة</a>
+            </div>
+            <div>
+              <a href="https://www.absher.sa/portal/landing.html" target="_blank">أبشر</a>
+            </div>
+            <div>
+              <a href="https://najiz.sa/applications/landing" target="_blank">ناجز</a>
+            </div>
+            <div>
+              <a href="https://eservices.alriyadh.gov.sa/" target="_blank">أمانة منطقة الرياض</a>
+            </div>
+            <div>
+              <a href="https://www.moj.gov.sa/ar/pages/default.aspx" target="_blank">وزارة العدل</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5 class="title">روابط سريعة</h5>
+          <div class="platforms">
+            <div>
+              <a routerLink="/home/aboutus">نبذة عن الإمارة</a>
+            </div>
+            <div>
+              <a routerLink="/home/services-list">الخدمات الإلكترونية</a>
+            </div>
+            <div>
+              <a routerLink="/home/governorate-news">أخبار المحافظات</a>
+            </div>
+            <div>
+              <a routerLink="/home/reports-news">التقارير الإعلامية</a>
+            </div>
+            <div>
+              <a routerLink="/open-data">البيانات الفتوحة</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-three mb-2">
+      <h5 class="title">إتصل بنا</h5>
+      <div class="contact">
+        <div>
+          <img src="./assets/images/icons/footer/phone.svg" alt="">
+          <a href="javascript:;">
+            966 11 4114444
+          </a>
+        </div>
+        <!--<div>
+          <img src="./assets/images/icons/footer/mail.svg" alt="">
+          <a href="mailto:webmaster@riyadh.gov.sa">webmaster@riyadh.gov.sa</a>
+        </div>-->
+      </div>
+      <div class="social">
+        <a href="https://www.youtube.com/user/RiyadhPrincipality" target="_blank">
+          <img src="./assets/images/icons/footer/youtube.svg" alt="">
+        </a>
+        <a routerLink="home/rss">
+          <img src="./assets/images/icons/footer/rss.svg" alt="">
+        </a>
+        <a href="https://twitter.com/emara_riyadh" target="_blank">
+          <img src="./assets/images/icons/footer/twitter.svg" alt="">
+        </a>
+        <a routerLink="home/mobile-applications">
+          <img src="./assets/images/icons/footer/mobile-app.svg" alt="">
+        </a>
+        <a routerLink="home/contact-us">
+          <img src="./assets/images/icons/footer/map.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-3">
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+
+  <div class="row pt-3 pb-4">
+    <div class="col-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 my-1">
+            <img src="assets/images/icons/footer/ssl.svg" alt="icon">
+            <img src="assets/images/icons/footer/css3.svg" alt="icon">
+            <img src="assets/images/icons/footer/html5.svg" alt="icon">
+            <img src="assets/images/icons/footer/w3c.svg" alt="icon">
+          </div>
+
+          <div class="col-lg-5 col-md-6 my-1 d-flex align-items-center justify-content-end me-auto flex-wrap">
+            <span class="mx-3 fw-normal">هذا الموقع يدعم متصفحات</span>
+            <img src="assets/images/icons/footer/chrome.svg" alt="icon" class="mx-1">
+            <img src="assets/images/icons/footer/firefox.svg" alt="icon" class="mx-1">
+            <img src="assets/images/icons/footer/safari.svg" alt="icon" class="mx-1">
+            <img src="assets/images/icons/footer/edge.svg" alt="icon" class="mx-1">
+            <img src="assets/images/icons/footer/opera.svg" alt="icon" class="mx-1">
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row mx-0 py-3 bottom-nav">
+    <div class="col-md-11 mx-auto">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 my-1 d-flex flex-wrap">
+            <img src="assets/images/icons/footer/logo-opacity.svg" alt="logo" class="ml-opacity img-fluid my-1">
+            <a routerLink="/home/privacy" class="fw-normal">سياسة الخصوصية</a>
+            <a routerLink="/home/conditions" class="fw-normal">شروط الاستخدام</a>
+            <a routerLink="/home/sla" class="fw-normal">اتفاقية مستوى الخدمة</a>
+          </div>
+
+          <div class="col-md-6 d-flex align-items-center justify-content-end my-1 flex-wrap">
+            <div class="fw-normal my-1">
+              <span>جميع الحقوق محفوظة</span>
+              <span>&nbsp; &copy; &nbsp;</span>
+              <span> لإمارة منطقة الرياض - المملكة العربية السعودية </span>
+            </div>
+            <a href="https://www.vision2030.gov.sa/ar/" target="_blank" class="ps-0 my-1">
+              <img src="assets/images/icons/footer/vision-opacity.svg" alt="logo" class="mr-opacity img-fluid">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+

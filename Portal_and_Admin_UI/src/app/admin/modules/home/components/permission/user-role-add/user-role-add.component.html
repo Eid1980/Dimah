@@ -1,0 +1,74 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/home/user-list']">المستخدمون</a>
+    <span class="breadcrumb-item fs-16 active">إضافة صلاحيات للمستخدم</span>
+  </nav>
+</div>
+
+<form [formGroup]="createUserRoleForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>إضافة صلاحيات للمستخدم</h5>
+    </div>
+    <div class="form-content">
+      <app-user-data-view></app-user-data-view>
+    </div>
+    <hr />
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="roleId" class="form-lbl">الصلاحية<span class="danger">*</span></label>
+          <select class="form-control form-select" formControlName="roleId" [ngClass]="{
+              invalid:
+                (isFormSubmitted || createUserRoleForm.get('roleId').touched) &&
+                createUserRoleForm.get('roleId').errors?.required
+            }">
+            <option [ngValue]="null">-- اختر الصلاحية --</option>
+            <option *ngFor="let role of roles" [ngValue]="role.id">{{ role.name }}</option>
+          </select>
+          <small
+            *ngIf="(isFormSubmitted || createUserRoleForm.get('roleId').touched) && createUserRoleForm.get('roleId').errors?.required"
+            class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6 d-flex align-items-center">
+          <button type="submit" class="btn btn-primary ms-3 px-5">حفظ</button>
+          <a [routerLink]="['/admin/home/user-list']" class="btn btn-secondary">رجوع</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="row mt-3 mx-0">
+  <p-table #userRoles [value]="userRolesDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
+    class="w-100">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th>م</th>
+        <th>اسم الصلاحية عربي</th>
+        <th>اسم الصلاحية انجليزي</th>
+        <th>الإجراءات</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-i="rowIndex" let-userRole>
+      <tr>
+        <td> {{i+1}} </td>
+        <td> {{userRole.roleNameAr}} </td>
+        <td> {{userRole.roleNameEn}} </td>
+        <td>
+          <a class="btn btn-danger mx-1 px-1 py-0" title="حذف" (click)="delete(userRole.id)">
+            <i class="la-trash las"></i>
+          </a>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

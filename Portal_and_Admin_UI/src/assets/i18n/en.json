@@ -1,0 +1,225 @@
+{
+  "global": {
+      "validators": {
+          "requiredField": "This field is required"
+      }
+  },
+  "_comment": "begin auth region",
+  "login": {
+      "labels": {
+          "signIn": "Sign In",
+          "userName": "User Name",
+          "nationalIdOrResidentNumber": "National identifier or resident number",
+          "password": "Password",
+          "forgetPassword": "Forget password ?",
+          "dontHaveAccount": "Do not have account?",
+          "createNewAccount": "Create new account",
+          "nafazSingIn": "Sign in by Nafaz",
+          "or": "Or"
+      },
+      "messages": {
+          "error": "Error",
+          "invalidUsernameOrPassword": "Invalid username or password"
+      }
+  },
+  "register": {
+      "labels": {
+          "singUp": "Sign up",
+          "nationalIdOrResidentNumber": "National identifier or resident number",
+          "name": "Name",
+          "nationality": "Nationality",
+          "birthDate": "Birth Date",
+          "dateComponent": "year/month/day",
+          "higri": "Higri",
+          "greg": "Gregorian",
+          "selectNationality": "select Nationality",
+          "phoneNumber": "Phone Number",
+          "email": "E-mail",
+          "password": "Password",
+          "createNewAccount": "Create new account",
+          "haveAnAccount": "Do you have an account ?",
+          "createAccount": "Create Account",
+          "backToLogin": "Back to Login",
+          "check": "Check",
+          "back" : "Back"
+
+      },
+      "validators": {
+          "passwordPattern": "The password contains uppercase letters, lowercase letters, and letter-specific numbers",
+          "invalidNationalId": "National id must begin with 1 or 2 and contains of 10 numbers",
+          "dateFormate": "dd/MM/yyyy",
+          "invalidPhoneNumber": "Phone number must begin with 966 and contains of 12 numbers",
+          "invalidEmail": "Invalid Email"
+      }
+  },
+  "forgetPassword": {
+      "labels": {
+          "forgetPassword": "Forget password",
+          "send": "Send",
+          "resendOTP": "Resend OTP"
+      },
+      "messages" : {
+        "sentConfirmOTP": "Send confirmation otp, please see your email ",
+        "errorWhileSendingRequest" : "Error while sending request",
+        "otpIsCorrect" : "OTP is correct",
+        "invalidOTP" : "Invalid OTP",
+        "resetPasswordSuccessfuly" : "Reset password done, successfully"
+
+      },
+      "validators" : {
+
+      }
+  },
+  "__comment1__": "end auth region",
+  "home": {
+      "aboutEmirate": "About Emirate",
+      "princesRegion": "Princes Region",
+      "provinces": "Provinces",
+      "electronicServices": "Electronic Services",
+      "news": "News",
+      "mediaReports": "Media Reports",
+      "browseAllServices": "Browse All Services",
+      "electronicCouncil": "Electronic Council",
+      "electronicCouncilTitle": "Submit a complaint, a proposal, or a follow-up request to His Highness, the Governor of the Riyadh region",
+      "inquireyService": "Inquire about a service or transaction",
+      "inquireyServiceTitle": "Inquire about a service with the transaction number or the order number",
+      "relatedplatforms": "Related platforms",
+      "provincialNews": "Provincial news",
+      "browseAllNews": "Browse all news",
+      "advertisingReports": "Advertising Reports"
+  },
+  "electronicCouncil": {
+      "shared": {
+          "main": "Main",
+          "serviceGuide": "Service guide",
+          "electronicCouncil": "Electronic council",
+          "noData": "No Data",
+          "title": "The electronic council for prince of emirate",
+          "serviceType": "Add New Request",
+          "editRequest": "Edit request",
+          "applicantsInfo": "Applicant's Information",
+          "applicantsName": "Applicant's name : ",
+          "birthDate": "Birth date",
+          "gender": "Gender: ",
+          "email": "E-mail : ",
+          "nationalId": "National Identifier : ",
+          "phoneNumber": "Phone Number : ",
+          "requestType": "Rquest Type",
+          "requestAddress": "Rquest Address",
+          "description": "Description",
+          "requestSerialNumber": "Serial Number",
+          "requestStatus": "Request Status",
+          "requestDate": "Request Date",
+          "requestDetails": "Request Details",
+          "rquestInfo": "Request Information",
+          "attachments": "Attachments",
+          "addAttachment": "Add Attachments",
+          "sendRequest": "Send Request",
+          "saveAsDraft": "Save As Draft",
+          "cancel": "Cancel",
+          "male": "Male",
+          "order": "Order",
+          "suggestion": "Suggestion",
+          "complaint": "Complaint",
+          "attachmentName": "Attachment Name",
+          "downloadAttachment": "Download Attachment",
+          "details": "Details",
+          "send": "Send",
+          "success": "Success",
+          "registeredSuccessfully": "Registered successfully",
+          "error": "Error",
+          "errorWhileSaving": "Error in data",
+          "alreadySent": "Already sent",
+          "sentSuccessfully": "Sent successfully",
+          "alreadySaved": "Already saved",
+          "savedSuccessfully": "Saved successfully"
+      },
+      "menus": {
+          "profile": "Profile",
+          "dashboard": "Dashboard",
+          "newRequest": "Add new request",
+          "myOrders": "My orders",
+          "incommingOrders": "Incomming Orders",
+          "savedRequest": "Saved orders",
+          "inquiry": "Request inquiry",
+          "rateService": "Rate Service"
+      },
+      "profile": {},
+      "dashboard": {},
+      "myOrders": {
+          "myOrders": "My orders",
+          "details": "Details",
+          "creationDate": "Creation Date",
+          "statusMsg": "Status message",
+          "serialNumber": "Serial Number",
+          "requestType": "Request Type",
+          "requesterName": "Requester Name",
+          "description": "Description",
+          "requestAddress": "Request Address"
+      },
+      "incommingOrders": {
+          "newOrders": "New Requests",
+          "pendingOrders": "Pending Requests",
+          "acceptedOrders": "Accepted Requests",
+          "rejectedOrders": "Rejected Requests",
+          "confirm": "Confirm",
+          "cancle": "Cancle",
+          "details": "Details",
+          "creationDate": "Creation Date",
+          "statusMsg": "Status message",
+          "serialNumber": "Serial Number",
+          "requestType": "Request Type",
+          "requesterName": "Requester Name",
+          "requestAddress": "Request Address"
+      },
+      "savedRequests": {
+          "savedRequests": "Saved requests"
+      },
+      "inquiry": {
+          "enterOrderId": "Enter the transaction number",
+          "aboutInquiry": "Inquiry about a request / transaction",
+          "searchResult": "Search Result",
+          "requestStatus": "Request status: ",
+          "requestorInfo": "Applicant's Information"
+      }
+  },
+  "header": {
+      "hello": "Hello:",
+      "profilePersonly": "Profile personly",
+      "signOut": "Sign out",
+      "signIn": "Sign in",
+      "newRegistration": "New registration",
+      "aboutTheEmirate": "About The Emirate",
+      "lordsOfTheRegion": "Lords Of The Region",
+      "provinces": "Provinces",
+      "electronicServices": "Electronic Services",
+      "news": "News",
+      "mediaReports": "Media Reports",
+      "openData": "Open Data"
+  },
+  "__comment2": "begin data management region",
+  "latestNews": {
+      "labels": {
+          "main": "Main",
+          "latestNews": "Latest News",
+          "addNews": "Add news",
+          "newsDetails": "News details",
+          "titleAr": "Title in Arabic",
+          "titleEn": "Title in english",
+          "descriptionAr": "Description in Arabic",
+          "descriptionEn": "Description in english",
+          "date": "year/month/day",
+          "greg": "Gregorian",
+          "hijri": "Higri",
+          "uploadImage": "Upload image",
+          "isActive": "Is active",
+          "save": "Save",
+          "cancel": "Cancel"
+      },
+      "messages": {},
+      "validators": {
+          "requiredField": "This field is required"
+      }
+  },
+  "__comment2__": "begin data management region"
+}

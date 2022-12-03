@@ -1,0 +1,51 @@
+<app-page-list [PageListSetting]="pageListSettings"></app-page-list>
+
+<p-dialog [modal]="true" header="الصلاحيات المضافة" [(visible)]="showRolesDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-12 col-12">
+          <p-table #userRoles [value]="userRolesDto" dataKey="id" [autoLayout]="true"
+                   [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>م</th>
+                <th>اسم الصلاحية عربي</th>
+                <th>اسم الصلاحية انجليزي</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-i="rowIndex" let-role>
+              <tr>
+                <td> {{i+1}} </td>
+                <td> {{role.roleNameAr}} </td>
+                <td> {{role.roleNameEn}} </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+              <tr>
+                <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-cancel" (click)="closeRolesDialog()">اغلاق</button>
+  </div>
+</p-dialog>
+
+
+<p-dialog [modal]="true" header="تفاصيل المستخدم" [(visible)]="showDetailsDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <app-user-data-view></app-user-data-view>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-cancel" (click)="closeDetailsDialog()">اغلاق</button>
+  </div>
+</p-dialog>
+

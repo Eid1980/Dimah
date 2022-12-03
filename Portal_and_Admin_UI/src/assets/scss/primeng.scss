@@ -1,0 +1,91 @@
+// P-table / data-list / grid / table / primeng table
+.p-datatable .p-datatable-thead > tr > th {
+  text-align: right;
+  padding: 10px 10px;
+  border: 0;
+  background: #009780;
+  transition: box-shadow 0.2s;
+  font-family: "Almarai";
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+#searchRow {
+  display: none;
+}
+
+.pi-sort-alt:before {
+  content: url("../images/icons/sort.svg");
+}
+.pi-sort-amount-up-alt:before {
+  content: url("../images/icons/sort-up.svg");
+  vertical-align: super;
+}
+.pi-sort-amount-down:before {
+  content: url("../images/icons/sort-down.svg");
+  vertical-align: super;
+}
+.p-datatable .p-sortable-column.p-highlight {
+  background: $Primary-1;
+  color: $white;
+  &:hover {
+    background: $Primary-1;
+    color: $white;
+  }
+}
+.p-datatable .p-sortable-column .p-sortable-column-badge {
+  display: none !important;
+}
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: $Primary-1;
+  color: $white;
+}
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: right;
+  padding: 12px 10px;
+  font-size: 0.8rem;
+  font-family: "Almarai";
+}
+.p-datatable .actions {
+  text-align: center !important;
+  .fa-exclamation-circle {
+    cursor: pointer;
+    color: $primary-alt-3;
+    font-size: 1.2rem;
+    &:hover {
+      color: $primary-alt-2;
+    }
+  }
+}
+.p-datatable .p-sortable-column:focus {
+  box-shadow: none;
+}
+
+.p-paginator-element {
+  &:not(.p-paginator-page) {
+    transform: scaleX(-1);
+  }
+}
+
+// Calendar in form control
+p-calendar {
+  position: relative;
+  .p-calendar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
+    height: 38px;
+    .p-inputtext {
+      border: 0;
+      border-radius: 3px;
+    }
+    .p-datepicker-trigger {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

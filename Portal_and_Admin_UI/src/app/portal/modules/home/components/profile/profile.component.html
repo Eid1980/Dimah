@@ -1,0 +1,121 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">الملف الشخصى</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="main-card">
+    <div class="d-flex justify-content-end mb-2">
+      <a class="btn btn-primary px-3 py-2" routerLink="/edit-profile">
+        <i class="fa-solid fa-user-pen fa-18 ms-2"></i>
+        <span>تعديل البيانات</span>
+      </a>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <div class="mx-auto d-flex flex-column align-items-center">
+        <div class="mb-2">
+          <img *ngIf="userProfileData.image?.base64File" [src]="userProfileData.image?.base64File" alt="avatar"
+               class="border border-2 border-secondary img-fluid p-1 rounded-circle" style="width: 120px;height: 120px;" />
+          <img *ngIf="!userProfileData.image?.base64File" src="/assets/images/businessman.png" alt="avatar"
+               class="border border-2 border-secondary img-fluid p-1 rounded-circle" style="width: 120px;height: 120px;" />
+        </div>
+        <h4 class="fa-22 fw-bold text-primary-2 mb-0">{{userProfileData.firstNameAr + userProfileData.lastNameAr}}</h4>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <h3 class="fw-bold fa-22 text-primary mb-4">البيانات الشخصيه</h3>
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم الهويه</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.userName }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">تاريخ الميلاد</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.birthDate | date:"yyyy-MM-dd"}}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">النوع</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.isMale ? 'ذكر' : 'انتي' }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم جواز السفر</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.passportId}}</p>
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاول عربى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameAr}}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثانى عربى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.secondNameAr}}</p>
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثالث عربى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.thirdNameAr}}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الأخير عربى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.lastNameAr}}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاول إنجليزى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameEn }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثانى إنجليزى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.secondNameEn }}</p>
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثالث إنجليزى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.thirdNameEn }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاخير إنجليزى</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.lastNameEn }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="mb-5">
+      <h3 class="fw-bold fa-22 text-primary mb-4">بيانات التسجيل</h3>
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">كلمة المرور</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameEn }}</p>
+        </div>
+      </div>
+    </div>-->
+
+    <div>
+      <h3 class="fw-bold fa-22 text-primary mb-4">بيانات الإتصال</h3>
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم الهاتف</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.phoneNumber }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الايميل</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.email }}</p>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الجنسيه</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.nationalityName }}</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h6 class="fa-14 text-black-50 mb-1 fw-bold">العنوان</h6>
+          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

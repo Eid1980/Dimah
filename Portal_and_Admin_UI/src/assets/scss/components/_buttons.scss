@@ -1,0 +1,42 @@
+.btn {
+  border-radius: 6px !important;
+  padding: 10px 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  &.btn-primary,
+  &.btn-secondary {
+    color: $white;
+
+    &:hover,
+    &.active,
+    &:focus,
+    &:disabled {
+      color: $white;
+    }
+  }
+
+  &.btn-outline-primary,
+  &.btn-outline-secondary {
+    &:hover,
+    &.active,
+    &:focus,
+    &:disabled {
+      color: $white;
+    }
+  }
+
+  &.btn-border-rd{
+    border-top-right-radius: 17px !important;
+    border-bottom-left-radius: 17px !important;
+  }
+}

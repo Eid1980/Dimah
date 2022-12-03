@@ -1,0 +1,25 @@
+// p-dialog
+p-dialog {
+  .p-dialog-mask {
+    .p-dialog {
+      font-family: 'Almarai' !important;
+      max-width: 80% !important;
+      min-width: 40% !important;
+      border-radius: 6px !important;
+
+      .p-dialog-header {
+        border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1) !important;
+        padding: 20px 16px !important;
+        cursor: initial !important;
+
+        .p-dialog-title {}
+
+        .p-dialog-header-icons {
+          button {}
+        }
+      }
+
+      .p-dialog-content {}
+    }
+  }
+}

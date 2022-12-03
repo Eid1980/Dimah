@@ -1,0 +1,334 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Almarai";
+  direction: rtl;
+  text-align: right;
+
+  html[dir="ltr"] &,
+  html[lang="en"] & {
+    font-family: "Almarai";
+    direction: ltr;
+    text-align: left;
+  }
+}
+
+.alert.alert-primary {
+  border: 2px solid $primary-alt-1;
+  border-radius: 4px;
+  background-color: rgba($primary-alt-1, .08);
+
+  i {
+    color: $primary-alt-1;
+  }
+
+  span {
+    color: $dark;
+    font-size: 15px;
+    margin-right: 6px;
+  }
+}
+
+// p-toast plugin
+.p-toast {
+  top: 26px !important;
+  left: auto !important;
+  right: 26px !important;
+  transform: initial !important;
+  width: auto !important;
+  font-family: 'Almarai' !important;
+  font-size: 14px !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+
+  .p-element {
+    .p-toast-message {
+      border-width: 0px !important;
+      border: 1px solid rgba($color: $dark, $alpha: 0.1) !important;
+      background-color: $white !important;
+      border-radius: 8px;
+
+      .p-toast-message-content {
+        border-width: 0px !important;
+
+        .p-toast-message-icon {
+          margin-top: 6px !important;
+        }
+
+        .p-toast-message-text {
+          margin: 0px 16px !important;
+
+          .p-toast-summary {
+            font-size: 16px !important;
+            color: rgba($color: $dark, $alpha: 0.7) !important;
+            font-weight: 600 !important;
+            margin: 0px !important;
+          }
+
+          .p-toast-detail {
+            font-size: 14px !important;
+            color: rgba($color: $dark, $alpha: 0.6) !important;
+            font-weight: 400 !important;
+            margin: 0px !important;
+          }
+        }
+
+        .p-toast-icon-close {
+          width: auto !important;
+          margin-right: 26px !important;
+          color: $danger !important;
+          height: auto !important;
+        }
+      }
+
+      &.p-toast-message-error {
+        .p-toast-message-content {
+          .p-toast-message-icon {
+            color: $danger !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: $dark;
+  border-right: 4px solid $Primary-1;
+  padding-right: 16px;
+  margin-bottom: 26px;
+}
+
+.form-card {
+  background-color: $white;
+  padding: 16px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  border: 1px solid #EBEBEB !important;
+  box-shadow: none !important;
+
+  .form-header {
+    padding: 12px 0 20px !important;
+    border-bottom: 1px solid rgb(0 0 0 / 10%) !important;
+    margin-bottom: 16px !important;
+
+    h5 {
+      font-size: 22px !important;
+      color: $primary-alt-1 !important;
+    }
+  }
+
+  .form-content {
+    .form-lbl {
+      font-size: 14px !important;
+      margin-bottom: 4px !important;
+      color: rgb(0 0 0 / 70%) !important;
+    }
+
+    .form-group {
+      margin-bottom: 16px !important;
+    }
+
+    small {
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}
+
+.wrapper {
+  margin-top: 152px;
+
+  @media screen and (max-width: $min-sm) {
+    margin-top: 122px;
+  }
+}
+
+.empty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 26px;
+
+  img {
+    margin-bottom: 8px;
+    max-width: 140px;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0px;
+    color: $primary-alt-1;
+  }
+}
+
+.page-not-found {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 26px 0px 16px 40px;
+
+  .not-found-content {
+    padding-top: 60px;
+
+    h2 {
+      font-size: 64px;
+      margin-bottom: 26px;
+      line-height: 60px;
+      color: $dark;
+    }
+
+    p {
+      color: #6A6A6A;
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+    }
+  }
+
+  @media screen and (max-width: $min-lg) {
+    flex-wrap: wrap;
+    padding: 30px 0px;
+    flex-direction: column-reverse;
+
+    .not-found-content {
+      padding-top: 0px;
+
+      h2 {
+        font-size: 40px;
+        margin-bottom: 16px;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 16px;
+        margin-bottom: 22px;
+      }
+    }
+
+    .not-found-banner {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+p-rating {
+  .p-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .p-rating-icon {
+      font-size: 14px;
+      color: rgba($color: $dark, $alpha: 0.3);
+      margin-left: 8px !important;
+
+      &.pi-star-fill {
+        color: $secondary-1;
+      }
+
+      &:last-child {
+        margin-left: 0px !important;
+      }
+
+      &:hover,
+      &:focus {
+        outline: 0 !important;
+      }
+    }
+
+    &:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+      color: $secondary-1;
+    }
+  }
+
+  &.rating-lg {
+    .p-rating {
+      margin-top: 26px;
+
+      .p-rating-icon {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+// scroll bar style
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba($color: $dark, $alpha: 0.08);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba($color: $dark, $alpha: 0.12);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+html[dir="ltr"],
+html[lang="en"] {
+  .alert.alert-primary {
+    span {
+      margin-left: 6px;
+      margin-right: 0px;
+    }
+  }
+
+  // p-toast plugin
+  .p-toast {
+    right: auto !important;
+    left: 26px !important;
+
+    .p-element {
+      .p-toast-message {
+        .p-toast-message-content {
+          .p-toast-icon-close {
+            margin-left: 26px !important;
+            margin-right: 0px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .section-title {
+    border-left: 4px solid $Primary-1;
+    border-right: 0px;
+    padding-left: 16px;
+    padding-right: 0px;
+  }
+
+  p-rating {
+    .p-rating {
+      .p-rating-icon {
+        margin-right: 6px !important;
+        margin-left: 0px !important;
+
+        &:last-child {
+          margin-right: 0px !important;
+          margin-left: 0px !important;
+        }
+      }
+    }
+  }
+}

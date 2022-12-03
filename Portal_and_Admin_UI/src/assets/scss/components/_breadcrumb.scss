@@ -1,0 +1,68 @@
+.bread-container {
+  background-color: $white;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1px solid #EBEBEB !important;
+
+  .breadcrumb {
+    .breadcrumb-item {
+      padding: 0;
+      padding-left: 8px;
+      color: rgb(0 0 0 / 50%);
+      font-size: 16px;
+      font-weight: 400;
+
+      i {
+        margin-left: 4px;
+        color: rgb(0 0 0 / 40%);
+
+        &::before {
+          content: "\f015" !important;
+          font-family: 'Font Awesome 6 Free';
+        }
+      }
+
+      &::before {
+        float: right;
+        padding-left: 8px;
+        padding-right: 0;
+        color: rgb(0 0 0 / 50%);
+      }
+
+      &:hover {
+        color: $Primary-1;
+
+        i {
+          color: $Primary-1;
+        }
+      }
+
+      &.active {
+        color: $secondary-1;
+      }
+    }
+  }
+
+  html[dir="ltr"] &,
+  html[lang="en"] & {
+    .breadcrumb {
+      .breadcrumb-item {
+        padding-right: 8px;
+        padding-left: 0px;
+
+        i {
+          margin-right: 4px;
+          margin-left: 0px;
+        }
+
+        &::before {
+          float: left;
+          padding-right: 8px;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}

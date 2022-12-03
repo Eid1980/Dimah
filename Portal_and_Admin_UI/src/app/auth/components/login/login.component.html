@@ -1,0 +1,62 @@
+<div class="auth-card">
+  <div class="auth-head">
+    <div class="flex_row">
+      <a routerLink="/" class="card-logo">
+        <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
+      </a>
+      <span (click)="onChangeLang()" >
+        <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
+        <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
+      </span>
+    </div>
+  </div>
+  <div class="w-100">
+    <h4 class="title">
+      {{ 'login.labels.signIn' | translate }}
+    </h4>
+    <div class="row mx-0">
+      <div class="col-md-8 mx-auto">
+        <form class="fs-13px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4">
+            <label for="userName">
+              {{ 'login.labels.userName' | translate }}
+            </label>
+            <input type="text" id="userName" class="form-control" maxlength="10" formControlName="userName" />
+            <small *ngIf="(isFormSubmitted || loginForm.get('userName').touched) && loginForm.get('userName').errors?.required"
+                   class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+          </div>
+          <div class="form-group">
+            <label for="password">
+              {{ 'login.labels.password' | translate }}
+            </label>
+            <input type="password" id="password" class="form-control" formControlName="password" />
+            <small *ngIf="(isFormSubmitted || loginForm.get('password').touched) && loginForm.get('password').errors?.required"
+                   class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+          </div>
+          <div class="">
+            <a [routerLink]="['/auth/forgot-password']">
+              <span class="forget-pass">
+                {{ 'login.labels.forgetPassword' | translate }}
+              </span>
+            </a>
+          </div>
+          <div class="mt-5">
+            <button type="submit" class="btn btn-primary submit mb-0">
+              {{ 'login.labels.signIn' | translate }}
+            </button>
+          </div>
+        </form>
+        <div class="mt-2">
+          <span class="ms-1">
+            {{ 'login.labels.dontHaveAccount' | translate }}
+          </span>
+          <a [routerLink]="['/auth/register']" class="text-secondary">
+            <span class="primary-text">
+              {{ 'login.labels.createNewAccount' | translate }}
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-list']">الجهات</a>
+    <span class="breadcrumb-item fs-16 active">اضافة مشروع على الجهة</span>
+  </nav>
+</div>
+
+<form [formGroup]="createCharityProjectForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>إضافة مشروع جديد</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
+              invalid: (isFormSubmitted || createCharityProjectForm.get('nameAr').touched) && createCharityProjectForm.get('nameAr').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || createCharityProjectForm.get('nameAr').touched) && createCharityProjectForm.get('nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
+              invalid: (isFormSubmitted || createCharityProjectForm.get('nameEn').touched) && createCharityProjectForm.get('nameEn').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || createCharityProjectForm.get('nameEn').touched) && createCharityProjectForm.get('nameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="projectTypeId" class="form-lbl">نوع المشروع<span class="danger">*</span></label>
+          <select class="form-control form-select" formControlName="projectTypeId" [ngClass]="{
+              invalid: (isFormSubmitted || createCharityProjectForm.get('projectTypeId').touched) && createCharityProjectForm.get('projectTypeId').errors?.required }">
+            <option [ngValue]="null">-- اختر نوع المشروع --</option>
+            <option *ngFor="let projectType of projectTypes" [ngValue]="projectType.id">{{ projectType.name }}</option>
+          </select>
+          <small *ngIf="(isFormSubmitted || createCharityProjectForm.get('projectTypeId').touched) && createCharityProjectForm.get('projectTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="projectCost" class="form-lbl">تكلفة المشروع<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="projectCost" id="projectCost" [ngClass]="{
+              invalid: (isFormSubmitted || createCharityProjectForm.get('projectCost').touched) && createCharityProjectForm.get('projectCost').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || createCharityProjectForm.get('projectCost').touched) && createCharityProjectForm.get('projectCost').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionAr" class="form-lbl">الوصف عربي</label>
+          <textarea type="text" class="form-control" autocomplete="off" formControlName="descriptionAr" id="descriptionAr"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descriptionEn" class="form-lbl">الوصف انجليزي</label>
+          <textarea type="text" class="form-control" autocomplete="off" formControlName="descriptionEn" id="descriptionEn"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="projectLocation" class="form-lbl">موقع المشروع</label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="projectLocation" id="projectLocation" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
+          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                        (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
+                        [accept]="acceptType" [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <small *ngIf="(isFormSubmitted || createCharityProjectForm.get('image').touched) && createCharityProjectForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            فعال
+            <input formControlName="isActive" type="checkbox" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">حفظ</button>
+    <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">رجوع</a>
+  </div>
+</form>

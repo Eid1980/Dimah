@@ -1,0 +1,87 @@
+<div class="sidebar" id="sidebar">
+  <div class="accordion" id="accordionSidemenu">
+    <ul class="sidebar-list">
+      <li class="sidebar-list-item">
+        <a class="sidebar-list-link" routerLink="/admin/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa-solid fa-house"></i>
+          <span>الرئيسية</span>
+        </a>
+      </li>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(settingPermission)">
+        <h2 class="accordion-header" id="headingSettings">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
+            <i class="fa-solid fa-gear"></i>
+            <span class="nav-label">الاعدادات</span>
+          </button>
+        </h2>
+        <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/contact-us-message-list" routerLinkActive="active">
+                  <span>طلبات تواصل معنا</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/open-data-request-list" routerLinkActive="active">
+                  <span>طلبات البيانات المفتوحة</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/nationality-list" routerLinkActive="active">
+                  <span>الجنسيات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/charity-list" routerLinkActive="active">
+                  <span>الجهات</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/charity-project-list" routerLinkActive="active">
+                  <span>المشاريع</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/project-type-list" routerLinkActive="active">
+                  <span>انواع المشاريع</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(usersPermission)">
+        <h2 class="accordion-header" id="headingPermissions">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-label">الصلاحيات</span>
+          </button>
+        </h2>
+        <div id="collapsePermissions" class="accordion-collapse collapse" aria-labelledby="headingPermissions"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/user-list" routerLinkActive="active">
+                  <span>المستخدمون</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/home/role-list" routerLinkActive="active">
+                  <span>الصلاحيات</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>

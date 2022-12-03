@@ -1,0 +1,82 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-list']">الجهات</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الجهة</span>
+  </nav>
+</div>
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل الجهة</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم عربي</span>
+        <span class="form-val">{{ charityDetailsDto?.nameAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم انجليزي</span>
+        <span class="form-val">{{ charityDetailsDto?.nameEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">رقم الجوال</span>
+        <span class="form-val">{{ charityDetailsDto?.phoneNumber }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">البريد الالكتروني</span>
+        <span class="form-val">{{ charityDetailsDto?.email }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">العنوان</span>
+        <span class="form-val">{{ charityDetailsDto?.address }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ charityDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-card">
+  <div class="form-header">
+    <h5>مشاريع الجهة</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-12 col-12">
+        <p-table #userRoles [value]="charityDetailsDto.charityProjectList" dataKey="id" [autoLayout]="true"
+                 [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th>م</th>
+              <th>اسم المشروع عربي</th>
+              <th>اسم المشروع انجليزي</th>
+              <th>نوع المشروع</th>
+              <th>تكلفة المشروع</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-i="rowIndex" let-charityProject>
+            <tr>
+              <td> {{i+1}} </td>
+              <td> {{charityProject.nameAr}} </td>
+              <td> {{charityProject.nameEn}} </td>
+              <td> {{charityProject.projectTypeName}} </td>
+              <td> {{charityProject.projectCost}} </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">رجوع</a>
+</div>

@@ -1,0 +1,152 @@
+.sidebar {
+  transition: all 0.4s ease-in-out;
+  overflow: auto;
+  width: 220px;
+  // background-image: url("../../images/footer.png");
+  background-color: $primary-alt-2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+
+  &.collapse {
+    display: block;
+    width: 55px;
+  }
+
+  ul.sidebar-list {
+    padding: 26px 12px;
+    margin-bottom: 40px;
+
+    li.sidebar-list-item {
+      .sidebar-list-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        padding-inline-end: 0px;
+        color: #F8F8F8;
+        border: 0px;
+        text-decoration: none;
+        border-radius: 8px;
+
+        i {
+          width: 20px;
+          height: 20px;
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-inline-end: 10px;
+        }
+
+        span {
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        &:hover {
+          background-color: transparent;
+          color: $white;
+        }
+
+        &.active {
+          color: $Primary-1;
+          background-color: #F8F8F8;
+        }
+      }
+    }
+  }
+
+  .accordion {
+    margin: 0 -12px;
+
+    .accordion-item {
+      .accordion-header {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        margin-inline-start: 0px;
+
+        .accordion-button {
+          background-color: transparent;
+          border: 0px;
+          padding: 12px 16px;
+          color: $white;
+          display: flex;
+          align-items: center;
+
+          &:focus {
+            box-shadow: none !important;
+          }
+
+          &::after {
+            margin-inline-start: auto;
+            margin-inline-end: 0;
+            width: 16px;
+            height: 16px;
+            background-size: 16px;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+          }
+
+          i {
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-inline-end: 10px;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .accordion-collapse {
+        background-color: $primary-alt-3;
+        border: 0;
+        border-radius: 0px !important;
+
+        .accordion-body {
+          padding: 8px 0px;
+
+          ul.accordion-list {
+            padding: 0px;
+            margin: 0px;
+
+            li.accordion-list-item {
+              .accordion-list-link {
+                display: flex;
+                padding: 8px 16px;
+                font-size: 14px;
+                font-weight: 400;
+                color: #F8F8F8;
+
+                &.active {
+                    color: $secondary-2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cecdcd;
+    border-radius: 4px;
+  }
+}

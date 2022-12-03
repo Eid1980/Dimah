@@ -1,0 +1,241 @@
+.table {
+  margin-bottom: 0px;
+  background-color: $white;
+
+  thead {
+    tr {
+      th {
+        padding: 16px;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba($color: $dark, $alpha: 0.6);
+
+        &:first-child {
+          border-top-left-radius: 6px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 6px;
+        }
+      }
+    }
+
+    &.thead-light {
+      background: rgba($color: $dark, $alpha: 0.05);
+
+      tr {
+        th {
+          color: rgba($color: $dark, $alpha: 0.6);
+        }
+      }
+    }
+  }
+
+  tbody {
+    border-top: 0px !important;
+
+    tr {
+      td {
+        padding: 16px;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba($color: $dark, $alpha: 0.8) !important;
+        box-shadow: none !important;
+      }
+
+      &:last-child {
+        td {
+          &:first-child {
+            border-bottom-left-radius: 6px;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  &.table-striped {
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          td {
+            background-color: rgba($color: $Primary-1, $alpha: 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  &.table-bordered {}
+}
+
+// p-table plugin
+p-table {
+  .p-datatable {
+    .p-datatable-wrapper {
+      table.p-datatable-table {
+        border: 1px solid rgba($color: $dark, $alpha: 0.1);
+        font-family: "Almarai";
+
+        thead.p-datatable-thead {
+          tr {
+            th {
+              outline: 0;
+              border: 0;
+              box-shadow: none;
+              padding: 18px 12px;
+              background: #F5F8FD;
+              color: $primary-alt-3;
+              font-size: 14px;
+              font-weight: 600;
+              border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1);
+
+              p-sorticon {
+                i {
+                  margin-inline-end: 0;
+                  margin-inline-start: 8px;
+                  color: #cca53b;
+                  font-size: 12px;
+                }
+              }
+
+              &:hover {
+                p-sorticon {
+                  i {
+                    color: #cca53b;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        tbody.p-datatable-tbody {
+          tr {
+            td {
+              font-size: 14px;
+              font-weight: 400;
+              color: rgba($color: $dark, $alpha: 0.7);
+              border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1);
+
+              &.empty-grid-table {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                color: $danger;
+                background-color: rgba($color: $danger, $alpha: 0.06);
+                border: 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// p-paginator
+p-paginator {
+  .p-paginator {
+    border: 0;
+    padding: 0;
+    margin-top: 16px;
+    background-color: transparent;
+
+    .p-paginator-pages {
+      .p-link {
+        border-radius: 50%;
+
+        &:focus,
+        &:active {
+          outline: 0;
+        }
+
+        &:hover {
+          color: $primary-alt-3;
+          background-color: #f5f8fd;
+        }
+
+        &.p-highlight {
+          background: rgba($color: $primary-alt-3, $alpha: 0.7);
+          border-color: rgba($color: $primary-alt-3, $alpha: 0.7);
+          color: $white;
+          border: 0;
+        }
+      }
+    }
+
+    .p-paginator-element {
+      &.p-link {
+
+        &.p-paginator-first,
+        &.p-paginator-prev,
+        &.p-paginator-next,
+        &.p-paginator-last {
+          .p-paginator-icon {
+            transform: rotate(180deg);
+          }
+        }
+
+        // &.p-paginator-first{
+        //   .p-paginator-icon{
+        //   }
+        // }
+        // &.p-paginator-prev{
+        //   .p-paginator-icon{
+        //   }
+        // }
+        // &.p-paginator-next{
+        //   .p-paginator-icon{}
+        // }
+        // &.p-paginator-last{
+        //   .p-paginator-icon{}
+        // }
+
+        &.p-disabled {}
+      }
+    }
+
+    .p-inputwrapper {
+      .p-dropdown {
+        height: auto;
+        margin: 6px;
+        margin-inline-start: 26px;
+        background: transparent;
+
+        .p-dropdown-label {
+          padding: 4px 6px;
+          color: rgba($color: $dark, $alpha: 0.7);
+        }
+
+        .p-dropdown-trigger {
+          width: auto;
+          padding: 4px 6px;
+
+          .p-dropdown-trigger-icon {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    html[lang="en"] & , html[dir="ltr"] &{
+      .p-paginator-element {
+        &.p-link {
+          &.p-paginator-first,
+          &.p-paginator-prev,
+          &.p-paginator-next,
+          &.p-paginator-last {
+            .p-paginator-icon {
+              transform: rotate(0deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

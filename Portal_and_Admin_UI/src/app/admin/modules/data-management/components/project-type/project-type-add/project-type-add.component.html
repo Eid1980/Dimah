@@ -1,0 +1,52 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/project-type-list']">أنواع المشاريع</a>
+    <span class="breadcrumb-item fs-16 active">إضافة نوع مشروع جديد</span>
+  </nav>
+</div>
+<form [formGroup]="createProjectTypeForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>إضافة نوع مشروع جديد</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
+              invalid:
+                (isFormSubmitted || createProjectTypeForm.get('nameAr').touched) &&
+                createProjectTypeForm.get('nameAr').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || createProjectTypeForm.get('nameAr').touched) && createProjectTypeForm.get('nameAr').errors?.required"
+                 class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
+              invalid:
+                (isFormSubmitted || createProjectTypeForm.get('nameEn').touched) &&
+                createProjectTypeForm.get('nameEn').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || createProjectTypeForm.get('nameEn').touched) && createProjectTypeForm.get('nameEn').errors?.required"
+                 class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            فعال
+            <input formControlName="isActive" type="checkbox" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">حفظ</button>
+    <a [routerLink]="['/admin/data-management/project-type-list']" class="btn btn-cancel">رجوع</a>
+  </div>
+</form>
+

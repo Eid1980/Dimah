@@ -1,0 +1,44 @@
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/nationality-list']">الجنسيات</a>
+    <span class="breadcrumb-item fs-16 active">تفاصيل الجنسية</span>
+  </nav>
+</div>
+<div class="form-card">
+  <div class="form-header">
+    <h5>تفاصيل الجنسية</h5>
+  </div>
+  <div class="form-content">
+    <div class="row mx-0">
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم عربي</span>
+        <span class="form-val">{{ nationalityDetailsDto?.nameAr }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاسم انجليزي</span>
+        <span class="form-val">{{ nationalityDetailsDto?.nameEn }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">كود الجنسية</span>
+        <span class="form-val">{{ nationalityDetailsDto?.code }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الاختصار</span>
+        <span class="form-val">{{ nationalityDetailsDto?.iso2 }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">مفتاح الاتصال</span>
+        <span class="form-val">{{ nationalityDetailsDto?.dialCode }}</span>
+      </div>
+      <div class="info-col col-md-6 col-12">
+        <span class="form-lbl lbl-33">الحالة</span>
+        <span class="form-val">{{ nationalityDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-actions">
+  <a [routerLink]="['/admin/data-management/nationality-list']" class="btn btn-cancel">رجوع</a>
+</div>
