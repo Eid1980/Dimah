@@ -13,6 +13,6 @@
     "\\src\\app\\shared\\proxy",
     "\\src\\app\\shared\\proxy\\charities"
   ],
-  "SelectedNode": "\\src\\app\\admin\\modules\\data-management\\components\\charity\\charity-view\\charity-view.component.html",
+  "SelectedNode": "\\src\\app\\admin\\modules\\navigation",
   "PreviewInSolutionExplorer": false
 }
