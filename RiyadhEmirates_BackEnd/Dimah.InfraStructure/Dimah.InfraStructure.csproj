@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Emirates.Core\Dimah.Core.csproj" />
+    <ProjectReference Include="..\Dimah.Core\Dimah.Core.csproj" />
   </ItemGroup>
 
 </Project>

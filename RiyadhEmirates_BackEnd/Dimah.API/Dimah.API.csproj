@@ -43,8 +43,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Emirates.Core\Dimah.Core.csproj" />
-    <ProjectReference Include="..\Emirates.InfraStructure\Dimah.InfraStructure.csproj" />
+    <ProjectReference Include="..\Dimah.Core\Dimah.Core.csproj" />
+    <ProjectReference Include="..\Dimah.InfraStructure\Dimah.InfraStructure.csproj" />
   </ItemGroup>
 
 </Project>

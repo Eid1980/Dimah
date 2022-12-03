@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.API", "Emirates.API\Dimah.API.csproj", "{49FA7E50-30D7-434A-9DDD-E42E2701209E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.API", "Dimah.API\Dimah.API.csproj", "{49FA7E50-30D7-434A-9DDD-E42E2701209E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.Core", "Emirates.Core\Dimah.Core.csproj", "{52351721-EC7D-44D4-A899-4F5C76C15480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.Core", "Dimah.Core\Dimah.Core.csproj", "{52351721-EC7D-44D4-A899-4F5C76C15480}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.InfraStructure", "Emirates.InfraStructure\Dimah.InfraStructure.csproj", "{DF8ADDEC-FCBB-482D-905E-6CA8085BFB3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dimah.InfraStructure", "Dimah.InfraStructure\Dimah.InfraStructure.csproj", "{DF8ADDEC-FCBB-482D-905E-6CA8085BFB3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
