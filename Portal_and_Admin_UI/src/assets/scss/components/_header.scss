@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 0px;
-    background-color: $primary-alt-3;
+    background-color: #F6F6F6;
     position: fixed;
     top: 0;
     right: 0;
@@ -18,7 +18,7 @@
       align-items: center;
 
       span {
-        color: $white;
+        color: rgba($color: $dark, $alpha: 0.8);
         margin-top: 2px;
       }
     }
@@ -314,7 +314,7 @@
           display: flex;
 
           img {
-            width: 220px;
+            width: 160px;
           }
         }
       }
@@ -333,7 +333,7 @@
             font-size: 16px;
             font-weight: 500;
             padding: 0;
-            margin: 0 16px;
+            margin: 0 26px;
             color: rgba($color: $dark, $alpha: 0.7);
             cursor: pointer;
 
@@ -560,7 +560,7 @@
         .logo {
           a {
             img {
-              width: 180px;
+              width: 160px;
             }
           }
         }
@@ -636,7 +636,7 @@
         .logo {
           a {
             img {
-              width: 160px;
+              width: 100px;
             }
           }
         }

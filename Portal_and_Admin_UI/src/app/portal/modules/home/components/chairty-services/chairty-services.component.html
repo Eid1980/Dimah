@@ -1,0 +1,28 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <span class="breadcrumb-item fs-16 active">أبواب الخير</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-primary fw-bold mb-4">أبواب الخير</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let item of chairtyItems">
+      <a class="card-bg mxw-240 mb-3 mx-auto" [routerLink]="'/chairty-services/' + item?.id">
+        <div class="card-overlay" [style.background-image]="'url('+item?.imageUrl+')'"></div>
+
+        <h4>{{item?.title}}</h4>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,47 +1,47 @@
-<!-- poster banner section -->
-<div class="home-slider mb-5 pb-3" *ngIf="posters.length > 0">
+<!-- home banner section -->
+<div class="home-slider mb-md-5 mb-3 pb-md-3 pb-0" *ngIf="banners.length > 0">
   <div class="owl__carousel">
-    <owl-carousel-o [options]="sliderOptions" class="owl-rtl">
-      <ng-template carouselSlide *ngFor="let poster of posters">
-        <img *ngIf="poster?.imageName" [src]="['/assets/images/uploads/posters/'+poster.imageName]" [alt]="poster?.titleEn" class="img-fluid slider" />
+    <owl-carousel-o [options]="bannerSliderOptions" class="owl-rtl">
+      <ng-template carouselSlide *ngFor="let banner of banners">
+        <img *ngIf="banner?.imgUrl" [src]="banner?.imgUrl" [alt]="banner?.titleEn" class="img-fluid slider" />
       </ng-template>
     </owl-carousel-o>
   </div>
 </div>
 
 <div class="container">
-  <div class="row mb-5">
+  <div class="row mb-md-5 mb-0">
     <!-- latest news -->
-    <div class="col-md-6 my-2">
+    <div class="col-lg-6 col-md-7 mb-md-3 mb-5">
       <div class="news">
-        <div class="section-title">
-          <h3 class="title">{{ 'home.latestNews' | translate }} </h3>
+        <div class="section-title mb-4">
+          <h3 class="title">آخر الأخبار</h3>
           <div class="more d-flex">
-            <a routerLink="home/latest-news">
-              {{ 'home.browseAllNews' | translate }}
+            <a routerLink="/latest-news">
+              <span>تصفح جميع الأخبار</span>
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
           </div>
         </div>
+
         <div class="owl__carousel">
           <owl-carousel-o [options]="newsOptions" class="owl-rtl">
             <ng-template carouselSlide *ngFor="let news of latestNews">
               <div class="owl-item">
                 <div class="item">
-                  <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
-                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
-                         [alt]="news?.title" class="iimg-fluid news-img" />
-                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
-                         class="img-fluid news-img" />
+                  <div class="news-card cursor-pointer rounded-26 overflow-hidden" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
+                    <img [src]="news?.imageUrl != '' ? news?.imageUrl : 'assets/images/placeholder.jpg'" [alt]="news?.title" class="img-fluid news-img" />
+
                     <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
+
                     <div class="news-caption">
-                      <h6 class="h2">
-                        {{ news?.title }}
-                      </h6>
+                      <h6>{{ news?.title }}</h6>
+                      <p>{{ news?.desc }}</p>
+
                       <span class="date">
                         <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
                         <span class="date-desc">
-                          {{news?.date | fullDate: currentLang}}
+                          {{news?.date}}
                         </span>
                       </span>
                     </div>
@@ -54,303 +54,44 @@
       </div>
     </div>
 
-    <!-- navigation links & related websites -->
-    <div class="col-md-6 my-2">
-      <div class="row mx-0 mb-5">
-        <div class="col-md-6 nav-card">
-          <a [routerLink]="electronicUrl" target="_blank">
-            <img src="./assets/images/icons/electronic-council-icon.svg"
-                 alt=""
-                 class="d-block mx-auto" />
-            <div class="desc">
-              <h6>المجلس الالكتروني</h6>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 nav-card">
-          <a routerLink="/home/transaction-inquiry">
-            <img src="./assets/images/icons/search-service.svg"
-                 alt=""
-                 class="d-block mx-auto" />
-            <div class="desc">
-              <h6>الاستعلام عن المعاملات</h6>
-            </div>
-          </a>
-        </div>
-      </div>
-      <!-- services details section -->
-      <!--<div class="services-details-container">
-        <div class="section-title">
-          <h3 class="title">-->
-      <!--{{ 'home.serviceGuide' | translate }}-->
-      <!--دليل اجراءات الخدمات
-          </h3>
-        </div>
-        <div class="owl__carousel">
-          <owl-carousel-o [options]="servicesDetailsOptions" class="owl-rtl">
-            <ng-template carouselSlide *ngFor="let len of serviceGuidLength; let i=index;">
-              <div class="owl-item item-box">
-                <div class="item">
-                  <div class="services-details-box" *ngIf="i == 0">
-                    <a class="services-details-card" *ngFor="let service of serviceGuidFirst"
-                       [routerLink]="['home/services-guide/' , service.id]">
-                      <div class="card-image">
-                        <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="img-fluid" />
-                        <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" class="img-fluid" [alt]="service.nameEn" />
-                      </div>
-                      <div class="content">
-                        <h4>{{service.nameAr}}</h4>
-                        <p>{{service.descriptionAr}}</p>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="services-details-box" *ngIf="i != 0">
-                    <a class="services-details-card" *ngFor="let service of internalServices | servicefilter:i"
-                       [routerLink]="['/home/services-guide/' , service.id]">
-                      <div class="card-image">
-                        <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="img-fluid" />
-                        <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" class="img-fluid" [alt]="service.nameEn" />
-                      </div>
-                      <div class="content">
-                        <h4>{{service.nameAr}}</h4>
-                        <p>{{service.descriptionAr}}</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </owl-carousel-o>
-        </div>
-      </div>-->
-      <!-- Related Websites -->
-      <div class="related-web">
-        <div class="section-title">
-          <h3 class="title">{{ 'home.relatedplatforms' | translate}}</h3>
-        </div>
-        <div class="rel-web">
-          <a href="https://www.my.gov.sa/wps/portal/snp/main" target="_blank">
-            <img src="./assets/images/icons/gov.svg" alt="" class="rel-web-logos" />
-          </a>
-          <a href="https://www.absher.sa/portal/landing.html" target="_blank">
-            <img src="./assets/images/icons/absher.svg" alt="" class="rel-web-logos" />
-          </a>
-          <a href="https://najiz.sa/applications/landing" target="_blank">
-            <img src="./assets/images/icons/najiz.svg" alt="" class="rel-web-logos" />
-          </a>
-          <a href="https://eservices.alriyadh.gov.sa/" target="_blank">
-            <img src="./assets/images/icons/riyadh-amanat.svg" alt="" class="rel-web-logos" />
-          </a>
-          <a href="https://www.moj.gov.sa/ar/pages/default.aspx" target="_blank">
-            <img src="./assets/images/icons/logoarbeta.svg" alt="" class="rel-web-logos"
-                 style="width: 100%; background: #fff; border: 1px solid #ececec; border-radius: 8px; padding: 5px;" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- e-services section -->
-  <div class="row mb-5 py-4">
-    <div class="col-12">
-      <div class="e-services">
-        <div class="text-center mb-5">
-          <h3 class="fw-bold text-primary fa-26 mb-0">{{ 'home.electronicServices'| translate}}</h3>
-        </div>
-        <div class="serv-tabs">
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div class="owl__carousel">
-                <owl-carousel-o [options]="servicesOptions" class="owl-rtl">
-                  <!-- Repeatable Item -->
-                  <ng-template carouselSlide *ngFor="let service of internalServicesTop">
-                    <div class="card-item px-3">
-                      <img *ngIf="service.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service.nameEn" class="ser-icon" />
-                      <img *ngIf="!service.imageName" src="assets/images/favicon/fav-logo.png" [alt]="service.nameEn" class="ser-icon" />
-                      <h5 class="title mb-5">{{ service.nameAr }}</h5>
-                      <p class="description h-3">{{ service.descriptionAr }}</p>
-                      <div class="service-link d-flex align-items-center">
-                        <a [routerLink]="['/home/services/', _globalService.encryptNumber(service.id)]" class="px-3">
-                          {{ 'home.explainService' | translate}}
-                        </a>
-                        <span class="arrow">
-                          <img src="./assets/images/icons/services/green-arrow-left.svg" alt="" style="width: 14px" />
-                        </span>
-                      </div>
-                    </div>
-                  </ng-template>
-                </owl-carousel-o>
-              </div>
-            </div>
-
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              2222
-            </div>
-
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              333
-            </div>
+    <!-- chairty section -->
+    <div class="col-lg-6 col-md-5 mb-3 pe-md-5">
+      <div class="chairty-section">
+        <div class="section-title mb-4">
+          <h3 class="title">أبواب الخير</h3>
+          <div class="more d-flex">
+            <a routerLink="/chairty-services">
+              <span>جميع أبواب الخير</span>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
-        <div class="d-flex justify-content-end mt-3 px-2">
-          <a [routerLink]="['/eservice/services-list']" class="btn btn-border-rd browse">
-            {{ 'home.browseAllServices' | translate}}
-            <img src="assets/images/icons/feather-arrow-left.svg" alt="icon" class="img-fluid me-3" width="20px" />
-          </a>
+  
+        <div class="row chairty-mb">
+          <div class="col-lg-6 col-md-12 col-sm-4 col-6" *ngFor="let item of chairtyItems">
+            <a class="card-bg mxw-240 mb-3" [routerLink]="'/chairty-services/' + item?.id">
+              <div class="card-overlay" [style.background-image]="'url('+item?.imageUrl+')'"></div>
+  
+              <h4>{{item?.title}}</h4> 
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- External EServices -->
-  <div class="row mb-5" *ngIf="externalServices.length > 0">
+  <!-- ads banner -->
+  <div class="row mb-5" *ngIf="adsItems.length > 0">
     <div class="col-12">
-      <div class="owl__carousel">
-        <owl-carousel-o [options]="bannerOptions" class="owl-rtl">
-          <ng-template carouselSlide *ngFor="let service of externalServices">
-            <a [routerLink]="service.requestLink" target="_blank">
-              <img *ngIf="service?.imageName" [src]="['/assets/images/uploads/services/'+service.imageName]" [alt]="service?.nameEn" class="img-fluid slider rounded-4" />
-              <img *ngIf="!service?.imageName" src="https://picsum.photos/id/10/1200/400" class="img-fluid slider rounded-4" />
+      <div class="owl__carousel overflow-hidden rounded-26">
+        <owl-carousel-o [options]="adsBannerOptions" class="owl-rtl">
+          <ng-template carouselSlide *ngFor="let item of adsItems">
+            <a [routerLink]="item?.requestLink" target="_blank">
+              <img [src]="item?.imageUrl ? item?.imageUrl : 'assets/images/placeholder.jpg'" [alt]="item?.title" class="img-fluid slider rounded-26" />
             </a>
           </ng-template>
         </owl-carousel-o>
       </div>
     </div>
   </div>
-
-  <!-- Governorate News & Reports -->
-  <div class="news-reports bg-transparent py-0 mb-5 py-4">
-    <div class="row">
-      <div class="col-md-6 my-2 offset-md-1" *ngIf="governorateNews.length > 0">
-        <div class="gov-news">
-          <div class="section-title">
-            <h3 class="title">{{ 'home.provincesNews' | translate}}</h3>
-            <div class="more d-flex">
-              <a routerLink="home/governorate-news">
-                {{ 'home.browseAllNews' | translate}}
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="owl__carousel">
-            <owl-carousel-o [options]="govNewsOptions" class="owl-rtl">
-              <ng-template carouselSlide *ngFor="let news of governorateNews">
-                <div class="item">
-                  <div class="card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
-                    <img *ngIf="news?.imageName" [src]="['/assets/images/uploads/news/'+news.imageName]"
-                         [alt]="news?.title" class="card-img-top" />
-                    <img *ngIf="!news?.imageName" src="assets/images/120.png" [alt]="news?.title"
-                         class="card-img-top" />
-                    <div class="card-body ps-2">
-                      <h5 class="card-title h-2 fa-16">{{ news?.title }}</h5>
-                      <p class="card-text fa-11">
-                        <img src="assets/images/icons/order-date.svg" alt="icon" class="img-fluid" />
-                        <span>
-                          {{ news?.date| fullDate: currentLang }}
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-            </owl-carousel-o>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-5 my-2" *ngIf="reports.length > 0">
-        <div class="news">
-          <div class="section-title">
-            <h3 class="title"> {{ 'home.advertisingReports' | translate }}</h3>
-            <div class="more d-flex">
-              <a routerLink="home/reports-news">
-                {{ 'home.browseAllReports'  | translate }}
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="owl__carousel">
-            <owl-carousel-o [options]="advertiseReportOptions" class="owl-rtl">
-              <ng-template carouselSlide *ngFor="let report of reports">
-                <div class="owl-item">
-                  <div class="item">
-                    <div class="news-card cursor-pointer" [routerLink]="['home/news-details' , _globalService.encryptNumber(report.id)]">
-                      <img *ngIf="report?.imageName" [src]="['/assets/images/uploads/news/'+report.imageName]"
-                           [alt]="report?.title" class="iimg-fluid news-img" style="height: 335px;" />
-                      <img *ngIf="!report?.imageName" src="assets/images/120.png" [alt]="report?.title"
-                           class="img-fluid news-img" style="height: 335px;" />
-                      <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
-
-                      <div class="news-caption">
-                        <h6 class="h2">
-                          {{ report.title }}
-                        </h6>
-                        <span class="date">
-                          <img src="assets/images/icons/date-white.svg" class="date-icon" alt="icon" />
-                          <span class="date-desc">
-                            {{ report?.date| fullDate: currentLang }}
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-            </owl-carousel-o>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-<!-- Important Numbers -->
-<div class="process-wrapper">
-  <h3>{{ 'home.numbersOfEmirate' | translate }}</h3>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-2">
-        <div class="process-item">
-          <div class="icon-cover bg-primary-2">
-            <img src="assets/images/icons/search-dark.svg" class="img-fluid ms-2" alt="image" />
-          </div>
-          <h5 id="processNumber1">0</h5>
-          <p class="text-primary-2">{{ 'home.numberOfUsedWebsite' | translate}}</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-2">
-        <div class="process-item">
-          <div class="icon-cover bg-primary-alt-2">
-            <img src="assets/images/icons/newspaper.svg" class="img-fluid w-auto" alt="image" />
-          </div>
-          <h5 id="processNumber2">0</h5>
-          <p class="text-primary-alt-2">{{'home.totalNumberOfElectronicServices' | translate}}</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-2">
-        <div class="process-item">
-          <div class="icon-cover bg-secondary">
-            <img src="assets/images/icons/files.svg" class="img-fluid w-auto" alt="image" />
-          </div>
-          <h5 id="processNumber3">0</h5>
-          <!--<p> {{ 'home.numberOfOpenedInfo' | translate}}</p>-->
-          <p class="text-secondary">عدد الطلبات</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4 col-sm-2">
-        <div class="process-item">
-          <div class="icon-cover bg-primary-alt-3">
-            <img src="assets/images/icons/contract-dark.svg" class="img-fluid" alt="image" />
-          </div>
-          <h5 id="processNumber4">0</h5>
-          <!--<p>{{ 'home.numberOfServicesInWaitingList' | translate}}</p>-->
-          <p class="text-primary-alt-3">عدد تقييمات الخدمات</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-

@@ -38,7 +38,7 @@
         margin-bottom: 16px;
 
         img {
-          width: 300px;
+          width: 200px;
         }
       }
     }
@@ -150,12 +150,8 @@
 
   // Footer
   .footer {
-    // height: 600px;
-    background-image: url("../../assets/images/footer.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: $white;
+    background-color: #28924f;
 
     // padding: 100px 100px 0;
     .title {
@@ -244,7 +240,7 @@
 
       &::after {
         content: "";
-        display: block;
+        display: none;
         height: 77%;
         background: #529a8d;
         width: 1px;
@@ -259,7 +255,7 @@
 
       &::after {
         content: "";
-        display: block;
+        display: none;
         height: 77%;
         background: #529a8d;
         width: 1px;
@@ -278,7 +274,7 @@
           color: $white;
           display: inline-block;
           margin-bottom: 1rem;
-          border-bottom: 0.1px solid $white;
+          border-bottom: 0px;
           opacity: 0.8;
 
           &:hover {
@@ -321,7 +317,7 @@
     }
 
     .bottom-nav {
-      background-color: $Primary-2;
+      background-color: #228145;
       color: $white;
       font-size: 0.8rem;
 
@@ -382,7 +378,7 @@
   // BreadCrumb
   .breadcrumb {
     // background-image: url("../images/bg-services.svg");
-    background-color: $primary-alt-1 !important;
+    background-color: transparent !important;
     height: 80px;
     align-items: center;
     padding: 0px;
@@ -402,6 +398,7 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 16px;
+      color: rgba($color: $dark, $alpha: 0.6);
 
       i {
         font-size: 26px;
@@ -417,14 +414,14 @@
             float: right;
             padding-inline-start: 0;
             padding-inline-end: 10px;
-            color: $white;
+            color: rgba($color: $dark, $alpha: 0.6);
             font-size: 16px;
           }
         }
       }
 
       &.active {
-        color: $secondary-1;
+        color: $Primary-1;
       }
     }
 
@@ -1075,113 +1072,6 @@
     font-size: 1rem !important;
   }
 
-  // Home Slider
-  .home-slider {
-    .owl__carousel {
-
-      .owl-prev,
-      .owl-next {
-        width: 30px;
-        height: 65px;
-        border-radius: 0;
-        line-height: 65px;
-        background-color: #c8c8c8;
-        transform: scaleX(-1);
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        display: block;
-      }
-
-      .owl-next {
-        inset-inline-end: 0;
-      }
-
-      .owl-prev {
-        inset-inline-start: 0;
-      }
-
-      .owl-item {
-        .slider {
-          height: 330px;
-        }
-      }
-    }
-  }
-
-  // News
-  .news {
-    .owl-item {
-      width: 100%;
-    }
-
-    .owl-carousel {
-      .owl-prev {
-        inset-inline-start: 8px;
-      }
-
-      .owl-next {
-        inset-inline-end: 8px;
-      }
-    }
-
-    .news-card {
-      position: relative;
-
-      .news-img {
-        width: 100%;
-        height: 390px;
-        border-radius: 6px;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        inset-inline-end: 0;
-        inset-inline-start: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 6px;
-      }
-
-      .news-caption {
-        position: absolute;
-        inset-inline-end: 0;
-        inset-inline-start: 0;
-        bottom: 0;
-        width: 100%;
-        display: block;
-        padding: 12px;
-        color: #fff;
-
-        h6 {
-          font-size: 1rem;
-          font-weight: 700;
-          line-height: 1.6;
-          text-align: right;
-        }
-
-        .date {
-          .date-icon {
-            width: 24px;
-            display: inline-block;
-            margin-inline-end: 8px;
-            opacity: 0.7;
-          }
-
-          .date-desc {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            font-weight: 400;
-          }
-        }
-      }
-    }
-  }
-
   // Navigation Cards in home page
   .nav-card {
     padding: 1rem;
@@ -1257,52 +1147,6 @@
     }
   }
 
-  // Any Section Title / Home Page sections' titles
-  .section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-
-    .title {
-      font-size: 20px;
-      font-weight: 600;
-      color: rgba($color: $dark, $alpha: 0.8);
-      margin-bottom: 0;
-      line-height: 32px;
-    }
-
-    .more {
-      a {
-        font-size: 0.8rem;
-        color: $text-color;
-        font-weight: 400;
-
-        i {
-          font-size: 1rem;
-          color: $Primary-2;
-          margin-inline-start: 8px;
-          vertical-align: middle;
-        }
-
-        &:hover {
-          color: $Primary-2;
-        }
-      }
-    }
-
-    html[dir="ltr"] &,
-    html[lang="en"] & {
-      .more {
-        a {
-          i {
-            transform: rotate(180deg);
-          }
-        }
-      }
-    }
-  }
-
   .browse {
     color: #fff;
     background-color: $Primary-1;
@@ -1334,7 +1178,7 @@
       border-bottom-right-radius: 14px;
       border-top-right-radius: 0px;
       border-bottom-left-radius: 0px;
-  
+
       img {
         transform: rotate(180deg);
       }
@@ -1350,7 +1194,7 @@
       height: 30px;
       border-radius: 30px;
       line-height: 30px;
-      background-color: $Primary-2;
+      background-color: $Primary-1;
       transform: scaleX(-1);
       position: absolute;
       top: 0;

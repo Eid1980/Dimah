@@ -14,20 +14,129 @@ export class HomeComponent implements OnInit {
   currentLang: string;
   electronicUrl: string;
   searchModel: SearchModel = {};
-  posters = [] ;
+  posters = [];
 
-  latestNews = [] ;
   governorateNews = [];
   reports = [];
 
-  internalServices = [] ;
+  internalServices = [];
   internalServicesTop = [];
-  externalServices = [] ;
-  serviceGuidFirst = [] ;
+  externalServices = [];
+  serviceGuidFirst = [];
   serviceGuidLength = [];
 
-  //#region Sliders Options
-  sliderOptions: OwlOptions = {
+  banners: any = [
+    {
+      "id": "banner1",
+      "imgUrl": "assets/images/banner1.png",
+      "titleEn": "banner1"
+    },
+    {
+      "id": "banner2",
+      "imgUrl": "https://picsum.photos/id/10/1200/400",
+      "titleEn": "banner2"
+    },
+    {
+      "id": "banner3",
+      "imgUrl": "https://picsum.photos/id/90/1200/400",
+      "titleEn": "banner3"
+    }
+  ]
+
+  latestNews: any = [
+    {
+      "id": 1,
+      "imageUrl": "https://picsum.photos/id/10/1200/400",
+      "title": "سقيا الماء",
+      "desc": "قام فريق التطوع بتوزيع مياه على حجاج بيت الله الحرام",
+      "date": "الثلاثاء، 13 جمادى الأولى 1444 هـ - 6 ديسمبر 2022 م",
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://picsum.photos/id/90/1200/400",
+      "title": "سقيا الماء",
+      "desc": "قام فريق التطوع بتوزيع مياه على حجاج بيت الله الحرام",
+      "date": "الثلاثاء، 13 جمادى الأولى 1444 هـ - 6 ديسمبر 2022 م",
+    },
+    {
+      "id": 3,
+      "imageUrl": "",
+      "title": "الدفع الأمن",
+      "desc": "قام فريق التطوع بتوزيع مياه على حجاج بيت الله الحرام",
+      "date": "الثلاثاء، 13 جمادى الأولى 1444 هـ - 6 ديسمبر 2022 م",
+    },
+  ]
+
+  chairtyItems: any = [
+    {
+      "id": 1,
+      "title": "سقيا الماء",
+      "imageUrl": "assets/images/icons/png/cart.png"
+    },
+    {
+      "id": 2,
+      "title": "وجبة معتمر",
+      "imageUrl": "assets/images/icons/png/cart.png"
+    },
+    {
+      "id": 3,
+      "title": "إفطار صائم",
+      "imageUrl": "assets/images/icons/png/cart.png"
+    },
+    {
+      "id": 4,
+      "title": "زواج أرامل",
+      "imageUrl": "assets/images/icons/png/cart.png"
+    }
+  ]
+
+  adsItems: any = [
+    {
+      "id": "adsBanner1",
+      "imageUrl": "assets/images/banner2.png",
+      "title": "ads banner 1",
+      "requestLink": ""
+    },
+    {
+      "id": "adsBanner2",
+      "imageUrl": "https://picsum.photos/id/120/1200/330",
+      "title": "ads banner 2",
+      "requestLink": ""
+    },
+    {
+      "id": "adsBanner3",
+      "imageUrl": "https://picsum.photos/id/200/1200/330",
+      "title": "ads banner 3",
+      "requestLink": ""
+    }
+  ]
+
+  // home banner slider config
+  bannerSliderOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: false,
+  };
+
+  // news slider config
+  newsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -46,6 +155,32 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
+
+  // ads banner slider config
+  adsBannerOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed: 1500,
+    rtl: true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+    },
+    nav: false,
+  };
+
+
   govNewsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -97,25 +232,7 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-  newsOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-    },
-    nav: true,
-  };
+
   advertiseReportOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -181,29 +298,6 @@ export class HomeComponent implements OnInit {
     animateOut: 'slideOutUp',
     animateIn: 'slideInUp'
   };
-  bannerOptions: OwlOptions = {
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-    },
-    nav: false,
-  };
-  //#endregion
 
   constructor(
     public _globalService: GlobalService, private translateService: TranslationServiceService) {
