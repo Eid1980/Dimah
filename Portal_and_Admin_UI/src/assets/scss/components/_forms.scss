@@ -490,6 +490,33 @@ p-multiselect {
       cursor: pointer;
     }
   }
+
+  // input type radio
+  .form-check-input{
+    width: 16px;
+    height: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    float: initial !important;
+    margin-left: 0px !important;
+
+    &:focus{
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+
+    &:checked{
+      background-color: $Primary-1;
+      border-color: $Primary-1;
+    }
+  }
+
+  .form-check-label{
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 12px;
+  }
 }
 
 textarea {

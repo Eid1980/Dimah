@@ -12,14 +12,47 @@
 <div class="container pt-4 pb-5">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-primary fw-bold mb-4">سلة الخير</h3>
+      <h3 class="text-primary fw-bold mb-5">سلة الخير</h3>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-8 mb-3">
-      <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 mb-5" *ngFor="let item of chairtyItems">
+      <div class="table-responsive rounded-26 shadow-box">
+        <table class="table table-borderless mb-0">
+          <thead class="bg-primary">
+            <tr>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">باب الخير</th>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
+              <th class="text-white fa-16 text-center mw-100 py-4 align-middle">مدة التبرع</th>
+              <th class="text-white fa-16 text-center mw-100 py-4 align-middle">المجموع</th>
+              <th class="text-white fa-16 text-center py-4 align-middle"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of cartItems">
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.title}}</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.dailyDonation}}</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.donationPeriod}}</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.totalCost}}</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                <div class="d-flex align-items-center justify-content-center">
+                  <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="openEditItemModal(item)">
+                    <i class="fa-regular fa-pen-to-square fa-20"></i>
+                  </a>
+                  <a class="text-danger d-flex align-items-center cursor-pointer" (click)="openDeleteItemModal(item)">
+                    <i class="fa-regular fa-trash-can fa-20"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-5" *ngFor="let item of cartItems">
           <a class="card-bg mh-260 pb-4">
             <div class="card-overlay h-80" [style.background-image]="'url('+item?.imageUrl+')'"></div>
 
@@ -36,7 +69,7 @@
             <a class="btn btn-danger-white btn-sm w-100" (click)="openDeleteItemModal(item)">حذف</a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="col-lg-4 col-md-8 mb-3 pe-lg-5 me-auto">

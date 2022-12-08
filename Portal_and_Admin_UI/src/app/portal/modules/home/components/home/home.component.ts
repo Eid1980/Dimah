@@ -71,22 +71,22 @@ export class HomeComponent implements OnInit {
     {
       "id": 1,
       "title": "سقيا الماء",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/water-dot.svg"
     },
     {
       "id": 2,
       "title": "وجبة معتمر",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/food-method.svg"
     },
     {
       "id": 3,
       "title": "إفطار صائم",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/food.svg"
     },
     {
       "id": 4,
       "title": "زواج أرامل",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/maried.svg"
     }
   ]
 
@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     autoplay: true,
     autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    autoplayHoverPause: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
@@ -132,7 +132,7 @@ export class HomeComponent implements OnInit {
         items: 1,
       },
     },
-    nav: false,
+    nav: true,
   };
 
   // news slider config
@@ -161,10 +161,9 @@ export class HomeComponent implements OnInit {
     loop: true,
     autoplay: true,
     autoplayTimeout: 5000,
-    autoplayHoverPause: true,
+    autoplayHoverPause: false,
     mouseDrag: true,
     touchDrag: true,
-    pullDrag: true,
     dots: false,
     navSpeed: 1500,
     rtl: true,
@@ -178,125 +177,6 @@ export class HomeComponent implements OnInit {
       },
     },
     nav: false,
-  };
-
-
-  govNewsOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    items: 5,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 2,
-      },
-    },
-    nav: true,
-  };
-  Details: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 4,
-      },
-    },
-    nav: true,
-  };
-
-  advertiseReportOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-    },
-    nav: true,
-  };
-  servicesOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-      740: {
-        items: 3,
-      },
-      940: {
-        items: 4,
-      }
-    },
-    nav: true,
-  };
-  servicesDetailsOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: true,
-    navSpeed: 700,
-    rtl: true,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-    },
-    nav: false,
-    animateOut: 'slideOutUp',
-    animateIn: 'slideInUp'
   };
 
   constructor(

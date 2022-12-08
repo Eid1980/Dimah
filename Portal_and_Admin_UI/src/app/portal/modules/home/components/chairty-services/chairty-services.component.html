@@ -11,13 +11,21 @@
 
 <div class="container pt-3 pb-5">
   <div class="row">
-    <div class="col-12">
-      <h3 class="text-primary fw-bold mb-4">أبواب الخير</h3>
+    <div class="col-12 d-flex align-items-center flex-wrap mb-5">
+      <h3 class="text-primary fw-bold mb-0 my-2">أبواب الخير</h3>
+      <div class="me-auto my-2">
+        <div class="input-group border rounded-4 overflow-hidden">
+          <input type="text" class="form-control bg-white bg-opacity-75 border-0 ps-3" placeholder="بحث فى أبواب الخير" aria-describedby="searchButton" />
+          <button class="btn bg-white bg-opacity-75 px-3 rounded-0" type="button" id="searchButton">
+            <img src="assets/images/icons/svg/search.svg" class="img-fluid" alt="icon" width="24px" />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-3" *ngFor="let item of chairtyItems">
+  <div class="row px-md-4">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let item of chairtyItems">
       <a class="card-bg mxw-240 mb-3 mx-auto" [routerLink]="'/chairty-services/' + item?.id">
         <div class="card-overlay" [style.background-image]="'url('+item?.imageUrl+')'"></div>
 

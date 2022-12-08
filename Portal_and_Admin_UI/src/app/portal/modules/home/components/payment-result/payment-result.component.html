@@ -15,10 +15,11 @@
   <!-- if payment success -->
   <div class="row" *ngIf="paymentResult == 'success'">
     <div class="col-12 d-flex flex-column justify-content-center align-items-center mb-5 mt-3">
-      <img src="assets/images/icons/svg/success-vector.svg" alt="icon" class="img-fluid mb-4" width="200px" />
-      <h4 class="mb-0 fw-bold">لقد أتممت عملية التبرع بنجاح</h4>
+      <img src="assets/images/icons/svg/success-vector.svg" alt="icon" class="img-fluid mb-5" width="200px" />
+      <h2 class="mb-2 fw-bold">جزاكم الله خيراً</h2>
+      <p class="mb-0 text-muted fw-normal fa-18">تم إستلام تبرعكم بنجاح</p>
 
-      <a class="btn btn-primary mt-5 px-5 py-2" routerLink="/">الرئيسية</a>
+      <a class="btn btn-primary mt-5 px-5 py-2 lh-lg" routerLink="/">الرئيسية</a>
     </div>
   </div>
 
@@ -26,9 +27,10 @@
   <div class="row" *ngIf="paymentResult == 'failed'">
     <div class="col-12 d-flex flex-column justify-content-center align-items-center mb-5 mt-3">
       <img src="assets/images/icons/svg/failed-vector.svg" alt="icon" class="img-fluid mb-4" width="200px" />
-      <h4 class="mb-0 fw-bold">فشلت عملية الدفع</h4>
+      <h2 class="mb-2 fw-bold">حدث خطأ</h2>
+      <p class="mb-0 text-muted fw-normal fa-18">لم نتمكن من إستلام تبرعكم</p>
 
-      <button type="button" class="btn btn-primary mt-5 px-5 py-2">إعادة المحاولة</button>
+      <button type="button" class="btn btn-primary mt-5 px-5 py-2 lh-lg">إعادة المحاولة</button>
     </div>
   </div>
 </div>

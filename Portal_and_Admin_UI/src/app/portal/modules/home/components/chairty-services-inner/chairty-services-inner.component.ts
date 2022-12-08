@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
@@ -8,36 +9,48 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ChairtyServicesInnerComponent implements OnInit {
 
+  confirmationBox: any = false;
+
   chairtyItems: any = [
     {
       "id": 1,
       "title": "سقيا الماء",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/water-dot.svg"
     },
     {
       "id": 2,
       "title": "وجبة معتمر",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/food-method.svg"
     },
     {
       "id": 3,
       "title": "إفطار صائم",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/food.svg"
     },
     {
       "id": 4,
       "title": "زواج أرامل",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "imageUrl": "assets/images/icons/svg/maried.svg"
     },
     {
-      "id": 5,
-      "title": "مساعدة",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "id": 1,
+      "title": "سقيا الماء",
+      "imageUrl": "assets/images/icons/svg/water-dot.svg"
     },
     {
-      "id": 6,
-      "title": "تبرع",
-      "imageUrl": "assets/images/icons/png/cart.png"
+      "id": 2,
+      "title": "وجبة معتمر",
+      "imageUrl": "assets/images/icons/svg/food-method.svg"
+    },
+    {
+      "id": 3,
+      "title": "إفطار صائم",
+      "imageUrl": "assets/images/icons/svg/food.svg"
+    },
+    {
+      "id": 4,
+      "title": "زواج أرامل",
+      "imageUrl": "assets/images/icons/svg/maried.svg"
     }
   ]
 
@@ -77,7 +90,7 @@ export class ChairtyServicesInnerComponent implements OnInit {
     nav: true,
   };
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -100,5 +113,18 @@ export class ChairtyServicesInnerComponent implements OnInit {
 
       (input_item).setAttribute('value', input_value);
     }
+  }
+
+  addToCart() {
+    this.confirmationBox = true;
+
+    setTimeout(() => {
+      this.confirmationBox = false;
+    }, 5000);
+  }
+
+  showCart() {
+    this.confirmationBox = false;
+    this.router.navigateByUrl('/cart');
   }
 }

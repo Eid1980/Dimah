@@ -32,15 +32,68 @@
         }
       }
     }
+
+    .owl-prev,
+    .owl-next {
+      width: 30px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0px;
+      background-color: $Primary-1;
+      transform: scaleX(-1);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+
+      span {
+        display: none;
+      }
+
+      &:before {
+        color: $white;
+        padding: 4px;
+        font-family: "Font Awesome 6 Free";
+        font-size: 20px;
+        opacity: 1;
+        font-weight: 900;
+        transition: 0.4s all ease-in-out;
+        top: 0px;
+        position: relative;
+      }
+
+      &:hover {
+        background: $primary-alt-2;
+        color: $white;
+      }
+    }
+
+    .owl-prev {
+      inset-inline-start: 0px;
+
+      &:before {
+        content: "\f104";
+      }
+    }
+
+    .owl-next {
+      inset-inline-end: 0px;
+
+      &:before {
+        content: "\f105";
+      }
+    }
   }
 
   @media screen and (max-width: $min-md) {
     .owl__carousel {
-        .owl-item {
-          .slider {
-            height: auto;
-          }
+      .owl-item {
+        .slider {
+          height: auto;
         }
+      }
     }
   }
 }
@@ -129,6 +182,13 @@
 
 // chairty section
 .chairty-section {
+  .card-bg {
+    &.mxw-240 {
+      max-width: 220px;
+      min-height: 188px;
+    }
+  }
+
   .chairty-mb {
     .col-md-6 {
 
@@ -137,5 +197,53 @@
         margin-bottom: 26px;
       }
     }
+  }
+}
+
+.confirmation-box {
+  position: fixed;
+  top: 180px;
+  left: 140px;
+  background-color: $white;
+  border: 1px solid rgba($color: $dark, $alpha: 0.1);
+  border-radius: 26px;
+  padding: 26px 26px 16px;
+  width: 240px;
+  z-index: 10;
+
+  .icon {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box {
+      background-color: $white;
+      border: 2px solid $Primary-1;
+      color: $Primary-1;
+      border-radius: 50%;
+      padding: 4px;
+      font-size: 26px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: $min-lg) {
+    top: 180px;
+    left: 16px;
+  }
+
+  @media screen and (max-width: $min-sm) {
+    top: 144px;
+    left: 10px;
+    padding: 26px 16px 16px;
+    width: 220px;
   }
 }

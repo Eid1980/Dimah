@@ -1200,7 +1200,9 @@
       top: 0;
       bottom: 0;
       margin: auto;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       span {
         display: none;
@@ -1214,7 +1216,7 @@
         opacity: 1;
         font-weight: 900;
         transition: 0.4s all ease-in-out;
-        top: -4px;
+        top: 0px;
         position: relative;
       }
 

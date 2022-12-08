@@ -9,34 +9,27 @@ export class CartComponent implements OnInit {
   showEditItemsModal: any = false;
   showDeleteItemsModal: any = false;
 
-  chairtyItems: any = [
+  cartItems: any = [
     {
       "id": 1,
       "title": "سقيا الماء",
-      "imageUrl": "assets/images/icons/png/cart.png",
-      "donationCost": 5,
-      "donationPeriod": 10
+      "dailyDonation": 5,
+      "donationPeriod": 5,
+      "totalCost": 25,
     },
     {
       "id": 2,
-      "title": "وجبة معتمر",
-      "imageUrl": "assets/images/icons/png/cart.png",
-      "donationCost": 50,
-      "donationPeriod": 2
+      "title": "إطعام",
+      "dailyDonation": 5,
+      "donationPeriod": 5,
+      "totalCost": 25,
     },
     {
       "id": 3,
-      "title": "إفطار صائم",
-      "imageUrl": "assets/images/icons/png/cart.png",
-      "donationCost": 15,
-      "donationPeriod": 20
-    },
-    {
-      "id": 4,
-      "title": "زواج أرامل",
-      "imageUrl": "assets/images/icons/png/cart.png",
-      "donationCost": 5,
-      "donationPeriod": 10
+      "title": "مساعدة",
+      "dailyDonation": 5,
+      "donationPeriod": 5,
+      "totalCost": 25,
     }
   ]
 
