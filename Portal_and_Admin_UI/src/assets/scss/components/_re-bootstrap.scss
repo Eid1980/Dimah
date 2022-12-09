@@ -18,6 +18,12 @@
 .rounded-5{
   border-radius: 8px !important;
 }
+.rounded-16{
+  border-radius: 16px !important;
+}
+.rounded-26{
+  border-radius: 26px !important;
+}
 
 .list-dots{
   list-style: disc !important;
@@ -30,6 +36,11 @@
 
 .h-fit-content{
   height: fit-content !important;
+}
+
+// box shadow
+.shadow-box{
+  box-shadow: 0 3px 17px 0px #00000029;
 }
 
 // min-width

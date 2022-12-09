@@ -16,10 +16,10 @@ import * as CryptoTS from 'crypto-ts';
 export class GlobalService {
   cryptionKey: string = environment.cryptionKey ? environment.cryptionKey : 'Emirates@2023';
 
-  constructor(private titleService: Title, private messageService: MessageService, private router: Router) {}
+  constructor(private titleService: Title, private messageService: MessageService, private router: Router) { }
 
   public setTitle(newTitle: string) {
-    this.titleService.setTitle('إمارة منطقة الرياض | ' + newTitle);
+    this.titleService.setTitle('ديما | ' + newTitle);
   }
   public setAdminTitle(newTitle: string) {
     this.titleService.setTitle('لوحة التحكم | ' + newTitle);
@@ -47,7 +47,7 @@ export class GlobalService {
   public showMessage(msg: string): void {
     if (msg) {
       var msgArray = msg.split(',');
-      this.messageService.add({ severity: msgArray[0], summary: msgArray[1], detail: msgArray[2]});
+      this.messageService.add({ severity: msgArray[0], summary: msgArray[1], detail: msgArray[2] });
     }
   }
 

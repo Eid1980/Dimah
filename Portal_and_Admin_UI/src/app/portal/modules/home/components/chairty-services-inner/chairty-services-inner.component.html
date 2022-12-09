@@ -1,0 +1,142 @@
+  <div class="ser-bg">
+    <div class="ser-bread">
+      <nav class="breadcrumb m-0 bg-transparent">
+        <div class="container d-flex align-items-center">
+          <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+          <a class="breadcrumb-item" [routerLink]="['/chairty-services']">أبواب الخير</a>
+          <span class="breadcrumb-item fs-16 active">سقيا الماء</span>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container pt-md-4 pt-3 pb-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-3">
+        <div class="d-flex flex-column h-100">
+          <img src="assets/images/service-water.png" class="rounded-26 img-fluid h-100" alt="banner"
+            style="max-width: 400px;" />
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-6 mb-3 pe-4 py-md-3">
+        <div>
+          <h2 class="fw-bold text-primary mb-2">سقيا الماء</h2>
+          <p class="fa-18 fw-normal mb-3 w-75">
+            نص تخيلي للبيانات الموضوعة هنا نص تخيلي للبيانات الموضوعة هنا الموضوعة هنا نص تخيلي للبيانات الموضوعة
+            هناالموضوعة.
+          </p>
+        </div>
+
+        <div class="d-flex flex-lg-nowrap flex-wrap align-items-end mt-5 mb-4">
+          <div class="ps-3 mb-lg-0 mb-4">
+            <h6 class="fw-bold text-primary mb-3">قيمة التبرع اليومى</h6>
+            <input type="number" class="form-control w-50 py-2 px-2 text-center" value="1" />
+          </div>
+
+          <div class="mb-sm-0 mb-4">
+            <h6 class="fw-bold text-primary mb-3">مدة التبرع</h6>
+            <div class="number-counter justify-content-center">
+              <span class="btn btn-highlight-primary plus" (click)="increaseProduct($event)">
+                <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
+              </span>
+
+              <input class="form-control" type="number" readonly value="1" min="1" max="2000" />
+
+              <span class="btn btn-highlight-primary minus" (click)="decreaseProduct($event)">
+                <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
+              </span>
+            </div>
+          </div>
+
+          <div class="me-auto pe-3">
+            <button type="button" class="btn btn-primary" (click)="addToCart()">إضافة إلى سلة الخير</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- information about project -->
+  <div class="bg-white py-5 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="fw-bold mb-5 mt-md-4 pb-md-3">معلومات عن المشروع</h2>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+          <div>
+            <h6 class="fa-22 text-primary fw-bold mb-3">نوع المشروع</h6>
+            <p class="text-muted fw-normal fa-16 mb-0">نص تخيلي للبيانات الموضوعة هنا نص تخيلي للبيانات الموضوعة هنا الموضوعة هنا نص تخيلي للبيانات الموضوعة
+              هناالموضوعة.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+          <div>
+            <h6 class="fa-22 text-primary fw-bold mb-3">المستفدين</h6>
+            <p class="text-muted fw-normal fa-16 mb-0">عملاء ديما</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+          <div>
+            <h6 class="fa-22 text-primary fw-bold mb-3">تكلفة المشروع</h6>
+            <p class="text-muted fw-normal fa-16 mb-0">100.000</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+          <div>
+            <h6 class="fa-22 text-primary fw-bold mb-3">موقع المشروع</h6>
+            <p class="text-muted fw-normal fa-16 mb-0">نص تخيلي للبيانات الموضوعة هنا نص تخيلي للبيانات الموضوعة هنا الموضوعة هنا نص تخيلي للبيانات الموضوعة
+              هناالموضوعة.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- another chairty services -->
+  <div class="container">
+    <div class="row my-5 pt-md-4 pb-md-5">
+      <div class="col-12">
+        <div class="services-slider">
+          <div class="section-title mb-5">
+            <h2 class="fa-26 text-black fw-bold mb-0">أبواب خير آخرى</h2>
+            <div class="more d-flex">
+              <a routerLink="/chairty-services">
+                <span>جميع أبواب الخير</span>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="owl__carousel px-3">
+            <owl-carousel-o [options]="itemsOptions" class="owl-rtl">
+              <ng-template carouselSlide *ngFor="let item of chairtyItems">
+                <a class="card-bg shadow-none mxw-240" [routerLink]="'/chairty-services/' + item?.id">
+                  <div class="card-overlay" [style.background-image]="'url('+item?.imageUrl+')'"></div>
+
+                  <h4>{{item?.title}}</h4>
+                </a>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- confirmation box -->
+  <div class="confirmation-box shadow-box" *ngIf="confirmationBox">
+    <p class="fa-16 fw-normal mb-3 text-center">
+      تمت إضافة باب سقيا الماء لسلة الخير الخاصة بك
+    </p>
+    <a class="btn btn-primary-white" (click)="showCart()">عرض السلة</a>
+
+    <div class="icon">
+      <div class="box">
+        <i class="fa-solid fa-check"></i>
+      </div>
+    </div>
+  </div>

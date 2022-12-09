@@ -27,6 +27,7 @@
 
   &.btn-outline-primary,
   &.btn-outline-secondary {
+
     &:hover,
     &.active,
     &:focus,
@@ -35,8 +36,37 @@
     }
   }
 
-  &.btn-border-rd{
+  &.btn-primary-white {
+    border: 2px solid $Primary-1;
+    color: $Primary-1;
+    background-color: $white;
+
+    &:hover,
+    &.active,
+    &:focus {
+      color: $Primary-1;
+    }
+  }
+
+  &.btn-danger-white {
+    border: 2px solid $danger;
+    color: $danger;
+    background-color: $white;
+
+    &:hover,
+    &.active,
+    &:focus {
+      color: $danger;
+    }
+  }
+
+  &.btn-border-rd {
     border-top-right-radius: 17px !important;
     border-bottom-left-radius: 17px !important;
+  }
+
+  &.btn-sm{
+    padding: 4px 8px !important;
+    font-size: 14px !important;
   }
 }
