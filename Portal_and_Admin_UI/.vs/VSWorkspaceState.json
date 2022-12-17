@@ -3,15 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\modules",
-    "\\src\\app\\admin\\modules\\data-management",
-    "\\src\\app\\admin\\modules\\data-management\\components",
-    "\\src\\app\\admin\\modules\\data-management\\components\\charity\\charity-list",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\proxy",
-    "\\src\\app\\shared\\proxy\\charities"
+    "\\src\\app\\portal",
+    "\\src\\app\\portal\\modules",
+    "\\src\\app\\portal\\modules\\home",
+    "\\src\\app\\portal\\modules\\home\\components",
+    "\\src\\app\\portal\\modules\\home\\components\\cart",
+    "\\src\\app\\portal\\modules\\home\\components\\home",
+    "\\src\\app\\portal\\modules\\home\\components\\project-details"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\src\\app\\portal\\modules\\home\\components\\cart\\cart.component.html",
   "PreviewInSolutionExplorer": false
 }

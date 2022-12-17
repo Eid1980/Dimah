@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '@shared/services/global.service';
 import { HomeService } from '@shared/proxy/home/home.service';
 import { DimahProjectsListDto } from '@shared/proxy/home/models';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-charity-projects',
@@ -20,7 +21,7 @@ export class CharityProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id == undefined || this.id == '') {
-      this.id = "22d0eeca-467a-48bc-a600-3624ff0887b6";
+      this.id = environment.dimahId;
     }
     this.getCharityProjects();
   }

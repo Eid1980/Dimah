@@ -1,6 +1,6 @@
 export enum ActionButtonIcon {
   Edit = 'fa fa-edit',
-  Delete = 'las la-trash',
+  Delete = 'fa fa-trash',
   View = 'fa fa-eye',
   Users = 'fa fa-users',
   Roles = 'fa fa-lock',

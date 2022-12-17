@@ -23,8 +23,8 @@
         <p class="fa-18 fw-normal mb-3 w-75">{{ projectDetailsDto?.description }}</p>
       </div>
 
-      <div class="d-flex flex-lg-nowrap flex-wrap align-items-end mt-5 mb-4">
-        <form [formGroup]="createForm" (ngSubmit)="addToCart()">
+      <form [formGroup]="createForm" (ngSubmit)="addToCart()">
+        <div class="d-flex flex-lg-nowrap flex-wrap align-items-end mt-5 mb-4">
           <div class="ps-3 mb-lg-0 mb-4">
             <h6 class="fw-bold text-primary mb-3">قيمة التبرع اليومى</h6>
             <input type="number" class="form-control w-50 py-2 px-2 text-center" [value]="this.createDto.donationValue" autocomplete="off" formControlName="donationValue" id="donationValue" />
@@ -43,12 +43,11 @@
               </span>
             </div>
           </div>
-
           <div class="me-auto pe-3">
             <button type="submit" class="btn btn-primary">إضافة إلى سلة الخير</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -186,7 +186,7 @@ export class HomeComponent implements OnInit {
     });
   }
   getCharityProjects() {
-    this.homeService.getCharityProjects("22d0eeca-467a-48bc-a600-3624ff0887b6").subscribe((res) => {
+    this.homeService.getDimahTopProjects().subscribe((res) => {
       this.charityProjects = res.data;
     });
   }
