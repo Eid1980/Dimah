@@ -6,6 +6,7 @@ import { CoreLayoutComponent } from './components/core-layout/core-layout.compon
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { MenuComponent } from './components/menu/menu.component';
     FooterComponent,
     MenuComponent,
   ],
-  imports: [CommonModule, CoreRoutingModule],
+  imports: [CommonModule,TranslateModule, CoreRoutingModule],
   exports: [
     CoreLayoutComponent,
     HeaderComponent,

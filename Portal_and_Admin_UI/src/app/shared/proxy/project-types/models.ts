@@ -2,26 +2,32 @@
 export interface CreateProjectTypeDto {
   nameAr: string;
   nameEn: string;
+  imageName: string;
   isActive: boolean;
+  image: any;
 }
 
 export interface UpdateProjectTypeDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
+  imageName: string;
   isActive: boolean;
+  image: any;
 }
 
 export interface GetProjectTypeDetailsDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
+  imageName: string;
   isActive: boolean;
 }
 
 export interface GetProjectTypeListDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
+  imageName: string;
   isActive: boolean;
 }

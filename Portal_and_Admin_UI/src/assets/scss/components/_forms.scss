@@ -120,6 +120,71 @@
   margin-bottom: 16px;
 }
 
+// input type number with buttons plus/minus
+.number-counter {
+  display: flex;
+  border: 1px solid rgba($color: $dark, $alpha: 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+
+  .minus,
+  .plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: $white;
+    border-radius: 0px !important;
+    padding: 8px 14px !important;
+    min-width: 46px;
+
+    img {
+      width: 14px;
+    }
+  }
+
+  input {
+    font-size: 14px;
+    color: rgba($color: $dark, $alpha: 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 8px;
+    outline: 0 !important;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 400;
+    border: 0;
+    padding: 0 0 !important;
+    border-radius: 0 !important;
+    margin: 0;
+    text-align: center;
+    border-right: 1px solid rgba($color: $dark, $alpha: 0.1);
+    border-left: 1px solid rgba($color: $dark, $alpha: 0.1);
+    min-width: 75px;
+
+    &:hover, &:focus{
+      border: 0px;
+      border-right: 1px solid rgba($color: $dark, $alpha: 0.1);
+      border-left: 1px solid rgba($color: $dark, $alpha: 0.1);
+    }
+
+    &[readonly] {
+      background-color: $white !important;
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 // hijri calender datepicker
 hijri-gregorian-datepicker {
   .form-group {
@@ -218,7 +283,7 @@ p-multiselect {
               color: rgba($color: $dark, $alpha: 0.9);
             }
 
-            &:focus{
+            &:focus {
               box-shadow: none !important;
               outline: 0 !important;
             }
@@ -252,7 +317,7 @@ p-multiselect {
               margin: 0 8px;
             }
 
-            &.p-highlight{
+            &.p-highlight {
               background-color: rgba($color: $dark, $alpha: 0.04);
               color: rgba($color: $dark, $alpha: 0.8);
 
@@ -424,6 +489,33 @@ p-multiselect {
       margin-inline-end: 8px;
       cursor: pointer;
     }
+  }
+
+  // input type radio
+  .form-check-input{
+    width: 16px;
+    height: 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    float: initial !important;
+    margin-left: 0px !important;
+
+    &:focus{
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+
+    &:checked{
+      background-color: $Primary-1;
+      border-color: $Primary-1;
+    }
+  }
+
+  .form-check-label{
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0 12px;
   }
 }
 
@@ -666,20 +758,21 @@ textarea::-webkit-input-placeholder {
   }
 }
 
-html[dir="ltr"] ,
+html[dir="ltr"],
 html[lang="en"] {
-// dropdown
-.dropdown {
-  .dropdown-menu {
-    inset-inline-end: auto;
-    inset-inline-start: 0px;
 
-    .dropdown-item {
-      i {
-        margin-inline-start: 6px;
-        margin-inline-end: 0px;
+  // dropdown
+  .dropdown {
+    .dropdown-menu {
+      inset-inline-end: auto;
+      inset-inline-start: 0px;
+
+      .dropdown-item {
+        i {
+          margin-inline-start: 6px;
+          margin-inline-end: 0px;
+        }
       }
     }
   }
-}
 }

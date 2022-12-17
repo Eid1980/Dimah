@@ -1,14 +1,13 @@
 ﻿using AutoMapper.QueryableExtensions;
-using Dimah.Core.Application.CustomExceptions;
 using Dimah.Core.Application.Dtos;
 using Dimah.Core.Application.Dtos.Search;
-using Dimah.Core.Application.DynamicSearch;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Domain.Entities;
 using X.PagedList;
 using AutoMapper;
 using Dimah.Core.Domain.IRepositories;
+using Dimah.Core.Application.Services.FileManagers;
+using Dimah.Core.Application.Shared;
 
 namespace Dimah.Core.Application.Services.ProjectTypes
 {
@@ -17,14 +16,16 @@ namespace Dimah.Core.Application.Services.ProjectTypes
         private readonly IGenericUnitOfWork _dimahUnitOfWork;
         private readonly IMapper _mapper;
         private readonly IConfigurationProvider _mapConfig;
-        public ProjectTypeService(IGenericUnitOfWork dimahUnitOfWork, IMapper mapper)
+        private readonly IFileManagerService _fileManagerService;
+        public ProjectTypeService(IGenericUnitOfWork dimahUnitOfWork, IMapper mapper, IFileManagerService fileManagerService)
         {
             _dimahUnitOfWork = dimahUnitOfWork;
             _mapper = mapper;
             _mapConfig = mapper.ConfigurationProvider;
+            _fileManagerService = fileManagerService;
         }
 
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             var projectType = _dimahUnitOfWork.Repository<ProjectType>().FirstOrDefault(l => l.Id.Equals(id));
             if (projectType == null)
@@ -59,7 +60,7 @@ namespace Dimah.Core.Application.Services.ProjectTypes
 
             var addedModel = _dimahUnitOfWork.Repository<ProjectType>().Add(_mapper.Map<ProjectType>(createModel));
             _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: addedModel.Id);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id.ToString(), FileName = addedModel.ImageName });
         }
         public IApiResponse Update(UpdateProjectTypeDto updateModel)
         {
@@ -72,11 +73,23 @@ namespace Dimah.Core.Application.Services.ProjectTypes
             if (_dimahUnitOfWork.Repository<ProjectType>().Where(x => x.Id != updateModel.Id && x.NameEn.Equals(updateModel.NameEn)).Any())
                 throw new BusinessException("الاسم انجليزي مضاف مسبقا");
 
-            _dimahUnitOfWork.Repository<ProjectType>().Update(projectType, _mapper.Map<ProjectType>(updateModel));
-            _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            var newProjectType = _mapper.Map<ProjectType>(updateModel);
+            newProjectType.ImageName = string.IsNullOrEmpty(newProjectType.ImageName) ? projectType.ImageName : newProjectType.ImageName;
+            string oldImageName = projectType.ImageName;
+
+            _dimahUnitOfWork.Repository<ProjectType>().Update(projectType, newProjectType);
+            if (_dimahUnitOfWork.ContextSaveChanges())
+            {
+                if (!string.IsNullOrEmpty(updateModel.ImageName) && !string.IsNullOrEmpty(oldImageName))
+                    _fileManagerService.Delete(new DeleteFileDto
+                    {
+                        CategueryName = SystemEnums.FileCateguery.ProjectTypes,
+                        Name = oldImageName
+                    });
+            }
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id.ToString(), FileName = newProjectType.ImageName });
         }
-        public IApiResponse ChangeStatus(int id)
+        public IApiResponse ChangeStatus(Guid id)
         {
             var projectType = _dimahUnitOfWork.Repository<ProjectType>().FirstOrDefault(n => n.Id == id);
             if (projectType == null)
@@ -86,7 +99,7 @@ namespace Dimah.Core.Application.Services.ProjectTypes
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse();
         }
-        public IApiResponse Delete(int id)
+        public IApiResponse Delete(Guid id)
         {
             var projectType = _dimahUnitOfWork.Repository<ProjectType>().FirstOrDefault(n => n.Id == id, x => x.CharityProjects);
             if (projectType == null)
@@ -95,14 +108,19 @@ namespace Dimah.Core.Application.Services.ProjectTypes
                 throw new BusinessException("نوع المشروع مضاف على المشاريع");
 
             _dimahUnitOfWork.Repository<ProjectType>().Remove(projectType);
-            _dimahUnitOfWork.ContextSaveChanges();
+            if (_dimahUnitOfWork.ContextSaveChanges())
+                _fileManagerService.Delete(new DeleteFileDto
+                {
+                    CategueryName = SystemEnums.FileCateguery.ProjectTypes,
+                    Name = projectType.ImageName
+                });
             return GetResponse(message: CustumMessages.DeleteSuccess());
         }
 
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _dimahUnitOfWork.Repository<ProjectType>().Where(l => l.IsActive).Select(item =>
-            new LookupDto<int>
+            new LookupDto<Guid>
             {
                 Id = item.Id,
                 Name = item.NameAr

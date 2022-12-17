@@ -1,14 +1,12 @@
 ﻿using AutoMapper.QueryableExtensions;
-using Dimah.Core.Application.CustomExceptions;
 using Dimah.Core.Application.Dtos;
 using Dimah.Core.Application.Dtos.Search;
-using Dimah.Core.Application.DynamicSearch;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Domain.Entities;
 using X.PagedList;
 using AutoMapper;
 using Dimah.Core.Domain.IRepositories;
+using Dimah.Core.Application.Shared;
 
 namespace Dimah.Core.Application.Services.Roles
 {

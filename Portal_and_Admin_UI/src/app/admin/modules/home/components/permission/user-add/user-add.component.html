@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/home/user-list']">المستخدمون</a>
     <span class="breadcrumb-item fs-16 active">إضافة مستخدم جديد</span>
   </nav>
@@ -17,7 +17,7 @@
           <label for="userName" class="form-lbl">اسم المستخدم<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="userName" id="userName" [ngClass]="{
               invalid: (isFormSubmitted || createUserForm.get('userName').touched) && createUserForm.get('userName').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || createUserForm.get('userName').touched) && createUserForm.get('userName').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || createUserForm.get('userName').touched) && createUserForm.get('userName').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6 align-items-end d-flex">
           <button type="button" class="btn btn-primary" (click)="checkUser()" style="height: 50px;">تحقق</button>
@@ -36,11 +36,11 @@
           <span class="form-val">{{ userDataDto?.userName }}</span>
         </div>
         <div class="info-col col-md-4 col-12">
-          <span class="form-lbl lbl-33">الاسم عربي</span>
+          <span class="form-lbl lbl-33">{{ 'global.lables.nameAr' | translate }}</span>
           <span class="form-val">{{ userDataDto?.fullNameAr }}</span>
         </div>
         <div class="info-col col-md-4 col-12">
-          <span class="form-lbl lbl-33">الاسم انجليزي</span>
+          <span class="form-lbl lbl-33">{{ 'global.lables.nameEn' | translate }}</span>
           <span class="form-val">{{ userDataDto?.fullNameEn }}</span>
         </div>
         <div class="info-col col-md-4 col-12">
@@ -64,7 +64,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">حفظ</button>
-    <a [routerLink]="['/admin/home/user-list']" class="btn btn-cancel">رجوع</a>
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.save' | translate }}</button>
+    <a [routerLink]="['/admin/home/user-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
   </div>
 </form>

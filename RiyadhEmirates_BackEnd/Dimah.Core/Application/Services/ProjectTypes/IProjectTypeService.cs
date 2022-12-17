@@ -6,13 +6,13 @@ namespace Dimah.Core.Application.Services.ProjectTypes
 {
     public interface IProjectTypeService
     {
-        IApiResponse GetById(int id);
+        IApiResponse GetById(Guid id);
         IApiResponse GetAll();
         IApiResponse GetAll(SearchModel searchModel);
         IApiResponse Create(CreateProjectTypeDto createModel);
         IApiResponse Update(UpdateProjectTypeDto updateModel);
-        IApiResponse ChangeStatus(int id);
-        IApiResponse Delete(int id);
+        IApiResponse ChangeStatus(Guid id);
+        IApiResponse Delete(Guid id);
         IApiResponse GetLookupList();
     }
 }

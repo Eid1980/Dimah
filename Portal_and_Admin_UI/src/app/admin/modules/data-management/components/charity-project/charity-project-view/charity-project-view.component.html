@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-project-list']">المشاريع</a>
     <span class="breadcrumb-item fs-16 active">تفاصيل المشروع</span>
   </nav>
@@ -13,48 +13,48 @@
   <div class="form-content">
     <div class="row mx-0">
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الاسم عربي</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.nameAr }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.nameAr' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.nameAr }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الاسم انجليزي</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.nameEn }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.nameEn' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.nameEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الجهة</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.charityName }}</span>
+        <span class="form-val">{{ detailsDto?.charityName }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">نوع المشروع</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.projectTypeName }}</span>
+        <span class="form-val">{{ detailsDto?.projectTypeName }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الوصف عربي</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.descriptionAr }}</span>
+        <span class="form-val">{{ detailsDto?.descriptionAr }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">الوصف انجليزي</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.descriptionEn }}</span>
+        <span class="form-val">{{ detailsDto?.descriptionEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">تكلفة المشروع</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.projectCost }}</span>
+        <span class="form-val">{{ detailsDto?.projectCost }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">موقع المشروع</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.projectLocation }}</span>
+        <span class="form-val">{{ detailsDto?.projectLocation }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الحالة</span>
-        <span class="form-val">{{ charityProjectDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.status' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.isActive ? ('global.lables.active' | translate) : ('global.lables.notActive' | translate) }}</span>
       </div>
-      <div class="form-group col-6" *ngIf="charityProjectDetailsDto?.image">
-        <img [src]="['/assets/images/uploads/projects/'+charityProjectDetailsDto?.image]" [alt]="charityProjectDetailsDto?.nameEn" style="width: 100%; height: 200px;" />
+      <div class="form-group col-6" *ngIf="detailsDto?.image">
+        <img [src]="['/assets/images/uploads/projects/'+detailsDto?.image]" [alt]="detailsDto?.nameEn" style="width: 100%; height: 200px;" />
       </div>
     </div>
   </div>
 </div>
 
 <div class="form-actions">
-  <a [routerLink]="['/admin/data-management/charity-project-list']" class="btn btn-cancel">رجوع</a>
+  <a [routerLink]="['/admin/data-management/charity-project-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
 </div>

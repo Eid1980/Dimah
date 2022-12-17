@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/home/user-list']">المستخدمون</a>
     <span class="breadcrumb-item fs-16 active">إضافة صلاحيات للمستخدم</span>
   </nav>
@@ -27,13 +27,11 @@
             <option [ngValue]="null">-- اختر الصلاحية --</option>
             <option *ngFor="let role of roles" [ngValue]="role.id">{{ role.name }}</option>
           </select>
-          <small
-            *ngIf="(isFormSubmitted || createUserRoleForm.get('roleId').touched) && createUserRoleForm.get('roleId').errors?.required"
-            class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || createUserRoleForm.get('roleId').touched) && createUserRoleForm.get('roleId').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6 d-flex align-items-center">
-          <button type="submit" class="btn btn-primary ms-3 px-5">حفظ</button>
-          <a [routerLink]="['/admin/home/user-list']" class="btn btn-secondary">رجوع</a>
+          <button type="submit" class="btn btn-primary ms-3 px-5">{{ 'global.buttons.save' | translate }}</button>
+          <a [routerLink]="['/admin/home/user-list']" class="btn btn-secondary">{{ 'global.buttons.back' | translate }}</a>
         </div>
       </div>
     </div>
@@ -42,13 +40,13 @@
 
 <div class="row mt-3 mx-0">
   <p-table #userRoles [value]="userRolesDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
-    class="w-100">
+    [rowHover]="true" class="w-100">
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th>م</th>
         <th>اسم الصلاحية عربي</th>
         <th>اسم الصلاحية انجليزي</th>
-        <th>الإجراءات</th>
+        <th>{{ 'global.lables.actions' | translate }}</th>
       </tr>
     </ng-template>
 
@@ -67,7 +65,7 @@
 
     <ng-template pTemplate="emptymessage" let-columns>
       <tr>
-        <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+        <td colspan="7" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
       </tr>
     </ng-template>
   </p-table>

@@ -14,28 +14,28 @@ export class CharityService {
   constructor(public httpClient: HttpClient) {
   }
 
-  getById = (id: number): Observable<ApiResponse<GetCharityDetailsDto>> => {
+  getById = (id: string): Observable<ApiResponse<GetCharityDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetCharityDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }
 
-  create = (createdDto: CreateCharityDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateCharityDto): Observable<ApiResponse<string>> => {
+    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
-  update = (updatedDto: UpdateCharityDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateCharityDto): Observable<ApiResponse<string>> => {
+    return this.httpClient.put<ApiResponse<string>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
-  changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
+  changeStatus = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
 
-  delete = (id: number): Observable<ApiResponse<boolean>> => {
+  delete = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 
-  getLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
-    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetLookupList`).pipe(
+  getLookupList = (): Observable<ApiResponse<LookupDto<string>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<string>[]>>(`${this.serviceUrl}/GetLookupList`).pipe(
     );
   }
 

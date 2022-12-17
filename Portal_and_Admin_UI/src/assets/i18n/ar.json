@@ -1,97 +1,155 @@
 {
-  "global": {
-    "actions":{
-      "save" :"حفظ"
+  "homePage": "الصفحة الرئيسية",
+  "dimah": "ديمه",
+  "controlPanel": "لوحة التحكم",
+  "portalMenue": {
 
+  },
+  "adminMenue": {
+    "posters": "الإعلانات",
+    "aboutDimah": "عن ديمه",
+    "settings": "الاعدادات",
+    "contactUsRequests": "طلبات تواصل معنا",
+    "nationalities": "الجنسيات",
+    "charities": "الجهات",
+    "projects": "المشاريع",
+    "projectTypes": "أنواع المشاريع",
+    "permissions": "الصلاحيات",
+    "users": "المستخدمون",
+    "roles": "الصلاحيات"
+  },
+  "global": {
+    "buttons": {
+      "save": "حفظ",
+      "update": "تعديل",
+      "details": "التفاصيل",
+      "delete": "حذف",
+      "cancel": "إلغاء",
+      "back": "رجوع",
+      "send": "ارسال",
+      "add": "اضافة",
+      "preview": "عرض",
+      "next": "التالي",
+      "previous": "السابق",
+      "upload": "تحميل",
+      "download": "تنزيل"
+    },
+    "lables": {
+      "actions": "الإجراءات",
+      "status": "الحالة",
+      "nameAr": "الاسم عربي",
+      "nameEn": "الاسم انجليزي",
+      "code": "الكود",
+      "active": "فعال",
+      "notActive": "غير فعال",
+      "noData": "لا يوجد بيانات",
+      "uploadImage": "تحميل الصورة",
+      "fileSize": "مساحة الملف",
+      "mega": "ميجا",
+      "fileExtentions": "امتداد الملف"
+    },
+    "messages": {
+      "deleteMessage": "هل تريد حذف هذا العنصر؟"
     },
     "validators": {
-        "requiredField": "هذا الحقل مطلوب"
+      "requiredField": "هذا الحقل مطلوب"
     }
   },
 
+  "project-type": {
+    "title": "أنواع المشاريع",
+    "addTitle": "إضافة نوع مشروع جديد",
+    "editTitle": "تعديل نوع المشروع",
+    "searchTitle": "البحث في أنواع المشاريع",
+    "detailsTitle": "تفاصيل نوع المشروع"
+  },
+
+
+
+
   "__comment1": "begin auth region",
   "login": {
-      "labels": {
-          "signIn": "تسجيل الدخول",
-          "userName": "اسم المستخدم",
-          "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
-          "password": "كلمة المرور",
-          "forgetPassword": "نسيت كلمة المرور ؟",
-          "dontHaveAccount": "ليس لديك حساب؟",
-          "createNewAccount": "إنشاء حساب جديد",
-          "nafazSingIn": "عن طريق حسابك في منصة النفاذ الوطني الموحد",
-          "or": "أو"
-      },
-      "messages": {
-          "error": "خطأ",
-          "invalidUsernameOrPassword": "اسم المستخدم او كلمة المرور غير صحيحة"
-      }
+    "labels": {
+      "signIn": "تسجيل الدخول",
+      "userName": "اسم المستخدم",
+      "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
+      "password": "كلمة المرور",
+      "forgetPassword": "نسيت كلمة المرور ؟",
+      "dontHaveAccount": "ليس لديك حساب؟",
+      "createNewAccount": "إنشاء حساب جديد",
+      "nafazSingIn": "عن طريق حسابك في منصة النفاذ الوطني الموحد",
+      "or": "أو"
+    },
+    "messages": {
+      "error": "خطأ",
+      "invalidUsernameOrPassword": "اسم المستخدم او كلمة المرور غير صحيحة"
+    }
   },
   "register": {
-      "labels": {
-          "singUp": "إنشاء حساب جديد",
-          "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
-          "name": "الاسم",
-          "nationality": "الجنسية",
-          "birthDate": " تاريخ الميلاد ",
-          "dateComponent": "سنة/شهر/يوم",
-          "higri": "هجري",
-          "greg": "ميلادي",
-          "selectNationality": "اختر الجنسية",
-          "phoneNumber": "رقم الجوال",
-          "email": "البريد الالكتروني",
-          "password": "كلمة المرور",
-          "passwordConfirmation": "تأكيد كلمة المرور",
-          "createNewAccount": "إنشاء حساب جديد",
-          "haveAnAccount": "لديك حساب سابق؟",
-          "createAccount": "إنشاء حساب",
-          "backToLogin": "العودة إلي تسجل الدخول",
-          "check": "تحقق",
-          "back" : "رجوع",
-          "pesronalInfo": "البيانات الشخصية",
-          "firstNameAr": "الاسم الأول عربي",
-          "firstNameEn": "الاسم الأول إنجليزي",
-          "secondNameAr" : "اسم الأب عربي",
-          "secondNameEn": "اسم الأب انجليزي",
-          "thirdNameAr": "اسم الجد عربي",
-          "thirdNameEn": "اسم الجد انجليزي",
-          "lastNameAr": "اسم العائلة عربي",
-          "lastNameEn": "اسم العائلة انجليزي",
-          "gender": " : الجنس",
-          "select" : "اختر",
-          "male" : "ذكر",
-          "female" : "انثى",
-          "passportNo": "رقم جواز السفر",
-          "registerationInfo": "بيانات التسجيل",
-          "communicationInfo": "بيانات الإتصال",
-          "government": "المحافظة",
-          "selectGovernment": " اخترالمحافظة",
-          "address" : "العنوان"
-        },
-      "validators": {
-          "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",
-          "passwordPattern": "كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة",
-          "dateFormate": "سنة/شهر/يوم",
-          "invalidPhoneNumber": "رقم الجوال يبدأ ب 966 و يتكون من 12 رقم",
-          "invalidEmail": "يجب إدخال بريد الالكتروني بشكل صحيح"
-      }
+    "labels": {
+      "singUp": "إنشاء حساب جديد",
+      "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
+      "name": "الاسم",
+      "nationality": "الجنسية",
+      "birthDate": " تاريخ الميلاد ",
+      "dateComponent": "سنة/شهر/يوم",
+      "higri": "هجري",
+      "greg": "ميلادي",
+      "selectNationality": "اختر الجنسية",
+      "phoneNumber": "رقم الجوال",
+      "email": "البريد الالكتروني",
+      "password": "كلمة المرور",
+      "passwordConfirmation": "تأكيد كلمة المرور",
+      "createNewAccount": "إنشاء حساب جديد",
+      "haveAnAccount": "لديك حساب سابق؟",
+      "createAccount": "إنشاء حساب",
+      "backToLogin": "العودة إلي تسجل الدخول",
+      "check": "تحقق",
+      "back": "رجوع",
+      "pesronalInfo": "البيانات الشخصية",
+      "firstNameAr": "الاسم الأول عربي",
+      "firstNameEn": "الاسم الأول إنجليزي",
+      "secondNameAr": "اسم الأب عربي",
+      "secondNameEn": "اسم الأب انجليزي",
+      "thirdNameAr": "اسم الجد عربي",
+      "thirdNameEn": "اسم الجد انجليزي",
+      "lastNameAr": "اسم العائلة عربي",
+      "lastNameEn": "اسم العائلة انجليزي",
+      "gender": " : الجنس",
+      "select": "اختر",
+      "male": "ذكر",
+      "female": "انثى",
+      "passportNo": "رقم جواز السفر",
+      "registerationInfo": "بيانات التسجيل",
+      "communicationInfo": "بيانات الإتصال",
+      "government": "المحافظة",
+      "selectGovernment": " اخترالمحافظة",
+      "address": "العنوان"
+    },
+    "validators": {
+      "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",
+      "passwordPattern": "كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة",
+      "dateFormate": "سنة/شهر/يوم",
+      "invalidPhoneNumber": "رقم الجوال يبدأ ب 966 و يتكون من 12 رقم",
+      "invalidEmail": "يجب إدخال بريد الالكتروني بشكل صحيح"
+    }
   },
   "forgetPassword": {
-      "labels": {
-          "forgetPassword": "نسيت كلمة المرور",
-          "send": "إرسال",
-          "resendOTP": "إعادة إرسال رمز التحقق"
-      },
-      "messages": {
-        "sentConfirmOTP": "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
-        "errorWhileSendingRequest" : "حدث خطأ اثناء الارسال",
-        "otpIsCorrect" : "الرمز التأكيدي  صحيح",
-        "invalidOTP" : "الرمز التأكيدي غير صحيح",
-        "resetPasswordSuccessfuly" : "تم إعادة تعيين كلمة السر بنجاح"
-      },
-      "validators" : {
+    "labels": {
+      "forgetPassword": "نسيت كلمة المرور",
+      "send": "إرسال",
+      "resendOTP": "إعادة إرسال رمز التحقق"
+    },
+    "messages": {
+      "sentConfirmOTP": "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
+      "errorWhileSendingRequest": "حدث خطأ اثناء الارسال",
+      "otpIsCorrect": "الرمز التأكيدي  صحيح",
+      "invalidOTP": "الرمز التأكيدي غير صحيح",
+      "resetPasswordSuccessfuly": "تم إعادة تعيين كلمة السر بنجاح"
+    },
+    "validators": {
 
-      }
+    }
   },
   "__comment1__": "end auth region",
 
@@ -108,8 +166,8 @@
     "inquireyServiceTitle": "استعلام عن خدمة برقم المعاملة أو رقم الطلب",
     "latestNews": "آخر الأخبار",
     "news": "الاخبار",
-    "provincesNews":"أخبار المحافظات",
-    "serviceGuide":"دليل الخدمات",
+    "provincesNews": "أخبار المحافظات",
+    "serviceGuide": "دليل الخدمات",
     "relatedplatforms": "منصات ذات صلة",
     "mediaReports": "التقارير الإعلامية",
     "provincialNews": "أخبار المحافظات",
@@ -124,140 +182,140 @@
   },
 
   "electronicCouncil": {
-      "shared": {
-          "main": "الرئيسية",
-          "serviceGuide": "دليل الخدمات",
-          "electronicCouncil": "المجلس الالكتروني",
-          "noData": "لا يوجد بيانات",
-          "title": "المجلس الإلكتروني لسمو أمير منطقة الرياض",
-          "serviceType": "إنشاء طلب جديد",
-          "editRequest": "تعديل طلب",
-          "applicantsInfo": "بيانات مقدم الطلب",
-          "applicantsName": " : اسم مقدم الطلب",
-          "birthDate": " : تاريخ الميلاد",
-          "gender": " : الجنس",
-          "male": " : ذكر",
-          "email": " : البريد الالكتروني",
-          "nationalId": " : رقم الهوية ",
-          "phoneNumber": " : رقم الموبايل",
-          "requestType": "نوع الطلب",
-          "requestAddress": "عنوان الطلب",
-          "description": "الوصف",
-          "requestStatus": "حالة الطلب",
-          "requestDate": "تاريخ الطلب",
-          "requestDetails": "تفاصيل الطلب",
-          "requestSerialNumber": "رقم الطلب",
-          "order": "طلب",
-          "suggestion": "اقتراح",
-          "complaint": "شكوى",
-          "rquestInfo": "بيانات الطلب",
-          "attachments": "المرفقات",
-          "addAttachment": "إضافة مرفق",
-          "attachmentName": "اسم المرفق",
-          "downloadAttachment": "تحميل مرفق",
-          "sendRequest": "إرسال الطلب",
-          "saveAsDraft": "حفظ كمسودة",
-          "cancel": "إلغاء",
-          "details": "التفاصيل",
-          "send": "إرسل",
-          "success": "نجاح",
-          "registeredSuccessfully": "تم التسجيل بنجاح",
-          "error": "خطأ",
-          "errorWhileSaving": "خطأ  في البيانات",
-          "alreadySent": "تم الارسال",
-          "sentSuccessfully": "تم الارسال بنجاح",
-          "alreadySaved": "تم الارسال",
-          "savedSuccessfully": "تم الارسال بنجاح"
-      },
-      "menus": {
-          "profile": "الملف الشخصي",
-          "dashboard": "لوحة المتابعة",
-          "newRequest": "طلب جديد",
-          "myOrders": "طلباتي",
-          "incommingOrders": "الطلبات الواردة",
-          "savedRequest": "الطلبات المحفوظة",
-          "inquiry": "إستعلام عن طلب",
-          "rateService": "تقييم الخدمة"
-      },
-      "profile": {},
-      "dashboard": {},
-      "myOrders": {
-          "myOrders": "طلباتي",
-          "details": "التفاصيل",
-          "creationDate": "تاريخ الطلب",
-          "statusMsg": "الحالة",
-          "serialNumber": "رقم الطلب",
-          "requestType": "نوع الطلب",
-          "requesterName": "اسم مقدم الطلب",
-          "description": "الوصف",
-          "requestAddress": "عنوان الطلب"
-      },
-      "incommingOrders": {
-          "newOrders": "الطلبات الجديدة",
-          "pendingOrders": "طلبات تحت الاجراء",
-          "acceptedOrders": "الطلبات المقبولة",
-          "rejectedOrders": "طلبات تم الاعتذار",
-          "confirm": "تأكيد",
-          "cancle": "الغاء",
-          "details": "التفاصيل",
-          "creationDate": "تاريخ الطلب",
-          "statusMsg": "الحالة",
-          "serialNumber": "رقم الطلب",
-          "requestType": "نوع الطلب",
-          "requesterName": "اسم مقدم الطلب",
-          "requestAddress": "عنوان الطلب"
-      },
-      "savedRequests": {
-          "savedRequests": "الطلبات المحفوظة"
-      },
-      "inquiry": {
-          "enterOrderId": "ادخل رقم المعاملة",
-          "aboutInquiry": "استعلام عن طلب/معاملة",
-          "searchResult": "نتيجة البحث",
-          "requestStatus": "حالة الطلب: ",
-          "requestorInfo": "بيانات مقدم الطلب"
-      }
-  },
-  "header": {
-      "hello": "مرحباً:",
-      "profilePersonly": "الملف الشخصي",
-      "signOut": "تسجيل الخروج",
-      "signIn": "تسجيل الدخول",
-      "newRegistration": "تسجيل جديد",
-      "aboutTheEmirate": "عن الإمارة",
-      "lordsOfTheRegion": "أمراء المنطقة",
-      "provinces": "المحافظات",
-      "electronicServices": "الخدمات الإلكترونية",
-      "news": "الأخبار",
-      "mediaReports": "التقارير الإعلامية",
-      "openData": "البيانات المفتوحة"
-  },
-
-  "__comment2":"begin data management region",
-  "latestNews":{
-    "labels":{
-      "main" : "الرئيسية",
-      "latestNews" : "آخر الأخبار",
-      "addNews" : "إضافة خبر جديد",
-      "newsDetails" : "تفاصيل الخبر",
-      "titleAr" : "العنوان باللغة العربية",
-      "titleEn" : "العنوان باللغة الإنجليزية",
-      "descriptionAr" : "الوصف باللغة العربية",
-      "descriptionEn" : "االوصف باللغة الإنجليزية",
-      "date" : "سنة/شهر/يوم",
-      "greg" : "ميلادي",
-      "hijri" : "هجري",
-      "uploadImage" : "تحميل الصورة",
-      "isActive" : "مفعل",
-      "save" : "حفظ",
-      "cancel" : "إلغاء"
+    "shared": {
+      "main": "الرئيسية",
+      "serviceGuide": "دليل الخدمات",
+      "electronicCouncil": "المجلس الالكتروني",
+      "noData": "لا يوجد بيانات",
+      "title": "المجلس الإلكتروني لسمو أمير منطقة الرياض",
+      "serviceType": "إنشاء طلب جديد",
+      "editRequest": "تعديل طلب",
+      "applicantsInfo": "بيانات مقدم الطلب",
+      "applicantsName": " : اسم مقدم الطلب",
+      "birthDate": " : تاريخ الميلاد",
+      "gender": " : الجنس",
+      "male": " : ذكر",
+      "email": " : البريد الالكتروني",
+      "nationalId": " : رقم الهوية ",
+      "phoneNumber": " : رقم الموبايل",
+      "requestType": "نوع الطلب",
+      "requestAddress": "عنوان الطلب",
+      "description": "الوصف",
+      "requestStatus": "حالة الطلب",
+      "requestDate": "تاريخ الطلب",
+      "requestDetails": "تفاصيل الطلب",
+      "requestSerialNumber": "رقم الطلب",
+      "order": "طلب",
+      "suggestion": "اقتراح",
+      "complaint": "شكوى",
+      "rquestInfo": "بيانات الطلب",
+      "attachments": "المرفقات",
+      "addAttachment": "إضافة مرفق",
+      "attachmentName": "اسم المرفق",
+      "downloadAttachment": "تحميل مرفق",
+      "sendRequest": "إرسال الطلب",
+      "saveAsDraft": "حفظ كمسودة",
+      "cancel": "إلغاء",
+      "details": "التفاصيل",
+      "send": "إرسل",
+      "success": "نجاح",
+      "registeredSuccessfully": "تم التسجيل بنجاح",
+      "error": "خطأ",
+      "errorWhileSaving": "خطأ  في البيانات",
+      "alreadySent": "تم الارسال",
+      "sentSuccessfully": "تم الارسال بنجاح",
+      "alreadySaved": "تم الارسال",
+      "savedSuccessfully": "تم الارسال بنجاح"
     },
-    "messages":{
-
+    "menus": {
+      "profile": "الملف الشخصي",
+      "dashboard": "لوحة المتابعة",
+      "newRequest": "طلب جديد",
+      "myOrders": "طلباتي",
+      "incommingOrders": "الطلبات الواردة",
+      "savedRequest": "الطلبات المحفوظة",
+      "inquiry": "إستعلام عن طلب",
+      "rateService": "تقييم الخدمة"
     },
-    "validators":{
-      "requiredField" : "هذاالحقل مطلوب"
+    "profile": {},
+    "dashboard": {},
+    "myOrders": {
+      "myOrders": "طلباتي",
+      "details": "التفاصيل",
+      "creationDate": "تاريخ الطلب",
+      "statusMsg": "الحالة",
+      "serialNumber": "رقم الطلب",
+      "requestType": "نوع الطلب",
+      "requesterName": "اسم مقدم الطلب",
+      "description": "الوصف",
+      "requestAddress": "عنوان الطلب"
+    },
+    "incommingOrders": {
+      "newOrders": "الطلبات الجديدة",
+      "pendingOrders": "طلبات تحت الاجراء",
+      "acceptedOrders": "الطلبات المقبولة",
+      "rejectedOrders": "طلبات تم الاعتذار",
+      "confirm": "تأكيد",
+      "cancle": "الغاء",
+      "details": "التفاصيل",
+      "creationDate": "تاريخ الطلب",
+      "statusMsg": "الحالة",
+      "serialNumber": "رقم الطلب",
+      "requestType": "نوع الطلب",
+      "requesterName": "اسم مقدم الطلب",
+      "requestAddress": "عنوان الطلب"
+    },
+    "savedRequests": {
+      "savedRequests": "الطلبات المحفوظة"
+    },
+    "inquiry": {
+      "enterOrderId": "ادخل رقم المعاملة",
+      "aboutInquiry": "استعلام عن طلب/معاملة",
+      "searchResult": "نتيجة البحث",
+      "requestStatus": "حالة الطلب: ",
+      "requestorInfo": "بيانات مقدم الطلب"
     }
   },
-  "__comment2__":"begin data management region"
+  "header": {
+    "hello": "مرحباً:",
+    "profilePersonly": "الملف الشخصي",
+    "signOut": "تسجيل الخروج",
+    "signIn": "تسجيل الدخول",
+    "newRegistration": "تسجيل جديد",
+    "aboutTheEmirate": "عن الإمارة",
+    "lordsOfTheRegion": "أمراء المنطقة",
+    "provinces": "المحافظات",
+    "electronicServices": "الخدمات الإلكترونية",
+    "news": "الأخبار",
+    "mediaReports": "التقارير الإعلامية",
+    "openData": "البيانات المفتوحة"
+  },
+
+  "__comment2": "begin data management region",
+  "latestNews": {
+    "labels": {
+      "main": "الرئيسية",
+      "latestNews": "آخر الأخبار",
+      "addNews": "إضافة خبر جديد",
+      "newsDetails": "تفاصيل الخبر",
+      "titleAr": "العنوان باللغة العربية",
+      "titleEn": "العنوان باللغة الإنجليزية",
+      "descriptionAr": "الوصف باللغة العربية",
+      "descriptionEn": "االوصف باللغة الإنجليزية",
+      "date": "سنة/شهر/يوم",
+      "greg": "ميلادي",
+      "hijri": "هجري",
+      "uploadImage": "تحميل الصورة",
+      "isActive": "مفعل",
+      "save": "حفظ",
+      "cancel": "إلغاء"
+    },
+    "messages": {
+
+    },
+    "validators": {
+      "requiredField": "هذاالحقل مطلوب"
+    }
+  },
+  "__comment2__": "begin data management region"
 }

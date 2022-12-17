@@ -3,7 +3,7 @@ namespace Dimah.Core.Domain.Entities
 {
     public class User
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string UserName { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
@@ -27,6 +27,9 @@ namespace Dimah.Core.Domain.Entities
 
         public virtual Nationality Nationality { get; set; }
 
+        public virtual ICollection<Poster> CreatedPosters { get; set; }
+        public virtual ICollection<Poster> ModifiedPosters { get; set; }
+
         public virtual ICollection<Role> CreatedRoles { get; set; }
         public virtual ICollection<Role> ModifiedRoles { get; set; }
 
@@ -48,6 +51,9 @@ namespace Dimah.Core.Domain.Entities
         
         public virtual ICollection<ProjectType> CreatedProjectTypes { get; set; }
         public virtual ICollection<ProjectType> ModifiedProjectTypes { get; set; }
+
+        public virtual ICollection<ChartItem> CreatedChartItems { get; set; }
+        public virtual ICollection<ChartItem> ModifiedChartItems { get; set; }
 
 
 

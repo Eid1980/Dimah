@@ -19,25 +19,25 @@ export class ProjectTypeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalService.setAdminTitle('أنواع المشاريع');
+    this.globalService.setAdminTitle(this.globalService.translate('project-type.title'));
     this.pageSetting();
   }
 
   pageSetting() {
     this.pageListSettings = {
-      PageTitle: 'البحث في أنواع المشاريع',
+      PageTitle: this.globalService.translate('project-type.searchTitle'),
       listPermissionCode: '*',
       createButtonLink: '/admin/data-management/project-type-add',
-      createButtonText: 'اضافة نوع مشروع جديد',
+      createButtonText: this.globalService.translate('project-type.addTitle'),
       Url: this.projectTypeService.serviceUrl,
 
       cols: [
-        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'nameAr', Header: 'الاسم عربي' },
-        { Field: 'nameEn', Header: 'الاسم انجليزي' },
+        { Field: 'id', Header: this.globalService.translate('global.lables.code'), Searchable: false, Hidden: true },
+        { Field: 'nameAr', Header: this.globalService.translate('global.lables.nameAr') },
+        { Field: 'nameEn', Header: this.globalService.translate('global.lables.nameEn') },
         {
           Field: 'isActive',
-          Header: 'الحالة',
+          Header: this.globalService.translate('global.lables.status'),
           Searchable: false,
           Sortable: false,
           Type: ColumnType.Status,
@@ -45,7 +45,7 @@ export class ProjectTypeListComponent implements OnInit {
         },
         {
           Field: 'Action',
-          Header: 'الإجراءات',
+          Header: this.globalService.translate('global.lables.actions'),
           Searchable: false,
           Type: ColumnType.Action,
         },
@@ -53,21 +53,21 @@ export class ProjectTypeListComponent implements OnInit {
 
       actions: [
         {
-          title: 'تعديل',
+          title: this.globalService.translate('global.buttons.update'),
           routerLink: '/admin/data-management/project-type-edit',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.Edit,
           buttonIcon: ActionButtonIcon.Edit,
         },
         {
-          title: 'التفاصيل',
+          title: this.globalService.translate('global.buttons.details'),
           routerLink: '/admin/data-management/project-type-view',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.View,
           buttonIcon: ActionButtonIcon.View,
         },
         {
-          title: 'حذف',
+          title: this.globalService.translate('global.buttons.delete'),
           FuncName: (id) => this.delete(id),
           buttonclass: ActionButtonClass.Delete,
           buttonIcon: ActionButtonIcon.Delete,
@@ -76,7 +76,7 @@ export class ProjectTypeListComponent implements OnInit {
     };
   }
 
-  changeStatus(id: number, e: any) {
+  changeStatus(id: string, e: any) {
     this.projectTypeService.changeStatus(id).subscribe((result) => {
       if (result.isSuccess) {
         this.list.getData();
@@ -84,11 +84,11 @@ export class ProjectTypeListComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
-    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+  delete(id: string) {
+    this.globalService.showConfirm(this.globalService.translate('global.messages.deleteMessage'));
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
-  isconfirm(id: number) {
+  isconfirm(id: string) {
     this.projectTypeService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
         this.globalService.clearMessages();

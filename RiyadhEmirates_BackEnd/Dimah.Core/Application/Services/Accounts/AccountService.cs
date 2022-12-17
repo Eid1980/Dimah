@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Dimah.Core.Application.CustomExceptions;
 using Dimah.Core.Application.Dtos;
 using Dimah.Core.Application.Dtos.Accounts;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Application.Services.Common;
 using Dimah.Core.Application.Services.FileManagers;
 using Dimah.Core.Application.Services.Shared;
+using Dimah.Core.Application.Shared;
 using Dimah.Core.Domain.Entities;
 using Dimah.Core.Domain.IRepositories;
 using System.Text;
@@ -30,26 +29,26 @@ namespace Dimah.Core.Application.Services.Accounts
             _fileManagerService = fileManagerService;
         }
 
-        public IApiResponse GetUserData(int id)
+        public IApiResponse GetUserData(Guid id)
         {
             var user = _mapper.Map<GetUserDataDto>(_dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == id));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
-        public IApiResponse GetCurrentUserRoles(int id)
+        public IApiResponse GetCurrentUserRoles(Guid id)
         {
             var userRoles = _dimahUnitOfWork.Repository<UserRole>().Where(u => u.UserId == id).Select(x => x.RoleId).ToArray();
             return GetResponse(data: string.Join(",", userRoles));
         }
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             var user = _mapper.Map<GetUserDto>(_dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == id, x => x.Nationality));
             if (user != null)
                 return GetResponse(data: user);
             return GetResponse(isSuccess: false);
         }
-        public IApiResponse GetAuthUser(int id)
+        public IApiResponse GetAuthUser(Guid id)
         {
             var userResponse = _dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == id, x => x.UserRoles);
             var user = _mapper.Map<GetUserSessionDto>(userResponse);
@@ -182,7 +181,7 @@ namespace Dimah.Core.Application.Services.Accounts
             }
         }
 
-        public IApiResponse GetUserProfileData(int id) 
+        public IApiResponse GetUserProfileData(Guid id) 
         {
             var userProfile = _dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == id, x => x.Nationality);
             if (userProfile == null)
@@ -256,7 +255,7 @@ namespace Dimah.Core.Application.Services.Accounts
 
             return GetResponse(message: CustumMessages.MsgSuccess("تم التسجيل بنجاح"), data: addedModel.Id);
         }
-        public IApiResponse CreateEmployee(int userId)
+        public IApiResponse CreateEmployee(Guid userId)
         {
             var user = _dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null)
@@ -268,7 +267,7 @@ namespace Dimah.Core.Application.Services.Accounts
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse(message: CustumMessages.SaveSuccess());
         }
-        public IApiResponse DeleteEmployee(int userId)
+        public IApiResponse DeleteEmployee(Guid userId)
         {
             var user = _dimahUnitOfWork.Repository<User>().FirstOrDefault(u => u.Id == userId);
             if (user == null)
@@ -282,6 +281,10 @@ namespace Dimah.Core.Application.Services.Accounts
                 _dimahUnitOfWork.Repository<UserRole>().RemoveRange(userRoles);
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse(message: CustumMessages.DeleteSuccess());
+        }
+        public bool IsUserInRoles(Guid userId, int[] roles)
+        {
+            return _dimahUnitOfWork.Repository<UserRole>().Where(x => x.UserId.Equals(userId) && roles.Contains(x.RoleId)).Any();
         }
 
         #region Helper Functions
@@ -310,8 +313,6 @@ namespace Dimah.Core.Application.Services.Accounts
             }
             return true;
         }
-
-
         #endregion
 
     }

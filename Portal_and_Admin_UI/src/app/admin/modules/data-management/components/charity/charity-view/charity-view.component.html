@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-list']">الجهات</a>
     <span class="breadcrumb-item fs-16 active">تفاصيل الجهة</span>
   </nav>
@@ -12,28 +12,28 @@
   <div class="form-content">
     <div class="row mx-0">
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الاسم عربي</span>
-        <span class="form-val">{{ charityDetailsDto?.nameAr }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.nameAr' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.nameAr }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الاسم انجليزي</span>
-        <span class="form-val">{{ charityDetailsDto?.nameEn }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.nameEn' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.nameEn }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">رقم الجوال</span>
-        <span class="form-val">{{ charityDetailsDto?.phoneNumber }}</span>
+        <span class="form-val">{{ detailsDto?.phoneNumber }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">البريد الالكتروني</span>
-        <span class="form-val">{{ charityDetailsDto?.email }}</span>
+        <span class="form-val">{{ detailsDto?.email }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
         <span class="form-lbl lbl-33">العنوان</span>
-        <span class="form-val">{{ charityDetailsDto?.address }}</span>
+        <span class="form-val">{{ detailsDto?.address }}</span>
       </div>
       <div class="info-col col-md-6 col-12">
-        <span class="form-lbl lbl-33">الحالة</span>
-        <span class="form-val">{{ charityDetailsDto?.isActive ? "مفعل" : "غير مفعل" }}</span>
+        <span class="form-lbl lbl-33">{{ 'global.lables.status' | translate }}</span>
+        <span class="form-val">{{ detailsDto?.isActive ? ('global.lables.active' | translate) : ('global.lables.notActive' | translate) }}</span>
       </div>
     </div>
   </div>
@@ -45,8 +45,8 @@
   <div class="form-content">
     <div class="row mx-0">
       <div class="info-col col-md-12 col-12">
-        <p-table #userRoles [value]="charityDetailsDto.charityProjectList" dataKey="id" [autoLayout]="true"
-                 [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+        <p-table #userRoles [value]="detailsDto.charityProjectList" dataKey="id" [autoLayout]="true"
+                 [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th>م</th>
@@ -68,7 +68,7 @@
           </ng-template>
           <ng-template pTemplate="emptymessage" let-columns>
             <tr>
-              <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+              <td colspan="7" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
             </tr>
           </ng-template>
         </p-table>
@@ -78,5 +78,5 @@
 </div>
 
 <div class="form-actions">
-  <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">رجوع</a>
+  <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
 </div>

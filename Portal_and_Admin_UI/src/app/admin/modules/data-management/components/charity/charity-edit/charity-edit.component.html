@@ -1,12 +1,12 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-list']">الجهات</a>
     <span class="breadcrumb-item fs-16 active">تعديل بيانات الجهة</span>
   </nav>
 </div>
 
-<form [formGroup]="updateCharityForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
       <h5>تعديل نوع المشروع</h5>
@@ -14,43 +14,43 @@
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-6">
-          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <label for="nameAr" class="form-lbl">{{ 'global.lables.nameAr' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
               invalid:
-                (isFormSubmitted || updateCharityForm.get('nameAr').touched) &&
-                updateCharityForm.get('nameAr').errors?.required
+                (isFormSubmitted || updateForm.get('nameAr').touched) &&
+                updateForm.get('nameAr').errors?.required
             }" />
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('nameAr').touched) && updateCharityForm.get('nameAr').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateForm.get('nameAr').touched) && updateForm.get('nameAr').errors?.required"
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <label for="nameEn" class="form-lbl">{{ 'global.lables.nameEn' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
               invalid:
-                (isFormSubmitted || updateCharityForm.get('nameEn').touched) &&
-                updateCharityForm.get('nameEn').errors?.required
+                (isFormSubmitted || updateForm.get('nameEn').touched) &&
+                updateForm.get('nameEn').errors?.required
             }" />
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('nameEn').touched) && updateCharityForm.get('nameEn').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateForm.get('nameEn').touched) && updateForm.get('nameEn').errors?.required"
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-sm-6">
           <label for="phoneNumber">رقم الجوال<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="phoneNumber" id="phoneNumber" maxlength="14" [ngClass]="{
-                            invalid: (isFormSubmitted || updateCharityForm.get('phoneNumber').touched) &&
-                            updateCharityForm.get('phoneNumber').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('phoneNumber').touched) && updateCharityForm.get('phoneNumber').errors?.required"
+                            invalid: (isFormSubmitted || updateForm.get('phoneNumber').touched) &&
+                            updateForm.get('phoneNumber').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('phoneNumber').touched) && updateForm.get('phoneNumber').errors?.required"
                  class="danger">هذا الحقل مطلوب</small>
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('phoneNumber').touched) && this.updateCharityForm.get('phoneNumber').errors != null && !updateCharityForm.get('phoneNumber').errors?.isValid"
+          <small *ngIf="(isFormSubmitted || updateForm.get('phoneNumber').touched) && this.updateForm.get('phoneNumber').errors != null && !updateForm.get('phoneNumber').errors?.isValid"
                  class="danger">أدخل رقم جوال صحيح</small>
         </div>
         <div class="form-group col-sm-6">
           <label for="email">البريد الالكتروني<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="email" id="email" [ngClass]="{
-                            invalid: (isFormSubmitted || updateCharityForm.get('email').touched) &&
-                            updateCharityForm.get('email').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('email').touched) && updateCharityForm.get('email').errors?.required"
+                            invalid: (isFormSubmitted || updateForm.get('email').touched) &&
+                            updateForm.get('email').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('email').touched) && updateForm.get('email').errors?.required"
                  class="danger">هذا الحقل مطلوب</small>
-          <small *ngIf="(isFormSubmitted || updateCharityForm.get('email').touched) && updateCharityForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
+          <small *ngIf="(isFormSubmitted || updateForm.get('email').touched) && updateForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
         </div>
         <div class="form-group col-md-6">
           <label for="address" class="form-lbl">العنوان</label>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group col-6">
           <label class="container-check">
-            فعال
+            {{'global.lables.active' | translate}}
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
@@ -68,7 +68,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">تعديل</button>
-    <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">رجوع</a>
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.update' | translate }}</button>
+    <a [routerLink]="['/admin/data-management/charity-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
   </div>
 </form>

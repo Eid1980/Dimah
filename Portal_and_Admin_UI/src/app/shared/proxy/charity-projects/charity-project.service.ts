@@ -15,11 +15,11 @@ export class CharityProjectService {
   constructor(public httpClient: HttpClient) {
   }
 
-  getById = (id: number): Observable<ApiResponse<GetCharityProjectDetailsDto>> => {
+  getById = (id: string): Observable<ApiResponse<GetCharityProjectDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetCharityProjectDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }
-  getByCharityId = (id: number): Observable<ApiResponse<GetCharityProjectListDto[]>> => {
+  getByCharityId = (id: string): Observable<ApiResponse<GetCharityProjectListDto[]>> => {
     return this.httpClient.get<ApiResponse<GetCharityProjectListDto[]>>(`${this.serviceUrl}/GetByCharityId/${id}`).pipe(
     );
   }
@@ -31,11 +31,11 @@ export class CharityProjectService {
     return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
-  changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
+  changeStatus = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
 
-  delete = (id: number): Observable<ApiResponse<boolean>> => {
+  delete = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 

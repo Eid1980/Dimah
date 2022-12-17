@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CreateProjectTypeDto, GetProjectTypeDetailsDto, UpdateProjectTypeDto } from './models';
 import { ApiResponse } from '../shared/api-response.model';
 import { LookupDto } from '../shared/lookup-dto.model';
+import { FileToUploadDto } from '../shared/file-to-upload-dto.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,28 +15,28 @@ export class ProjectTypeService {
   constructor(public httpClient: HttpClient) {
   }
 
-  getById = (id: number): Observable<ApiResponse<GetProjectTypeDetailsDto>> => {
+  getById = (id: string): Observable<ApiResponse<GetProjectTypeDetailsDto>> => {
     return this.httpClient.get<ApiResponse<GetProjectTypeDetailsDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }
 
-  create = (createdDto: CreateProjectTypeDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  create = (createdDto: CreateProjectTypeDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.post<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Create`, createdDto).pipe();
   }
-  update = (updatedDto: UpdateProjectTypeDto): Observable<ApiResponse<number>> => {
-    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  update = (updatedDto: UpdateProjectTypeDto): Observable<ApiResponse<FileToUploadDto>> => {
+    return this.httpClient.put<ApiResponse<FileToUploadDto>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
   }
 
-  changeStatus = (id: number): Observable<ApiResponse<boolean>> => {
+  changeStatus = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.get<ApiResponse<boolean>>(`${this.serviceUrl}/ChangeStatus/${id}`).pipe();
   }
 
-  delete = (id: number): Observable<ApiResponse<boolean>> => {
+  delete = (id: string): Observable<ApiResponse<boolean>> => {
     return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 
-  getLookupList = (): Observable<ApiResponse<LookupDto<number>[]>> => {
-    return this.httpClient.get<ApiResponse<LookupDto<number>[]>>(`${this.serviceUrl}/GetLookupList`).pipe(
+  getLookupList = (): Observable<ApiResponse<LookupDto<string>[]>> => {
+    return this.httpClient.get<ApiResponse<LookupDto<string>[]>>(`${this.serviceUrl}/GetLookupList`).pipe(
     );
   }
 

@@ -16,11 +16,11 @@ import { FileCateguery } from '@shared/enums/file-categuery.enum';
   templateUrl: './charity-project-add.component.html'
 })
 export class CharityProjectAddComponent implements OnInit {
-  createCharityProjectForm: FormGroup;
+  createForm: FormGroup;
   isFormSubmitted: boolean;
-  createCharityProjectDto = {} as CreateCharityProjectDto;
-  charities = [] as LookupDto<number>[];
-  projectTypes = [] as LookupDto<number>[];
+  createDto = {} as CreateCharityProjectDto;
+  charities = [] as LookupDto<string>[];
+  projectTypes = [] as LookupDto<string>[];
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
@@ -44,17 +44,17 @@ export class CharityProjectAddComponent implements OnInit {
   }
 
   buildForm() {
-    this.createCharityProjectForm = this.formBuilder.group({
-      nameAr: [this.createCharityProjectDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.createCharityProjectDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      charityId: [this.createCharityProjectDto.charityId || null, [Validators.required]],
-      projectTypeId: [this.createCharityProjectDto.projectTypeId || null, [Validators.required]],
-      descriptionAr: [this.createCharityProjectDto.descriptionAr || ''],
-      descriptionEn: [this.createCharityProjectDto.descriptionEn || ''],
-      projectCost: [this.createCharityProjectDto.projectCost || null, [Validators.required]],
-      projectLocation: [this.createCharityProjectDto.projectLocation || ''],
-      image: [this.createCharityProjectDto.image || null, Validators.required],
-      isActive: [this.createCharityProjectDto.isActive || true, Validators.required]
+    this.createForm = this.formBuilder.group({
+      nameAr: [this.createDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      charityId: [this.createDto.charityId || null, [Validators.required]],
+      projectTypeId: [this.createDto.projectTypeId || null, [Validators.required]],
+      descriptionAr: [this.createDto.descriptionAr || ''],
+      descriptionEn: [this.createDto.descriptionEn || ''],
+      projectCost: [this.createDto.projectCost || null, [Validators.required]],
+      projectLocation: [this.createDto.projectLocation || ''],
+      image: [this.createDto.image || null, Validators.required],
+      isActive: [this.createDto.isActive || true, Validators.required]
     });
   }
   fillCharities() {
@@ -68,21 +68,21 @@ export class CharityProjectAddComponent implements OnInit {
     });
   }
   onUpload(event: any) {
-    this.createCharityProjectForm.get('image').setValue(event.files[0]);
+    this.createForm.get('image').setValue(event.files[0]);
   }
   onRemove(event) {
-    this.createCharityProjectForm.get('image').setValue(null);
+    this.createForm.get('image').setValue(null);
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.createCharityProjectForm.valid) {
-      this.createCharityProjectDto = { ...this.createCharityProjectForm.value } as CreateCharityProjectDto;
-      let imageContent = this.createCharityProjectForm.get('image').value;
+    if (this.createForm.valid) {
+      this.createDto = { ...this.createForm.value } as CreateCharityProjectDto;
+      let imageContent = this.createForm.get('image').value;
       if (imageContent) {
-        this.createCharityProjectDto.image = imageContent.name;
+        this.createDto.image = imageContent.name;
       }
-      this.charityProjectService.create(this.createCharityProjectDto)
+      this.charityProjectService.create(this.createDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

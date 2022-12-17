@@ -19,7 +19,7 @@ namespace Dimah.API.Controllers
         }
 
         [HttpGet("GetById/{id}")]
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             return _charityService.GetById(id);
         }
@@ -45,13 +45,13 @@ namespace Dimah.API.Controllers
             return _charityService.Update(updateDto);
         }
         [HttpGet("ChangeStatus/{id}")]
-        public IApiResponse ChangeStatus(int id)
+        public IApiResponse ChangeStatus(Guid id)
         {
             return _charityService.ChangeStatus(id);
         }
 
         [HttpDelete("Delete/{id}")]
-        public IApiResponse Delete(int id)
+        public IApiResponse Delete(Guid id)
         {
             return _charityService.Delete(id);
         }

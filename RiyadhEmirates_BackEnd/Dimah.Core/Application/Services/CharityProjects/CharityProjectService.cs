@@ -1,16 +1,13 @@
 ﻿using AutoMapper.QueryableExtensions;
-using Dimah.Core.Application.CustomExceptions;
 using Dimah.Core.Application.Dtos;
 using Dimah.Core.Application.Dtos.Search;
-using Dimah.Core.Application.DynamicSearch;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Domain.Entities;
 using X.PagedList;
 using AutoMapper;
-using Dimah.Core.Application.Helpers;
 using Dimah.Core.Application.Services.FileManagers;
 using Dimah.Core.Domain.IRepositories;
+using Dimah.Core.Application.Shared;
 
 namespace Dimah.Core.Application.Services.CharityProjects
 {
@@ -29,14 +26,14 @@ namespace Dimah.Core.Application.Services.CharityProjects
             _fileManagerService = fileManagerService;
         }
 
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             var charityProject = _dimahUnitOfWork.Repository<CharityProject>().FirstOrDefault(l => l.Id.Equals(id), x => x.Charity, x => x.ProjectType);
             if (charityProject == null)
                 throw new NotFoundException(typeof(CharityProject).Name);
             return GetResponse(data: _mapper.Map<GetCharityProjectDetailsDto>(charityProject));
         }
-        public IApiResponse GetByCharityId(int id)
+        public IApiResponse GetByCharityId(Guid id)
         {
             var charityProjects = _dimahUnitOfWork.Repository<CharityProject>().Where(l => l.CharityId == id).OrderByDescending(s => s.CreatedDate);
             return GetResponse(data: _mapper.Map<List<GetCharityProjectListDto>>(charityProjects));
@@ -69,7 +66,7 @@ namespace Dimah.Core.Application.Services.CharityProjects
 
             var addedModel = _dimahUnitOfWork.Repository<CharityProject>().Add(_mapper.Map<CharityProject>(createModel));
             _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id, FileName = addedModel.Image });
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: new FileToUploadDto { Id = addedModel.Id.ToString(), FileName = addedModel.Image });
         }
         public IApiResponse Update(UpdateCharityProjectDto updateModel)
         {
@@ -96,9 +93,9 @@ namespace Dimah.Core.Application.Services.CharityProjects
                         Name = oldImage
                     });
             }
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id, FileName = newCharityProject.Image });
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: new FileToUploadDto { Id = updateModel.Id.ToString(), FileName = newCharityProject.Image });
         }
-        public IApiResponse ChangeStatus(int id)
+        public IApiResponse ChangeStatus(Guid id)
         {
             var charityProject = _dimahUnitOfWork.Repository<CharityProject>().FirstOrDefault(n => n.Id == id);
             if (charityProject == null)
@@ -108,7 +105,7 @@ namespace Dimah.Core.Application.Services.CharityProjects
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse();
         }
-        public IApiResponse Delete(int id)
+        public IApiResponse Delete(Guid id)
         {
             var charityProject = _dimahUnitOfWork.Repository<CharityProject>().FirstOrDefault(n => n.Id == id, x => x.Charity, x => x.ProjectType);
             if (charityProject == null)
@@ -127,7 +124,7 @@ namespace Dimah.Core.Application.Services.CharityProjects
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _dimahUnitOfWork.Repository<CharityProject>().Where(l => l.IsActive).Select(item =>
-            new LookupDto<int>
+            new LookupDto<Guid>
             {
                 Id = item.Id,
                 Name = item.NameAr

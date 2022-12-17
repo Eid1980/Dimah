@@ -5,6 +5,7 @@ namespace Dimah.Core.Application.Dtos
     {
         public string NameAr { get; set; }
         public string NameEn { get; set; }
+        public string ImageName { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -9,15 +9,15 @@ import { ProjectTypeService } from '@shared/proxy/project-types/project-type.ser
   templateUrl: './project-type-view.component.html'
 })
 export class ProjectTypeViewComponent implements OnInit {
-  id: number;
-  projectTypeDetailsDto = {} as GetProjectTypeDetailsDto;
+  id: string;
+  detailsDto = {} as GetProjectTypeDetailsDto;
 
   constructor(private projectTypeService: ProjectTypeService, private globalService: GlobalService,
     private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.globalService.setAdminTitle('تفاصيل نوع المشروع');
+    this.globalService.setAdminTitle(this.globalService.translate('project-type.detailsTitle'));
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.getDetails();
@@ -26,7 +26,7 @@ export class ProjectTypeViewComponent implements OnInit {
 
   getDetails() {
     this.projectTypeService.getById(this.id).subscribe((response) => {
-      this.projectTypeDetailsDto = response.data;
+      this.detailsDto = response.data;
     });
   }
 }

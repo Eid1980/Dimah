@@ -6,13 +6,13 @@ namespace Dimah.Core.Application.Services.Charities
 {
     public interface ICharityService
     {
-        IApiResponse GetById(int id);
+        IApiResponse GetById(Guid id);
         IApiResponse GetAll();
         IApiResponse GetAll(SearchModel searchModel);
         IApiResponse Create(CreateCharityDto createModel);
         IApiResponse Update(UpdateCharityDto updateModel);
-        IApiResponse ChangeStatus(int id);
-        IApiResponse Delete(int id);
+        IApiResponse ChangeStatus(Guid id);
+        IApiResponse Delete(Guid id);
         IApiResponse GetLookupList();
     }
 }

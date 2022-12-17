@@ -10,7 +10,7 @@ export interface CreateCharityDto {
 }
 
 export interface UpdateCharityDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
   address: string;
@@ -20,7 +20,7 @@ export interface UpdateCharityDto {
 }
 
 export interface GetCharityDetailsDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
   address: string;
@@ -31,7 +31,7 @@ export interface GetCharityDetailsDto {
 }
 
 export interface GetCharityListDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
   phoneNumber: string;

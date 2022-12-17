@@ -10,9 +10,9 @@ import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.valida
   templateUrl: './nationality-add.component.html'
 })
 export class NationalityAddComponent implements OnInit {
-  createNationalityForm: FormGroup;
+  createForm: FormGroup;
   isFormSubmitted: boolean;
-  createNationalityDto = {} as CreateNationalityDto;
+  createDto = {} as CreateNationalityDto;
 
   constructor(private formBuilder: FormBuilder, private nationalityService: NationalityService,
     private globalService: GlobalService) {
@@ -24,21 +24,21 @@ export class NationalityAddComponent implements OnInit {
   }
 
   buildForm() {
-    this.createNationalityForm = this.formBuilder.group({
-      nameAr: [this.createNationalityDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.createNationalityDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      code: [this.createNationalityDto.code || ''],
-      iso2: [this.createNationalityDto.iso2 || ''],
-      dialCode: [this.createNationalityDto.dialCode || ''],
-      isActive: [this.createNationalityDto.isActive || true, Validators.required]
+    this.createForm = this.formBuilder.group({
+      nameAr: [this.createDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      code: [this.createDto.code || ''],
+      iso2: [this.createDto.iso2 || ''],
+      dialCode: [this.createDto.dialCode || ''],
+      isActive: [this.createDto.isActive || true, Validators.required]
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.createNationalityForm.valid) {
-      this.createNationalityDto = { ...this.createNationalityForm.value } as CreateNationalityDto;
-      this.nationalityService.create(this.createNationalityDto)
+    if (this.createForm.valid) {
+      this.createDto = { ...this.createForm.value } as CreateNationalityDto;
+      this.nationalityService.create(this.createDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

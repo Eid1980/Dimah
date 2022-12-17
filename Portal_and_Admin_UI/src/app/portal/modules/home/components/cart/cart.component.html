@@ -1,0 +1,131 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
+        <span class="breadcrumb-item fs-16 active">سلة الخير</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container pt-4 pb-5">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-primary fw-bold mb-5">سلة الخير</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8 mb-3">
+      <div class="table-responsive rounded-26 shadow-box">
+        <p-table #currentChartitems [value]="currentChartListDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
+                 [rowHover]="true" tableStyleClass="table table-borderless mb-0">
+          <ng-template pTemplate="header" class="bg-primary" let-columns>
+            <tr>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">م</th>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">باب الخير</th>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
+              <th class="text-white fa-16 text-center mw-100 py-4 align-middle">مدة التبرع</th>
+              <th class="text-white fa-16 text-center mw-100 py-4 align-middle">المجموع</th>
+              <th class="text-white fa-16 text-center py-4 align-middle"></th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-i="rowIndex" let-currentChartitem>
+            <tr>
+              <td> {{i+1}} </td>
+              <td> {{currentChartitem.charityProjectName}} </td>
+              <td> {{currentChartitem.donationValue}} </td>
+              <td> {{currentChartitem.donationPeriod}} </td>
+              <td> {{currentChartitem.donationTotal}} </td>
+              <td>
+                <div class="d-flex align-items-center justify-content-center">
+                  <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="openEditItemModal(currentChartitem.id)">
+                    <i class="fa-regular fa-pen-to-square fa-20"></i>
+                  </a>
+                  <a class="text-danger d-flex align-items-center cursor-pointer" (click)="openDeleteItemModal(currentChartitem.id)">
+                    <i class="fa-regular fa-trash-can fa-20"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="7" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-8 mb-3 pe-lg-5 me-auto">
+      <div class="bg-white shadow-box rounded-26 py-4 px-3 border">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h6 class="fa-18 fw-bold mb-2">المجموع</h6>
+          <h5 class="fa-18 fw-bold mb-2 text-primary"><span>{{ totlalChart }}</span> ر.س</h5>
+        </div>
+        <div class="d-flex justify-content-end">
+          <a class="btn btn-primary d-inline-block" *ngIf="totlalChart > 0" routerLink="/payment">المتابعة للدفع</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- edit item form cart modal -->
+<p-dialog [modal]="true" header="تعديل العنصر" (onHide)="closeEditModal()" [(visible)]="showEditItemsModal">
+  <form [formGroup]="updateForm" (ngSubmit)="editItem()">
+    <div class="py-4 px-2">
+      <div class="form-content">
+        <h4 class="fw-bold text-primary mb-4">{{detailsDto?.charityProjectName}}</h4>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <h6 class="fw-bold fa-16 mb-2">قيمة التبرع</h6>
+              <input type="number" formControlName="donationValue" id="donationValue" autocomplete="off" class="form-control w-25 py-2 px-2 text-center" />
+              <small *ngIf="(isFormSubmitted || updateForm.get('donationValue').touched) && updateForm.get('donationValue').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div>
+              <h6 class="fw-bold fa-16 mb-2">مدة التبرع</h6>
+              <div class="number-counter justify-content-center">
+                <span class="btn btn-highlight-primary plus" (click)="increaseProduct()">
+                  <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+                <input formControlName="donationPeriod" id="donationPeriod" autocomplete="off" class="form-control" type="number" readonly min="1" max="2000" />
+                <small *ngIf="(isFormSubmitted || updateForm.get('donationPeriod').touched) && updateForm.get('donationPeriod').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+                <span class="btn btn-highlight-primary minus" (click)="decreaseProduct()">
+                  <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions d-flex justify-content-center p-0 mt-2">
+      <button type="submit" class="btn btn-primary">تعديل</button>
+      <button type="button" class="btn btn-primary-white border-1 me-3" (click)="closeEditModal()">إلغاء</button>
+    </div>
+  </form>
+</p-dialog>
+
+<!-- delete item form cart modal -->
+<p-dialog [modal]="true" header="حذف العنصر" (onHide)="closeDeleteModal()" [(visible)]="showDeleteItemsModal">
+  <div class="py-4 px-3 mt-3">
+    <div class="form-content">
+      <div class="d-flex justify-content-center flex-column align-items-center">
+        <img src="assets/images/icons/svg/error.svg" class="img-fluid mb-3" alt="icon" width="80px" />
+        <h6 class="fa-18 mb-0">هل أنت متأكد من حذف هذا العنصر من سلة الخير؟</h6>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions d-flex justify-content-center p-0 mt-2">
+    <button type="button" class="btn btn-danger" (click)="deleteItem()">حذف</button>
+    <button type="button" class="btn btn-danger-white border-1 me-3" (click)="closeDeleteModal()">اغلاق</button>
+  </div>
+</p-dialog>

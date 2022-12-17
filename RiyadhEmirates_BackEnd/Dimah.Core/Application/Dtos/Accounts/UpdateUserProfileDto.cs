@@ -4,7 +4,7 @@ namespace Dimah.Core.Application.Dtos.Accounts
 {
     public class UpdateUserProfileDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string NewPassWord { get; set; }
         [Compare(nameof(NewPassWord), ErrorMessage = "كلمة المرور غير متطابقة")]
         public string ConfirmNewPassWord { get; set; }

@@ -10,5 +10,11 @@ export const environment = {
 
   charityProjectallowedExtensions: 'image/*',
   charityProjectfileSize: 1500000,
+  projectallowedExtensions: 'image/*',
+  projectfileSize: 1500000,
+  newsallowedExtensions: 'image/*',
+  newsfileSize: 1500000,
+  postersallowedExtensions: 'image/*',
+  postersfileSize: 3000000,
 
 };

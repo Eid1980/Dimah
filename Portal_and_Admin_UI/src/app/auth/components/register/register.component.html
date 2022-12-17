@@ -59,7 +59,7 @@
 
                     <div class="col-sm-12">
                       <div class="form-group mb-4">
-                        <label for="fullNameAr">الاسم عربي<span class="danger">*</span></label>
+                        <label for="fullNameAr">{{ 'global.lables.nameAr' | translate }}<span class="danger">*</span></label>
                         <input type="text" class="form-control" formControlName="fullNameAr" id="fullNameAr" autocomplete="off" [ngClass]="{
                           invalid: (isFormSubmitted || userRegisterForm.get('fullNameAr').touched) &&
                           userRegisterForm.get('fullNameAr').errors?.required}" />
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group mb-4">
-                        <label for="fullNameEn">الاسم انجليزي<span class="danger">*</span></label>
+                        <label for="fullNameEn">{{ 'global.lables.nameEn' | translate }}<span class="danger">*</span></label>
                         <input type="text" class="form-control" formControlName="fullNameEn" id="fullNameEn" [ngClass]="{
                           invalid: (isFormSubmitted || userRegisterForm.get('fullNameEn').touched) &&
                           userRegisterForm.get('fullNameEn').errors?.required}" />
@@ -146,8 +146,8 @@
           </div>
 
           <div class="mt-5">
-            <button type="submit" class="btn btn-primary submit">حفظ</button>
-            <a routerLink="/auth/login" class="btn btn-secondary submit">رجوع</a>
+            <button type="submit" class="btn btn-primary submit">{{ 'global.buttons.save' | translate }}</button>
+            <a routerLink="/auth/login" class="btn btn-secondary submit">{{ 'global.buttons.back' | translate }}</a>
           </div>
         </form>
       </div>

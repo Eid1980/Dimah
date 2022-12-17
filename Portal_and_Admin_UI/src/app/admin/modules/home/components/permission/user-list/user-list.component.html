@@ -6,7 +6,7 @@
       <div class="row mx-0">
         <div class="info-col col-md-12 col-12">
           <p-table #userRoles [value]="userRolesDto" dataKey="id" [autoLayout]="true"
-                   [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+                   [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
             <ng-template pTemplate="header" let-columns>
               <tr>
                 <th>م</th>
@@ -24,7 +24,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage" let-columns>
               <tr>
-                <td colspan="7" class="empty-grid-table">لا يوجد بيانات</td>
+                <td colspan="7" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
               </tr>
             </ng-template>
           </p-table>

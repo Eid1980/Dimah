@@ -9,8 +9,8 @@ import { CharityProjectService } from '@shared/proxy/charity-projects/charity-pr
   templateUrl: './charity-project-view.component.html'
 })
 export class CharityProjectViewComponent implements OnInit {
-  id: number;
-  charityProjectDetailsDto = {} as GetCharityProjectDetailsDto;
+  id: string;
+  detailsDto = {} as GetCharityProjectDetailsDto;
 
   constructor(private charityProjectService: CharityProjectService, private globalService: GlobalService,
     private activatedRoute: ActivatedRoute) {
@@ -26,7 +26,7 @@ export class CharityProjectViewComponent implements OnInit {
 
   getDetails() {
     this.charityProjectService.getById(this.id).subscribe((response) => {
-      this.charityProjectDetailsDto = response.data;
+      this.detailsDto = response.data;
     });
   }
 }

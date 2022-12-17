@@ -7,9 +7,9 @@ namespace Dimah.Core.Application.Services.UserRoles
     public interface IUserRoleService
     {
         IApiResponse GetUsersByRoleId(int roleId);
-        IApiResponse GetRolesByUserId(int userId);
+        IApiResponse GetRolesByUserId(Guid userId);
         IApiResponse Create(CreateUserRoleDto createModel);
-        IApiResponse Delete(int id);
+        IApiResponse Delete(Guid id);
         IApiResponse GetAdminUsers(SearchModel searchModel);
         IApiResponse IsAuthorize(string roles);
     }

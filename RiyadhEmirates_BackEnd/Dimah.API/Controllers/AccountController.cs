@@ -9,8 +9,8 @@ using System.Text;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Application.Services.Accounts;
 using Dimah.Core.Application.Dtos;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Dtos.Accounts;
+using Dimah.Core.Application.Shared;
 
 namespace Dimah.API.Controllers
 {
@@ -31,28 +31,28 @@ namespace Dimah.API.Controllers
 
         [HttpGet("GetUserData/{id?}")]
         [Authorize]
-        public IApiResponse GetUserData(int id=0)
+        public IApiResponse GetUserData(Guid? id)
         {
-            if (id == 0)
+            if (id == null)
                 id = UserId;
-            return _accountService.GetUserData(id);
+            return _accountService.GetUserData(id.Value);
         }
         [HttpGet("GetCurrentUserRoles")]
         [Authorize]
         public IApiResponse GetCurrentUserRoles()
         {
-            return _accountService.GetCurrentUserRoles(UserId);
+            return _accountService.GetCurrentUserRoles(UserId.Value);
         }
 
         [HttpGet("GetAuthUser")]
         [Authorize]
         public IApiResponse GetAuthUser()
         {
-            return _accountService.GetAuthUser(UserId);
+            return _accountService.GetAuthUser(UserId.Value);
         }
 
         [HttpGet("GetById/{id}")]
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             return _accountService.GetById(id);
         }
@@ -120,7 +120,7 @@ namespace Dimah.API.Controllers
         [Route("UpdatePassword")]
         public IApiResponse UpdatePassword(UpdatePasswordDto updatePasswordDto)
         {
-            updatePasswordDto.UserId = UserId;
+            updatePasswordDto.UserId = UserId.Value;
             return _accountService.UpdatePassword(updatePasswordDto);
         }
 
@@ -151,19 +151,19 @@ namespace Dimah.API.Controllers
         }
 
         [HttpGet("GetUserProfileData/{id}")]
-        public IApiResponse GetUserProfileData(int id)
+        public IApiResponse GetUserProfileData(Guid id)
         {
             return _accountService.GetUserProfileData(id);
         }
         
         [HttpGet("CreateEmployee/{userId}")]
-        public IApiResponse CreateEmployee(int userId)
+        public IApiResponse CreateEmployee(Guid userId)
         {
             return _accountService.CreateEmployee(userId);
         }
         
         [HttpGet("DeleteEmployee/{userId}")]
-        public IApiResponse DeleteEmployee(int userId)
+        public IApiResponse DeleteEmployee(Guid userId)
         {
             return _accountService.DeleteEmployee(userId);
         }

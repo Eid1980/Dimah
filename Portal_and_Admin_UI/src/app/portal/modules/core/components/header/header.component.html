@@ -1,12 +1,10 @@
-
-
 <div class="top-bar">
   <div class="container">
     <div class="row align-items-center">
       <!-- calender -->
       <div class="col-md-5 d-md-flex d-none">
         <div class="date">
-          <img src="assets/images/icons/header/calender.svg" class="img-fluid filter-img-white" alt="calender" width="22.27" height="22.27">
+          <img src="assets/images/icons/svg/calender.svg" class="img-fluid" alt="calender" width="22.27" height="22.27">
           <span class="date">{{currentDate}}</span>
         </div>
       </div>
@@ -15,15 +13,16 @@
       <div class="col-md-7">
         <div class="options justify-content-md-end justify-content-center">
           <div class="dropdown search">
-            <button class="btn dropdown-toggle px-0" type="button" id="dropdownSearch" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="assets/images/icons/header/search.svg" class="img-fluid filter-img-white" alt="search" width="20">
+            <button class="btn dropdown-toggle px-0" type="button" id="dropdownSearch" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="assets/images/icons/header/search.svg" class="img-fluid" alt="search" width="20">
             </button>
             <div class="dropdown-menu search-dropdown" aria-labelledby="dropdownSearch">
               <div class="search-card">
                 <div class="form-group">
                   <input type="text" [(ngModel)]="newsSearch" class="form-control" placeholder="اكتب كلمات البحث هنا">
                   <img src="assets/images/icons/header/prof-search.svg" alt="icon" class="s-icon">
-                  <button type="button" class="btn btn-primary-alt-2" (click)="newsSearchSubmit()">بحث</button>
+                  <button type="button" class="btn btn-primary" (click)="newsSearchSubmit()">بحث</button>
                 </div>
               </div>
             </div>
@@ -32,7 +31,7 @@
           <!-- <div class="dropdown settings disabled">
             <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="assets/images/icons/header/setting.svg" class="img-fluid filter-img-white" alt="setting" width="20">
+              <img src="assets/images/icons/header/setting.svg" class="img-fluid" alt="setting" width="20">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <div class="setting-card">
@@ -71,15 +70,17 @@
             </div>
           </div> -->
 
-          <img routerLink="home/mobile-applications" src="assets/images/icons/header/mobile.svg" class="img-fluid filter-img-white cursor-pointer" alt="mobile" width="14">
-          <img routerLink="home/contact-us" src="assets/images/icons/header/maps.svg" class="img-fluid filter-img-white cursor-pointer" alt="maps" width="16">
+          <img routerLink="home/mobile-applications" src="assets/images/icons/header/mobile.svg"
+            class="img-fluid cursor-pointer" alt="mobile" width="14">
+          <img routerLink="home/contact-us" src="assets/images/icons/header/maps.svg" class="img-fluid cursor-pointer"
+            alt="maps" width="16">
 
           <!--<img src="assets/images/icons/header/language.svg" alt="language" width="18">-->
 
           <div class="dropdown languages">
             <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <img src="assets/images/icons/header/language.svg" class="img-fluid filter-img-white" alt="languages" width="20">
+              <img src="assets/images/icons/header/language.svg" class="img-fluid" alt="languages" width="20">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLanguages">
               <a class="dropdown-item" (click)="onChangeLang()">
@@ -95,7 +96,7 @@
 
           <div class="logo me-3">
             <a href="https://www.vision2030.gov.sa/ar/" target="_blank">
-              <img src="assets/images/icons/logo-2.svg" class="img-fluid filter-img-white mx-0" alt="logo" width="55">
+              <img src="assets/images/icons/logo-2.svg" class="img-fluid mx-0" alt="logo" width="55">
             </a>
           </div>
         </div>
@@ -114,92 +115,61 @@
 
       <div class="logo">
         <a [routerLink]="['/']" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
-          <img src="assets/images/logo.svg" alt="logo" class="img-fluid" />
+          <img src="assets/images/dimah-logo.png" alt="logo" class="img-fluid" />
         </a>
       </div>
 
       <div class="navbar-collapse collapse" id="mainMenuCollapse">
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-          <li class="nav-item dropdown dropdown-sub">
-            <a class="nav-link sub-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <!-- {{ 'header.aboutTheEmirate' | translate }} -->
-              الإمارة
-            </a>
-            <ul class="nav-dropdown dropdown-menu">
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/aboutus" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">عن الإمارة</a>
-              </li>
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/region-princes" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أمراء المنطقة</a>
-              </li>
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/governorate-show" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">محافظات المنطقة</a>
-              </li>
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/organization" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">الهيكل التنظيمي</a>
-              </li>
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/women-section" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">القسم النسوي</a>
-              </li>
-            </ul>
-          </li>
-
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/home/services-list']" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
-              <!-- {{ 'header.lordsOfTheRegion' | translate }} -->
-              الخدمات الإلكترونية
-            </a>
+            <a class="nav-link" routerLink="/home" routerLinkActive="active" data-bs-toggle="collapse"
+               data-bs-target="#mainMenuCollapse">{{ 'homePage' | translate }}</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" routerLink="/home/services-guide" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
-              <!-- {{ 'header.provinces' | translate }} -->
-              دليل اجراءات الخدمات
+            <a class="nav-link" routerLink="/latest-news" routerLinkActive="active" data-bs-toggle="collapse"
+              data-bs-target="#mainMenuCollapse">
+              آخر الأخبار
             </a>
-          </li>
-
-          <li class="nav-item dropdown dropdown-sub">
-            <a class="nav-link dropdown-toggle sub-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <!-- {{ 'header.electronicServices' | translate }} -->
-              المركز الإعلامي
-            </a>
-            <ul class="nav-dropdown dropdown-menu">
-              <li>
-                <a class="nav-link dropdown-item" routerLink="/home/latest-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أخر الأخبار</a>
-              </li>
-              <li>
-                <a class="nav-link dropdown-item" routerLink="home/governorate-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">أخبار المحافظات</a>
-              </li>
-              <li>                                                                                 
-                <a class="nav-link dropdown-item" routerLink="home/reports-news" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">التقارير الاعلامية</a>
-              </li>
-              <li>                                                                                 
-                <a class="nav-link dropdown-item" routerLink="home/auctions" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">الإعلانات والمزادات والمناقصات</a>
-              </li>
-            </ul>
-          </li>
-
+          </li> 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/open-data" routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#mainMenuCollapse">
-              <span>البيانات المفتوحة</span>
-
-              <!-- <img src="./assets/images/icons/header/open.svg" alt="" class="ic-open-data"> -->
-              <!-- {{ 'header.openData' | translate }} -->
+            <a class="nav-link" routerLink="/charity-project" routerLinkActive="active" data-bs-toggle="collapse"
+              data-bs-target="#mainMenuCollapse">
+              أبواب الخير
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/projects" routerLinkActive="active" data-bs-toggle="collapse"
+              data-bs-target="#mainMenuCollapse">
+              المشاريع
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" data-bs-toggle="collapse"
+              data-bs-target="#mainMenuCollapse">
+              عن ديما
             </a>
           </li>
         </ul>
+      </div>
 
-        <a routerLink="/auth/login" class="btn px-0 text-primary-2 me-auto pe-3 justify-content-start" *ngIf="!isAuthenticated">
+      <div class="d-flex align-items-center me-auto">
+        <a class="cart-notification active" routerLink="/cart">
+          <img src="assets/images/icons/png/cart.png" class="img-fluid" alt="icon" width="24px" />
+          <div class="cart-number">0</div>
+        </a>
+
+        <a routerLink="/auth/login" class="btn px-0 text-primary me-auto pe-3 justify-content-start"
+          *ngIf="!isAuthenticated">
           <i class="fa fa-user fa-20 ms-2"></i>
-          <span class="fa-14">تسجيل الدخول</span>
+          <span class="fa-14 d-sm-block d-none">تسجيل الدخول</span>
         </a>
       </div>
 
-      <div class="dropdown topnav-user" *ngIf="isAuthenticated">
+      <div class="dropdown topnav-user me-3" *ngIf="isAuthenticated">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuUserOptions" data-bs-toggle="dropdown"
           aria-expanded="false">
           <img src="/assets/images/businessman.png" alt="avatar" width="40" *ngIf="userInfo.image == null">
-        <img [src]="userInfo.image?.base64File" alt="avatar" width="40" *ngIf="userInfo.image != null">
+          <img [src]="userInfo.image?.base64File" alt="avatar" width="40" *ngIf="userInfo.image != null">
           <span class="text">أهلاً</span> <span> {{userInfo.fullName}}</span>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuUserOptions">
@@ -221,23 +191,6 @@
           </a>
         </div>
       </div>
-
-      <!--<div class="dropdown topnav-user" *ngIf="!isAuthenticated">
-      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="./assets/images/header/user-img.svg" alt="" width="40">
-        <span> </span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <a routerLink="/auth/login" class="dropdown-item">
-          <i class="fa fa-user"></i>
-          تسجيل الدخول
-        </a>
-        <a class="dropdown-item">
-          <i class="fa fa-arrow-right-from-bracket"></i>
-          إنشاء حساب جديد
-        </a>
-      </div>
-    </div>-->
     </div>
   </nav>
 

@@ -95,12 +95,48 @@ body {
 }
 
 .section-title {
-  font-size: 26px;
-  font-weight: 600;
-  color: $dark;
-  border-right: 4px solid $Primary-1;
-  padding-right: 16px;
-  margin-bottom: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .title {
+    font-size: 22px;
+    font-weight: 600;
+    color: $Primary-1;
+    margin-bottom: 0px;
+    line-height: 32px;
+  }
+
+  .more {
+    a {
+      font-size: 0.8rem;
+      color: rgba($color: $dark, $alpha: 0.6);
+      font-weight: 400;
+
+      i {
+        font-size: 1rem;
+        color: rgba($color: $dark, $alpha: 0.6);
+        margin-inline-start: 8px;
+        vertical-align: middle;
+      }
+
+      &:hover {
+      color: rgba($color: $dark, $alpha: 0.8);
+      }
+    }
+  }
+
+  html[dir="ltr"] &,
+  html[lang="en"] & {
+    .more {
+      a {
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
 }
 
 .form-card {
@@ -309,13 +345,6 @@ html[lang="en"] {
         }
       }
     }
-  }
-
-  .section-title {
-    border-left: 4px solid $Primary-1;
-    border-right: 0px;
-    padding-left: 16px;
-    padding-right: 0px;
   }
 
   p-rating {

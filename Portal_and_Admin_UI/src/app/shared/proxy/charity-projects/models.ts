@@ -2,7 +2,7 @@
 export interface CreateCharityProjectDto {
   nameAr: string;
   nameEn: string;
-  charityId: number;
+  charityId: string;
   projectTypeId: number;
   descriptionAr: string;
   descriptionEn: string;
@@ -13,10 +13,10 @@ export interface CreateCharityProjectDto {
 }
 
 export interface UpdateCharityProjectDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
-  charityId: number;
+  charityId: string;
   projectTypeId: number;
   descriptionAr: string;
   descriptionEn: string;
@@ -27,10 +27,10 @@ export interface UpdateCharityProjectDto {
 }
 
 export interface GetCharityProjectDetailsDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
-  charityId: number;
+  charityId: string;
   charityName: string;
   projectTypeId: number;
   projectTypeName: string;
@@ -43,7 +43,7 @@ export interface GetCharityProjectDetailsDto {
 }
 
 export interface GetCharityProjectListDto {
-  id: number;
+  id: string;
   nameAr: string;
   nameEn: string;
   charityName: string;

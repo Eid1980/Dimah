@@ -58,7 +58,7 @@ export class UserRoleAddComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.showConfirm(this.globalService.translate('global.messages.deleteMessage'));
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
   isconfirm(id: number) {

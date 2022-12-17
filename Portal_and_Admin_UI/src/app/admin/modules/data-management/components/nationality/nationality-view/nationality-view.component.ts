@@ -10,7 +10,7 @@ import { GlobalService } from '@shared/services/global.service';
 })
 export class NationalityViewComponent implements OnInit {
   id: number;
-  nationalityDetailsDto = {} as GetNationalityDetailsDto;
+  detailsDto = {} as GetNationalityDetailsDto;
 
   constructor(private nationalityService: NationalityService,
     private globalService: GlobalService, private activatedRoute: ActivatedRoute) {
@@ -26,7 +26,7 @@ export class NationalityViewComponent implements OnInit {
 
   getDetails() {
     this.nationalityService.getById(this.id).subscribe((response) => {
-      this.nationalityDetailsDto = response.data;
+      this.detailsDto = response.data;
     });
   }
 }

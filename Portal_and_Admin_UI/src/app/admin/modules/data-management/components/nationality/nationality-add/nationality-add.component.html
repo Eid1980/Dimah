@@ -1,11 +1,11 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/nationality-list']">الجنسيات</a>
     <span class="breadcrumb-item fs-16 active">إضافة جنسية جديدة</span>
   </nav>
 </div>
-<form [formGroup]="createNationalityForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
       <h5>إضافة جنسية جديدة</h5>
@@ -13,20 +13,20 @@
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-6">
-          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <label for="nameAr" class="form-lbl">{{ 'global.lables.nameAr' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
-              invalid: (isFormSubmitted || createNationalityForm.get('nameAr').touched) &&
-                createNationalityForm.get('nameAr').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || createNationalityForm.get('nameAr').touched) && createNationalityForm.get('nameAr').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+              invalid: (isFormSubmitted || createForm.get('nameAr').touched) &&
+                createForm.get('nameAr').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || createForm.get('nameAr').touched) && createForm.get('nameAr').errors?.required"
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <label for="nameEn" class="form-lbl">{{ 'global.lables.nameEn' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
-              invalid: (isFormSubmitted || createNationalityForm.get('nameEn').touched) &&
-                createNationalityForm.get('nameEn').errors?.required}" />
-          <small *ngIf="(isFormSubmitted || createNationalityForm.get('nameEn').touched) && createNationalityForm.get('nameEn').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+              invalid: (isFormSubmitted || createForm.get('nameEn').touched) &&
+                createForm.get('nameEn').errors?.required}" />
+          <small *ngIf="(isFormSubmitted || createForm.get('nameEn').touched) && createForm.get('nameEn').errors?.required"
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
           <label for="code" class="form-lbl">كود الجنسية</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group col-6">
           <label class="container-check">
-            فعال
+            {{'global.lables.active' | translate}}
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">حفظ</button>
-    <a [routerLink]="['/admin/data-management/nationality-list']" class="btn btn-cancel">رجوع</a>
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.save' | translate }}</button>
+    <a [routerLink]="['/admin/data-management/nationality-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
   </div>
 </form>

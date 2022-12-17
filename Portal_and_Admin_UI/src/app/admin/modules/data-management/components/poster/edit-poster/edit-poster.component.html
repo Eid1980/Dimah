@@ -1,0 +1,68 @@
+
+<div class="d-lg-flex justify-content-between align-items-center bread-container">
+  <nav class="breadcrumb m-0 p-0 bg-transparent">
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
+    <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/poster-list']">الإعلانات</a>
+    <span class="breadcrumb-item fs-16 active">تعديل الإعلان</span>
+  </nav>
+</div>
+
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+  <div class="form-card">
+    <div class="form-header">
+      <h5>تعديل الإعلان</h5>
+    </div>
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6">
+          <label for="titleAr" class="form-lbl">العنوان عربي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="titleAr" id="titleAr" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('titleAr').touched) && updateForm.get('titleAr').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('titleAr').touched) && updateForm.get('titleAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="titleEn" class="form-lbl">العنوان إنجليزي<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="titleEn" id="titleEn" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('titleEn').touched) && updateForm.get('titleEn').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('titleEn').touched) && updateForm.get('titleEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="order" class="form-lbl">الترتيب<span class="danger">*</span></label>
+          <input type="text" class="form-control" formControlName="order" id="order" [ngClass]="{
+              invalid:
+                (isFormSubmitted || updateForm.get('order').touched) && updateForm.get('order').errors?.required
+            }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('order').touched) && updateForm.get('order').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="" class="form-lbl">تحميل الصورة<span class="danger">*</span></label>
+          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                        (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
+                        [accept]="acceptType" [maxFileSize]="fileSize">
+          </p-fileUpload>
+          <span class="danger">{{ 'global.lables.fileSize' | translate }} ({{ fileSize/1024/1024 | number }}) {{ 'global.lables.mega' | translate }}</span><br />
+          <span class="danger">{{ 'global.lables.fileExtentions' | translate }} ({{ acceptType }})</span>
+          <small *ngIf="(isFormSubmitted || updateForm.get('image').touched) && updateForm.get('image').errors?.required" class="danger">هذاالحقل مطلوب</small>
+        </div>
+        <div class="form-group col-6">
+          <label class="container-check">
+            {{'global.lables.active' | translate}}
+            <input formControlName="isActive" type="checkbox" id="isActive" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="form-group col-6" *ngIf="updateDto?.imageName">
+          <img [src]="['/assets/images/uploads/posters/'+updateDto?.imageName]" [alt]="updateDto?.titleEn" style="width: 100%; height: 200px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.save' | translate }}</button>
+    <a [routerLink]="['/admin/data-management/poster-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
+  </div>
+</form>

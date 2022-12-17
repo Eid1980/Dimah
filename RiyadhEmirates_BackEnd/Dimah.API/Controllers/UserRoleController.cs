@@ -25,7 +25,7 @@ namespace Dimah.API.Controllers
         }
 
         [HttpGet("GetRolesByUserId/{userId}")]
-        public IApiResponse GetRolesByUserId(int userId)
+        public IApiResponse GetRolesByUserId(Guid userId)
         {
             return _userRoleService.GetRolesByUserId(userId);
         }
@@ -37,7 +37,7 @@ namespace Dimah.API.Controllers
         }
 
         [HttpDelete("Delete/{id}")]
-        public IApiResponse Delete(int id)
+        public IApiResponse Delete(Guid id)
         {
             return _userRoleService.Delete(id);
         }

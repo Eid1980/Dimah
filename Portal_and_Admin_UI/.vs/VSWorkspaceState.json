@@ -7,12 +7,11 @@
     "\\src\\app\\admin\\modules",
     "\\src\\app\\admin\\modules\\data-management",
     "\\src\\app\\admin\\modules\\data-management\\components",
-    "\\src\\app\\admin\\modules\\data-management\\components\\charity",
     "\\src\\app\\admin\\modules\\data-management\\components\\charity\\charity-list",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\proxy",
     "\\src\\app\\shared\\proxy\\charities"
   ],
-  "SelectedNode": "\\src\\app\\admin\\modules\\navigation",
+  "SelectedNode": "\\src\\index.html",
   "PreviewInSolutionExplorer": false
 }
