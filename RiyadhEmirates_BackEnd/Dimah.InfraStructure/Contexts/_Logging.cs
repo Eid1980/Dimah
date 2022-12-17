@@ -10,7 +10,7 @@ namespace Dimah.InfraStructure.Contexts
         const string LastModifiedByProperty = "LastModifiedBy";
         const string LastModifiedAtProperty = "LastModifiedDate";
 
-        public static void ApplyAudit(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry entityEntry, int UserId)
+        public static void ApplyAudit(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry entityEntry, Guid UserId)
         {
             var type = entityEntry.Entity.GetType();
             if (entityEntry.State == EntityState.Added)

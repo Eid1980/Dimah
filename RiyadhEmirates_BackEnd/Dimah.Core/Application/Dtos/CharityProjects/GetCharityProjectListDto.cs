@@ -3,7 +3,7 @@ namespace Dimah.Core.Application.Dtos
 {
     public class GetCharityProjectListDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public string CharityName { get; set; }

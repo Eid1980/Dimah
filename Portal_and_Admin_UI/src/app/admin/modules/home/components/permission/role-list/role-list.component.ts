@@ -37,12 +37,12 @@ export class RoleListComponent implements OnInit {
       Url: this.roleService.serviceUrl,
 
       cols: [
-        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'nameAr', Header: 'الاسم عربي' },
-        { Field: 'nameEn', Header: 'الاسم انجليزي' },
+        { Field: 'id', Header: this.globalService.translate('global.lables.code'), Searchable: false, Hidden: true },
+        { Field: 'nameAr', Header: this.globalService.translate('global.lables.nameAr') },
+        { Field: 'nameEn', Header: this.globalService.translate('global.lables.nameEn') },
         {
           Field: 'isActive',
-          Header: 'الحالة',
+          Header: this.globalService.translate('global.lables.status'),
           Searchable: false,
           Sortable: false,
           Type: ColumnType.Status,
@@ -50,7 +50,7 @@ export class RoleListComponent implements OnInit {
         },
         {
           Field: 'Action',
-          Header: 'الإجراءات',
+          Header: this.globalService.translate('global.lables.actions'),
           Searchable: false,
           Type: ColumnType.Action,
         },
@@ -58,14 +58,14 @@ export class RoleListComponent implements OnInit {
 
       actions: [
         {
-          title: 'تعديل',
+          title: this.globalService.translate('global.buttons.update'),
           routerLink: '/admin/home/role-edit',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.Edit,
           buttonIcon: ActionButtonIcon.Edit,
         },
         {
-          title: 'التفاصيل',
+          title: this.globalService.translate('global.buttons.details'),
           routerLink: '/admin/home/role-view',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.View,
@@ -78,7 +78,7 @@ export class RoleListComponent implements OnInit {
           buttonIcon: ActionButtonIcon.Users,
         },
         //{
-        //  title: 'حذف',
+        //  title: this.globalService.translate('global.buttons.delete'),
         //  FuncName: (id) => this.delete(id),
         //  buttonclass: ActionButtonClass.Delete,
         //  buttonIcon: ActionButtonIcon.Delete,
@@ -109,7 +109,7 @@ export class RoleListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.showConfirm(this.globalService.translate('global.messages.deleteMessage'));
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
   isconfirm(id: number) {

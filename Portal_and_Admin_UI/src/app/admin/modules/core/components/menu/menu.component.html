@@ -4,8 +4,35 @@
       <li class="sidebar-list-item">
         <a class="sidebar-list-link" routerLink="/admin/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           <i class="fa-solid fa-house"></i>
-          <span>الرئيسية</span>
+          <span>{{ 'homePage' | translate }}</span>
         </a>
+      </li>
+
+      <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(settingPermission)">
+        <h2 class="accordion-header" id="headingEmirate">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseEmirate" aria-expanded="true" aria-controls="collapseEmirate">
+            <i class="fa-solid fa-font-awesome"></i>
+            <span>{{ 'dimah' | translate }}</span>
+          </button>
+        </h2>
+        <div id="collapseEmirate" class="accordion-collapse collapse" aria-labelledby="headingEmirate"
+             data-bs-parent="#accordionSidemenu">
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/poster-list" routerLinkActive="active">
+                  <span>{{ 'adminMenue.posters' | translate }}</span>
+                </a>
+              </li>
+              <li class="accordion-list-item">
+                <a class="accordion-list-link" routerLink="/admin/data-management/edit-about-us" routerLinkActive="active">
+                  <span>{{ 'adminMenue.aboutDimah' | translate }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </li>
 
       <li class="accordion-item" *ngIf="roles?.includes(superSystemAdmin) || roles?.includes(systemAdmin) || roles?.includes(settingPermission)">
@@ -13,7 +40,7 @@
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
             <i class="fa-solid fa-gear"></i>
-            <span class="nav-label">الاعدادات</span>
+            <span class="nav-label">{{ 'adminMenue.settings' | translate }}</span>
           </button>
         </h2>
         <div id="collapseSettings" class="accordion-collapse collapse" aria-labelledby="headingSettings"
@@ -22,32 +49,27 @@
             <ul class="accordion-list">
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/home/contact-us-message-list" routerLinkActive="active">
-                  <span>طلبات تواصل معنا</span>
-                </a>
-              </li>
-              <li class="accordion-list-item">
-                <a class="accordion-list-link" routerLink="/admin/home/open-data-request-list" routerLinkActive="active">
-                  <span>طلبات البيانات المفتوحة</span>
+                  <span>{{ 'adminMenue.contactUsRequests' | translate }}</span>
                 </a>
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/nationality-list" routerLinkActive="active">
-                  <span>الجنسيات</span>
+                  <span>{{ 'adminMenue.nationalities' | translate }}</span>
                 </a>
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/charity-list" routerLinkActive="active">
-                  <span>الجهات</span>
+                  <span>{{ 'adminMenue.charities' | translate }}</span>
                 </a>
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/charity-project-list" routerLinkActive="active">
-                  <span>المشاريع</span>
+                  <span>{{ 'adminMenue.projects' | translate }}</span>
                 </a>
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/data-management/project-type-list" routerLinkActive="active">
-                  <span>انواع المشاريع</span>
+                  <span>{{ 'adminMenue.projectTypes' | translate }}</span>
                 </a>
               </li>
             </ul>
@@ -60,7 +82,7 @@
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">
             <i class="fa-solid fa-users"></i>
-            <span class="nav-label">الصلاحيات</span>
+            <span class="nav-label">{{ 'adminMenue.permissions' | translate }}</span>
           </button>
         </h2>
         <div id="collapsePermissions" class="accordion-collapse collapse" aria-labelledby="headingPermissions"
@@ -69,12 +91,12 @@
             <ul class="accordion-list">
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/home/user-list" routerLinkActive="active">
-                  <span>المستخدمون</span>
+                  <span>{{ 'adminMenue.users' | translate }}</span>
                 </a>
               </li>
               <li class="accordion-list-item">
                 <a class="accordion-list-link" routerLink="/admin/home/role-list" routerLinkActive="active">
-                  <span>الصلاحيات</span>
+                  <span>{{ 'adminMenue.roles' | translate }}</span>
                 </a>
               </li>
             </ul>

@@ -1,0 +1,35 @@
+<div class="ser-bg">
+  <div class="ser-bread">
+    <nav class="breadcrumb m-0 bg-transparent">
+      <div class="container d-flex align-items-center">
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
+        <span class="breadcrumb-item fs-16 active">أبواب الخير</span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center flex-wrap mb-5">
+      <h3 class="text-primary fw-bold mb-0 my-2">أبواب الخير</h3>
+      <div class="me-auto my-2">
+        <div class="input-group border rounded-4 overflow-hidden">
+          <input type="text" class="form-control bg-white bg-opacity-75 border-0 ps-3" placeholder="بحث فى أبواب الخير" aria-describedby="searchButton" />
+          <button class="btn bg-white bg-opacity-75 px-3 rounded-0" type="button" id="searchButton">
+            <img src="assets/images/icons/svg/search.svg" class="img-fluid" alt="icon" width="24px" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row px-md-4">
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let charityProject of charityProjects">
+      <a class="card-bg mxw-240 mb-3 mx-auto" [routerLink]="['/project-details' , charityProject?.id]">
+        <div class="card-overlay" [style.background-image]="'url('+'/assets/images/uploads/projectTypes/'+charityProject?.projectTypeImageName+')'"></div>
+        <h4>{{charityProject?.projectName}}</h4>
+      </a>
+    </div>
+  </div>
+</div>

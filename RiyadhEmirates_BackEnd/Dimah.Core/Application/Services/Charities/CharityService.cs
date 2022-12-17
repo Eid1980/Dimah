@@ -1,15 +1,13 @@
 ﻿using AutoMapper.QueryableExtensions;
-using Dimah.Core.Application.CustomExceptions;
 using Dimah.Core.Application.Dtos;
 using Dimah.Core.Application.Dtos.Search;
-using Dimah.Core.Application.DynamicSearch;
-using Dimah.Core.Application.Interfaces.Helpers;
 using Dimah.Core.Application.Response;
 using Dimah.Core.Domain.Entities;
 using X.PagedList;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Dimah.Core.Domain.IRepositories;
+using Dimah.Core.Application.Shared;
 
 namespace Dimah.Core.Application.Services.Charities
 {
@@ -25,7 +23,7 @@ namespace Dimah.Core.Application.Services.Charities
             _mapConfig = mapper.ConfigurationProvider;
         }
 
-        public IApiResponse GetById(int id)
+        public IApiResponse GetById(Guid id)
         {
             var charity = _dimahUnitOfWork.Repository<Charity>().Where(i => i.Id == id).Include(x => x.CharityProjects).ThenInclude((y => y.ProjectType)).FirstOrDefault();
             if (charity == null)
@@ -77,7 +75,7 @@ namespace Dimah.Core.Application.Services.Charities
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
         }
-        public IApiResponse ChangeStatus(int id)
+        public IApiResponse ChangeStatus(Guid id)
         {
             var charity = _dimahUnitOfWork.Repository<Charity>().FirstOrDefault(n => n.Id == id);
             if (charity == null)
@@ -87,7 +85,7 @@ namespace Dimah.Core.Application.Services.Charities
             _dimahUnitOfWork.ContextSaveChanges();
             return GetResponse();
         }
-        public IApiResponse Delete(int id)
+        public IApiResponse Delete(Guid id)
         {
             var charity = _dimahUnitOfWork.Repository<Charity>().FirstOrDefault(n => n.Id == id, x => x.CharityProjects);
             if (charity == null)
@@ -103,7 +101,7 @@ namespace Dimah.Core.Application.Services.Charities
         public IApiResponse GetLookupList()
         {
             return GetResponse(data: _dimahUnitOfWork.Repository<Charity>().Where(l => l.IsActive).Select(item =>
-            new LookupDto<int>
+            new LookupDto<Guid>
             {
                 Id = item.Id,
                 Name = item.NameAr

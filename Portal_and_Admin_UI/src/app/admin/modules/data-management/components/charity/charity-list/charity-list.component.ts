@@ -37,13 +37,13 @@ export class CharityListComponent implements OnInit {
       Url: this.charityService.serviceUrl,
 
       cols: [
-        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
-        { Field: 'nameAr', Header: 'الاسم عربي' },
-        { Field: 'nameEn', Header: 'الاسم انجليزي' },
+        { Field: 'id', Header: this.globalService.translate('global.lables.code'), Searchable: false, Hidden: true },
+        { Field: 'nameAr', Header: this.globalService.translate('global.lables.nameAr') },
+        { Field: 'nameEn', Header: this.globalService.translate('global.lables.nameEn') },
         { Field: 'phoneNumber', Header: 'رقم الجوال' },
         {
           Field: 'isActive',
-          Header: 'الحالة',
+          Header: this.globalService.translate('global.lables.status'),
           Searchable: false,
           Sortable: false,
           Type: ColumnType.Status,
@@ -51,7 +51,7 @@ export class CharityListComponent implements OnInit {
         },
         {
           Field: 'Action',
-          Header: 'الإجراءات',
+          Header: this.globalService.translate('global.lables.actions'),
           Searchable: false,
           Type: ColumnType.Action,
         },
@@ -66,14 +66,14 @@ export class CharityListComponent implements OnInit {
           buttonIcon: ActionButtonIcon.Add,
         },
         {
-          title: 'تعديل',
+          title: this.globalService.translate('global.buttons.update'),
           routerLink: '/admin/data-management/charity-edit',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.Edit,
           buttonIcon: ActionButtonIcon.Edit,
         },
         {
-          title: 'التفاصيل',
+          title: this.globalService.translate('global.buttons.details'),
           routerLink: '/admin/data-management/charity-view',
           IsQueryParams: true,
           buttonclass: ActionButtonClass.View,
@@ -86,7 +86,7 @@ export class CharityListComponent implements OnInit {
           buttonIcon: ActionButtonIcon.Roles,
         },
         {
-          title: 'حذف',
+          title: this.globalService.translate('global.buttons.delete'),
           FuncName: (id) => this.delete(id),
           buttonclass: ActionButtonClass.Delete,
           buttonIcon: ActionButtonIcon.Delete,
@@ -95,7 +95,7 @@ export class CharityListComponent implements OnInit {
     };
   }
 
-  previewCharityProjects(id: number) {
+  previewCharityProjects(id: string) {
     if (id) {
       this.charityProjectService.getByCharityId(id).subscribe((response) => {
         this.charityProjects = response.data;
@@ -108,7 +108,7 @@ export class CharityListComponent implements OnInit {
     this.showRolesDialog = false;
   }
 
-  changeStatus(id: number, e: any) {
+  changeStatus(id: string, e: any) {
     this.charityService.changeStatus(id).subscribe((result) => {
       if (result.isSuccess) {
         this.list.getData();
@@ -116,11 +116,11 @@ export class CharityListComponent implements OnInit {
     });
   }
 
-  delete(id: number) {
-    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+  delete(id: string) {
+    this.globalService.showConfirm(this.globalService.translate('global.messages.deleteMessage'));
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
-  isconfirm(id: number) {
+  isconfirm(id: string) {
     this.charityService.delete(id).subscribe((result) => {
       if (result.isSuccess) {
         this.globalService.clearMessages();

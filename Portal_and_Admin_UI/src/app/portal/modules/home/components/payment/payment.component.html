@@ -2,7 +2,7 @@
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
       <div class="container d-flex align-items-center">
-        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
         <a class="breadcrumb-item" [routerLink]="['/cart']">سلة الخير</a>
         <span class="breadcrumb-item fs-16 active">الدفع</span>
       </div>
@@ -23,21 +23,13 @@
       <div class="border bg-white rounded-26 shadow-box overflow-hidden mb-5">
         <div class="bg-primary p-4 d-flex align-items-center justify-content-between">
           <h6 class="fa-18 fw-bold mb-0 text-white">المبلغ المطلوب</h6>
-          <p class="fa-18 mb-0 text-white"><span>150</span> ر.س</p>
+          <p class="fa-18 mb-0 text-white"><span>{{totlalChart}}</span> ر.س</p>
         </div>
 
         <div class="p-4 pb-2">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h6 class="fa-16 fw-bold mb-0">سقيا الماء</h6>
-            <p class="fa-16 mb-0"><span>50</span> ر.س</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h6 class="fa-16 fw-bold mb-0">زواج أرامل</h6>
-            <p class="fa-16 mb-0"><span>50</span> ر.س</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h6 class="fa-16 fw-bold mb-0">إفطار صائم</h6>
-            <p class="fa-16 mb-0"><span>50</span> ر.س</p>
+          <div class="d-flex align-items-center justify-content-between mb-3" *ngFor="let currentChartitem of currentChartListDto">
+            <h6 class="fa-16 fw-bold mb-0">{{currentChartitem.charityProjectName}}</h6>
+            <p class="fa-16 mb-0"><span>{{currentChartitem.donationTotal}}</span> ر.س</p>
           </div>
         </div>
       </div>
@@ -129,7 +121,7 @@
               </div>
     
               <div class="px-4 pb-4 pt-4">
-                <button class="btn btn-primary w-100" routerLink="/payment-result">إتمام عملية التبرع</button>
+                <button class="btn btn-primary w-100" (click)="finishPayment()">إتمام عملية التبرع</button>
               </div>
             </div>
 

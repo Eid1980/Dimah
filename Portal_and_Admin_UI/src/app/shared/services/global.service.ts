@@ -9,6 +9,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import * as CryptoTS from 'crypto-ts';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,19 @@ import * as CryptoTS from 'crypto-ts';
 export class GlobalService {
   cryptionKey: string = environment.cryptionKey ? environment.cryptionKey : 'Emirates@2023';
 
-  constructor(private titleService: Title, private messageService: MessageService, private router: Router) { }
+  constructor(private titleService: Title, private messageService: MessageService,
+    private translateService: TranslateService, private router: Router)
+  {
+  }
 
   public setTitle(newTitle: string) {
-    this.titleService.setTitle('ديما | ' + newTitle);
+    this.titleService.setTitle(this.translateService.instant('dimah') + ' | ' + newTitle);
   }
   public setAdminTitle(newTitle: string) {
-    this.titleService.setTitle('لوحة التحكم | ' + newTitle);
+    this.titleService.setTitle(this.translateService.instant('controlPanel') + ' | ' + newTitle);
+  }
+  translate(key: string): any {
+    return this.translateService.instant(key);
   }
 
   //#region Messaging

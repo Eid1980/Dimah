@@ -1,12 +1,12 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/data-management/charity-project-list']">المشاريع</a>
     <span class="breadcrumb-item fs-16 active">تعديل بيانات المشروع</span>
   </nav>
 </div>
 
-<form [formGroup]="updateCharityProjectForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
   <div class="form-card">
     <div class="form-header">
       <h5>إضافة مشروع جديد</h5>
@@ -14,34 +14,34 @@
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-6">
-          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <label for="nameAr" class="form-lbl">{{ 'global.lables.nameAr' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
-              invalid: (isFormSubmitted || updateCharityProjectForm.get('nameAr').touched) && updateCharityProjectForm.get('nameAr').errors?.required }" />
-          <small *ngIf="(isFormSubmitted || updateCharityProjectForm.get('nameAr').touched) && updateCharityProjectForm.get('nameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              invalid: (isFormSubmitted || updateForm.get('nameAr').touched) && updateForm.get('nameAr').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('nameAr').touched) && updateForm.get('nameAr').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <label for="nameEn" class="form-lbl">{{ 'global.lables.nameEn' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
-              invalid: (isFormSubmitted || updateCharityProjectForm.get('nameEn').touched) && updateCharityProjectForm.get('nameEn').errors?.required }" />
-          <small *ngIf="(isFormSubmitted || updateCharityProjectForm.get('nameEn').touched) && updateCharityProjectForm.get('nameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              invalid: (isFormSubmitted || updateForm.get('nameEn').touched) && updateForm.get('nameEn').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('nameEn').touched) && updateForm.get('nameEn').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
           <label for="charityId" class="form-lbl">الجهة<span class="danger">*</span></label>
           <select class="form-control form-select" formControlName="charityId" [ngClass]="{
-              invalid: (isFormSubmitted || updateCharityProjectForm.get('charityId').touched) && updateCharityProjectForm.get('charityId').errors?.required }">
+              invalid: (isFormSubmitted || updateForm.get('charityId').touched) && updateForm.get('charityId').errors?.required }">
             <option [ngValue]="null">-- اختر الجهة --</option>
             <option *ngFor="let charity of charities" [ngValue]="charity.id">{{ charity.name }}</option>
           </select>
-          <small *ngIf="(isFormSubmitted || updateCharityProjectForm.get('charityId').touched) && updateCharityProjectForm.get('charityId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateForm.get('charityId').touched) && updateForm.get('charityId').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
           <label for="projectTypeId" class="form-lbl">نوع المشروع<span class="danger">*</span></label>
           <select class="form-control form-select" formControlName="projectTypeId" [ngClass]="{
-              invalid: (isFormSubmitted || updateCharityProjectForm.get('projectTypeId').touched) && updateCharityProjectForm.get('projectTypeId').errors?.required }">
+              invalid: (isFormSubmitted || updateForm.get('projectTypeId').touched) && updateForm.get('projectTypeId').errors?.required }">
             <option [ngValue]="null">-- اختر نوع المشروع --</option>
             <option *ngFor="let projectType of projectTypes" [ngValue]="projectType.id">{{ projectType.name }}</option>
           </select>
-          <small *ngIf="(isFormSubmitted || updateCharityProjectForm.get('projectTypeId').touched) && updateCharityProjectForm.get('projectTypeId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+          <small *ngIf="(isFormSubmitted || updateForm.get('projectTypeId').touched) && updateForm.get('projectTypeId').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
           <label for="descriptionAr" class="form-lbl">الوصف عربي</label>
@@ -54,29 +54,29 @@
         <div class="form-group col-md-6">
           <label for="projectCost" class="form-lbl">تكلفة المشروع<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="projectCost" id="projectCost" [ngClass]="{
-              invalid: (isFormSubmitted || updateCharityProjectForm.get('projectCost').touched) && updateCharityProjectForm.get('projectCost').errors?.required }" />
-          <small *ngIf="(isFormSubmitted || updateCharityProjectForm.get('projectCost').touched) && updateCharityProjectForm.get('projectCost').errors?.required" class="danger">هذاالحقل مطلوب</small>
+              invalid: (isFormSubmitted || updateForm.get('projectCost').touched) && updateForm.get('projectCost').errors?.required }" />
+          <small *ngIf="(isFormSubmitted || updateForm.get('projectCost').touched) && updateForm.get('projectCost').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
           <label for="projectLocation" class="form-lbl">موقع المشروع</label>
           <input type="text" class="form-control" autocomplete="off" formControlName="projectLocation" id="projectLocation" />
         </div>
         <div class="form-group col-md-6">
-          <label for="" class="form-lbl">تحميل الصورة</label>
-          <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+          <label for="" class="form-lbl">{{ 'global.lables.uploadImage' | translate }}</label>
+          <p-fileUpload #uploader chooseLabel="{{ 'global.lables.uploadImage' | translate }}" [auto]="true" [customUpload]="isCustomUpload"
                         (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" [multiple]="isMultiple" mode="advanced"
                         [accept]="acceptType" [maxFileSize]="fileSize">
           </p-fileUpload>
         </div>
         <div class="form-group col-6">
           <label class="container-check">
-            فعال
+            {{'global.lables.active' | translate}}
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
         </div>
-        <div class="form-group col-6" *ngIf="updateCharityProjectDto?.image">
-          <img [src]="['/assets/images/uploads/projects/'+updateCharityProjectDto?.image]" [alt]="updateCharityProjectDto?.nameEn" style="width: 100%; height: 200px;" />
+        <div class="form-group col-6" *ngIf="updateDto?.image">
+          <img [src]="['/assets/images/uploads/projects/'+updateDto?.image]" [alt]="updateDto?.nameEn" style="width: 100%; height: 200px;" />
         </div>
 
       </div>
@@ -84,7 +84,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">حفظ</button>
-    <a [routerLink]="['/admin/data-management/charity-project-list']" class="btn btn-cancel">رجوع</a>
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.save' | translate }}</button>
+    <a [routerLink]="['/admin/data-management/charity-project-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
   </div>
 </form>

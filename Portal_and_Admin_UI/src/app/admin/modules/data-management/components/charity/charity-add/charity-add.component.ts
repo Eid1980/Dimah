@@ -11,9 +11,9 @@ import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.va
   templateUrl: './charity-add.component.html'
 })
 export class CharityAddComponent implements OnInit {
-  createCharityForm: FormGroup;
+  createForm: FormGroup;
   isFormSubmitted: boolean;
-  createCharityDto = {} as CreateCharityDto;
+  createDto = {} as CreateCharityDto;
 
   constructor(private formBuilder: FormBuilder, private charityService: CharityService,
     private globalService: GlobalService) {
@@ -25,21 +25,21 @@ export class CharityAddComponent implements OnInit {
   }
 
   buildForm() {
-    this.createCharityForm = this.formBuilder.group({
-      nameAr: [this.createCharityDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.createCharityDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email: [this.createCharityDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
-      phoneNumber: [this.createCharityDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, MobileNumberValidator.validateMobileNumber]],
-      address: [this.createCharityDto.address || ''],
-      isActive: [this.createCharityDto.isActive || true, Validators.required]
+    this.createForm = this.formBuilder.group({
+      nameAr: [this.createDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.createDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [this.createDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
+      phoneNumber: [this.createDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, MobileNumberValidator.validateMobileNumber]],
+      address: [this.createDto.address || ''],
+      isActive: [this.createDto.isActive || true, Validators.required]
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.createCharityForm.valid) {
-      this.createCharityDto = { ...this.createCharityForm.value } as CreateCharityDto;
-      this.charityService.create(this.createCharityDto)
+    if (this.createForm.valid) {
+      this.createDto = { ...this.createForm.value } as CreateCharityDto;
+      this.charityService.create(this.createDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

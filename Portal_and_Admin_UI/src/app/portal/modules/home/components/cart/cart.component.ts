@@ -1,94 +1,130 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartItemService } from '@shared/proxy/chart-items/chart-item.service';
+import { GlobalService } from '@shared/services/global.service';
+import { CurrentChartListDto, GetChartItemDetailsDto, UpdateChartItemDto } from '@shared/proxy/chart-items/models';
+import { MessageType } from '@shared/enums/message-type.enum';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  templateUrl: './cart.component.html'
 })
 export class CartComponent implements OnInit {
-  showEditItemsModal: any = false;
-  showDeleteItemsModal: any = false;
+  currentChartListDto = [] as CurrentChartListDto[];
+  totlalChart: number = 0;
 
-  cartItems: any = [
-    {
-      "id": 1,
-      "title": "سقيا الماء",
-      "dailyDonation": 5,
-      "donationPeriod": 5,
-      "totalCost": 25,
-    },
-    {
-      "id": 2,
-      "title": "إطعام",
-      "dailyDonation": 5,
-      "donationPeriod": 5,
-      "totalCost": 25,
-    },
-    {
-      "id": 3,
-      "title": "مساعدة",
-      "dailyDonation": 5,
-      "donationPeriod": 5,
-      "totalCost": 25,
-    }
-  ]
+  operationId: string = '';
+  showEditItemsModal: boolean = false;
+  showDeleteItemsModal: boolean = false;
+  updateForm: FormGroup;
+  updateDto = {} as UpdateChartItemDto;
+  detailsDto = {} as GetChartItemDetailsDto;
+  isFormSubmitted: boolean = false;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private chartItemService: ChartItemService,
+    private globalService: GlobalService)
+  {
+  }
 
   ngOnInit(): void {
+    this.getCurrentChart();
+    this.buildForm();
+  }
+  getCurrentChart() {
+    this.chartItemService.getCurrentChart().subscribe((res) => {
+      this.currentChartListDto = res.data;
+      this.totlalChart = res.data.reduce((accumulator, obj) => {
+        return accumulator + obj.donationTotal;
+      }, 0);
+    });
   }
 
-  increaseProduct(item: any) {
-    let input_item = (item.target).closest(".number-counter").querySelector("input[type='number']");
-    let input_value = Number((input_item).value);
-
-    input_value += 1;
-
-    (input_item).setAttribute('value', input_value);
+  //#region Edit
+  openEditItemModal(id: string) {
+    this.operationId = id;
+    if (this.operationId) {
+      this.getItemDetails();
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء اختيار العنصر الذي تريد تعديله أولا');
+    }
+    this.showEditItemsModal = true;
   }
-
-  decreaseProduct(item: any) {
-    let input_item = (item.target).closest(".number-counter").querySelector("input[type='number']");
-    let input_value = Number((input_item).value);
-
-    if (input_value > 1) {
-      input_value -= 1;
-
-      (input_item).setAttribute('value', input_value);
+  closeEditModal() {
+    this.operationId = '';
+    this.updateDto = {} as UpdateChartItemDto;
+    this.detailsDto = {} as GetChartItemDetailsDto;
+    this.showEditItemsModal = false;
+  }
+  editItem() {
+    if (this.operationId) {
+      this.isFormSubmitted = true;
+      if (this.updateForm.valid) {
+        this.updateDto = { ...this.updateForm.value } as UpdateChartItemDto;
+        this.updateDto.id = this.detailsDto.id;
+        this.chartItemService.update(this.updateDto).subscribe((response) => {
+          this.globalService.showMessage(response.message);
+          if (response.isSuccess) {
+            this.getCurrentChart();
+            this.closeEditModal();
+          }
+        });
+      }
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء اختيار العنصر الذي تريد تعديله أولا');
+      this.closeEditModal();
     }
   }
 
-  // open edit item modal
-  openEditItemModal(item: any) {
-    console.log(item);
-
-    this.showEditItemsModal = true;
+  getItemDetails() {
+    this.chartItemService.getById(this.operationId).subscribe((response) => {
+      this.detailsDto = response.data;
+      this.updateDto = response.data as UpdateChartItemDto;
+      this.buildForm();
+    });
   }
+  buildForm() {
+    this.updateForm = this.formBuilder.group({
+      donationValue: [this.updateDto.donationValue || 1, [Validators.required]],
+      donationPeriod: [this.updateDto.donationPeriod || 1, [Validators.required]]
+    });
+  }
+  increaseProduct() {
+    this.updateDto.donationPeriod += 1;
+    this.updateForm.controls['donationPeriod'].setValue(this.updateDto.donationPeriod);
+  }
+  decreaseProduct() {
+    if (this.updateDto.donationPeriod > 1) {
+      this.updateDto.donationPeriod -= 1;
+      this.updateForm.controls['donationPeriod'].setValue(this.updateDto.donationPeriod);
+    }
+  }
+  //#endregion
 
-  // open delete item modal
-  openDeleteItemModal(item: any) {
-    console.log(item);
-
+  //#region Delete
+  openDeleteItemModal(id: string) {
+    this.operationId = id;
     this.showDeleteItemsModal = true;
   }
-
-  // edit item data
-  editItem() {
-    this.showEditItemsModal = false;
-  }
-
-  // close edit modal
-  closeEditModal() {
-    this.showEditItemsModal = false;
-  }
-
-  // delete item from cart
-  deleteItem() {
-    this.showDeleteItemsModal = false;
-  }
-
-  // close delete modal
   closeDeleteModal() {
+    this.operationId = '';
     this.showDeleteItemsModal = false;
   }
+  deleteItem() {
+    if (this.operationId) {
+      this.chartItemService.delete(this.operationId).subscribe((result) => {
+        if (result.isSuccess) {
+          this.getCurrentChart();
+        }
+        this.globalService.showMessage(result.message);
+      });
+    }
+    else {
+      this.globalService.messageAlert(MessageType.Warning, 'برجاء اختيار العنصر الذي تريد حذفة أولا');
+    }
+    this.closeDeleteModal();
+  }
+  //#endregion
+
 }

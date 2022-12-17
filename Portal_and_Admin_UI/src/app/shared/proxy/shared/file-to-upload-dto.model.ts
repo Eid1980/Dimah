@@ -1,5 +1,5 @@
 
 export interface FileToUploadDto {
-  id: number,
+  id: string,
   fileName: string
 }

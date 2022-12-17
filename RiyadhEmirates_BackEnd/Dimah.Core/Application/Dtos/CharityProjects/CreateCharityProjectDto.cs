@@ -5,8 +5,8 @@ namespace Dimah.Core.Application.Dtos
     {
         public string NameAr { get; set; }
         public string NameEn { get; set; }
-        public int CharityId { get; set; }
-        public int ProjectTypeId { get; set; }
+        public Guid CharityId { get; set; }
+        public Guid ProjectTypeId { get; set; }
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
         public double ProjectCost { get; set; }

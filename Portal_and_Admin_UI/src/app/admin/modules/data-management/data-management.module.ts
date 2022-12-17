@@ -20,6 +20,10 @@ import { CharityProjectEditComponent } from './components/charity-project/charit
 import { CharityProjectListComponent } from './components/charity-project/charity-project-list/charity-project-list.component';
 import { CharityProjectViewComponent } from './components/charity-project/charity-project-view/charity-project-view.component';
 import { CharityAddProjectComponent } from './components/charity/charity-add-project/charity-add-project.component';
+import { AddPosterComponent } from './components/poster/add-poster/add-poster.component';
+import { EditPosterComponent } from './components/poster/edit-poster/edit-poster.component';
+import { ListPosterComponent } from './components/poster/list-poster/list-poster.component';
+import { ViewPosterComponent } from './components/poster/view-poster/view-poster.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { CharityAddProjectComponent } from './components/charity/charity-add-pro
     CharityProjectListComponent,
     CharityProjectViewComponent,
     CharityAddProjectComponent,
+    AddPosterComponent,
+    EditPosterComponent,
+    ListPosterComponent,
+    ViewPosterComponent,
   ],
   imports: [StepsModule, CommonModule, DataManagementRoutingModule, SharedModule],
 })

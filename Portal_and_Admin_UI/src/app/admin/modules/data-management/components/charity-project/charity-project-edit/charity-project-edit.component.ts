@@ -17,12 +17,12 @@ import { ProjectTypeService } from '@shared/proxy/project-types/project-type.ser
   templateUrl: './charity-project-edit.component.html'
 })
 export class CharityProjectEditComponent implements OnInit {
-  id: number;
-  updateCharityProjectForm: FormGroup;
+  id: string;
+  updateForm: FormGroup;
   isFormSubmitted: boolean;
-  updateCharityProjectDto = {} as UpdateCharityProjectDto;
-  charities = [] as LookupDto<number>[];
-  projectTypes = [] as LookupDto<number>[];
+  updateDto = {} as UpdateCharityProjectDto;
+  charities = [] as LookupDto<string>[];
+  projectTypes = [] as LookupDto<string>[];
 
   //#region for uploader
   @ViewChild('uploader', { static: true }) uploader;
@@ -54,17 +54,17 @@ export class CharityProjectEditComponent implements OnInit {
   }
 
   buildForm() {
-    this.updateCharityProjectForm = this.formBuilder.group({
-      nameAr: [this.updateCharityProjectDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.updateCharityProjectDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      charityId: [this.updateCharityProjectDto.charityId || null, [Validators.required]],
-      projectTypeId: [this.updateCharityProjectDto.projectTypeId || null, [Validators.required]],
-      descriptionAr: [this.updateCharityProjectDto.descriptionAr || ''],
-      descriptionEn: [this.updateCharityProjectDto.descriptionEn || ''],
-      projectCost: [this.updateCharityProjectDto.projectCost || null, [Validators.required]],
-      projectLocation: [this.updateCharityProjectDto.projectLocation || ''],
+    this.updateForm = this.formBuilder.group({
+      nameAr: [this.updateDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      charityId: [this.updateDto.charityId || null, [Validators.required]],
+      projectTypeId: [this.updateDto.projectTypeId || null, [Validators.required]],
+      descriptionAr: [this.updateDto.descriptionAr || ''],
+      descriptionEn: [this.updateDto.descriptionEn || ''],
+      projectCost: [this.updateDto.projectCost || null, [Validators.required]],
+      projectLocation: [this.updateDto.projectLocation || ''],
       image: [null],
-      isActive: [this.updateCharityProjectDto.isActive, Validators.required]
+      isActive: [this.updateDto.isActive, Validators.required]
     });
   }
 
@@ -79,29 +79,29 @@ export class CharityProjectEditComponent implements OnInit {
     });
   }
   onUpload(event: any) {
-    this.updateCharityProjectForm.get('image').setValue(event.files[0]);
+    this.updateForm.get('image').setValue(event.files[0]);
   }
   onRemove(event) {
-    this.updateCharityProjectForm.get('image').setValue(null);
+    this.updateForm.get('image').setValue(null);
   }
 
   getDetails() {
     this.charityProjectService.getById(this.id).subscribe((response) => {
-      this.updateCharityProjectDto = response.data as UpdateCharityProjectDto;
+      this.updateDto = response.data as UpdateCharityProjectDto;
       this.buildForm();
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.updateCharityProjectForm.valid) {
-      this.updateCharityProjectDto = { ...this.updateCharityProjectForm.value } as UpdateCharityProjectDto;
-      this.updateCharityProjectDto.id = this.id;
-      let imageContent = this.updateCharityProjectForm.get('image').value;
+    if (this.updateForm.valid) {
+      this.updateDto = { ...this.updateForm.value } as UpdateCharityProjectDto;
+      this.updateDto.id = this.id;
+      let imageContent = this.updateForm.get('image').value;
       if (imageContent) {
-        this.updateCharityProjectDto.image = imageContent.name;
+        this.updateDto.image = imageContent.name;
       }
-      this.charityProjectService.update(this.updateCharityProjectDto)
+      this.charityProjectService.update(this.updateDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

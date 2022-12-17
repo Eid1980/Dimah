@@ -12,10 +12,10 @@ import { MobileNumberValidator } from '@shared/custom-validators/mobileNumber.va
   templateUrl: './charity-edit.component.html'
 })
 export class CharityEditComponent implements OnInit {
-  id: number;
-  updateCharityForm: FormGroup;
+  id: string;
+  updateForm: FormGroup;
   isFormSubmitted: boolean;
-  updateCharityDto = {} as UpdateCharityDto;
+  updateDto = {} as UpdateCharityDto;
 
   constructor(private formBuilder: FormBuilder, private charityService: CharityService,
     private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
@@ -34,29 +34,29 @@ export class CharityEditComponent implements OnInit {
   }
 
   buildForm() {
-    this.updateCharityForm = this.formBuilder.group({
-      nameAr: [this.updateCharityDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.updateCharityDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      email: [this.updateCharityDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
-      phoneNumber: [this.updateCharityDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, MobileNumberValidator.validateMobileNumber]],
-      address: [this.updateCharityDto.address || ''],
-      isActive: [this.updateCharityDto.isActive, Validators.required]
+    this.updateForm = this.formBuilder.group({
+      nameAr: [this.updateDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      email: [this.updateDto.email || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, Validators.email]],
+      phoneNumber: [this.updateDto.phoneNumber || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace, MobileNumberValidator.validateMobileNumber]],
+      address: [this.updateDto.address || ''],
+      isActive: [this.updateDto.isActive, Validators.required]
     });
   }
 
   getDetails() {
     this.charityService.getById(this.id).subscribe((response) => {
-      this.updateCharityDto = response.data as UpdateCharityDto;
+      this.updateDto = response.data as UpdateCharityDto;
       this.buildForm();
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.updateCharityForm.valid) {
-      this.updateCharityDto = { ...this.updateCharityForm.value } as UpdateCharityDto;
-      this.updateCharityDto.id = this.id;
-      this.charityService.update(this.updateCharityDto)
+    if (this.updateForm.valid) {
+      this.updateDto = { ...this.updateForm.value } as UpdateCharityDto;
+      this.updateDto.id = this.id;
+      this.charityService.update(this.updateDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

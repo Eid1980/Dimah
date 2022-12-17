@@ -1,4 +1,5 @@
-﻿using Dimah.Core.Domain.IRepositories;
+﻿using Dimah.Core.Application.Shared;
+using Dimah.Core.Domain.IRepositories;
 using Dimah.InfraStructure.Contexts;
 using System.Collections;
 
@@ -36,11 +37,11 @@ namespace Dimah.InfraStructure.Repositories
                 if (retVal >= 1)
                     return true;
                 else
-                    return false;
+                    throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظام");
             }
             catch (Exception ex)
             {
-                return false;
+                throw new BusinessException("خطأ في قاعدة البيانات برجاء التواصل مع مدير النظام");
             }
         }
     }

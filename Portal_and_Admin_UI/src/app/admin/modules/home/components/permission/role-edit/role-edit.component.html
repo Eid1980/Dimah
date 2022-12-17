@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center bread-container">
   <nav class="breadcrumb m-0 p-0 bg-transparent">
-    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>الرئيسية</a>
+    <a class="breadcrumb-item fs-16" routerLink="/admin/home"><i class="las la-home fs-20"></i>{{ 'homePage' | translate }}</a>
     <a class="breadcrumb-item fs-16" [routerLink]="['/admin/home/role-list']">الصلاحيات</a>
     <span class="breadcrumb-item fs-16 active">تعديل الصلاحية</span>
   </nav>
@@ -14,28 +14,28 @@
     <div class="form-content">
       <div class="row mx-0">
         <div class="form-group col-md-6">
-          <label for="nameAr" class="form-lbl">الاسم عربي<span class="danger">*</span></label>
+          <label for="nameAr" class="form-lbl">{{ 'global.lables.nameAr' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameAr" id="nameAr" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateRoleForm.get('nameAr').touched) &&
                 updateRoleForm.get('nameAr').errors?.required
             }" />
           <small *ngIf="(isFormSubmitted || updateRoleForm.get('nameAr').touched) && updateRoleForm.get('nameAr').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-md-6">
-          <label for="nameEn" class="form-lbl">الاسم انجليزي<span class="danger">*</span></label>
+          <label for="nameEn" class="form-lbl">{{ 'global.lables.nameEn' | translate }}<span class="danger">*</span></label>
           <input type="text" class="form-control" autocomplete="off" formControlName="nameEn" id="nameEn" [ngClass]="{
               invalid:
                 (isFormSubmitted || updateRoleForm.get('nameEn').touched) &&
                 updateRoleForm.get('nameEn').errors?.required
             }" />
           <small *ngIf="(isFormSubmitted || updateRoleForm.get('nameEn').touched) && updateRoleForm.get('nameEn').errors?.required"
-                 class="danger">هذاالحقل مطلوب</small>
+                 class="danger">{{ 'global.validators.requiredField' | translate }}</small>
         </div>
         <div class="form-group col-6">
           <label class="container-check">
-            فعال
+            {{'global.lables.active' | translate}}
             <input formControlName="isActive" type="checkbox" id="isActive" />
             <span class="checkmark"></span>
           </label>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-save">تعديل</button>
-    <a [routerLink]="['/admin/home/role-list']" class="btn btn-cancel">رجوع</a>
+    <button type="submit" class="btn btn-save">{{ 'global.buttons.update' | translate }}</button>
+    <a [routerLink]="['/admin/home/role-list']" class="btn btn-cancel">{{ 'global.buttons.back' | translate }}</a>
   </div>
 </form>

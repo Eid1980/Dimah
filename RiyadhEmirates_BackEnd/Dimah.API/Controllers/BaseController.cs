@@ -16,16 +16,17 @@ namespace Dimah.API.Controllers
             _localizationService = localizationService;
         }
 
-        public int UserId
+        public Guid? UserId
         {
             get
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    int.TryParse(User.Claims.FirstOrDefault(c => c.Type.ToLower().Contains("userid")).Value, out int userId);
+                    Guid.TryParse(User.Claims.FirstOrDefault(c => c.Type.ToLower().Contains("userid")).Value, out Guid userId);
                     return userId;
                 }
-                else return 0;
+                else 
+                    return null;
             }
         }
 

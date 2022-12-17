@@ -1,9 +1,9 @@
 <!-- home banner section -->
-<div class="home-slider mb-md-5 mb-3 pb-md-3 pb-0" *ngIf="banners.length > 0">
+<div class="home-slider mb-md-5 mb-3 pb-md-3 pb-0" *ngIf="posters.length > 0">
   <div class="owl__carousel">
     <owl-carousel-o [options]="bannerSliderOptions" class="owl-rtl">
-      <ng-template carouselSlide *ngFor="let banner of banners">
-        <img *ngIf="banner?.imgUrl" [src]="banner?.imgUrl" [alt]="banner?.titleEn" class="img-fluid slider" />
+      <ng-template carouselSlide *ngFor="let poster of posters">
+        <img *ngIf="poster?.imageName" [src]="['/assets/images/uploads/posters/'+poster.imageName]" [alt]="poster?.titleEn" class="img-fluid slider" />
       </ng-template>
     </owl-carousel-o>
   </div>
@@ -29,7 +29,7 @@
             <ng-template carouselSlide *ngFor="let news of latestNews">
               <div class="owl-item">
                 <div class="item">
-                  <div class="news-card cursor-pointer rounded-26 overflow-hidden" [routerLink]="['home/news-details' , _globalService.encryptNumber(news.id)]">
+                  <div class="news-card cursor-pointer rounded-26 overflow-hidden" [routerLink]="['home/news-details' , globalService.encryptNumber(news.id)]">
                     <img [src]="news?.imageUrl != '' ? news?.imageUrl : 'assets/images/placeholder.jpg'" [alt]="news?.title" class="img-fluid news-img" />
 
                     <img src="assets/images/news-overlay.png" alt="overlay" class="img-fluid overlay" />
@@ -60,19 +60,17 @@
         <div class="section-title mb-4">
           <h3 class="title">أبواب الخير</h3>
           <div class="more d-flex">
-            <a routerLink="/chairty-services">
+            <a routerLink="/charity-project">
               <span>جميع أبواب الخير</span>
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
           </div>
-        </div>
-  
+        </div>  
         <div class="row chairty-mb">
-          <div class="col-lg-6 col-md-12 col-sm-4 col-6" *ngFor="let item of chairtyItems">
-            <a class="card-bg mxw-240 mb-3" [routerLink]="'/chairty-services/' + item?.id">
-              <div class="card-overlay" [style.background-image]="'url('+item?.imageUrl+')'"></div>
-  
-              <h4>{{item?.title}}</h4> 
+          <div class="col-lg-6 col-md-12 col-sm-4 col-6" *ngFor="let charityProject of charityProjects">
+            <a class="card-bg mxw-240 mb-3" [routerLink]="['/project-details' , charityProject?.id]">
+              <div class="card-overlay" [style.background-image]="'url('+'/assets/images/uploads/projectTypes/'+charityProject?.projectTypeImageName+')'"></div>
+              <h4>{{charityProject?.projectName}}</h4> 
             </a>
           </div>
         </div>

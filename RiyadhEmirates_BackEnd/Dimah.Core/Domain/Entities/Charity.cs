@@ -1,7 +1,7 @@
 ﻿
 namespace Dimah.Core.Domain.Entities
 {
-    public class Charity : AuditFullData<int>
+    public class Charity : AuditFullData<Guid>
     {
         public string NameAr { get; set; }
         public string NameEn { get; set; }

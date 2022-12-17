@@ -1,9 +1,9 @@
 ﻿
 namespace Dimah.Core.Domain.Entities
 {
-    public class UserRole : AuditFullData<int>
+    public class UserRole : AuditFullData<Guid>
     {
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public int RoleId { get; set; }
 
         public virtual User User { get; set; }

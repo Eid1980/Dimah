@@ -4,6 +4,10 @@ import { SearchModel } from '@shared/proxy/shared/search-model.model';
 import { GlobalService } from '@shared/services/global.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
+import { GetPosterDetailsDto } from '@shared/proxy/posters/models';
+import { PosterService } from '@shared/proxy/posters/poster.service';
+import { HomeService } from '@shared/proxy/home/home.service';
+import { DimahProjectsListDto } from '@shared/proxy/home/models';
 declare let $: any;
 
 @Component({
@@ -14,7 +18,8 @@ export class HomeComponent implements OnInit {
   currentLang: string;
   electronicUrl: string;
   searchModel: SearchModel = {};
-  posters = [];
+  posters = [] as GetPosterDetailsDto[];
+  charityProjects = [] as DimahProjectsListDto[];
 
   governorateNews = [];
   reports = [];
@@ -24,24 +29,6 @@ export class HomeComponent implements OnInit {
   externalServices = [];
   serviceGuidFirst = [];
   serviceGuidLength = [];
-
-  banners: any = [
-    {
-      "id": "banner1",
-      "imgUrl": "assets/images/banner1.png",
-      "titleEn": "banner1"
-    },
-    {
-      "id": "banner2",
-      "imgUrl": "https://picsum.photos/id/10/1200/400",
-      "titleEn": "banner2"
-    },
-    {
-      "id": "banner3",
-      "imgUrl": "https://picsum.photos/id/90/1200/400",
-      "titleEn": "banner3"
-    }
-  ]
 
   latestNews: any = [
     {
@@ -65,29 +52,6 @@ export class HomeComponent implements OnInit {
       "desc": "قام فريق التطوع بتوزيع مياه على حجاج بيت الله الحرام",
       "date": "الثلاثاء، 13 جمادى الأولى 1444 هـ - 6 ديسمبر 2022 م",
     },
-  ]
-
-  chairtyItems: any = [
-    {
-      "id": 1,
-      "title": "سقيا الماء",
-      "imageUrl": "assets/images/icons/svg/water-dot.svg"
-    },
-    {
-      "id": 2,
-      "title": "وجبة معتمر",
-      "imageUrl": "assets/images/icons/svg/food-method.svg"
-    },
-    {
-      "id": 3,
-      "title": "إفطار صائم",
-      "imageUrl": "assets/images/icons/svg/food.svg"
-    },
-    {
-      "id": 4,
-      "title": "زواج أرامل",
-      "imageUrl": "assets/images/icons/svg/maried.svg"
-    }
   ]
 
   adsItems: any = [
@@ -179,13 +143,16 @@ export class HomeComponent implements OnInit {
     nav: false,
   };
 
-  constructor(
-    public _globalService: GlobalService, private translateService: TranslationServiceService) {
+  constructor(private posterService: PosterService, private homeService: HomeService,
+    public globalService: GlobalService, private translateService: TranslationServiceService) {
   }
 
   ngOnInit() {
-    this._globalService.setTitle('الصفحة الرئيسية');
+    this.globalService.setTitle(this.globalService.translate('homePage'));
     this.currentLang = this.translateService.getCurrentLanguage().Name.toLowerCase();
+
+    this.getPosters();
+    this.getCharityProjects();
 
     let processNumber1 = document.getElementById("processNumber1");
     let processNumber2 = document.getElementById("processNumber2");
@@ -211,4 +178,17 @@ export class HomeComponent implements OnInit {
     console.log(step)
     window.requestAnimationFrame(step);
   }
+
+
+  getPosters() {
+    this.posterService.getAll().subscribe((res) => {
+      this.posters = res.data;
+    });
+  }
+  getCharityProjects() {
+    this.homeService.getCharityProjects("22d0eeca-467a-48bc-a600-3624ff0887b6").subscribe((res) => {
+      this.charityProjects = res.data;
+    });
+  }
+
 }

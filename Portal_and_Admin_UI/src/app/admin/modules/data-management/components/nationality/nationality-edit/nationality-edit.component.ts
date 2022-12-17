@@ -12,9 +12,9 @@ import { WhiteSpaceValidator } from '@shared/custom-validators/whitespace.valida
 })
 export class NationalityEditComponent implements OnInit {
   id: number;
-  updateNationalityForm: FormGroup;
+  updateForm: FormGroup;
   isFormSubmitted: boolean;
-  updateNationalityDto = {} as UpdateNationalityDto;
+  updateDto = {} as UpdateNationalityDto;
 
   constructor(private formBuilder: FormBuilder, private nationalityService: NationalityService,
     private activatedRoute: ActivatedRoute, private globalService: GlobalService) {
@@ -33,29 +33,29 @@ export class NationalityEditComponent implements OnInit {
   }
 
   buildForm() {
-    this.updateNationalityForm = this.formBuilder.group({
-      nameAr: [this.updateNationalityDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      nameEn: [this.updateNationalityDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
-      code: [this.updateNationalityDto.code || ''],
-      iso2: [this.updateNationalityDto.iso2 || ''],
-      dialCode: [this.updateNationalityDto.dialCode || ''],
-      isActive: [this.updateNationalityDto.isActive, Validators.required]
+    this.updateForm = this.formBuilder.group({
+      nameAr: [this.updateDto.nameAr || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      nameEn: [this.updateDto.nameEn || '', [Validators.required, WhiteSpaceValidator.noWhiteSpace]],
+      code: [this.updateDto.code || ''],
+      iso2: [this.updateDto.iso2 || ''],
+      dialCode: [this.updateDto.dialCode || ''],
+      isActive: [this.updateDto.isActive, Validators.required]
     });
   }
 
   getDetails() {
     this.nationalityService.getById(this.id).subscribe((response) => {
-      this.updateNationalityDto = response.data as UpdateNationalityDto;
+      this.updateDto = response.data as UpdateNationalityDto;
       this.buildForm();
     });
   }
 
   onSubmit() {
     this.isFormSubmitted = true;
-    if (this.updateNationalityForm.valid) {
-      this.updateNationalityDto = { ...this.updateNationalityForm.value } as UpdateNationalityDto;
-      this.updateNationalityDto.id = this.id;
-      this.nationalityService.update(this.updateNationalityDto)
+    if (this.updateForm.valid) {
+      this.updateDto = { ...this.updateForm.value } as UpdateNationalityDto;
+      this.updateDto.id = this.id;
+      this.nationalityService.update(this.updateDto)
         .subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {

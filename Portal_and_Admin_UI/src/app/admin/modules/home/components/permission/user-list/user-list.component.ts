@@ -40,14 +40,14 @@ export class UserListComponent implements OnInit {
       Url: this.userRoleService.serviceUrl,
 
       cols: [
-        { Field: 'id', Header: 'الكود', Searchable: false, Hidden: true },
+        { Field: 'id', Header: this.globalService.translate('global.lables.code'), Searchable: false, Hidden: true },
         { Field: 'userName', Header: 'اسم المستخدم' },
         { Field: 'fullName', Header: 'الاسم' },
         { Field: 'phoneNumber', Header: 'رقم الجوال' },
         { Field: 'nationalityName', Header: 'الجنسية' },
         {
           Field: 'Action',
-          Header: 'الإجراءات',
+          Header: this.globalService.translate('global.lables.actions'),
           Searchable: false,
           Sortable: false,
           Type: ColumnType.Action,
@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit {
           buttonIcon: ActionButtonIcon.Roles,
         },
         {
-          title: 'حذف',
+          title: this.globalService.translate('global.buttons.delete'),
           FuncName: (id) => this.delete(id),
           buttonclass: ActionButtonClass.Delete,
           buttonIcon: ActionButtonIcon.Delete,
@@ -108,7 +108,7 @@ export class UserListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.globalService.showConfirm('هل تريد حذف هذا العنصر؟');
+    this.globalService.showConfirm(this.globalService.translate('global.messages.deleteMessage'));
     this.globalService.confirmSubmit = () => this.isconfirm(id);
   }
   isconfirm(id: number) {

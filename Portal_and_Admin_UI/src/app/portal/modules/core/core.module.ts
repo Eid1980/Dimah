@@ -9,6 +9,7 @@ import { SharedModule } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ButtonModule } from 'primeng/button';
     HttpClientModule,
     FormsModule,
     ButtonModule,
+    TranslateModule,
   ],
   exports: [
     CoreLayoutComponent,

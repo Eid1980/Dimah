@@ -123,9 +123,7 @@
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
           <li class="nav-item">
             <a class="nav-link" routerLink="/home" routerLinkActive="active" data-bs-toggle="collapse"
-              data-bs-target="#mainMenuCollapse">
-              الرئيسية
-            </a>
+               data-bs-target="#mainMenuCollapse">{{ 'homePage' | translate }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/latest-news" routerLinkActive="active" data-bs-toggle="collapse"
@@ -134,7 +132,7 @@
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/chairty-services" routerLinkActive="active" data-bs-toggle="collapse"
+            <a class="nav-link" routerLink="/charity-project" routerLinkActive="active" data-bs-toggle="collapse"
               data-bs-target="#mainMenuCollapse">
               أبواب الخير
             </a>
@@ -157,8 +155,7 @@
       <div class="d-flex align-items-center me-auto">
         <a class="cart-notification active" routerLink="/cart">
           <img src="assets/images/icons/png/cart.png" class="img-fluid" alt="icon" width="24px" />
-
-          <div class="cart-number">6</div>
+          <div class="cart-number">0</div>
         </a>
 
         <a routerLink="/auth/login" class="btn px-0 text-primary me-auto pe-3 justify-content-start"

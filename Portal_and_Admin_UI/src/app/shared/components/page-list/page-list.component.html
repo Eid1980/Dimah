@@ -16,7 +16,7 @@
             <!-- Table -->
             <div class="m_datatable w-100 px-0">
               <p-table [value]="dataItems" [paginator]="true" [totalRecords]="pagingMetaData?.totalItemCount"
-               [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
+               [rowHover]="true" [rows]="pagingMetaData?.pageSize ? pagingMetaData?.pageSize : 10 "
                [autoLayout]="true" [responsive]="true" [first]="pagingMetaData?.firstItemOnPage" [columns]="PageListSetting.cols" [lazy]="true" (onLazyLoad)="onTableLazyLoad($event)" [scrollable]="true" class="w-100">
                 <!-- Header -->
                 <ng-template pTemplate="header" let-columns>
@@ -146,7 +146,7 @@
                 <ng-template pTemplate="emptymessage" let-columns>
                   <tr>
                     <td [attr.colspan]="columns?.length" class="empty-grid-table">
-                      لا يوجد بيانات
+                      {{ 'global.lables.noData' | translate }}
                     </td>
                   </tr>
                 </ng-template>

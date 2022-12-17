@@ -2,7 +2,7 @@
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
       <div class="container d-flex align-items-center">
-        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
         <a class="breadcrumb-item" [routerLink]="['/cart']">سلة الخير</a>
         <a class="breadcrumb-item" [routerLink]="['/payment']">الدفع</a>
         <span class="breadcrumb-item fs-16 active">تفاصيل الدفع</span>
@@ -19,7 +19,7 @@
       <h2 class="mb-2 fw-bold">جزاكم الله خيراً</h2>
       <p class="mb-0 text-muted fw-normal fa-18">تم إستلام تبرعكم بنجاح</p>
 
-      <a class="btn btn-primary mt-5 px-5 py-2 lh-lg" routerLink="/">الرئيسية</a>
+      <a class="btn btn-primary mt-5 px-5 py-2 lh-lg" routerLink="/">{{ 'homePage' | translate }}</a>
     </div>
   </div>
 

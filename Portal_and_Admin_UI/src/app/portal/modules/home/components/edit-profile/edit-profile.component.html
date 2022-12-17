@@ -2,7 +2,7 @@
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
       <div class="container d-flex align-items-center">
-        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
         <span class="breadcrumb-item fs-16 active">تعديل الملف الشخصى</span>
       </div>
     </nav>
@@ -65,7 +65,7 @@
                       (isFormSubmitted || editProfileForm.get('firstNameAr').touched) && editProfileForm.get('firstNameAr').errors?.required
                   }"/>
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('firstNameAr').touched) && editProfileForm.get('firstNameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('firstNameAr').touched) && editProfileForm.get('firstNameAr').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
 
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
@@ -75,7 +75,7 @@
                       (isFormSubmitted || editProfileForm.get('secondNameAr').touched) && editProfileForm.get('secondNameAr').errors?.required
                   }"/>
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('secondNameAr').touched) && editProfileForm.get('secondNameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('secondNameAr').touched) && editProfileForm.get('secondNameAr').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
 
                 </div>
 
@@ -86,7 +86,7 @@
                     (isFormSubmitted || editProfileForm.get('thirdNameAr').touched) && editProfileForm.get('thirdNameAr').errors?.required
                 }"/>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('thirdNameAr').touched) && editProfileForm.get('thirdNameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('thirdNameAr').touched) && editProfileForm.get('thirdNameAr').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">الاسم الأخير عربى<span class="danger">*</span></label>
@@ -95,7 +95,7 @@
                       (isFormSubmitted || editProfileForm.get('lastNameAr').touched) && editProfileForm.get('lastNameAr').errors?.required
                   }"/>
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameAr').touched) && editProfileForm.get('lastNameAr').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameAr').touched) && editProfileForm.get('lastNameAr').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
 
                 </div>
 
@@ -106,7 +106,7 @@
                     (isFormSubmitted || editProfileForm.get('firstNameEn').touched) && editProfileForm.get('firstNameEn').errors?.required
                 }"/>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('firstNameEn').touched) && editProfileForm.get('firstNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('firstNameEn').touched) && editProfileForm.get('firstNameEn').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                 <label class="fa-14 mb-1 fw-normal">الاسم الثانى إنجليزى<span class="danger">*</span></label>
@@ -115,7 +115,7 @@
                     (isFormSubmitted || editProfileForm.get('secondNameEn').touched) && editProfileForm.get('secondNameEn').errors?.required
                 }"/>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('secondNameEn').touched) && editProfileForm.get('secondNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('secondNameEn').touched) && editProfileForm.get('secondNameEn').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
 
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
@@ -125,7 +125,7 @@
                       (isFormSubmitted || editProfileForm.get('thirdNameEn').touched) && editProfileForm.get('thirdNameEn').errors?.required
                   }"/>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('thirdNameEn').touched) && editProfileForm.get('thirdNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('thirdNameEn').touched) && editProfileForm.get('thirdNameEn').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
                   <label class="fa-14 mb-1 fw-normal">الاسم الاخير إنجليزى<span class="danger">*</span></label>
@@ -134,7 +134,7 @@
                       (isFormSubmitted || editProfileForm.get('lastNameEn').touched) && editProfileForm.get('lastNameEn').errors?.required
                   }"/>
 
-                <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameEn').touched) && editProfileForm.get('lastNameEn').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                <small *ngIf="(isFormSubmitted || editProfileForm.get('lastNameEn').touched) && editProfileForm.get('lastNameEn').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
 
               </div>
@@ -165,7 +165,7 @@
                       (isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required
                   }" />
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && editProfileForm.get('phoneNumber').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                   <small *ngIf="(isFormSubmitted || editProfileForm.get('phoneNumber').touched) && !editProfileForm.get('phoneNumber').errors?.isValid"
                     class="danger">رقم الجوال يبدأ ب 966 و يتكون من 12 رقم</small>
                 </div>
@@ -176,7 +176,7 @@
                       (isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required
                   }" />
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                   <small *ngIf="(isFormSubmitted || editProfileForm.get('email').touched) && editProfileForm.get('email').errors?.email" class="danger">يجب إدخال بريد الالكتروني صحيح</small>
 
                 </div>
@@ -191,12 +191,12 @@
                       {{ nationality.name }}
                     </option>
                   </select>
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('nationalityId').touched) && editProfileForm.get('nationalityId').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('nationalityId').touched) && editProfileForm.get('nationalityId').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-sm-6 mb-6">
-                  <label for="" class="fa-14 mb-1 fw-normal">تحميل الصورة<span class="danger">*</span></label>
+                  <label for="" class="fa-14 mb-1 fw-normal">{{ 'global.lables.uploadImage' | translate }}<span class="danger">*</span></label>
                   <img width="200px" height="100px" *ngIf="oldImage" [src]="oldImage?.base64File" />
-                  <p-fileUpload #uploader chooseLabel="تحميل الصورة" [auto]="true" [customUpload]="isCustomUpload"
+                  <p-fileUpload #uploader chooseLabel="{{ 'global.lables.uploadImage' | translate }}" [auto]="true" [customUpload]="isCustomUpload"
                                 (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)" mode="advanced"
                                 [accept]="acceptType" [maxFileSize]="fileSize">
                   </p-fileUpload>
@@ -208,15 +208,15 @@
                       (isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required
                   }"></textarea>
 
-                  <small *ngIf="(isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required" class="danger">هذاالحقل مطلوب</small>
+                  <small *ngIf="(isFormSubmitted || editProfileForm.get('address').touched) && editProfileForm.get('address').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="d-flex justify-content-end mt-3">
-            <button type="submit" class="btn btn-primary ms-3 px-4">حفظ</button>
-            <a class="btn btn-secondary" routerLink="/profile">رجوع</a>
+            <button type="submit" class="btn btn-primary ms-3 px-4">{{ 'global.buttons.save' | translate }}</button>
+            <a class="btn btn-secondary" routerLink="/profile">{{ 'global.buttons.back' | translate }}</a>
           </div>
     </form>
 </div>

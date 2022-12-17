@@ -2,7 +2,7 @@
   <div class="ser-bread">
     <nav class="breadcrumb m-0 bg-transparent">
       <div class="container d-flex align-items-center">
-        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>الرئيسية</a>
+        <a class="breadcrumb-item" [routerLink]="['/']"><i class="las la-home"></i>{{ 'homePage' | translate }}</a>
         <span class="breadcrumb-item fs-16 active">سلة الخير</span>
       </div>
     </nav>
@@ -19,68 +19,56 @@
   <div class="row">
     <div class="col-lg-8 mb-3">
       <div class="table-responsive rounded-26 shadow-box">
-        <table class="table table-borderless mb-0">
-          <thead class="bg-primary">
+        <p-table #currentChartitems [value]="currentChartListDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
+                 [rowHover]="true" tableStyleClass="table table-borderless mb-0">
+          <ng-template pTemplate="header" class="bg-primary" let-columns>
             <tr>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">م</th>
               <th class="text-white fa-16 text-center mw-150 py-4 align-middle">باب الخير</th>
               <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
               <th class="text-white fa-16 text-center mw-100 py-4 align-middle">مدة التبرع</th>
               <th class="text-white fa-16 text-center mw-100 py-4 align-middle">المجموع</th>
               <th class="text-white fa-16 text-center py-4 align-middle"></th>
             </tr>
-          </thead>
+          </ng-template>
 
-          <tbody>
-            <tr *ngFor="let item of cartItems">
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.title}}</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.dailyDonation}}</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.donationPeriod}}</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{item?.totalCost}}</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+          <ng-template pTemplate="body" let-i="rowIndex" let-currentChartitem>
+            <tr>
+              <td> {{i+1}} </td>
+              <td> {{currentChartitem.charityProjectName}} </td>
+              <td> {{currentChartitem.donationValue}} </td>
+              <td> {{currentChartitem.donationPeriod}} </td>
+              <td> {{currentChartitem.donationTotal}} </td>
+              <td>
                 <div class="d-flex align-items-center justify-content-center">
-                  <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="openEditItemModal(item)">
+                  <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="openEditItemModal(currentChartitem.id)">
                     <i class="fa-regular fa-pen-to-square fa-20"></i>
                   </a>
-                  <a class="text-danger d-flex align-items-center cursor-pointer" (click)="openDeleteItemModal(item)">
+                  <a class="text-danger d-flex align-items-center cursor-pointer" (click)="openDeleteItemModal(currentChartitem.id)">
                     <i class="fa-regular fa-trash-can fa-20"></i>
                   </a>
                 </div>
               </td>
             </tr>
-          </tbody>
-        </table>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+              <td colspan="7" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
-
-      <!-- <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 mb-5" *ngFor="let item of cartItems">
-          <a class="card-bg mh-260 pb-4">
-            <div class="card-overlay h-80" [style.background-image]="'url('+item?.imageUrl+')'"></div>
-
-            <h4>{{item?.title}}</h4>
-
-            <div class="content">
-              <h6>قيمة التبرع: <span> {{item?.donationCost}} </span> <span>ريال</span></h6>
-              <h6>مدة التبرع: <span> {{item?.donationPeriod}} </span> <span>يوم</span></h6>
-            </div>
-          </a>
-
-          <div class="d-flex mt-3 px-2">
-            <a class="btn btn-primary-white btn-sm w-100 ms-3" (click)="openEditItemModal(item)">تعديل</a>
-            <a class="btn btn-danger-white btn-sm w-100" (click)="openDeleteItemModal(item)">حذف</a>
-          </div>
-        </div>
-      </div> -->
     </div>
 
     <div class="col-lg-4 col-md-8 mb-3 pe-lg-5 me-auto">
       <div class="bg-white shadow-box rounded-26 py-4 px-3 border">
         <div class="d-flex align-items-center justify-content-between mb-3">
           <h6 class="fa-18 fw-bold mb-2">المجموع</h6>
-          <h5 class="fa-18 fw-bold mb-2 text-primary"><span>150</span> ر.س</h5>
+          <h5 class="fa-18 fw-bold mb-2 text-primary"><span>{{ totlalChart }}</span> ر.س</h5>
         </div>
-
         <div class="d-flex justify-content-end">
-          <a class="btn btn-primary d-inline-block" routerLink="/payment">المتابعة للدفع</a>
+          <a class="btn btn-primary d-inline-block" *ngIf="totlalChart > 0" routerLink="/payment">المتابعة للدفع</a>
         </div>
       </div>
     </div>
@@ -88,47 +76,46 @@
 </div>
 
 <!-- edit item form cart modal -->
-<p-dialog [modal]="true" header="تعديل العنصر" [(visible)]="showEditItemsModal">
-  <div class="py-4 px-2">
-    <div class="form-content">
-      <h4 class="fw-bold text-primary mb-4">سقايا الماء</h4>
-
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="mb-3">
-            <h6 class="fw-bold fa-16 mb-2">قيمة التبرع</h6>
-            <input type="number" class="form-control w-25 py-2 px-2 text-center" value="1" />
+<p-dialog [modal]="true" header="تعديل العنصر" (onHide)="closeEditModal()" [(visible)]="showEditItemsModal">
+  <form [formGroup]="updateForm" (ngSubmit)="editItem()">
+    <div class="py-4 px-2">
+      <div class="form-content">
+        <h4 class="fw-bold text-primary mb-4">{{detailsDto?.charityProjectName}}</h4>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mb-3">
+              <h6 class="fw-bold fa-16 mb-2">قيمة التبرع</h6>
+              <input type="number" formControlName="donationValue" id="donationValue" autocomplete="off" class="form-control w-25 py-2 px-2 text-center" />
+              <small *ngIf="(isFormSubmitted || updateForm.get('donationValue').touched) && updateForm.get('donationValue').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+            </div>
           </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div>
-            <h6 class="fw-bold fa-16 mb-2">مدة التبرع</h6>
-            <div class="number-counter justify-content-center">
-              <span class="btn btn-highlight-primary plus" (click)="increaseProduct($event)">
-                <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
-              </span>
-
-              <input class="form-control" type="number" readonly value="1" min="1" max="2000" />
-
-              <span class="btn btn-highlight-primary minus" (click)="decreaseProduct($event)">
-                <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
-              </span>
+          <div class="col-sm-6">
+            <div>
+              <h6 class="fw-bold fa-16 mb-2">مدة التبرع</h6>
+              <div class="number-counter justify-content-center">
+                <span class="btn btn-highlight-primary plus" (click)="increaseProduct()">
+                  <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+                <input formControlName="donationPeriod" id="donationPeriod" autocomplete="off" class="form-control" type="number" readonly min="1" max="2000" />
+                <small *ngIf="(isFormSubmitted || updateForm.get('donationPeriod').touched) && updateForm.get('donationPeriod').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+                <span class="btn btn-highlight-primary minus" (click)="decreaseProduct()">
+                  <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="form-actions d-flex justify-content-center p-0 mt-2">
-    <button type="button" class="btn btn-primary" (click)="editItem()">تعديل</button>
-    <button type="button" class="btn btn-primary-white border-1 me-3" (click)="closeEditModal()">إلغاء</button>
-  </div>
+    <div class="form-actions d-flex justify-content-center p-0 mt-2">
+      <button type="submit" class="btn btn-primary">تعديل</button>
+      <button type="button" class="btn btn-primary-white border-1 me-3" (click)="closeEditModal()">إلغاء</button>
+    </div>
+  </form>
 </p-dialog>
 
 <!-- delete item form cart modal -->
-<p-dialog [modal]="true" header="حذف العنصر" [(visible)]="showDeleteItemsModal">
+<p-dialog [modal]="true" header="حذف العنصر" (onHide)="closeDeleteModal()" [(visible)]="showDeleteItemsModal">
   <div class="py-4 px-3 mt-3">
     <div class="form-content">
       <div class="d-flex justify-content-center flex-column align-items-center">
@@ -137,7 +124,6 @@
       </div>
     </div>
   </div>
-
   <div class="form-actions d-flex justify-content-center p-0 mt-2">
     <button type="button" class="btn btn-danger" (click)="deleteItem()">حذف</button>
     <button type="button" class="btn btn-danger-white border-1 me-3" (click)="closeDeleteModal()">اغلاق</button>
