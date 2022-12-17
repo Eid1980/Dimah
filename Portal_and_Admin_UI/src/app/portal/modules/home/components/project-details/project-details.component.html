@@ -110,7 +110,7 @@
         <div class="owl__carousel px-3">
           <owl-carousel-o [options]="itemsOptions" class="owl-rtl">
             <ng-template carouselSlide *ngFor="let charityProject of projectDetailsDto?.relatedProjects">
-              <a class="card-bg shadow-none mxw-240" [routerLink]="['/project-details' , charityProject?.id]">
+              <a class="card-bg shadow-none" [routerLink]="['/project-details' , charityProject?.id]">
                 <div class="card-overlay" [style.background-image]="'url('+'/assets/images/uploads/projectTypes/'+charityProject?.projectTypeImageName+')'"></div>
                 <h4>{{charityProject?.projectName}}</h4>
               </a>

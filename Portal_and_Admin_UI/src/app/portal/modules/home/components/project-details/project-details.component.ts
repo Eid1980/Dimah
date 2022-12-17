@@ -22,7 +22,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   confirmationBox: boolean = false;
   itemsOptions: OwlOptions = {
-    loop: false,
+    loop: true,
     autoplay: false,
     mouseDrag: true,
     touchDrag: true,
