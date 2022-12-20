@@ -11,6 +11,6 @@
     "\\src\\app\\portal\\modules\\home\\components\\home",
     "\\src\\app\\portal\\modules\\home\\components\\project-details"
   ],
-  "SelectedNode": "\\src\\app\\portal\\modules\\home\\components\\cart\\cart.component.html",
+  "SelectedNode": "\\src\\app\\portal\\modules\\home\\components\\project-details\\project-details.component.ts",
   "PreviewInSolutionExplorer": false
 }
