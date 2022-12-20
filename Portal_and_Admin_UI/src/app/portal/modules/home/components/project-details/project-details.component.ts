@@ -22,7 +22,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   confirmationBox: boolean = false;
   itemsOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     autoplay: false,
     mouseDrag: true,
     touchDrag: true,
@@ -51,7 +51,7 @@ export class ProjectDetailsComponent implements OnInit {
       991: {
         items: 4,
         margin: 26,
-      },
+      }
     },
     nav: true,
   };

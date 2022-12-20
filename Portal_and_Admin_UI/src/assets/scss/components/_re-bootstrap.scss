@@ -38,6 +38,13 @@
   height: fit-content !important;
 }
 
+.img-filter-grey{
+  filter: grayscale(1) !important;
+}
+
+.right-auto{
+  right: auto !important;
+}
 // box shadow
 .shadow-box{
   box-shadow: 0 3px 17px 0px #00000029;

@@ -107,7 +107,7 @@
           </div>
         </div>
 
-        <div class="owl__carousel px-3">
+        <div class="owl__carousel items_slider px-3">
           <owl-carousel-o [options]="itemsOptions" class="owl-rtl">
             <ng-template carouselSlide *ngFor="let charityProject of projectDetailsDto?.relatedProjects">
               <a class="card-bg shadow-none" [routerLink]="['/project-details' , charityProject?.id]">

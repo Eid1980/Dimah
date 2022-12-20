@@ -299,6 +299,28 @@ p-rating {
   }
 }
 
+.items_slider{
+  .owl-carousel{
+    .owl-item{
+      @media screen and (min-width: 991px) {
+        max-width: 20%;
+      }
+      @media screen and (max-width: 991px) {
+        max-width: 25%;
+      }
+      @media screen and (max-width: 767px) {
+        max-width: 33%;
+      }
+      @media screen and (max-width: 576px) {
+        max-width: 50%;
+      }
+      @media screen and (max-width: 380px) {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
 // scroll bar style
 /* width */
 ::-webkit-scrollbar {

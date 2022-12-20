@@ -15,6 +15,34 @@ body {
 .admin-layout {
   height: 100%;
 
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      width: 60%;
+
+      // sidemenu closed
+      &.collapse {}
+    }
+
+    .content {
+      inset-inline-start: 0px !important;
+
+      // sidemenu closed
+      &.expand {}
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .sidebar {
+      width: 90%;
+    }
+
+    .prrof {
+      p {
+        display: none !important;
+      }
+    }
+  }
+
   .card,
   .form-card {
     background-color: $white;
@@ -306,31 +334,6 @@ body {
   @media (max-width: 768px) {
     .sm-logo {
       display: none !important;
-    }
-
-    .sidebar {
-      background: #fff;
-      position: absolute;
-      inset-inline-start: 0;
-      top: 0;
-      z-index: 1;
-    }
-
-    .sidebar {
-      width: 0;
-    }
-
-    .sidebar.collapse {
-      width: 220px;
-    }
-
-    .main .content {
-      inset-inline-start: 0;
-      padding: 5px !important;
-    }
-
-    .main .content.expand {
-      inset-inline-start: 0;
     }
 
     .sidebar.collapse li a .nav-label {
