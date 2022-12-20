@@ -12,6 +12,7 @@ import { ServiceLocator } from '@shared/services/service-locator';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ChangeChartService } from './shared/services/change-chart.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     }),
   ],
   providers: [
+    ChangeChartService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpTokenInterceptor,

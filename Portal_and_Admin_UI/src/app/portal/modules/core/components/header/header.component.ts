@@ -4,18 +4,22 @@ import { GetUserSessionDto } from '@shared/proxy/accounts/models';
 import { TranslationServiceService } from '@shared/services/translation-service.service';
 import { GlobalService } from '@shared/services/global.service';
 import { MessageType } from '@shared/enums/message-type.enum';
+import { ChangeChartService } from '@shared/services/change-chart.service';
+import { ChartItemService } from '@shared/proxy/chart-items/chart-item.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
   currentDate: string;
   userInfo = {} as GetUserSessionDto;
   isAuthenticated: boolean;
   newsSearch: string;
+  itemsCount: any = 0;
 
-  constructor(private accountService: AccountService, private translateService: TranslationServiceService,
+  constructor(private accountService: AccountService, private chartItemService: ChartItemService,
+    private translateService: TranslationServiceService,private changeChartService: ChangeChartService,
     private globalService: GlobalService)
   {
   }
@@ -26,6 +30,12 @@ export class HeaderComponent implements OnInit {
     if (this.isAuthenticated){
       this.userInfo = this.accountService.getCurrentUserInfo();
     }
+    this.chartItemService.getCurrentChartCount().subscribe((res) => {
+      this.itemsCount = res.data;
+    });
+    this.changeChartService.getCount().subscribe(count => {
+      this.itemsCount = count;
+    });
   }
 
   logOut() {

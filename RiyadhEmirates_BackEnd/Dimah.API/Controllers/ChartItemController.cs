@@ -25,6 +25,11 @@ namespace Dimah.API.Controllers
         {
             return _chartItemService.GetCurrentChart();
         }
+        [HttpGet("GetCurrentChartCount")]
+        public IApiResponse GetCurrentChartCount()
+        {
+            return _chartItemService.GetCurrentChartCount();
+        }
 
         [HttpPost("Create")]
         public IApiResponse Create(CreateChartItemDto createDto)

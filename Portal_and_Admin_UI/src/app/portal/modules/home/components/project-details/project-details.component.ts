@@ -4,10 +4,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ProjectDetailsDto } from '@shared/proxy/home/models';
 import { HomeService } from '@shared/proxy/home/home.service';
 import { GlobalService } from '@shared/services/global.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChartItemService } from '@shared/proxy/chart-items/chart-item.service';
 import { CreateChartItemDto } from '@shared/proxy/chart-items/models';
-import { WhiteSpaceValidator } from '../../../../../shared/custom-validators/whitespace.validator';
+import { ChangeChartService } from '@shared/services/change-chart.service';
 
 @Component({
   selector: 'app-project-details',
@@ -57,7 +57,8 @@ export class ProjectDetailsComponent implements OnInit {
   };
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService,
-    private chartItemService: ChartItemService, private globalService: GlobalService,
+    private chartItemService: ChartItemService, private changeChartService: ChangeChartService,
+    private globalService: GlobalService,
     private activatedRoute: ActivatedRoute, private router: Router) {
 
   }
@@ -102,6 +103,7 @@ export class ProjectDetailsComponent implements OnInit {
       this.createDto.charityProjectId = this.projectDetailsDto.id;
       this.chartItemService.create(this.createDto).subscribe((response) => {
         if (response.isSuccess) {
+          this.changeChartService.addCount(response.data);
           this.confirmationBox = true;
           setTimeout(() => {
             this.confirmationBox = false;
