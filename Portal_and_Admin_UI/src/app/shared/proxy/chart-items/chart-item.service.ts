@@ -20,16 +20,19 @@ export class ChartItemService {
   getCurrentChart = (): Observable<ApiResponse<CurrentChartListDto[]>> => {
     return this.httpClient.get<ApiResponse<CurrentChartListDto[]>>(`${this.serviceUrl}/GetCurrentChart`).pipe();
   }
-
-  create = (createdDto: CreateChartItemDto): Observable<ApiResponse<string>> => {
-    return this.httpClient.post<ApiResponse<string>>(`${this.serviceUrl}/Create`, createdDto).pipe();
-  }
-  update = (updatedDto: UpdateChartItemDto): Observable<ApiResponse<string>> => {
-    return this.httpClient.put<ApiResponse<string>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  getCurrentChartCount = (): Observable<ApiResponse<number>> => {
+    return this.httpClient.get<ApiResponse<number>>(`${this.serviceUrl}/GetCurrentChartCount`).pipe();
   }
 
-  delete = (id: string): Observable<ApiResponse<boolean>> => {
-    return this.httpClient.delete<ApiResponse<boolean>>(`${this.serviceUrl}/Delete/${id}`).pipe();
+  create = (createdDto: CreateChartItemDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.post<ApiResponse<number>>(`${this.serviceUrl}/Create`, createdDto).pipe();
+  }
+  update = (updatedDto: UpdateChartItemDto): Observable<ApiResponse<number>> => {
+    return this.httpClient.put<ApiResponse<number>>(`${this.serviceUrl}/Update`, updatedDto).pipe();
+  }
+
+  delete = (id: string): Observable<ApiResponse<number>> => {
+    return this.httpClient.delete<ApiResponse<number>>(`${this.serviceUrl}/Delete/${id}`).pipe();
   }
 
   finishPayment = (): Observable<ApiResponse<string>> => {

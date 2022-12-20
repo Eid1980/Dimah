@@ -38,6 +38,11 @@ namespace Dimah.Core.Application.Services.ChartItems
                 .Include(i => i.CharityProject).ToList();
             return GetResponse(data: _mapper.Map<List<CurrentChartListDto>>(chartItems));
         }
+        public IApiResponse GetCurrentChartCount()
+        {
+            return GetResponse(data: _dimahUnitOfWork.Repository<ChartItem>()
+                .Where(x => x.CreatedBy == GetUserId() && x.ChartItemStatusId == (int)SystemEnums.ChartItemStatuses.New).Count());
+        }
 
         public IApiResponse Create(CreateChartItemDto createModel)
         {
@@ -58,7 +63,7 @@ namespace Dimah.Core.Application.Services.ChartItems
                 response = existItem.Id;
             }
             _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.SaveSuccess(), data: response);
+            return GetResponse(message: CustumMessages.SaveSuccess(), data: GetCurrentChartCount().Data);
         }
         public IApiResponse Update(UpdateChartItemDto updateModel)
         {
@@ -81,7 +86,7 @@ namespace Dimah.Core.Application.Services.ChartItems
             }
             
             _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.UpdateSuccess(), data: updateModel.Id);
+            return GetResponse(message: CustumMessages.UpdateSuccess(), data: GetCurrentChartCount().Data);
         }
         public IApiResponse Delete(Guid id)
         {
@@ -90,7 +95,7 @@ namespace Dimah.Core.Application.Services.ChartItems
                 throw new NotFoundException(typeof(ChartItem).Name);
             chartItem.ChartItemStatusId = (int) SystemEnums.ChartItemStatuses.Deleted;
             _dimahUnitOfWork.ContextSaveChanges();
-            return GetResponse(message: CustumMessages.DeleteSuccess());
+            return GetResponse(message: CustumMessages.DeleteSuccess(), data: GetCurrentChartCount().Data);
         }
 
         public IApiResponse FinishPayment()

@@ -7,6 +7,7 @@ namespace Dimah.Core.Application.Services.ChartItems
     {
         IApiResponse GetById(Guid id);
         IApiResponse GetCurrentChart();
+        IApiResponse GetCurrentChartCount();
         IApiResponse Create(CreateChartItemDto createModel);
         IApiResponse Update(UpdateChartItemDto updateModel);
         IApiResponse Delete(Guid id);
