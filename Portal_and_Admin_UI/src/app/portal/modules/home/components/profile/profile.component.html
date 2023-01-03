@@ -9,112 +9,104 @@
   </div>
 </div>
 
-<div class="container py-5">
-  <div class="main-card">
-    <div class="d-flex justify-content-end mb-2">
-      <a class="btn btn-primary px-3 py-2" routerLink="/edit-profile">
-        <i class="fa-solid fa-user-pen fa-18 ms-2"></i>
-        <span>تعديل البيانات</span>
-      </a>
-    </div>
-    <div class="d-flex justify-content-center mb-5">
-      <div class="mx-auto d-flex flex-column align-items-center">
-        <div class="mb-2">
-          <img *ngIf="userProfileData.image?.base64File" [src]="userProfileData.image?.base64File" alt="avatar"
-               class="border border-2 border-secondary img-fluid p-1 rounded-circle" style="width: 120px;height: 120px;" />
-          <img *ngIf="!userProfileData.image?.base64File" src="/assets/images/businessman.png" alt="avatar"
-               class="border border-2 border-secondary img-fluid p-1 rounded-circle" style="width: 120px;height: 120px;" />
+<div class="container py-3">
+  <div class="d-flex align-items-center justify-content-md-between justify-content-center mb-4 flex-wrap">
+    <h4 class="fw-bold text-primary fa-26 mb-2">مرحباً , <span>فاعل الخير</span></h4>
+    <a class="btn btn-primary-white bg-transparent rounded-pill fw-bold mb-2">تسجيل الدخول</a>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5 col-md-6 offset-lg-2 mb-3">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between bg-primary text-white shadow border-0 rounded-26">
+        <div class="my-2 ms-3">
+          <h5 class="fa-22 mb-3 fw-bold">رصيدكم الخيرى</h5>
+          <h6 class="fa-20 mb-0 opacity-75">بتاريخ <span>30/12/2022</span></h6>
         </div>
-        <h4 class="fa-22 fw-bold text-primary-2 mb-0">{{userProfileData.firstNameAr + userProfileData.lastNameAr}}</h4>
+
+        <div class="my-2">
+          <h4 class="fa-26 mb-0"><span>1000</span> ريال</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-6 mb-3">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26">
+        <div class="my-2 ms-3">
+          <h5 class="fa-22 mb-3 fw-bold">قيمة ما تصدقتم به</h5>
+          <h6 class="fa-20 mb-0 text-muted">بتاريخ <span>30/12/2022</span></h6>
+        </div>
+
+        <div class="my-2">
+          <h4 class="fa-26 mb-0"><span>100</span> ريال</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-2 border-top mt-4 pt-4">
+    <div class="mb-5">
+      <div class="d-flex align-items-center mb-4">
+        <img src="assets/images/icons/svg/list.svg" alt="icon" class="img-fluid ms-2" width="26px" />
+        <h4 class="fa-18 fw-bold mb-0 lh-1">أمر تشغيل 1 : تبرع بقيمة 5 ريال لمدة 10 أيام</h4>
+      </div>
+
+      <div class="table-responsive rounded-26 shadow-box">
+        <table class="table table-borderless mb-0">
+          <thead class="bg-primary">
+            <tr>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">التاريخ</th>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع</th>
+              <th class="text-white fa-16 text-center mw-300 py-4 align-middle">رسالة</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">أسعد الله صباحكم بكل خير, تم خصم 5 ريال صدقة يومية</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
     <div class="mb-5">
-      <h3 class="fw-bold fa-22 text-primary mb-4">البيانات الشخصيه</h3>
-      <div class="row">
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم الهويه</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.userName }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">تاريخ الميلاد</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.birthDate | date:"yyyy-MM-dd"}}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">النوع</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.isMale ? 'ذكر' : 'انتي' }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم جواز السفر</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.passportId}}</p>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاول عربى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameAr}}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثانى عربى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.secondNameAr}}</p>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثالث عربى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.thirdNameAr}}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الأخير عربى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.lastNameAr}}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاول إنجليزى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameEn }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثانى إنجليزى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.secondNameEn }}</p>
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الثالث إنجليزى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.thirdNameEn }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الاسم الاخير إنجليزى</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.lastNameEn }}</p>
-        </div>
+      <div class="d-flex align-items-center mb-4">
+        <img src="assets/images/icons/svg/list.svg" alt="icon" class="img-fluid ms-2" width="26px" />
+        <h4 class="fa-18 fw-bold mb-0 lh-1">أمر تشغيل 2 : تبرع بقيمة 5 ريال لمدة 10 أيام</h4>
       </div>
-    </div>
 
-    <!--<div class="mb-5">
-      <h3 class="fw-bold fa-22 text-primary mb-4">بيانات التسجيل</h3>
-      <div class="row">
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">كلمة المرور</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.firstNameEn }}</p>
-        </div>
-      </div>
-    </div>-->
+      <div class="table-responsive rounded-26 shadow-box">
+        <table class="table table-borderless mb-0">
+          <thead class="bg-primary">
+            <tr>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">التاريخ</th>
+              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع</th>
+              <th class="text-white fa-16 text-center mw-300 py-4 align-middle">رسالة</th>
+            </tr>
+          </thead>
 
-    <div>
-      <h3 class="fw-bold fa-22 text-primary mb-4">بيانات الإتصال</h3>
-      <div class="row">
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">رقم الهاتف</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.phoneNumber }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الايميل</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.email }}</p>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">الجنسيه</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.nationalityName }}</p>
-        </div>
-        <div class="col-md-3 mb-3">
-          <h6 class="fa-14 text-black-50 mb-1 fw-bold">العنوان</h6>
-          <p class="fa-14 text-primary-alt-3 fw-normal mb-0">{{ userProfileData.address }}</p>
-        </div>
+          <tbody>
+            <tr>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">أسعد الله صباحكم بكل خير, تم خصم 5 ريال صدقة يومية</td>
+            </tr>
+
+            <tr>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">السلام عليكم ورحمة الله, لقد استلمنا صدقتكم بقيمة 5 ريال اليوم</td>
+            </tr>
+
+            <tr>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">نشكركم لتبرعكم اليومي بقيمة 5 ريال أدام الله عليكم فضلة</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

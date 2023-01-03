@@ -15,6 +15,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CharityProjectsComponent } from './components/charity-projects/charity-projects.component';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
     PaymentComponent,
     CharityProjectsComponent,
     ProjectDetailsComponent,
+    DashboardComponent,
   ],
   imports: [
     SharedModule,
@@ -36,6 +39,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
     CoreModule,
     RatingModule,
     NgxPrintModule,
+    ChartModule
   ],
   exports: [],
   providers: [],
