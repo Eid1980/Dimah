@@ -111,6 +111,33 @@ namespace Dimah.InfraStructure.Contexts
             });
             #endregion
 
+            #region DailyRequestDetail
+            modelBuilder.Entity<DailyRequestDetail>(b =>
+            {
+                b.ToTable("DailyRequestDetails", DimahDbSchemas.RequestSehema);
+                b.Property(x => x.DailyRequestMainId).IsRequired();
+                b.Property(x => x.Day).IsRequired();
+                b.Property(x => x.IsPayed).IsRequired();
+
+                b.HasOne<DailyRequestMain>(x => x.DailyRequestMain).WithMany(x => x.DailyRequestDetails).HasForeignKey(x => x.DailyRequestMainId).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
+            #region DailyRequestMain
+            modelBuilder.Entity<DailyRequestMain>(b =>
+            {
+                b.ToTable("DailyRequestMains", DimahDbSchemas.RequestSehema);
+                b.Property(x => x.DonationValue).IsRequired();
+                b.Property(x => x.DonationPeriod).IsRequired();
+                b.Property(x => x.ActForName).HasMaxLength(DimahConstants.MaxLongNameLength);
+                b.Property(x => x.ActForMobile).HasMaxLength(DimahConstants.MaxShortLength);
+                b.Property(x => x.IsFinished).IsRequired();
+                b.Property(x => x.CreatedBy).IsRequired();
+
+                b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedDailyRequestMains).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);
+            });
+            #endregion
+
             #region Nationality
             modelBuilder.Entity<Nationality>(b =>
             {
@@ -238,6 +265,8 @@ namespace Dimah.InfraStructure.Contexts
 
         public DbSet<Charity> Charities { get; set; }
         public DbSet<ChartItem> ChartItems { get; set; }
+        public DbSet<DailyRequestDetail> DailyRequestDetails { get; set; }
+        public DbSet<DailyRequestMain> DailyRequestMains { get; set; }
         public DbSet<ChartItemStatus> ChartItemStatuses { get; set; }
         public DbSet<CharityProject> CharityProjects { get; set; }
         public DbSet<Nationality> Nationalities { get; set; }

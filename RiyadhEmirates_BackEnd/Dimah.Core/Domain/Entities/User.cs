@@ -55,7 +55,7 @@ namespace Dimah.Core.Domain.Entities
         public virtual ICollection<ChartItem> CreatedChartItems { get; set; }
         public virtual ICollection<ChartItem> ModifiedChartItems { get; set; }
 
-
+        public virtual ICollection<DailyRequestMain> CreatedDailyRequestMains { get; set; }
 
     }
 }
