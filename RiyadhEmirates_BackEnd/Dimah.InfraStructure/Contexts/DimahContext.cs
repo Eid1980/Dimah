@@ -131,7 +131,7 @@ namespace Dimah.InfraStructure.Contexts
                 b.Property(x => x.DonationPeriod).IsRequired();
                 b.Property(x => x.ActForName).HasMaxLength(DimahConstants.MaxLongNameLength);
                 b.Property(x => x.ActForMobile).HasMaxLength(DimahConstants.MaxShortLength);
-                b.Property(x => x.IsFinished).IsRequired();
+                b.Property(x => x.DailyRequestStatusId).IsRequired();
                 b.Property(x => x.CreatedBy).IsRequired();
 
                 b.HasOne<User>(x => x.CreatedUser).WithMany(x => x.CreatedDailyRequestMains).HasForeignKey(x => x.CreatedBy).OnDelete(DeleteBehavior.NoAction);

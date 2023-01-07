@@ -17,6 +17,7 @@ import { CharityProjectsComponent } from './components/charity-projects/charity-
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChartModule } from 'primeng/chart';
+import { NewPaymentComponent } from './components/new-payment/new-payment.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ChartModule } from 'primeng/chart';
     CharityProjectsComponent,
     ProjectDetailsComponent,
     DashboardComponent,
+    NewPaymentComponent,
   ],
   imports: [
     SharedModule,

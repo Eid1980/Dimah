@@ -12,32 +12,37 @@
 <div class="container py-3">
   <div class="d-flex align-items-center justify-content-md-between justify-content-center mb-4 flex-wrap">
     <h4 class="fw-bold text-primary fa-26 mb-2">مرحباً , <span>فاعل الخير</span></h4>
-    <a class="btn btn-primary-white bg-transparent rounded-pill fw-bold mb-2">تسجيل الدخول</a>
   </div>
 
   <div class="row">
-    <div class="col-lg-5 col-md-6 offset-lg-2 mb-3">
-      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between bg-primary text-white shadow border-0 rounded-26">
+    <div class="col-lg-4 col-md-6 mb-1">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-3 fw-bold">رصيدكم الخيرى</h5>
-          <h6 class="fa-20 mb-0 opacity-75">بتاريخ <span>30/12/2022</span></h6>
         </div>
-
         <div class="my-2">
-          <h4 class="fa-26 mb-0"><span>1000</span> ريال</h4>
+          <h4 class="fa-26 mb-0"><span>{{requestProfileDto?.currentBalance}}</span> ريال</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-1">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26">
+        <div class="my-2 ms-3">
+          <h5 class="fa-22 mb-3 fw-bold">قيمة التبرع اليوم</h5>
+        </div>
+        <div class="my-2">
+          <h4 class="fa-26 mb-0"><span>{{requestProfileDto?.currentDayDonation}}</span> ريال</h4>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-5 col-md-6 mb-3">
+    <div class="col-lg-4 col-md-6 mb-1">
       <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-3 fw-bold">قيمة ما تصدقتم به</h5>
-          <h6 class="fa-20 mb-0 text-muted">بتاريخ <span>30/12/2022</span></h6>
         </div>
-
         <div class="my-2">
-          <h4 class="fa-26 mb-0"><span>100</span> ريال</h4>
+          <h4 class="fa-26 mb-0"><span>{{requestProfileDto?.allDonation}}</span> ريال</h4>
         </div>
       </div>
     </div>
@@ -45,69 +50,199 @@
 
   <div class="border-2 border-top mt-4 pt-4">
     <div class="mb-5">
-      <div class="d-flex align-items-center mb-4">
-        <img src="assets/images/icons/svg/list.svg" alt="icon" class="img-fluid ms-2" width="26px" />
-        <h4 class="fa-18 fw-bold mb-0 lh-1">أمر تشغيل 1 : تبرع بقيمة 5 ريال لمدة 10 أيام</h4>
-      </div>
+      <div class="border bg-white rounded-26 shadow-box overflow-hidden">
+        <ul class="nav nav-tabs card-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="payedRequest-tab" data-bs-toggle="tab" data-bs-target="#payedRequest-tab-pane" type="button" role="tab" aria-controls="payedRequest-tab-pane" aria-selected="true">الطلبات المدفوعة</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="notPayedRequest-tab" data-bs-toggle="tab" data-bs-target="#notPayedRequest-tab-pane" type="button" role="tab" aria-controls="notPayedRequest-tab-pane" aria-selected="false">الطلبات الغير مدفوعة</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="finishedRequest-tab" data-bs-toggle="tab" data-bs-target="#finishedRequest-tab-pane" type="button" role="tab" aria-controls="finishedRequest-tab-pane" aria-selected="false">الطلبات المنتهية</button>
+          </li>
+        </ul>
 
-      <div class="table-responsive rounded-26 shadow-box">
-        <table class="table table-borderless mb-0">
-          <thead class="bg-primary">
-            <tr>
-              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">التاريخ</th>
-              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع</th>
-              <th class="text-white fa-16 text-center mw-300 py-4 align-middle">رسالة</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">أسعد الله صباحكم بكل خير, تم خصم 5 ريال صدقة يومية</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="mb-5">
-      <div class="d-flex align-items-center mb-4">
-        <img src="assets/images/icons/svg/list.svg" alt="icon" class="img-fluid ms-2" width="26px" />
-        <h4 class="fa-18 fw-bold mb-0 lh-1">أمر تشغيل 2 : تبرع بقيمة 5 ريال لمدة 10 أيام</h4>
-      </div>
-
-      <div class="table-responsive rounded-26 shadow-box">
-        <table class="table table-borderless mb-0">
-          <thead class="bg-primary">
-            <tr>
-              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">التاريخ</th>
-              <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع</th>
-              <th class="text-white fa-16 text-center mw-300 py-4 align-middle">رسالة</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">أسعد الله صباحكم بكل خير, تم خصم 5 ريال صدقة يومية</td>
-            </tr>
-
-            <tr>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">السلام عليكم ورحمة الله, لقد استلمنا صدقتكم بقيمة 5 ريال اليوم</td>
-            </tr>
-
-            <tr>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">20/2/2022</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">5 ريال</td>
-              <td class="text-muted fa-16 text-center px-3 py-4 align-middle">نشكركم لتبرعكم اليومي بقيمة 5 ريال أدام الله عليكم فضلة</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="payedRequest-tab-pane" role="tabpanel" aria-labelledby="payedRequest-tab" tabindex="0">
+            <div class="p-4 pb-2">
+              <div class="table-responsive rounded-26 shadow-box">
+                <table class="table table-borderless mb-0">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">مدة التبرع / يوم</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">الإجمالي</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">تاريخ البداية</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">عدد الأيام المدفوعة</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">اسم المتبرع عنه</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">الاجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let payedRequest of requestProfileDto?.payedRequests">
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod * payedRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.startDate}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.payedCount}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.actForName}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                        <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="previewDetailsDialog(payedRequest?.id)">
+                          <i class="fa-regular fa-pen-to-square fa-20"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr *ngIf="requestProfileDto?.payedRequests.length == 0">
+                      <td colspan="6" class="empty-grid-table">
+                        {{ 'global.lables.noData' | translate }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="notPayedRequest-tab-pane" role="tabpanel" aria-labelledby="notPayedRequest-tab" tabindex="0">
+            <div class="p-4 pb-2">
+              <div class="table-responsive rounded-26 shadow-box">
+                <table class="table table-borderless mb-0">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">مدة التبرع / يوم</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">الإجمالي</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">تاريخ البداية</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">اسم المتبرع عنه</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">الاجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let newRequest of requestProfileDto?.newRequests">
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{newRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{newRequest?.donationPeriod}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{newRequest?.donationPeriod * newRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{newRequest?.startDate}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{newRequest?.actForName}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                        <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="previewDetailsDialog(newRequest?.id)">
+                          <i class="fa-regular fa-pen-to-square fa-20"></i>
+                        </a>
+                        <a class="text-primary d-flex align-items-center cursor-pointer" [routerLink]="['/new-payment' , newRequest?.id]">
+                          <i class="fa-regular fa-credit-card fa-20"></i>
+                        </a>
+                        <a class="text-danger d-flex align-items-center cursor-pointer" (click)="openDeleteModal(newRequest?.id)">
+                          <i class="fa-regular fa-trash-can fa-20"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr *ngIf="requestProfileDto?.newRequests.length == 0">
+                      <td colspan="5" class="empty-grid-table">
+                        {{ 'global.lables.noData' | translate }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="finishedRequest-tab-pane" role="tabpanel" aria-labelledby="finishedRequest-tab" tabindex="0">
+            <div class="p-4 pb-2">
+              <div class="table-responsive rounded-26 shadow-box">
+                <table class="table table-borderless mb-0">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">مدة التبرع / يوم</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">الإجمالي</th>
+                      <th class="text-white fa-16 text-center mw-150 py-4 align-middle">تاريخ البداية</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">اسم المتبرع عنه</th>
+                      <th class="text-white fa-16 text-center mw-300 py-4 align-middle">الاجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let finishedRequest of requestProfileDto?.finishedRequests">
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod * finishedRequest?.donationValue}} ريال</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.startDate}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.actForName}}</td>
+                      <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                        <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="previewDetailsDialog(finishedRequest?.id)">
+                          <i class="fa-regular fa-pen-to-square fa-20"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr *ngIf="requestProfileDto?.finishedRequests.length == 0">
+                      <td colspan="5" class="empty-grid-table">
+                        {{ 'global.lables.noData' | translate }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<p-dialog [modal]="true" header="تفاصيل الطلب" [(visible)]="showRolesDialog">
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="info-col col-md-12 col-12">
+          <p-table #requestDetails [value]="dailyRequestDetailsListDto" dataKey="id" [autoLayout]="true"
+                   [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th>م</th>
+                <th>التاريخ</th>
+                <th>قيمة التبرع</th>
+                <th>تم الدفع</th>
+                <th>الرسالة النصية</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-i="rowIndex" let-detail>
+              <tr>
+                <td> {{i+1}} </td>
+                <td> {{detail.day}} </td>
+                <td> {{detail.donationValue}} </td>
+                <td> {{detail.isPayed}} </td>
+                <td> {{detail.sms}} </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+              <tr>
+                <td colspan="5" class="empty-grid-table">{{ 'global.lables.noData' | translate }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="btn btn-cancel" (click)="closeDetailsDialog()">اغلاق</button>
+  </div>
+</p-dialog>
+
+
+<p-dialog [modal]="true" header="حذف الطلب" (onHide)="closeDeleteModal()" [(visible)]="showDeleteModal">
+  <div class="py-4 px-3 mt-3">
+    <div class="form-content">
+      <div class="d-flex justify-content-center flex-column align-items-center">
+        <img src="assets/images/icons/svg/error.svg" class="img-fluid mb-3" alt="icon" width="80px" />
+        <h6 class="fa-18 mb-0">هل أنت متأكد من حذف هذا الطلب؟</h6>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions d-flex justify-content-center p-0 mt-2">
+    <button type="button" class="btn btn-danger" (click)="deleteItem()">حذف</button>
+    <button type="button" class="btn btn-danger-white border-1 me-3" (click)="closeDeleteModal()">اغلاق</button>
+  </div>
+</p-dialog>
