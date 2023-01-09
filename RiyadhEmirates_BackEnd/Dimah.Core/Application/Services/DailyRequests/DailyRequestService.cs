@@ -97,7 +97,7 @@ namespace Dimah.Core.Application.Services.DailyRequests
                 new GetRequestStatisticsDto 
                 {
                     Name = item.Key.ToString(),
-                    Count = item.Count()
+                    Count = item.Sum(s => s.Amount)
                 }).ToList();
             
             var nextWeekRequest = towWeeksRequests.Where(x => x.Day.Date > DateTime.Now.Date && x.Day.Date <= DateTime.Now.Date.AddDays(7)).Select(model =>
@@ -109,7 +109,7 @@ namespace Dimah.Core.Application.Services.DailyRequests
                 new GetRequestStatisticsDto
                 {
                     Name = item.Key.ToString(),
-                    Count = item.Count()
+                    Count = item.Sum(s => s.Amount)
                 }).ToList();
 
             resposeData.ThisWeekRequest = thisWeekRequest;
