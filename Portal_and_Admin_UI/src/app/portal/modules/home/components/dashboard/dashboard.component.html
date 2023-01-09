@@ -16,8 +16,7 @@
 
   <div class="row">
     <div class="col-md-6 offset-lg-1 mb-3">
-      <div
-        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-0 fw-bold">رصيد ديما</h5>
         </div>
@@ -26,8 +25,7 @@
         </div>
       </div>
 
-      <div
-        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-0 fw-bold">الرصيد المتبقي</h5>
         </div>
@@ -36,8 +34,7 @@
         </div>
       </div>
 
-      <div
-        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-0 fw-bold">الرصيد المستحق اليوم</h5>
         </div>
@@ -46,8 +43,7 @@
         </div>
       </div>
 
-      <div
-        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
           <h5 class="fa-22 mb-0 fw-bold">عدد المتبرعين</h5>
         </div>
@@ -59,7 +55,16 @@
     </div>
 
     <div class="col-lg-5 col-md-6 mb-3 d-flex justify-content-center">
-      <!--<p-chart type="pie" [data]="chartData" [options]="chartOptions"></p-chart>-->
+      <p-chart type="polarArea" [data]="numericStatistics"></p-chart>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <p-chart type="bar" [data]="thisWeekRequestData"></p-chart>
+    </div>
+    <div class="col-md-6">
+      <p-chart type="bar" [data]="nextWeekRequestData"></p-chart>
     </div>
   </div>
 
@@ -68,19 +73,23 @@
       <ul class="nav nav-tabs card-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="payedRequest-tab" data-bs-toggle="tab"
-            data-bs-target="#payedRequest-tab-pane" type="button" role="tab" aria-controls="payedRequest-tab-pane"
-            aria-selected="true">الطلبات المدفوعة</button>
+                  data-bs-target="#payedRequest-tab-pane" type="button" role="tab" aria-controls="payedRequest-tab-pane"
+                  aria-selected="true">
+            الطلبات المدفوعة
+          </button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="finishedRequest-tab" data-bs-toggle="tab"
-            data-bs-target="#finishedRequest-tab-pane" type="button" role="tab" aria-controls="finishedRequest-tab-pane"
-            aria-selected="false">الطلبات المنتهية</button>
+                  data-bs-target="#finishedRequest-tab-pane" type="button" role="tab" aria-controls="finishedRequest-tab-pane"
+                  aria-selected="false">
+            الطلبات المنتهية
+          </button>
         </li>
       </ul>
 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="payedRequest-tab-pane" role="tabpanel"
-          aria-labelledby="payedRequest-tab" tabindex="0">
+             aria-labelledby="payedRequest-tab" tabindex="0">
           <div class="p-4">
             <div class="table-responsive rounded-26 shadow-box">
               <table class="table table-borderless mb-0">
@@ -97,18 +106,21 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let payedRequest of requestDashBoardDto?.payedRequests">
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationValue}} ريال
-                    </td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod}}
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{payedRequest?.donationValue}} ريال
                     </td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
-                      {{payedRequest?.donationPeriod * payedRequest?.donationValue}} ريال</td>
+                      {{payedRequest?.donationPeriod}}
+                    </td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{payedRequest?.donationPeriod * payedRequest?.donationValue}} ريال
+                    </td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.startDate}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.payedCount}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.actForName}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
                       <a class="text-primary d-flex align-items-center ms-4 cursor-pointer"
-                        (click)="previewDetailsDialog(payedRequest?.id)">
+                         (click)="previewDetailsDialog(payedRequest?.id)">
                         <i class="fa-regular fa-pen-to-square fa-20"></i>
                       </a>
                     </td>
@@ -125,7 +137,7 @@
         </div>
 
         <div class="tab-pane fade" id="finishedRequest-tab-pane" role="tabpanel" aria-labelledby="finishedRequest-tab"
-          tabindex="0">
+             tabindex="0">
           <div class="p-4">
             <div class="table-responsive rounded-26 shadow-box">
               <table class="table table-borderless mb-0">
@@ -141,17 +153,21 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let finishedRequest of requestDashBoardDto?.finishedRequests">
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationValue}}
-                      ريال</td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod}}
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{finishedRequest?.donationValue}}
+                      ريال
                     </td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
-                      {{finishedRequest?.donationPeriod * finishedRequest?.donationValue}} ريال</td>
+                      {{finishedRequest?.donationPeriod}}
+                    </td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{finishedRequest?.donationPeriod * finishedRequest?.donationValue}} ريال
+                    </td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.startDate}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.actForName}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
                       <a class="text-primary d-flex align-items-center ms-4 cursor-pointer"
-                        (click)="previewDetailsDialog(finishedRequest?.id)">
+                         (click)="previewDetailsDialog(finishedRequest?.id)">
                         <i class="fa-regular fa-pen-to-square fa-20"></i>
                       </a>
                     </td>

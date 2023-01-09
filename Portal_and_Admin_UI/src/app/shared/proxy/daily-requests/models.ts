@@ -28,6 +28,11 @@ export interface RequestProfileDto {
   finishedRequests: GetDailyRequestListDto[];
 }
 
+export interface GetRequestStatisticsDto {
+  name: string;
+  count: number;
+}
+
 export interface RequestDashBoardDto {
   currentBalance: number;
   remainingBalance: number;
@@ -35,6 +40,8 @@ export interface RequestDashBoardDto {
   donationPersonCount: number;
   payedRequests: GetDailyRequestListDto[];
   finishedRequests: GetDailyRequestListDto[];
+  thisWeekRequest: GetRequestStatisticsDto[];
+  nextWeekRequest: GetRequestStatisticsDto[];
 }
 
 export interface GetDailyRequestDetailsListDto {

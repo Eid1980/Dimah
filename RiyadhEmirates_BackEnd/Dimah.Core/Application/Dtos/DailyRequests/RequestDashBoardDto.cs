@@ -10,5 +10,9 @@ namespace Dimah.Core.Application.Dtos
 
         public List<GetDailyRequestListDto> PayedRequests { get; set; }
         public List<GetDailyRequestListDto> FinishedRequests { get; set; }
+
+
+        public List<GetRequestStatisticsDto> ThisWeekRequest { get; set; }
+        public List<GetRequestStatisticsDto> NextWeekRequest { get; set; }
     }
 }

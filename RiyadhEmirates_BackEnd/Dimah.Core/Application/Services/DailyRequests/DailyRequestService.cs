@@ -6,6 +6,7 @@ using Dimah.Core.Domain.Entities;
 using Dimah.Core.Domain.IRepositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using RestSharp;
 
 namespace Dimah.Core.Application.Services.DailyRequests
 {
@@ -39,7 +40,7 @@ namespace Dimah.Core.Application.Services.DailyRequests
         }
         public IApiResponse PayRequest(Guid id)
         {
-            var request = _dimahUnitOfWork.Repository<DailyRequestMain>().FirstOrDefault(n => n.Id == id, x => x.DailyRequestDetails);
+            var request = _dimahUnitOfWork.Repository<DailyRequestMain>().FirstOrDefault(n => n.Id == id, x => x.CreatedUser, x => x.DailyRequestDetails);
             if (request == null)
                 throw new NotFoundException(typeof(DailyRequestMain).Name);
             else if(request.DailyRequestStatusId != (int)SystemEnums.DailyRequestStatus.New)
@@ -55,6 +56,7 @@ namespace Dimah.Core.Application.Services.DailyRequests
             else
                 request.DailyRequestStatusId = (int)SystemEnums.DailyRequestStatus.Payed;
             _dimahUnitOfWork.ContextSaveChanges();
+            SendSms(request.CreatedUser.PhoneNumber, $"جزاكم الله خيرا على تبرعكم بمبلغ {request.DonationPeriod*request.DonationValue} ريال لمدة {request.DonationPeriod} يوما بقيمة {request.DonationValue} ريال عن كل يوم.");
             return GetResponse();
         }
         public IApiResponse GetRequestProfile()
@@ -73,17 +75,45 @@ namespace Dimah.Core.Application.Services.DailyRequests
         }
         public IApiResponse GetRequestDashBoard()
         {
-            var myRequests = _mapper.Map<List<GetDailyRequestListDto>>(_dimahUnitOfWork.Repository<DailyRequestMain>().Where(x => x.DailyRequestStatusId != (int)SystemEnums.DailyRequestStatus.New && x.DailyRequestStatusId != (int)SystemEnums.DailyRequestStatus.Deleted).Include(d => d.DailyRequestDetails).OrderByDescending(c => c.CreatedDate));
+            var requests = _mapper.Map<List<GetDailyRequestListDto>>(_dimahUnitOfWork.Repository<DailyRequestMain>().Where(x => x.DailyRequestStatusId != (int)SystemEnums.DailyRequestStatus.New && x.DailyRequestStatusId != (int)SystemEnums.DailyRequestStatus.Deleted).Include(d => d.DailyRequestDetails).OrderByDescending(c => c.CreatedDate));
             var resposeData = new RequestDashBoardDto
             {
-                PayedRequests = myRequests.Where(x => x.DailyRequestStatusId == (int)SystemEnums.DailyRequestStatus.Payed).ToList(),
-                FinishedRequests = myRequests.Where(x => x.DailyRequestStatusId == (int)SystemEnums.DailyRequestStatus.Finished).ToList()
+                PayedRequests = requests.Where(x => x.DailyRequestStatusId == (int)SystemEnums.DailyRequestStatus.Payed).ToList(),
+                FinishedRequests = requests.Where(x => x.DailyRequestStatusId == (int)SystemEnums.DailyRequestStatus.Finished).ToList()
             };
             resposeData.CurrentBalance = resposeData.PayedRequests.Sum(x => x.DonationValue * x.PayedCount) + resposeData.FinishedRequests.Sum(x => x.DonationValue * x.PayedCount);
             resposeData.RemainingBalance = resposeData.PayedRequests.Sum(x => x.DonationValue * x.NotPayedCount);
             resposeData.CurrentDayDonation = _dimahUnitOfWork.Repository<DailyRequestDetail>().Where(x => x.Day.Date == DateTime.Now.Date && x.IsPayed).Sum(x => x.DailyRequestMain.DonationValue);
-            resposeData.DonationPersonCount = myRequests.GroupBy(x => x.CreatedBy).Count();
+            resposeData.DonationPersonCount = requests.GroupBy(x => x.CreatedBy).Count();
+            
+            var towWeeksRequests = _dimahUnitOfWork.Repository<DailyRequestDetail>().Where(x => x.Day >= DateTime.Now.AddDays(-6) && x.Day <= DateTime.Now.AddDays(7) && x.DailyRequestMain.DailyRequestStatusId == (int)SystemEnums.DailyRequestStatus.Payed).ToList();
+            
+            var thisWeekRequest = towWeeksRequests.Where(x => x.Day.Date >= DateTime.Now.Date.AddDays(-6) && x.Day.Date <= DateTime.Now.Date).Select(model =>
+                new
+                {
+                    DayNumber = model.Day.DayOfWeek,
+                    Amount = model.DailyRequestMain.DonationValue
+                }).GroupBy(x => x.DayNumber).Select(item  => 
+                new GetRequestStatisticsDto 
+                {
+                    Name = item.Key.ToString(),
+                    Count = item.Count()
+                }).ToList();
+            
+            var nextWeekRequest = towWeeksRequests.Where(x => x.Day.Date > DateTime.Now.Date && x.Day.Date <= DateTime.Now.Date.AddDays(7)).Select(model =>
+                new
+                {
+                    DayNumber = model.Day.DayOfWeek,
+                    Amount = model.DailyRequestMain.DonationValue
+                }).GroupBy(x => x.DayNumber).Select(item =>
+                new GetRequestStatisticsDto
+                {
+                    Name = item.Key.ToString(),
+                    Count = item.Count()
+                }).ToList();
 
+            resposeData.ThisWeekRequest = thisWeekRequest;
+            resposeData.NextWeekRequest = nextWeekRequest;
             return GetResponse(data: resposeData);
         }
         public IApiResponse GetRequestDetailsById(Guid id)
@@ -109,6 +139,18 @@ namespace Dimah.Core.Application.Services.DailyRequests
                 return userId;
             }
             return null;
+        }
+        private void SendSms(string Mob, string Message)
+        {
+            try
+            {
+                var client = new RestClient("https://www.replier.net//api//sendMessage?instanceid=199033&token=be879f6a-dc2f-40e5-a73d-3ad696b39b62&phone=" + Mob + "&body=" + Message);
+                var request = new RestRequest();
+                RestResponse response = client.Execute(request);
+            }
+            catch (Exception e)
+            {
+            }
         }
 
     }
