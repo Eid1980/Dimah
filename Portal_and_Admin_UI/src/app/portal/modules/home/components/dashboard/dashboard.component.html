@@ -16,36 +16,40 @@
 
   <div class="row">
     <div class="col-md-6 offset-lg-1 mb-3">
-      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div
+        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
-          <h5 class="fa-22 mb-3 fw-bold">رصيد ديما</h5>
+          <h5 class="fa-22 mb-0 fw-bold">رصيد ديما</h5>
         </div>
         <div class="my-2">
           <h4 class="fw-bold text-primary mb-0"><span>{{requestDashBoardDto?.currentBalance}}</span> ريال</h4>
         </div>
       </div>
 
-      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div
+        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
-          <h5 class="fa-22 mb-3 fw-bold">الرصيد المتبقي</h5>
+          <h5 class="fa-22 mb-0 fw-bold">الرصيد المتبقي</h5>
         </div>
         <div class="my-2">
           <h4 class="fw-bold text-primary mb-0"><span>{{requestDashBoardDto?.remainingBalance}}</span> ريال</h4>
         </div>
       </div>
 
-      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div
+        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
-          <h5 class="fa-22 mb-3 fw-bold">الرصيد المستحق اليوم</h5>
+          <h5 class="fa-22 mb-0 fw-bold">الرصيد المستحق اليوم</h5>
         </div>
         <div class="my-2">
           <h4 class="fw-bold text-primary mb-0"><span>{{requestDashBoardDto?.currentDayDonation}}</span> ريال</h4>
         </div>
       </div>
 
-      <div class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
+      <div
+        class="main-card p-md-4 p-3 flex-row d-flex align-items-center justify-content-between border-0 shadow rounded-26 h-auto mb-4">
         <div class="my-2 ms-3">
-          <h5 class="fa-22 mb-3 fw-bold">عدد المتبرعين</h5>
+          <h5 class="fa-22 mb-0 fw-bold">عدد المتبرعين</h5>
         </div>
 
         <div class="my-2">
@@ -59,43 +63,52 @@
     </div>
   </div>
 
-  <div class="mt-4">
+  <div class="mt-4 mb-5">
     <div class="border bg-white rounded-26 shadow-box overflow-hidden">
       <ul class="nav nav-tabs card-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="payedRequest-tab" data-bs-toggle="tab" data-bs-target="#payedRequest-tab-pane" type="button" role="tab" aria-controls="payedRequest-tab-pane" aria-selected="true">الطلبات المدفوعة</button>
+          <button class="nav-link active" id="payedRequest-tab" data-bs-toggle="tab"
+            data-bs-target="#payedRequest-tab-pane" type="button" role="tab" aria-controls="payedRequest-tab-pane"
+            aria-selected="true">الطلبات المدفوعة</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="finishedRequest-tab" data-bs-toggle="tab" data-bs-target="#finishedRequest-tab-pane" type="button" role="tab" aria-controls="finishedRequest-tab-pane" aria-selected="false">الطلبات المنتهية</button>
+          <button class="nav-link" id="finishedRequest-tab" data-bs-toggle="tab"
+            data-bs-target="#finishedRequest-tab-pane" type="button" role="tab" aria-controls="finishedRequest-tab-pane"
+            aria-selected="false">الطلبات المنتهية</button>
         </li>
       </ul>
 
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="payedRequest-tab-pane" role="tabpanel" aria-labelledby="payedRequest-tab" tabindex="0">
-          <div class="p-4 pb-2">
+        <div class="tab-pane fade show active" id="payedRequest-tab-pane" role="tabpanel"
+          aria-labelledby="payedRequest-tab" tabindex="0">
+          <div class="p-4">
             <div class="table-responsive rounded-26 shadow-box">
               <table class="table table-borderless mb-0">
                 <thead class="bg-primary">
                   <tr>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">مدة التبرع / يوم</th>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">الإجمالي</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">قيمة التبرع اليومى</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">مدة التبرع / يوم</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">الإجمالي</th>
                     <th class="text-white fa-16 text-center mw-150 py-4 align-middle">تاريخ البداية</th>
-                    <th class="text-white fa-16 text-center mw-300 py-4 align-middle">عدد الأيام المدفوعة</th>
-                    <th class="text-white fa-16 text-center mw-300 py-4 align-middle">اسم المتبرع عنه</th>
-                    <th class="text-white fa-16 text-center mw-300 py-4 align-middle">الاجراءات</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">عدد الأيام المدفوعة</th>
+                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">اسم المتبرع عنه</th>
+                    <th class="text-white fa-16 text-center mw-250 py-4 align-middle">الاجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let payedRequest of requestDashBoardDto?.payedRequests">
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationValue}} ريال</td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod}}</td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod * payedRequest?.donationValue}} ريال</td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationValue}} ريال
+                    </td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.donationPeriod}}
+                    </td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{payedRequest?.donationPeriod * payedRequest?.donationValue}} ريال</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.startDate}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.payedCount}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{payedRequest?.actForName}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
-                      <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="previewDetailsDialog(payedRequest?.id)">
+                      <a class="text-primary d-flex align-items-center ms-4 cursor-pointer"
+                        (click)="previewDetailsDialog(payedRequest?.id)">
                         <i class="fa-regular fa-pen-to-square fa-20"></i>
                       </a>
                     </td>
@@ -110,29 +123,35 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" id="finishedRequest-tab-pane" role="tabpanel" aria-labelledby="finishedRequest-tab" tabindex="0">
-          <div class="p-4 pb-2">
+
+        <div class="tab-pane fade" id="finishedRequest-tab-pane" role="tabpanel" aria-labelledby="finishedRequest-tab"
+          tabindex="0">
+          <div class="p-4">
             <div class="table-responsive rounded-26 shadow-box">
               <table class="table table-borderless mb-0">
                 <thead class="bg-primary">
                   <tr>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">قيمة التبرع اليومى</th>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">مدة التبرع / يوم</th>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">الإجمالي</th>
-                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">تاريخ البداية</th>
-                    <th class="text-white fa-16 text-center mw-300 py-4 align-middle">اسم المتبرع عنه</th>
-                    <th class="text-white fa-16 text-center mw-300 py-4 align-middle">الاجراءات</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">قيمة التبرع اليومى</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">مدة التبرع / يوم</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">الإجمالي</th>
+                    <th class="text-white fa-16 text-center mw-100 py-4 align-middle">تاريخ البداية</th>
+                    <th class="text-white fa-16 text-center mw-150 py-4 align-middle">اسم المتبرع عنه</th>
+                    <th class="text-white fa-16 text-center mw-250 py-4 align-middle">الاجراءات</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let finishedRequest of requestDashBoardDto?.finishedRequests">
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationValue}} ريال</td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod}}</td>
-                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod * finishedRequest?.donationValue}} ريال</td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationValue}}
+                      ريال</td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.donationPeriod}}
+                    </td>
+                    <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
+                      {{finishedRequest?.donationPeriod * finishedRequest?.donationValue}} ريال</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.startDate}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">{{finishedRequest?.actForName}}</td>
                     <td class="text-muted fa-16 text-center px-3 py-4 align-middle">
-                      <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="previewDetailsDialog(finishedRequest?.id)">
+                      <a class="text-primary d-flex align-items-center ms-4 cursor-pointer"
+                        (click)="previewDetailsDialog(finishedRequest?.id)">
                         <i class="fa-regular fa-pen-to-square fa-20"></i>
                       </a>
                     </td>
@@ -158,7 +177,7 @@
       <div class="row mx-0">
         <div class="info-col col-md-12 col-12">
           <p-table #requestDetails [value]="dailyRequestDetailsListDto" dataKey="id" [autoLayout]="true"
-                   [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
+            [rowHover]="true" [responsive]="true" [scrollable]="true" class="w-100 ps-0">
             <ng-template pTemplate="header" let-columns>
               <tr>
                 <th>م</th>
