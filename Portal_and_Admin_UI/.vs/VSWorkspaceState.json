@@ -7,11 +7,19 @@
     "\\src\\app\\admin\\modules",
     "\\src\\app\\admin\\modules\\data-management",
     "\\src\\app\\admin\\modules\\data-management\\components",
+<<<<<<< Updated upstream
+=======
+    "\\src\\app\\admin\\modules\\data-management\\components\\charity",
+>>>>>>> Stashed changes
     "\\src\\app\\admin\\modules\\data-management\\components\\charity\\charity-list",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\proxy",
     "\\src\\app\\shared\\proxy\\charities"
   ],
+<<<<<<< Updated upstream
   "SelectedNode": "\\src\\index.html",
+=======
+  "SelectedNode": "\\src\\app\\admin",
+>>>>>>> Stashed changes
   "PreviewInSolutionExplorer": false
 }
