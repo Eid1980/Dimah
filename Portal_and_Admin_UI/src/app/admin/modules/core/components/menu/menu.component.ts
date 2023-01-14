@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '@proxy/accounts/account.service';
-import { Role } from '../../../../../shared/enums/role.enum';
+import { Role } from '@shared/enums/role.enum';
 
 @Component({
   selector: 'app-menu',

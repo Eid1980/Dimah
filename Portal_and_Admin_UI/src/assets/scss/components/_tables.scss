@@ -122,14 +122,36 @@ p-table {
               border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1);
 
               &.empty-grid-table {
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
-                font-size: 14px;
-                color: $danger;
+                color: $danger !important;
                 background-color: rgba($color: $danger, $alpha: 0.06);
                 border: 0px;
+                padding: 18px 12px;
+
+                &:hover {
+                  background-color: rgba($color: $danger, $alpha: 0.06);
+                }
               }
+            }
+          }
+        }
+
+        &.table-primary {
+          thead.p-datatable-thead {
+            background-color: $Primary-1 !important;
+
+            tr {
+              th {
+                background-color: $Primary-1 !important;
+              }
+            }
+          }
+
+          tbody.p-datatable-tbody {
+            tr {
+              td {}
             }
           }
         }
@@ -223,9 +245,11 @@ p-paginator {
       }
     }
 
-    html[lang="en"] & , html[dir="ltr"] &{
+    html[lang="en"] &,
+    html[dir="ltr"] & {
       .p-paginator-element {
         &.p-link {
+
           &.p-paginator-first,
           &.p-paginator-prev,
           &.p-paginator-next,

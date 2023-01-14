@@ -8,6 +8,8 @@ import { PaymentComponent } from "./components/payment/payment.component";
 import { PaymentResultComponent } from "./components/payment-result/payment-result.component";
 import { CharityProjectsComponent } from "./components/charity-projects/charity-projects.component";
 import { ProjectDetailsComponent } from "./components/project-details/project-details.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { NewPaymentComponent } from "./components/new-payment/new-payment.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -18,7 +20,10 @@ const routes: Routes = [
 
   { path: "cart", component: CartComponent },
   { path: "payment", component: PaymentComponent },
+  { path: "new-payment/:id", component: NewPaymentComponent },
   { path: "payment-result", component: PaymentResultComponent },
+  { path: "profile", component: ProfileComponent },
+  { path: "dashboard", component: DashboardComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

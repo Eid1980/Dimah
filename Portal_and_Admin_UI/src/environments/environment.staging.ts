@@ -4,6 +4,7 @@ export const environment = {
   cryptionKey: "Emirates@2023",
   ApiUrl: "http://localhost:4201",
   lastSieUpdate: "2022/10/30",
+  dimahId: "22d0eeca-467a-48bc-a600-3624ff0887b6",
 
   allowedExtensions: 'image/*',
   fileSize: 4000000,

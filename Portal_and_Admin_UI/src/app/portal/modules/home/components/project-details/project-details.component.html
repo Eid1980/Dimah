@@ -14,7 +14,8 @@
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-3">
       <div class="d-flex flex-column h-100" *ngIf="projectDetailsDto?.image">
-        <img [src]="['/assets/images/uploads/projects/'+projectDetailsDto?.image]" [alt]="projectDetailsDto?.name" class="rounded-26 img-fluid h-100" style="max-width: 400px;" />
+        <img [src]="['/assets/images/uploads/projects/'+projectDetailsDto?.image]" [alt]="projectDetailsDto?.name"
+          class="rounded-26 img-fluid h-100" style="max-width: 400px;" />
       </div>
     </div>
     <div class="col-lg-8 col-md-6 mb-3 pe-4 py-md-3">
@@ -23,32 +24,66 @@
         <p class="fa-18 fw-normal mb-3 w-75">{{ projectDetailsDto?.description }}</p>
       </div>
 
-      <div class="d-flex flex-lg-nowrap flex-wrap align-items-end mt-5 mb-4">
-        <form [formGroup]="createForm" (ngSubmit)="addToCart()">
-          <div class="ps-3 mb-lg-0 mb-4">
-            <h6 class="fw-bold text-primary mb-3">قيمة التبرع اليومى</h6>
-            <input type="number" class="form-control w-50 py-2 px-2 text-center" [value]="this.createDto.donationValue" autocomplete="off" formControlName="donationValue" id="donationValue" />
-            <small *ngIf="(isFormSubmitted || createForm.get('donationValue').touched) && createForm.get('donationValue').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
-          </div>
-          <div class="mb-sm-0 mb-4">
-            <h6 class="fw-bold text-primary mb-3">مدة التبرع / يوم</h6>
-            <div class="number-counter justify-content-center">
-              <span class="btn btn-highlight-primary plus" (click)="increase()">
-                <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
-              </span>
-              <input class="form-control" type="number" readonly [value]="this.createDto.donationPeriod" min="1" max="100000" autocomplete="off" formControlName="donationPeriod" id="donationPeriod" />
-              <small *ngIf="(isFormSubmitted || createForm.get('donationPeriod').touched) && createForm.get('donationPeriod').errors?.required" class="danger">{{ 'global.validators.requiredField' | translate }}</small>
-              <span class="btn btn-highlight-primary minus" (click)="decrease()">
-                <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
-              </span>
+      <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mb-lg-5 mb-3">
+            <div>
+              <h6 class="fw-bold text-primary mb-3">جوال المتبرع عنه</h6>
+              <input type="text" class="form-control py-2 lh-lg" formControlName="actForMobile" id="actForMobile" placeholder="اكتب..." />
             </div>
           </div>
 
-          <div class="me-auto pe-3">
-            <button type="submit" class="btn btn-primary">إضافة إلى سلة الخير</button>
+          <div class="col-lg-4 col-sm-6 mb-lg-5 mb-3">
+            <div>
+              <h6 class="fw-bold text-primary mb-3">اسم المتبرع عنه</h6>
+              <input type="text" class="form-control py-2 lh-lg" formControlName="actForName" id="actForName" placeholder="اكتب..." />
+            </div>
           </div>
-        </form>
-      </div>
+
+          <div class="col-lg-5 col-12 mb-lg-5 mb-3">
+              <hijri-gregorian-datepicker id="date" class="label-primary" [placeHolder]="'سنة/شهر/يوم'" [(selectedDate)]="date"
+                [isRequired]="false" [GregLabel]="'ميلادي'" [hijriLabel]="'هجري'" [selectedDateType]="selectedDateType"
+                label="تاريخ بداية التبرع" #datePicker>
+              </hijri-gregorian-datepicker>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mb-3">
+            <div>
+              <h6 class="fw-bold text-primary mb-3">قيمة التبرع اليومى</h6>
+              <input type="number" class="form-control w-50 py-2 px-2 text-center" [value]="this.createDto.donationValue"
+                autocomplete="off" formControlName="donationValue" id="donationValue" />
+              <small
+                *ngIf="(isFormSubmitted || createForm.get('donationValue').touched) && createForm.get('donationValue').errors?.required"
+                class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 offset-lg-1 mb-3">
+            <div>
+              <h6 class="fw-bold text-primary mb-3">مدة التبرع / يوم</h6>
+              <div class="number-counter justify-content-center">
+                <span class="btn btn-highlight-primary plus" (click)="increase()">
+                  <img src="assets/images/icons/svg/add-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+                <input class="form-control" type="number" readonly [value]="this.createDto.donationPeriod" min="1"
+                  max="100000" autocomplete="off" formControlName="donationPeriod" id="donationPeriod" />
+                <small
+                  *ngIf="(isFormSubmitted || createForm.get('donationPeriod').touched) && createForm.get('donationPeriod').errors?.required"
+                  class="danger">{{ 'global.validators.requiredField' | translate }}</small>
+                <span class="btn btn-highlight-primary minus" (click)="decrease()">
+                  <img src="assets/images/icons/svg/minus-primary.svg" class="img-fluid" alt="icon" />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-sm-6 mb-3 d-flex align-items-end me-auto">
+            <button type="submit" class="btn btn-primary w-100">دفع</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -108,11 +143,13 @@
           </div>
         </div>
 
-        <div class="owl__carousel px-3">
+        <div class="owl__carousel items_slider px-3">
           <owl-carousel-o [options]="itemsOptions" class="owl-rtl">
             <ng-template carouselSlide *ngFor="let charityProject of projectDetailsDto?.relatedProjects">
-              <a class="card-bg shadow-none mxw-240" [routerLink]="['/project-details' , charityProject?.id]">
-                <div class="card-overlay" [style.background-image]="'url('+'/assets/images/uploads/projectTypes/'+charityProject?.projectTypeImageName+')'"></div>
+              <a class="card-bg shadow-none" [routerLink]="['/project-details' , charityProject?.id]">
+                <div class="card-overlay"
+                  [style.background-image]="'url('+'/assets/images/uploads/projectTypes/'+charityProject?.projectTypeImageName+')'">
+                </div>
                 <h4>{{charityProject?.projectName}}</h4>
               </a>
             </ng-template>

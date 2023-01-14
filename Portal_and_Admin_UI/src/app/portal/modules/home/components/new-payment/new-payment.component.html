@@ -1,0 +1,91 @@
+<div class="container pt-md-4 pt-3 pb-5">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-primary fw-bold mb-5">الدفع</h3>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6 mb-3 pe-md-5 mb-4">
+      <div class="border bg-white rounded-26 shadow-box overflow-hidden">
+        <!-- <div class="bg-primary p-4 d-flex align-items-center">
+          <h6 class="fa-18 fw-bold mb-0 text-white">بطاقة الدفع</h6>
+        </div> -->
+
+        <ul class="nav nav-tabs card-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="cardPayment-tab" data-bs-toggle="tab" data-bs-target="#cardPayment-tab-pane" type="button" role="tab" aria-controls="cardPayment-tab-pane" aria-selected="true">بطاقة الدفع</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="codePayment-tab" data-bs-toggle="tab" data-bs-target="#codePayment-tab-pane" type="button" role="tab" aria-controls="codePayment-tab-pane" aria-selected="false">طريقة آخرى</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="cardPayment-tab-pane" role="tabpanel" aria-labelledby="cardPayment-tab" tabindex="0">
+            <div class="p-4 pb-2">
+              <div class="mb-3">
+                <h6 class="fa-14 fw-bold mb-3">الاسم على البطاقة</h6>
+                <input class="form-control input-lg" type="text" placeholder="اكتب..." />
+              </div>
+
+              <div class="mb-3">
+                <h6 class="fa-14 fw-bold mb-3">رقم البطاقة</h6>
+                <input class="form-control input-lg" type="text" placeholder="اكتب..." />
+              </div>
+
+              <div class="row justify-content-between">
+                <div class="col-lg-4 col-6 mb-3">
+                  <div class="mb-3">
+                    <h6 class="fa-14 fw-bold mb-2">تاريخ الإنتهاء</h6>
+                    <div class="d-flex align-items-center">
+                      <input class="form-control input-lg w-50 text-center" type="number" placeholder="MM" />
+                      <input class="form-control input-lg w-50 text-center" type="number" placeholder="YY" style="margin-right: -1px;" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-6 mb-3">
+                  <div class="mb-3">
+                    <h6 class="fa-14 fw-bold mb-2 text-md-start text-center">رمز الآمان - CVV</h6>
+                    <input class="form-control input-lg w-75 text-center me-auto" type="number" placeholder="CVV" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-top pt-4">
+                <div class="d-flex align-items-center mb-2">
+                  <h6 class="mb-0 fw-bold fa-16">خيارات الدفع المتاحة</h6>
+                  <div class="d-flex align-items-center me-4">
+                    <div class="ms-4">
+                      <img src="assets/images/icons/svg/mastercard-logo.svg" class="img-fluid" alt="icon" width="32px" />
+                    </div>
+
+                    <div>
+                      <img src="assets/images/icons/svg/visa-logo.svg" class="img-fluid" alt="icon" width="32px" />
+                    </div>
+                  </div>
+                </div>
+                <p class="text-muted fa-14 mb-0 fw-normal">قم بتسجيل الدخول لتتمكن من حفظ البطاقة</p>
+              </div>
+            </div>
+
+            <div class="px-4 pb-4 pt-4">
+              <button class="btn btn-primary w-100" (click)="finishPayment()">إتمام عملية التبرع</button>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="codePayment-tab-pane" role="tabpanel" aria-labelledby="codePayment-tab" tabindex="0">
+            <div class="p-4 pb-2">
+              <!-- no payment founded -->
+              <div class="d-flex flex-column align-items-center py-4">
+                <i class="fa-solid fa-circle-exclamation text-muted fa-4x mb-2"></i>
+                <p class="text-muted mb-0 fa-16 fw-normal">لا توجد طريقة دفع آخرى</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

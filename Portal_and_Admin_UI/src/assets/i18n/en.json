@@ -63,6 +63,13 @@
     "detailsTitle": "Project Types Details"
   },
 
+  "latest-news": {
+    "title": "Latest News",
+    "addTitle": "Add New News",
+    "editTitle": "Edit News",
+    "searchTitle": "Latest News Search",
+    "detailsTitle": "Latest News Details"
+  },
 
   "_comment": "begin auth region",
   "login": {

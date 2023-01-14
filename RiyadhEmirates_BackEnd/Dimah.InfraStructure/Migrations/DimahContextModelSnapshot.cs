@@ -84,7 +84,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = new Guid("22d0eeca-467a-48bc-a600-3624ff0887b6"),
                             Address = "AddressAddressAddressAddress",
-                            ConcurrencyStamp = new Guid("8e09d784-6875-47cd-af80-54ca61a9ad70"),
+                            ConcurrencyStamp = new Guid("33b31ce8-2d87-4ed7-8b95-68f3039b2700"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "dimah@d.org",
@@ -170,7 +170,7 @@ namespace Dimah.InfraStructure.Migrations
 
             modelBuilder.Entity("Dimah.Core.Domain.Entities.ChartItem", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -264,6 +264,67 @@ namespace Dimah.InfraStructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Dimah.Core.Domain.Entities.DailyRequestDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DailyRequestMainId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Day")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPayed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DailyRequestMainId");
+
+                    b.ToTable("DailyRequestDetails", "Request");
+                });
+
+            modelBuilder.Entity("Dimah.Core.Domain.Entities.DailyRequestMain", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ActForMobile")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("ActForName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DailyRequestStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DonationPeriod")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DonationValue")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedBy");
+
+                    b.ToTable("DailyRequestMains", "Request");
+                });
+
             modelBuilder.Entity("Dimah.Core.Domain.Entities.Nationality", b =>
                 {
                     b.Property<int>("Id")
@@ -329,7 +390,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 1,
                             Code = "101",
-                            ConcurrencyStamp = new Guid("7acbf85a-c24e-4a98-9afa-d0836ecee4f9"),
+                            ConcurrencyStamp = new Guid("2f2197e0-d908-4439-8974-eb8c93de5ecb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "971",
@@ -342,7 +403,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 2,
                             Code = "102",
-                            ConcurrencyStamp = new Guid("5f9cba24-3671-4cb9-9c0d-599d615008ff"),
+                            ConcurrencyStamp = new Guid("00d10b15-cbe0-4461-92a4-4de244345933"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "962",
@@ -355,7 +416,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 3,
                             Code = "103",
-                            ConcurrencyStamp = new Guid("137c22b1-6cc3-4d4e-adc5-f6271a41118b"),
+                            ConcurrencyStamp = new Guid("633361a5-be98-481a-a10d-f7ac1607ab59"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "973",
@@ -368,7 +429,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 4,
                             Code = "104",
-                            ConcurrencyStamp = new Guid("0821c2fa-ee16-4fef-8ad1-c4ee3460cf2a"),
+                            ConcurrencyStamp = new Guid("fc62bcd2-2ca6-455c-8568-fb42389343b6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "963",
@@ -381,7 +442,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 5,
                             Code = "105",
-                            ConcurrencyStamp = new Guid("05003d4a-67b7-430e-9ca0-cfd95f96ff60"),
+                            ConcurrencyStamp = new Guid("f35cb17d-d83e-4821-a2d9-3fc4c00989ac"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "964",
@@ -394,7 +455,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 6,
                             Code = "106",
-                            ConcurrencyStamp = new Guid("1b48fd25-f61a-47ee-a615-5636dbdb749f"),
+                            ConcurrencyStamp = new Guid("8b37ebb1-1f16-48e2-b88f-afd29ca2ce69"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "968",
@@ -407,7 +468,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 7,
                             Code = "107",
-                            ConcurrencyStamp = new Guid("20ddc8f0-c820-4aee-b2b1-e97c53a07356"),
+                            ConcurrencyStamp = new Guid("d261e3c3-abc0-47b6-99de-85787c90a5d3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "970",
@@ -420,7 +481,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 8,
                             Code = "108",
-                            ConcurrencyStamp = new Guid("6a3d1249-a107-4d18-a1cf-5d08238db1e1"),
+                            ConcurrencyStamp = new Guid("fb728ce6-6dff-417f-a026-cd393a371848"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "974",
@@ -433,7 +494,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 9,
                             Code = "109",
-                            ConcurrencyStamp = new Guid("555f066e-e5ae-44f8-99b5-98f5cc3f71c9"),
+                            ConcurrencyStamp = new Guid("b96b3d51-f825-4981-afcf-f334b73823a8"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "965",
@@ -446,7 +507,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 10,
                             Code = "110",
-                            ConcurrencyStamp = new Guid("32c07a02-ccc0-4ebe-ba75-999825bd710f"),
+                            ConcurrencyStamp = new Guid("63035286-2b61-4418-b412-14481c799e5b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "961",
@@ -459,7 +520,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 11,
                             Code = "111",
-                            ConcurrencyStamp = new Guid("607c7334-f716-48d4-a3e5-8d8fe96d1c85"),
+                            ConcurrencyStamp = new Guid("bf3b373e-1978-492a-803b-5c10331afa3b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "967",
@@ -472,7 +533,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 12,
                             Code = "113",
-                            ConcurrencyStamp = new Guid("f999ae60-25fb-4255-9ae3-3969ad73b053"),
+                            ConcurrencyStamp = new Guid("70d4d331-03a2-4558-90b4-fc2ffc0a2c1a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "966",
@@ -485,7 +546,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 13,
                             Code = "201",
-                            ConcurrencyStamp = new Guid("3ca76ea8-e608-4ac2-b89b-9df926c175b7"),
+                            ConcurrencyStamp = new Guid("3355301d-2d17-4505-9bf7-dcc4ac162a44"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "216",
@@ -498,7 +559,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 14,
                             Code = "202",
-                            ConcurrencyStamp = new Guid("6cfb1505-f1b3-4433-9e24-ae9e73fe41be"),
+                            ConcurrencyStamp = new Guid("0fe8558e-2d27-495e-9bf7-26b48a38d935"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "213",
@@ -511,7 +572,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 15,
                             Code = "203",
-                            ConcurrencyStamp = new Guid("7d50270c-e324-4ed6-84d1-3557842b48a4"),
+                            ConcurrencyStamp = new Guid("3e66f205-2f5e-4558-9474-da8ee70b4a29"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "253",
@@ -524,7 +585,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 16,
                             Code = "204",
-                            ConcurrencyStamp = new Guid("5d1883eb-85c0-43e4-b784-0701e821c2e2"),
+                            ConcurrencyStamp = new Guid("3bdb1e76-11da-48a4-bb01-0c4a2a870150"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "249",
@@ -537,7 +598,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 17,
                             Code = "205",
-                            ConcurrencyStamp = new Guid("f2be4067-2235-473a-b3c6-6144c32ebf94"),
+                            ConcurrencyStamp = new Guid("2c2bbe9a-0f04-4335-8b3a-f6b1e3f3d180"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "252",
@@ -550,7 +611,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 18,
                             Code = "206",
-                            ConcurrencyStamp = new Guid("8e6efaaa-73c2-43ca-aa0c-7a2fc4580937"),
+                            ConcurrencyStamp = new Guid("15d4ab49-5d75-42ee-9a04-2cbee6219df4"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "218",
@@ -563,7 +624,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 19,
                             Code = "207",
-                            ConcurrencyStamp = new Guid("811dfa9c-dfe1-4368-9108-ab4d6b9ab596"),
+                            ConcurrencyStamp = new Guid("0618fe56-bc43-4bbc-a311-914edc221113"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "20",
@@ -576,7 +637,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 20,
                             Code = "208",
-                            ConcurrencyStamp = new Guid("b86f5d5c-1659-440d-944e-449990cd611e"),
+                            ConcurrencyStamp = new Guid("eb1e6fb1-7f55-4fdc-9d52-495f74bb3167"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "212",
@@ -589,7 +650,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 21,
                             Code = "209",
-                            ConcurrencyStamp = new Guid("fe5b7a29-3347-4411-9c5b-7e805e40448a"),
+                            ConcurrencyStamp = new Guid("0191b091-00a4-4d70-867f-1ccbd75e9d68"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "222",
@@ -602,7 +663,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 22,
                             Code = "301",
-                            ConcurrencyStamp = new Guid("ee1b912f-3e82-4826-bc76-d83d5eab8ffe"),
+                            ConcurrencyStamp = new Guid("90f84c4a-474a-4482-9149-837df0ed5ff6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "93",
@@ -615,7 +676,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 23,
                             Code = "302",
-                            ConcurrencyStamp = new Guid("022a9843-3f2b-4455-ac12-097e2632d5ff"),
+                            ConcurrencyStamp = new Guid("fbf5b3a4-91f7-4276-93bc-caa6f3abbee7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "62",
@@ -628,7 +689,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 24,
                             Code = "303",
-                            ConcurrencyStamp = new Guid("cfc537d8-a807-4231-9c23-886b03dd3655"),
+                            ConcurrencyStamp = new Guid("150d60b3-05ba-4e37-90b6-b7d5ee09ac89"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "98",
@@ -641,7 +702,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 25,
                             Code = "304",
-                            ConcurrencyStamp = new Guid("98fade23-ca7a-46c6-ace3-052bd551c986"),
+                            ConcurrencyStamp = new Guid("511d16c1-aeb2-4e98-8d59-b19bdb8b1598"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "92",
@@ -654,7 +715,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 26,
                             Code = "305",
-                            ConcurrencyStamp = new Guid("bc342a95-c303-4759-bfb6-1c2bf1538bdc"),
+                            ConcurrencyStamp = new Guid("fec68f32-a59d-499c-8960-7a2468aebf1d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "880",
@@ -667,7 +728,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 27,
                             Code = "306",
-                            ConcurrencyStamp = new Guid("c5c1727c-7b25-46be-9412-6ef036c910c0"),
+                            ConcurrencyStamp = new Guid("50309d0e-3a7a-4847-a157-5e70e703ee2c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "673",
@@ -680,7 +741,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 28,
                             Code = "307",
-                            ConcurrencyStamp = new Guid("7a05f052-a6f2-4c35-80b8-8428011c6935"),
+                            ConcurrencyStamp = new Guid("dddebf6b-dc9d-48af-99f4-6ca6b9cca548"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "95",
@@ -693,7 +754,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 29,
                             Code = "308",
-                            ConcurrencyStamp = new Guid("f1855ef9-7d9e-43ef-922f-7c8dcd69027a"),
+                            ConcurrencyStamp = new Guid("f1acddc2-b153-4676-94d8-feefe5827768"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "66",
@@ -706,7 +767,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 30,
                             Code = "309",
-                            ConcurrencyStamp = new Guid("2f19431d-f997-4054-8f26-cb9ff570999d"),
+                            ConcurrencyStamp = new Guid("15a0b0c5-86e4-4b5b-9209-2b08c0e3018d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "90",
@@ -719,7 +780,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 31,
                             Code = "310",
-                            ConcurrencyStamp = new Guid("16de5ab9-de3a-4bdb-833b-b91aa12447b1"),
+                            ConcurrencyStamp = new Guid("25370233-9e8a-4b27-9a8a-5359bc492e5f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "960",
@@ -732,7 +793,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 32,
                             Code = "311",
-                            ConcurrencyStamp = new Guid("e32e0169-35e5-49f9-acec-9bb2cbb115f7"),
+                            ConcurrencyStamp = new Guid("c0f4128d-5b2f-4835-a8db-299ad867dc15"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -745,7 +806,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 33,
                             Code = "312",
-                            ConcurrencyStamp = new Guid("41152e82-1f94-402d-a285-623e5a7259c8"),
+                            ConcurrencyStamp = new Guid("a7ce8671-f09d-4458-99df-b499020e8aad"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "65",
@@ -758,7 +819,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 34,
                             Code = "313",
-                            ConcurrencyStamp = new Guid("27341e75-4eb8-4761-be3d-c6033e588fdf"),
+                            ConcurrencyStamp = new Guid("c51f2c30-a8c5-4644-8480-7956d5404c14"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "94",
@@ -771,7 +832,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 35,
                             Code = "315",
-                            ConcurrencyStamp = new Guid("2b3835f3-7383-456e-9964-771aa2bcade8"),
+                            ConcurrencyStamp = new Guid("79c6dac9-e4a4-483f-9739-768fbcc00ce6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "63",
@@ -784,7 +845,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 36,
                             Code = "316",
-                            ConcurrencyStamp = new Guid("646182e4-d540-4216-8477-0ef399bf21ef"),
+                            ConcurrencyStamp = new Guid("f18eb92a-4452-46ea-9680-54af7b84d13a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "84",
@@ -797,7 +858,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 37,
                             Code = "317",
-                            ConcurrencyStamp = new Guid("8f728e53-5b01-49f9-b576-3363b9ab8cb9"),
+                            ConcurrencyStamp = new Guid("3018a786-2512-405e-9383-eb41b509cedb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "855",
@@ -810,7 +871,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 38,
                             Code = "318",
-                            ConcurrencyStamp = new Guid("1cd9bfe1-54b1-4fa2-89c1-20697541dbba"),
+                            ConcurrencyStamp = new Guid("b00ad745-6f8d-44c6-9046-940b61350e1d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "82",
@@ -823,7 +884,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 39,
                             Code = "319",
-                            ConcurrencyStamp = new Guid("d1174f5b-2508-4b99-91ca-81f8c812c8f4"),
+                            ConcurrencyStamp = new Guid("2333b167-98ff-4a98-97f4-33a1d85e6627"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "60",
@@ -836,7 +897,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 40,
                             Code = "320",
-                            ConcurrencyStamp = new Guid("0f32bbee-87c4-42d2-8eb2-3b5a820355dc"),
+                            ConcurrencyStamp = new Guid("d1287605-2ecb-4393-b0a2-2db5f0953b80"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "977",
@@ -849,7 +910,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 41,
                             Code = "321",
-                            ConcurrencyStamp = new Guid("801d709e-3536-48ae-9d4f-965d9270b715"),
+                            ConcurrencyStamp = new Guid("f452d174-4529-4388-a941-35bf882aa5f3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "91",
@@ -862,7 +923,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 42,
                             Code = "322",
-                            ConcurrencyStamp = new Guid("f07d39a6-c2d2-42bf-b935-48d6410f7791"),
+                            ConcurrencyStamp = new Guid("469e52fa-d50b-414a-add1-04cc5fda1ca5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "852",
@@ -875,7 +936,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 43,
                             Code = "323",
-                            ConcurrencyStamp = new Guid("5aeb3d5f-563c-4e19-a148-636be3dd2f69"),
+                            ConcurrencyStamp = new Guid("af726fb0-c81a-46f1-97e2-cf5fa71b06dd"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "81",
@@ -888,7 +949,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 44,
                             Code = "324",
-                            ConcurrencyStamp = new Guid("e16a7907-ff04-4a13-9f1d-1408fefcb3d0"),
+                            ConcurrencyStamp = new Guid("994c8ea0-f3a6-419a-af23-8ce64c823575"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "975",
@@ -901,7 +962,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 45,
                             Code = "325",
-                            ConcurrencyStamp = new Guid("d47b665a-10c2-4d9f-8406-f04b2cde5c31"),
+                            ConcurrencyStamp = new Guid("1daf4bc5-f969-4bef-b987-70f3c78493eb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "86",
@@ -914,7 +975,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 46,
                             Code = "326",
-                            ConcurrencyStamp = new Guid("a1bdffbd-940d-4b8c-b748-dfd9fc28c982"),
+                            ConcurrencyStamp = new Guid("cc38db06-d8b9-4c1e-bd32-0d189ddcf576"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "357",
@@ -927,7 +988,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 47,
                             Code = "328",
-                            ConcurrencyStamp = new Guid("99f86c1f-6c7b-4123-ac6b-5dded63f7f88"),
+                            ConcurrencyStamp = new Guid("cd7b7ad4-2c0c-4c8d-9a67-1114f0332934"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "850",
@@ -940,7 +1001,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 48,
                             Code = "329",
-                            ConcurrencyStamp = new Guid("42677461-b4fb-4de2-804a-a93881045836"),
+                            ConcurrencyStamp = new Guid("fa938bc9-68f6-4e5b-8424-1f4a01c87fa4"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "856",
@@ -953,7 +1014,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 49,
                             Code = "330",
-                            ConcurrencyStamp = new Guid("31de44ae-d0b2-4530-b30a-63c36696ac89"),
+                            ConcurrencyStamp = new Guid("ea725683-adc9-4739-b294-816fbf3ceb69"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "976",
@@ -966,7 +1027,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 50,
                             Code = "331",
-                            ConcurrencyStamp = new Guid("041619d5-9eeb-4608-92f8-e4f875248eba"),
+                            ConcurrencyStamp = new Guid("9eda4add-066c-4b11-9fe8-7c19929889cd"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "853",
@@ -979,7 +1040,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 51,
                             Code = "332",
-                            ConcurrencyStamp = new Guid("407f8795-2b55-44ac-af7d-d64be08d2b06"),
+                            ConcurrencyStamp = new Guid("c4827184-28f7-479a-8c4d-8a7572636914"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -990,7 +1051,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 52,
                             Code = "335",
-                            ConcurrencyStamp = new Guid("bcfc1d9c-0c7c-4fbc-b481-fa5ea104d6b5"),
+                            ConcurrencyStamp = new Guid("dbfe560e-80b0-4cda-9e85-e9b0a1dab9d3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -1001,7 +1062,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 53,
                             Code = "336",
-                            ConcurrencyStamp = new Guid("cde8774f-0298-41d9-ab62-94f4106678e2"),
+                            ConcurrencyStamp = new Guid("41370d19-71e9-423f-a255-b9e0e0c7c565"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -1014,7 +1075,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 54,
                             Code = "337",
-                            ConcurrencyStamp = new Guid("76e7c8e4-ab3a-42e5-bc96-8450ec35fda6"),
+                            ConcurrencyStamp = new Guid("ceab1ae2-ee08-41ae-b138-24b1b6f9edba"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "998",
@@ -1027,7 +1088,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 55,
                             Code = "338",
-                            ConcurrencyStamp = new Guid("c223b9d6-92fc-47a1-93fa-b91f7d0f4ff5"),
+                            ConcurrencyStamp = new Guid("a9f3c688-64c0-49dc-8834-37419962ac17"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "993",
@@ -1040,7 +1101,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 56,
                             Code = "339",
-                            ConcurrencyStamp = new Guid("35de77b4-2b59-43e7-92ac-5f1f16bef2eb"),
+                            ConcurrencyStamp = new Guid("e732e5d5-908d-46e7-be6f-34eea7123362"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "992",
@@ -1053,7 +1114,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 57,
                             Code = "340",
-                            ConcurrencyStamp = new Guid("7bc81212-214d-4279-9e22-e50a280e4a27"),
+                            ConcurrencyStamp = new Guid("b60556a7-4284-45d5-bdad-9459f0b94e6f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "996",
@@ -1066,7 +1127,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 58,
                             Code = "343",
-                            ConcurrencyStamp = new Guid("03fa3120-d0ed-4f3a-a047-b6fe014066a6"),
+                            ConcurrencyStamp = new Guid("d0abeddc-04a3-45f4-a86c-61f0ae41dfe6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "994",
@@ -1079,7 +1140,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 59,
                             Code = "344",
-                            ConcurrencyStamp = new Guid("a630c77f-69a9-4042-b9de-fec7ee146c20"),
+                            ConcurrencyStamp = new Guid("4808331a-fd6a-4c5a-b8d6-2cc0dd43a8b2"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -1090,7 +1151,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 60,
                             Code = "345",
-                            ConcurrencyStamp = new Guid("0db80a26-415c-41b3-89e9-4192f06ce4d0"),
+                            ConcurrencyStamp = new Guid("2e7345a5-e84c-44d1-8e09-fca310c38723"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "872",
@@ -1103,7 +1164,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 61,
                             Code = "346",
-                            ConcurrencyStamp = new Guid("ad1f67b3-02c7-42ad-b1fc-38da83fa2183"),
+                            ConcurrencyStamp = new Guid("dad2db57-bb09-49e2-a511-7a1c6ce26478"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -1114,7 +1175,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 62,
                             Code = "347",
-                            ConcurrencyStamp = new Guid("109f7788-0a92-4fbf-b17e-7d9644c13975"),
+                            ConcurrencyStamp = new Guid("2218da9a-4438-4111-9ae6-8115f7f242d8"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "7",
@@ -1127,7 +1188,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 63,
                             Code = "349",
-                            ConcurrencyStamp = new Guid("21ba1c5b-c667-4f0c-9595-20fe130f8811"),
+                            ConcurrencyStamp = new Guid("d03da846-5de2-473a-825f-341f55643b5c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "670",
@@ -1140,7 +1201,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 64,
                             Code = "401",
-                            ConcurrencyStamp = new Guid("c6470623-d27f-4b59-bdc5-70bca1ab32a0"),
+                            ConcurrencyStamp = new Guid("d3959286-d763-481e-b501-fded3e50118d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "251",
@@ -1153,7 +1214,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 65,
                             Code = "402",
-                            ConcurrencyStamp = new Guid("309aa77c-0849-499a-b584-892825267596"),
+                            ConcurrencyStamp = new Guid("552263dc-088c-4fde-a89f-17971f8674c2"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "256",
@@ -1166,7 +1227,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 66,
                             Code = "403",
-                            ConcurrencyStamp = new Guid("7179b99e-5cb2-4e3d-9075-27e0a4292221"),
+                            ConcurrencyStamp = new Guid("a6a07e9e-f67b-411f-a2b5-2b34fd374948"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "267",
@@ -1179,7 +1240,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 67,
                             Code = "404",
-                            ConcurrencyStamp = new Guid("4388f4a4-220c-4fec-935a-c1ddbdf07b0d"),
+                            ConcurrencyStamp = new Guid("564ff475-b993-479d-b27c-6c0d4e722748"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "257",
@@ -1192,7 +1253,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 68,
                             Code = "405",
-                            ConcurrencyStamp = new Guid("d7745a83-0518-4557-8091-55989d081b30"),
+                            ConcurrencyStamp = new Guid("b7968c4a-b02c-4eca-8c43-cc86f39f97fe"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "235",
@@ -1205,7 +1266,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 69,
                             Code = "406",
-                            ConcurrencyStamp = new Guid("e93adc90-19d8-4cf8-94b7-5449fd3e1429"),
+                            ConcurrencyStamp = new Guid("7c955759-26e1-41ca-b16d-e7a071090e79"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "255",
@@ -1218,7 +1279,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 70,
                             Code = "407",
-                            ConcurrencyStamp = new Guid("8bbdae05-c1f1-47d3-88db-2356fc7319c3"),
+                            ConcurrencyStamp = new Guid("3f217370-1d83-4980-8b05-f8d65ac6576a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "228",
@@ -1231,7 +1292,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 71,
                             Code = "408",
-                            ConcurrencyStamp = new Guid("0de257c0-f2b6-4282-a1d3-71406c981c32"),
+                            ConcurrencyStamp = new Guid("c51af640-a53a-4313-a5d4-ea7fec799927"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "241",
@@ -1244,7 +1305,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 72,
                             Code = "409",
-                            ConcurrencyStamp = new Guid("9f1aa6d9-23d7-434a-86cf-cb37958991f7"),
+                            ConcurrencyStamp = new Guid("205c846e-13b0-4637-bb0e-dd3e1d606e48"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "220",
@@ -1257,7 +1318,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 73,
                             Code = "410",
-                            ConcurrencyStamp = new Guid("e098a1be-4007-4d1b-9f88-935a52f4975c"),
+                            ConcurrencyStamp = new Guid("b4d225eb-4768-4740-9933-7f385ee1fd8c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "269",
@@ -1270,7 +1331,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 74,
                             Code = "411",
-                            ConcurrencyStamp = new Guid("aa35f252-8339-442b-bb8b-8e377a2a66a9"),
+                            ConcurrencyStamp = new Guid("c1f046a3-201e-4abc-bfb9-8628041c0c21"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "27",
@@ -1283,7 +1344,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 75,
                             Code = "412",
-                            ConcurrencyStamp = new Guid("73e2a06c-e34c-49a7-87f6-11bcc56e330e"),
+                            ConcurrencyStamp = new Guid("52a107f2-5199-4bb6-9bfa-0652e05c1515"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "264",
@@ -1296,7 +1357,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 76,
                             Code = "413",
-                            ConcurrencyStamp = new Guid("d18f853c-03d9-471e-b72f-97124e950903"),
+                            ConcurrencyStamp = new Guid("dbe7f6e0-1402-4784-a773-78aab141371a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "229",
@@ -1309,7 +1370,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 77,
                             Code = "414",
-                            ConcurrencyStamp = new Guid("bfd68380-20d8-4778-95da-bf1d692c1f6c"),
+                            ConcurrencyStamp = new Guid("6efdef8d-8022-4250-9493-a60cf55ce300"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "250",
@@ -1322,7 +1383,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 78,
                             Code = "415",
-                            ConcurrencyStamp = new Guid("3fad43e8-b014-4eba-8bae-223f17f40ef1"),
+                            ConcurrencyStamp = new Guid("08bbaadf-7ed0-4d42-a53c-f758e402c343"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "263",
@@ -1335,7 +1396,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 79,
                             Code = "416",
-                            ConcurrencyStamp = new Guid("662da985-7731-41e6-a25d-dd1d17e11e01"),
+                            ConcurrencyStamp = new Guid("d274eefb-0ab2-4c8e-996b-32788fcdcddb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "243",
@@ -1348,7 +1409,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 80,
                             Code = "417",
-                            ConcurrencyStamp = new Guid("7d88ae24-cf9c-4f3e-ac1c-7630bd7ae21b"),
+                            ConcurrencyStamp = new Guid("00ce9aec-e42b-4f41-9185-2942e67e1431"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "260",
@@ -1361,7 +1422,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 81,
                             Code = "418",
-                            ConcurrencyStamp = new Guid("4997881b-2b0e-480b-920a-0b6dc29f7950"),
+                            ConcurrencyStamp = new Guid("56d71658-f966-46e0-80c1-da09b718b4ca"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "225",
@@ -1374,7 +1435,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 82,
                             Code = "419",
-                            ConcurrencyStamp = new Guid("f65f637e-6873-4fbe-bd96-609ad7c20add"),
+                            ConcurrencyStamp = new Guid("a6b24fe8-4034-4447-91f3-73d613407469"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -1386,7 +1447,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 83,
                             Code = "420",
-                            ConcurrencyStamp = new Guid("cdfb9665-f021-4fe1-beca-f69c7506ab94"),
+                            ConcurrencyStamp = new Guid("b0a2c9ac-73dc-431a-9292-41ff94e68b2a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "232",
@@ -1399,7 +1460,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 84,
                             Code = "421",
-                            ConcurrencyStamp = new Guid("37ab4e9c-be06-4afd-839a-f95c550652e1"),
+                            ConcurrencyStamp = new Guid("14914eef-58e6-468d-8b4b-dec0273aad84"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "233",
@@ -1412,7 +1473,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 85,
                             Code = "422",
-                            ConcurrencyStamp = new Guid("ef19ffd7-c0d9-46b7-93d6-05378811f2eb"),
+                            ConcurrencyStamp = new Guid("29939b2b-8c42-48f7-b53f-d26339631557"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "224",
@@ -1425,7 +1486,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 86,
                             Code = "423",
-                            ConcurrencyStamp = new Guid("3ce47005-6202-4c24-a36e-d66b5a0f40dd"),
+                            ConcurrencyStamp = new Guid("50155254-37dc-41f5-b496-e29cc03c1cb3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "245",
@@ -1438,7 +1499,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 87,
                             Code = "424",
-                            ConcurrencyStamp = new Guid("c1cbf4ac-aaaa-4010-b373-888b6e42a48b"),
+                            ConcurrencyStamp = new Guid("03e01303-6d80-4268-a627-177bf10e3d84"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "226",
@@ -1451,7 +1512,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 88,
                             Code = "425",
-                            ConcurrencyStamp = new Guid("5773945b-ac5f-46cd-ab2b-5609d457d9b5"),
+                            ConcurrencyStamp = new Guid("30729952-22bb-40bb-a6ea-331a0a091351"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "237",
@@ -1464,7 +1525,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 89,
                             Code = "426",
-                            ConcurrencyStamp = new Guid("59e25a26-3f17-4d19-9b89-6eaf0f19b1e5"),
+                            ConcurrencyStamp = new Guid("6a305c20-f145-4c8b-bd8e-0f847553c459"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "243",
@@ -1477,7 +1538,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 90,
                             Code = "427",
-                            ConcurrencyStamp = new Guid("b22aecac-4121-49d4-a627-342db4a84791"),
+                            ConcurrencyStamp = new Guid("fd2c6777-f64c-4cc1-a74b-e08f6d506c7b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "254",
@@ -1490,7 +1551,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 91,
                             Code = "428",
-                            ConcurrencyStamp = new Guid("dfd20c11-2ade-4837-a589-12225933a3c9"),
+                            ConcurrencyStamp = new Guid("838bd9b9-036a-4dc4-a61f-e181e432ccbd"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "266",
@@ -1503,7 +1564,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 92,
                             Code = "429",
-                            ConcurrencyStamp = new Guid("7076ab94-9217-4869-aaea-6a05f8b54fd2"),
+                            ConcurrencyStamp = new Guid("50f96131-139a-475f-aac7-8161a37b5bb0"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "231",
@@ -1516,7 +1577,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 93,
                             Code = "430",
-                            ConcurrencyStamp = new Guid("98c7f962-3306-4e66-838c-442f17ddd18d"),
+                            ConcurrencyStamp = new Guid("c59985fe-744e-4e98-b5a5-0b130f486ef0"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "223",
@@ -1529,7 +1590,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 94,
                             Code = "432",
-                            ConcurrencyStamp = new Guid("0ea3cc1e-e717-420a-a819-7dd0c72a2fb6"),
+                            ConcurrencyStamp = new Guid("241ba8da-e702-4135-af46-6a37395c4fa6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "265",
@@ -1542,7 +1603,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 95,
                             Code = "433",
-                            ConcurrencyStamp = new Guid("acc9f25f-18f7-4e88-9b85-b8f214cdaa55"),
+                            ConcurrencyStamp = new Guid("2c8d7bc6-e134-4cac-98e6-a3206e90a13c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "230",
@@ -1555,7 +1616,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 96,
                             Code = "434",
-                            ConcurrencyStamp = new Guid("4ea0e435-d879-47a9-9d9e-c23cb094d7ab"),
+                            ConcurrencyStamp = new Guid("80d0a469-b1f4-4d5f-8389-f4f1bed3ece9"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "258",
@@ -1568,7 +1629,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 97,
                             Code = "435",
-                            ConcurrencyStamp = new Guid("44744d81-cdd8-4969-bcd3-e34105810e87"),
+                            ConcurrencyStamp = new Guid("91b3a7ac-07da-48db-8686-aafa0e8d983c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "234",
@@ -1581,7 +1642,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 98,
                             Code = "436",
-                            ConcurrencyStamp = new Guid("feb3dbb6-0298-4e96-8b9c-70090dc23b11"),
+                            ConcurrencyStamp = new Guid("3a0f1376-0b31-4992-9063-7548e51b6b35"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "227",
@@ -1594,7 +1655,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 99,
                             Code = "437",
-                            ConcurrencyStamp = new Guid("034e44d2-eb9b-47e3-9aa0-0f84bf39ef81"),
+                            ConcurrencyStamp = new Guid("41d2cee1-5df5-4f80-b116-95896e0ba86f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "236",
@@ -1607,7 +1668,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 100,
                             Code = "438",
-                            ConcurrencyStamp = new Guid("86f3e580-0682-4ba7-a0c0-26dacffc63cd"),
+                            ConcurrencyStamp = new Guid("b02f92bf-b9d4-4d1a-8e7d-53d5d4dd566c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "244",
@@ -1620,7 +1681,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 101,
                             Code = "439",
-                            ConcurrencyStamp = new Guid("3ab5de0e-a3ca-49f4-b65f-baa998eb2f96"),
+                            ConcurrencyStamp = new Guid("d24d9e92-b33f-4b04-83c1-7994e5911c13"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "599",
@@ -1633,7 +1694,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 102,
                             Code = "440",
-                            ConcurrencyStamp = new Guid("8c3d89a5-2525-41d4-9763-d96ae3bed89a"),
+                            ConcurrencyStamp = new Guid("5bd4d540-07c2-458b-84c7-5ebeeb40bbc0"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "240",
@@ -1646,7 +1707,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 103,
                             Code = "441",
-                            ConcurrencyStamp = new Guid("3c8ff56b-07b3-4fd7-9345-11c0a4051150"),
+                            ConcurrencyStamp = new Guid("c84a7dc7-5c82-460d-a7f5-987451ea77fa"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -1657,7 +1718,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 104,
                             Code = "442",
-                            ConcurrencyStamp = new Guid("b44c384e-d7d1-4928-b8ab-2112d8abe9e9"),
+                            ConcurrencyStamp = new Guid("4fc8054b-c962-4926-bafd-464f691e6e7e"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "239",
@@ -1670,7 +1731,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 105,
                             Code = "443",
-                            ConcurrencyStamp = new Guid("c33e61ce-a45f-4597-bf08-4ba0ea153a61"),
+                            ConcurrencyStamp = new Guid("164d1004-255f-425c-ab98-822f5bf2ea45"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "248",
@@ -1683,7 +1744,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 106,
                             Code = "444",
-                            ConcurrencyStamp = new Guid("85022bbc-e814-4c1b-93ee-1fe38720999b"),
+                            ConcurrencyStamp = new Guid("88b90338-4299-4fa3-8ab7-eb7e4668b0f6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "268",
@@ -1696,7 +1757,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 107,
                             Code = "449",
-                            ConcurrencyStamp = new Guid("deb43b13-27e5-43d3-b77f-6fb0d1e531df"),
+                            ConcurrencyStamp = new Guid("69de6c9b-5a14-4156-99d4-25aebd7fde67"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "291",
@@ -1709,7 +1770,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 108,
                             Code = "453",
-                            ConcurrencyStamp = new Guid("5643e9a7-6f3e-4fdf-9c06-29c7afa4045a"),
+                            ConcurrencyStamp = new Guid("af794423-b923-4621-82cd-e97c83d84aa7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "211",
@@ -1722,7 +1783,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 109,
                             Code = "454",
-                            ConcurrencyStamp = new Guid("049fa27b-5aaa-4167-afa1-3eff6ce2ea54"),
+                            ConcurrencyStamp = new Guid("f24945fd-9dda-4980-8f41-6e100b7950c3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "238",
@@ -1735,7 +1796,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 110,
                             Code = "501",
-                            ConcurrencyStamp = new Guid("b069af08-cae1-46a5-bb22-3fa1837054fb"),
+                            ConcurrencyStamp = new Guid("64c7bf3e-af75-4369-8d12-792d4884386f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "34",
@@ -1748,7 +1809,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 111,
                             Code = "502",
-                            ConcurrencyStamp = new Guid("b4fdf528-914e-4329-bd34-94a65233d8db"),
+                            ConcurrencyStamp = new Guid("22b98790-b01e-4bd2-92cf-c628a83cb4ca"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "355",
@@ -1761,7 +1822,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 112,
                             Code = "503",
-                            ConcurrencyStamp = new Guid("3912d8e0-dbb0-415e-8d04-f58cf2d0d834"),
+                            ConcurrencyStamp = new Guid("8a8ea13c-283e-42d1-8f3b-5ccf984f68c7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "49",
@@ -1774,7 +1835,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 113,
                             Code = "504",
-                            ConcurrencyStamp = new Guid("883e0383-b270-477b-8b91-f848a19aa4cc"),
+                            ConcurrencyStamp = new Guid("68f0e130-a5d6-44bd-9de7-c783b0bea0b2"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "353",
@@ -1787,7 +1848,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 114,
                             Code = "505",
-                            ConcurrencyStamp = new Guid("ea82dfeb-0f40-4e72-b0e2-0e7a0da32597"),
+                            ConcurrencyStamp = new Guid("7075c373-5d10-44f0-840d-846e5a2dfffd"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "39",
@@ -1800,7 +1861,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 115,
                             Code = "506",
-                            ConcurrencyStamp = new Guid("57b8d546-16c0-4b63-b119-7d90f3be3143"),
+                            ConcurrencyStamp = new Guid("8792c35f-6f8e-4df6-9d59-8dcba0fe37ff"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "44",
@@ -1813,7 +1874,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 116,
                             Code = "507",
-                            ConcurrencyStamp = new Guid("f2eb54dd-8fce-4973-9a2e-16e46206b2e4"),
+                            ConcurrencyStamp = new Guid("abb7aabc-ae73-4eaa-9402-857728300461"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "351",
@@ -1826,7 +1887,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 117,
                             Code = "508",
-                            ConcurrencyStamp = new Guid("37ac9134-45ba-4654-a5f0-f233852a9d4e"),
+                            ConcurrencyStamp = new Guid("b957a2a8-5b50-45d9-863e-6fe121602609"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "359",
@@ -1839,7 +1900,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 118,
                             Code = "509",
-                            ConcurrencyStamp = new Guid("6c4f54b5-fa22-4e6b-824a-1020f2c5eb6a"),
+                            ConcurrencyStamp = new Guid("419d5a60-8340-476d-87b0-18ea6c29afd3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "32",
@@ -1852,7 +1913,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 119,
                             Code = "510",
-                            ConcurrencyStamp = new Guid("4acc7226-d9eb-4d21-aa17-80612e9a8f23"),
+                            ConcurrencyStamp = new Guid("8d0ae612-51f3-4f0a-bae7-8219b7315fea"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "48",
@@ -1865,7 +1926,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 120,
                             Code = "512",
-                            ConcurrencyStamp = new Guid("185f4a72-d308-47b4-897a-b3d60956e46d"),
+                            ConcurrencyStamp = new Guid("ed78d0b7-624b-4df9-b35c-f220b393aa7d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "45",
@@ -1878,7 +1939,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 121,
                             Code = "513",
-                            ConcurrencyStamp = new Guid("e04b46aa-4d80-41bd-950d-8e913049f595"),
+                            ConcurrencyStamp = new Guid("3227df5c-0474-4d13-8bea-b65b225978b5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "40",
@@ -1891,7 +1952,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 122,
                             Code = "514",
-                            ConcurrencyStamp = new Guid("9ba32e5b-39bb-4fc4-b057-efba55bbc57c"),
+                            ConcurrencyStamp = new Guid("12f9101c-62bc-47ff-9126-1123d532b821"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "46",
@@ -1904,7 +1965,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 123,
                             Code = "515",
-                            ConcurrencyStamp = new Guid("1449412c-46c3-4448-a0cb-04faaf5c6fc9"),
+                            ConcurrencyStamp = new Guid("95c42220-b6a1-4c22-b302-607d577cf0a2"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "41",
@@ -1917,7 +1978,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 124,
                             Code = "516",
-                            ConcurrencyStamp = new Guid("76be082e-2c32-4f37-8796-d5020608e500"),
+                            ConcurrencyStamp = new Guid("0e7819a6-ff51-4f46-904c-08d024e9ef99"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "33",
@@ -1930,7 +1991,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 125,
                             Code = "517",
-                            ConcurrencyStamp = new Guid("11314fdd-d15b-439e-acc1-c147b20f7ba9"),
+                            ConcurrencyStamp = new Guid("16365327-5f37-4758-8adc-1f083470b070"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "358",
@@ -1943,7 +2004,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 126,
                             Code = "518",
-                            ConcurrencyStamp = new Guid("f4c1a3f6-7494-4c4e-8697-e9e6273ac279"),
+                            ConcurrencyStamp = new Guid("893ca6b1-adfd-4947-b021-b21bb6ec0507"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "381",
@@ -1956,7 +2017,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 127,
                             Code = "519",
-                            ConcurrencyStamp = new Guid("b61be9a6-e0cf-4bf8-886a-9aadf7fddddf"),
+                            ConcurrencyStamp = new Guid("21e71096-eba2-48cf-82e5-5924d594b133"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "31",
@@ -1969,7 +2030,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 128,
                             Code = "521",
-                            ConcurrencyStamp = new Guid("f75e5457-8a78-4ef7-bd8a-9b2810f69056"),
+                            ConcurrencyStamp = new Guid("b779df5d-4a1d-461d-913b-c78641428127"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "30",
@@ -1982,7 +2043,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 129,
                             Code = "522",
-                            ConcurrencyStamp = new Guid("eae1594c-fe96-4493-8c20-f311b61a981e"),
+                            ConcurrencyStamp = new Guid("cf430146-1484-4f95-8b65-f3bb392262a7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "376",
@@ -1995,7 +2056,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 130,
                             Code = "523",
-                            ConcurrencyStamp = new Guid("e1e34a9e-971c-4ab8-b64a-d782bc73bc5a"),
+                            ConcurrencyStamp = new Guid("4cb53e76-372e-4179-88bc-940af3ae1dbc"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "43",
@@ -2008,7 +2069,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 131,
                             Code = "524",
-                            ConcurrencyStamp = new Guid("8213cda0-b0fa-435e-bf74-fc9011265693"),
+                            ConcurrencyStamp = new Guid("3b6e060b-a700-4132-905d-32cca828f606"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "382",
@@ -2021,7 +2082,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 132,
                             Code = "525",
-                            ConcurrencyStamp = new Guid("72d07646-6037-4c5e-ac89-b47884242d52"),
+                            ConcurrencyStamp = new Guid("2a234bfd-e75c-4cfd-bef2-f80ec9dcf2e5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "36",
@@ -2034,7 +2095,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 133,
                             Code = "526",
-                            ConcurrencyStamp = new Guid("7362d5c6-9413-4787-a3dd-e046b76989b9"),
+                            ConcurrencyStamp = new Guid("09684d34-1a13-4ee4-9e32-8013ed6b6d99"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "354",
@@ -2047,7 +2108,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 134,
                             Code = "527",
-                            ConcurrencyStamp = new Guid("0b97ac9a-2504-42d2-935a-833acf5a7e99"),
+                            ConcurrencyStamp = new Guid("6c228814-72ba-447d-aa1d-4192205ba905"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "423",
@@ -2060,7 +2121,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 135,
                             Code = "528",
-                            ConcurrencyStamp = new Guid("f3a51799-62e0-4184-b9b6-c021beec342e"),
+                            ConcurrencyStamp = new Guid("c0dc1c13-bc15-44a3-840b-90a283f76f23"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "352",
@@ -2073,7 +2134,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 136,
                             Code = "529",
-                            ConcurrencyStamp = new Guid("e40a63a0-78c0-4b7d-8dd3-1a6e24802c2d"),
+                            ConcurrencyStamp = new Guid("ebb11862-21e8-46a3-a8e0-7faa189f5585"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "356",
@@ -2086,7 +2147,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 137,
                             Code = "530",
-                            ConcurrencyStamp = new Guid("6c466c1c-84a6-434d-9baf-06789c1afd5c"),
+                            ConcurrencyStamp = new Guid("d438e336-497f-48dd-9053-38c071ea3206"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "377",
@@ -2099,7 +2160,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 138,
                             Code = "531",
-                            ConcurrencyStamp = new Guid("b008dbeb-9ad6-4fe6-afe0-d3efee6a4a01"),
+                            ConcurrencyStamp = new Guid("fef66ff3-11dc-4f60-b73f-c1f2e5ab07d5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "47",
@@ -2112,7 +2173,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 139,
                             Code = "532",
-                            ConcurrencyStamp = new Guid("6dac0d6d-f00c-4ab2-b8c1-a6d67505f2d9"),
+                            ConcurrencyStamp = new Guid("181529cd-5546-469b-bb86-0c00751926ba"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "378",
@@ -2125,7 +2186,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 140,
                             Code = "533",
-                            ConcurrencyStamp = new Guid("464a24c3-1aeb-466d-945c-c82e1051e5ab"),
+                            ConcurrencyStamp = new Guid("5b3a2130-1c73-4f6a-8352-ed53aabe6ebb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "39",
@@ -2138,7 +2199,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 141,
                             Code = "534",
-                            ConcurrencyStamp = new Guid("b059be48-7d34-4fd2-ad82-fb8475132267"),
+                            ConcurrencyStamp = new Guid("1c20c027-2076-4fd1-b7bc-bf7ebb1d3cbe"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "350",
@@ -2151,7 +2212,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 142,
                             Code = "536",
-                            ConcurrencyStamp = new Guid("f4a9290d-c276-4d47-a59a-0bcfac66c799"),
+                            ConcurrencyStamp = new Guid("7d372fbe-e7ec-471e-b251-725ec68923c4"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "380",
@@ -2164,7 +2225,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 143,
                             Code = "537",
-                            ConcurrencyStamp = new Guid("03446662-8a30-460a-9a93-b786cee6133d"),
+                            ConcurrencyStamp = new Guid("8131d3e1-04db-4ffc-9d16-4eb3e41a2cd5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2175,7 +2236,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 144,
                             Code = "539",
-                            ConcurrencyStamp = new Guid("5475c41a-4b08-46bd-8fcb-b57071edc4ee"),
+                            ConcurrencyStamp = new Guid("72f8865a-a553-48fb-a4f8-864a7adc8e5e"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "374",
@@ -2188,7 +2249,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 145,
                             Code = "540",
-                            ConcurrencyStamp = new Guid("20494dc7-e480-46ef-9f87-8bc4d5afc36f"),
+                            ConcurrencyStamp = new Guid("05b75521-819a-4e4f-933e-40d4af41a608"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "373",
@@ -2201,7 +2262,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 146,
                             Code = "541",
-                            ConcurrencyStamp = new Guid("964e03ab-4572-4601-bef7-e26e85d6d90a"),
+                            ConcurrencyStamp = new Guid("e4f58c64-034c-4c42-8e8a-de7341535e37"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "995",
@@ -2214,7 +2275,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 147,
                             Code = "542",
-                            ConcurrencyStamp = new Guid("369078b8-4de9-4bc0-849b-60409e05c363"),
+                            ConcurrencyStamp = new Guid("2b6fbc6d-74ad-4ee9-bbc0-7e057f5ea930"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "370",
@@ -2227,7 +2288,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 148,
                             Code = "543",
-                            ConcurrencyStamp = new Guid("0caca53c-b767-4fc9-9c78-609fec072363"),
+                            ConcurrencyStamp = new Guid("18b81650-4c48-4a60-b40d-1b1d16f0239b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "372",
@@ -2240,7 +2301,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 149,
                             Code = "544",
-                            ConcurrencyStamp = new Guid("34ad415b-ee2d-4d94-919a-1ec9356965df"),
+                            ConcurrencyStamp = new Guid("3cfa46a9-2878-4127-a249-4001bd082d48"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "371",
@@ -2253,7 +2314,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 150,
                             Code = "545",
-                            ConcurrencyStamp = new Guid("3c62b796-611d-46cc-8032-0383da9d5176"),
+                            ConcurrencyStamp = new Guid("944830d8-4948-407c-8dd1-d50877cb253b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "387",
@@ -2266,7 +2327,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 151,
                             Code = "546",
-                            ConcurrencyStamp = new Guid("ffb4a973-0a23-4576-8046-1edc0df1e934"),
+                            ConcurrencyStamp = new Guid("71604c81-63b2-4278-be15-e35b404987dd"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "385",
@@ -2279,7 +2340,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 152,
                             Code = "547",
-                            ConcurrencyStamp = new Guid("18421274-79b8-4e74-b67e-ee29970aa797"),
+                            ConcurrencyStamp = new Guid("d43d4ca1-8041-48d5-ac10-1037654af6d8"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "386",
@@ -2292,7 +2353,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 153,
                             Code = "549",
-                            ConcurrencyStamp = new Guid("8f776b5e-e1f4-4166-96e4-200f55112186"),
+                            ConcurrencyStamp = new Guid("eb56780f-36af-4f27-8ba7-694b7952458a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "389",
@@ -2305,7 +2366,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 154,
                             Code = "552",
-                            ConcurrencyStamp = new Guid("3844e561-b80e-4776-ab52-a6d912349296"),
+                            ConcurrencyStamp = new Guid("b6b395bf-3d2d-4959-8a21-aa5c84064491"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "420",
@@ -2318,7 +2379,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 155,
                             Code = "553",
-                            ConcurrencyStamp = new Guid("7613f072-67a7-4703-8ac6-08d6d7830c0f"),
+                            ConcurrencyStamp = new Guid("6f826d4a-30b8-44ee-a537-ddb01e71702a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "421",
@@ -2331,7 +2392,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 156,
                             Code = "554",
-                            ConcurrencyStamp = new Guid("9c861acd-d130-40e3-82b8-16479e83e7ff"),
+                            ConcurrencyStamp = new Guid("653d4a6d-fd39-4758-81b4-9a830a006650"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "298",
@@ -2344,7 +2405,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 157,
                             Code = "555",
-                            ConcurrencyStamp = new Guid("ba2e86c0-abc4-4b74-97d9-459e61a26444"),
+                            ConcurrencyStamp = new Guid("062fff23-9243-4672-aee2-50a842d181e1"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "33",
@@ -2357,7 +2418,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 158,
                             Code = "601",
-                            ConcurrencyStamp = new Guid("c95c61db-4f38-416e-8b45-29ccc64ad306"),
+                            ConcurrencyStamp = new Guid("3ed586d4-343e-4741-a528-8d4646d15acf"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2370,7 +2431,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 159,
                             Code = "602",
-                            ConcurrencyStamp = new Guid("fea75c78-5b62-44df-831c-3f5c0f08259c"),
+                            ConcurrencyStamp = new Guid("0d2243d5-b82b-4936-be26-c99613190ce9"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "54",
@@ -2383,7 +2444,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 160,
                             Code = "603",
-                            ConcurrencyStamp = new Guid("8470dc53-a920-407b-b07f-4ee4b8ff9926"),
+                            ConcurrencyStamp = new Guid("8dd263ce-75c2-49d5-bcc4-125c1500c952"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2396,7 +2457,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 161,
                             Code = "604",
-                            ConcurrencyStamp = new Guid("f8622d73-c23e-44e2-9a8c-0dd70704b3e4"),
+                            ConcurrencyStamp = new Guid("a7452433-b5ad-498c-aba5-132ddda999b7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "55",
@@ -2409,7 +2470,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 162,
                             Code = "605",
-                            ConcurrencyStamp = new Guid("18efc8f5-9b9d-49a9-8306-0851a155040c"),
+                            ConcurrencyStamp = new Guid("7b9940bf-2913-4bd6-a979-65d7d442163e"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "507",
@@ -2422,7 +2483,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 163,
                             Code = "606",
-                            ConcurrencyStamp = new Guid("b225e608-d7fc-4304-8373-47d9aac6e62b"),
+                            ConcurrencyStamp = new Guid("ff7944d1-c8bf-4199-a542-536e24059849"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2435,7 +2496,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 164,
                             Code = "607",
-                            ConcurrencyStamp = new Guid("005dbe72-8dbd-428b-8e8f-18b66a28bd2d"),
+                            ConcurrencyStamp = new Guid("00e0cea4-a1f6-4a2b-bd38-0405f2b61d9d"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2448,7 +2509,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 165,
                             Code = "608",
-                            ConcurrencyStamp = new Guid("2955ef5d-2691-48df-b18d-df1901c34196"),
+                            ConcurrencyStamp = new Guid("ac472262-e518-484a-9683-a17dc1f1310b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -2459,7 +2520,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 166,
                             Code = "609",
-                            ConcurrencyStamp = new Guid("a80f4b61-ce61-42a8-8cfc-f211981776f2"),
+                            ConcurrencyStamp = new Guid("3f80cf13-b84a-4ff2-a87e-d4c13e7b6a0b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "58",
@@ -2472,7 +2533,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 167,
                             Code = "610",
-                            ConcurrencyStamp = new Guid("7520abe6-ce5a-48e8-9904-dd971534f282"),
+                            ConcurrencyStamp = new Guid("1069c6c5-9212-4ea4-8ebe-48e5b7d95f88"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2485,7 +2546,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 168,
                             Code = "611",
-                            ConcurrencyStamp = new Guid("d47ce1fa-8ee1-4034-948b-ee3cc6d7f7fa"),
+                            ConcurrencyStamp = new Guid("f2ed5771-ea19-4326-9eb0-57de26759f1a"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "57",
@@ -2498,7 +2559,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 169,
                             Code = "612",
-                            ConcurrencyStamp = new Guid("d1f42462-c176-4d8d-b985-e8cc96744cac"),
+                            ConcurrencyStamp = new Guid("9bd9f8f3-025e-4983-a8c7-007d92e8e153"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2511,7 +2572,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 170,
                             Code = "613",
-                            ConcurrencyStamp = new Guid("58555793-9419-4ec4-bb05-d02cbf72f033"),
+                            ConcurrencyStamp = new Guid("77a239da-a60b-4068-a0cf-e7f810d110fb"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "506",
@@ -2524,7 +2585,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 171,
                             Code = "614",
-                            ConcurrencyStamp = new Guid("681524e8-1020-4472-b84d-61d6fee73576"),
+                            ConcurrencyStamp = new Guid("3608c223-42cb-4559-a8b8-15c0a855ab49"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "53",
@@ -2537,7 +2598,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 172,
                             Code = "615",
-                            ConcurrencyStamp = new Guid("5128bcfc-0418-445d-bb83-781d81ecf2a5"),
+                            ConcurrencyStamp = new Guid("1483250a-0ea4-4760-be1d-8296e65e179c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2550,7 +2611,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 173,
                             Code = "616",
-                            ConcurrencyStamp = new Guid("5b8cb22f-45e9-466d-9864-b04c653750cf"),
+                            ConcurrencyStamp = new Guid("bd5a6a63-8930-448b-a848-bcc18c2d96c5"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2563,7 +2624,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 174,
                             Code = "617",
-                            ConcurrencyStamp = new Guid("26756855-7730-4ef9-ad87-57d163b4121d"),
+                            ConcurrencyStamp = new Guid("17e8044f-c8e3-410a-a028-adb716605b1f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "503",
@@ -2576,7 +2637,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 175,
                             Code = "618",
-                            ConcurrencyStamp = new Guid("7c9ea7f9-5472-4818-82ca-f5f20e6f9884"),
+                            ConcurrencyStamp = new Guid("4f5c72e1-cdc3-4713-9d19-1983ed879b4b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2589,7 +2650,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 176,
                             Code = "619",
-                            ConcurrencyStamp = new Guid("82b29d0b-56e4-4cfd-b31e-fed3e72e2c61"),
+                            ConcurrencyStamp = new Guid("1c1d1301-b76e-407b-af05-7ad397a63dae"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "502",
@@ -2602,7 +2663,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 177,
                             Code = "620",
-                            ConcurrencyStamp = new Guid("ce669de2-0fd2-4c8f-bd9a-9247c5ce7f15"),
+                            ConcurrencyStamp = new Guid("726232cc-83ea-4a8b-ba7d-f65c4f81e2ba"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "509",
@@ -2615,7 +2676,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 178,
                             Code = "621",
-                            ConcurrencyStamp = new Guid("f912f796-32ac-409c-821f-20a366aaebc7"),
+                            ConcurrencyStamp = new Guid("a3bea18f-3272-421e-86ba-08359d5d7887"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "504",
@@ -2628,7 +2689,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 179,
                             Code = "622",
-                            ConcurrencyStamp = new Guid("d4e71546-0187-46c6-bf70-5f5ab2a3d526"),
+                            ConcurrencyStamp = new Guid("ee60cd5f-588a-4d6f-84a7-64de184532ba"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "52",
@@ -2641,7 +2702,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 180,
                             Code = "623",
-                            ConcurrencyStamp = new Guid("0408ff10-45b5-46d8-a56e-8cb1889c463d"),
+                            ConcurrencyStamp = new Guid("d73101d0-9448-46c3-aeda-6d8215fb0e60"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "505",
@@ -2654,7 +2715,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 181,
                             Code = "624",
-                            ConcurrencyStamp = new Guid("40c558e4-c7a4-4b63-b29e-8d2cfa35b5dc"),
+                            ConcurrencyStamp = new Guid("50f25d91-ef52-4cbf-8484-95a6e1189b67"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2667,7 +2728,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 182,
                             Code = "625",
-                            ConcurrencyStamp = new Guid("66704fea-1230-4844-bf5d-53538d226296"),
+                            ConcurrencyStamp = new Guid("0365ea0f-045f-4faf-8f8b-56af6b009214"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "1",
@@ -2680,7 +2741,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 183,
                             Code = "626",
-                            ConcurrencyStamp = new Guid("d8979298-ba25-4718-87a2-2bec0a31b0f4"),
+                            ConcurrencyStamp = new Guid("f858e5ad-abd1-4e28-b659-4b37a85c927f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "591",
@@ -2693,7 +2754,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 184,
                             Code = "627",
-                            ConcurrencyStamp = new Guid("26d02b90-848d-42d1-8136-82b9840191b9"),
+                            ConcurrencyStamp = new Guid("fc4fca1a-3725-47e4-a6d5-58f2741215b7"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "56",
@@ -2706,7 +2767,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 185,
                             Code = "628",
-                            ConcurrencyStamp = new Guid("9a32c0cc-f19d-4b6d-b53c-1a0e3ac336ea"),
+                            ConcurrencyStamp = new Guid("495fd63e-2cd1-4f84-9b26-7aa2a5b4f79c"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "593",
@@ -2719,7 +2780,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 186,
                             Code = "629",
-                            ConcurrencyStamp = new Guid("889163b8-6361-423d-9657-73d9a0bf2598"),
+                            ConcurrencyStamp = new Guid("7a47b5bd-cbfc-4107-a0a4-1520d244b88f"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "595",
@@ -2732,7 +2793,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 187,
                             Code = "630",
-                            ConcurrencyStamp = new Guid("554f39b4-7435-48f6-ac0a-79690f202c24"),
+                            ConcurrencyStamp = new Guid("935ccfee-252b-4a60-97b1-62e57cd37f98"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "51",
@@ -2745,7 +2806,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 188,
                             Code = "701",
-                            ConcurrencyStamp = new Guid("a43cb3d3-1a03-42e1-af6b-da6e5c6f72aa"),
+                            ConcurrencyStamp = new Guid("f8fcfa15-4d1a-40ce-b6b2-41c567060054"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "61",
@@ -2758,7 +2819,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 189,
                             Code = "702",
-                            ConcurrencyStamp = new Guid("590dd629-f090-4f5d-8ffc-031a4965b60d"),
+                            ConcurrencyStamp = new Guid("ee80b461-f2c3-4db7-add5-535dfff7b596"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "64",
@@ -2771,7 +2832,7 @@ namespace Dimah.InfraStructure.Migrations
                         {
                             Id = 190,
                             Code = "703",
-                            ConcurrencyStamp = new Guid("9d9cfec7-9564-4a63-8451-1651784d20e3"),
+                            ConcurrencyStamp = new Guid("e1ee0e5c-be6e-4e5f-9d7b-3ab7cdf910ed"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DialCode = "598",
@@ -2837,7 +2898,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("f760c6af-419a-4378-9348-d6742ee62f9d"),
-                            ConcurrencyStamp = new Guid("c27b9d3e-9519-49d1-94f8-e269b5a965a5"),
+                            ConcurrencyStamp = new Guid("5b45ccf4-d8ec-45d9-9ff3-ba3bebcfbb43"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "banner1.png",
@@ -2849,7 +2910,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("08a67378-487c-40f3-9d53-5c2acb9cb78d"),
-                            ConcurrencyStamp = new Guid("542c9bdc-4365-4aea-a707-becb7300ffb4"),
+                            ConcurrencyStamp = new Guid("33d08b6f-fb66-4ac9-bec3-7ae145c0ff94"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "banner2.jpg",
@@ -2910,7 +2971,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("7a24cdc2-0f48-4e34-9c8e-745a9b06d0d7"),
-                            ConcurrencyStamp = new Guid("ea883c20-423b-4520-a50e-6f5b754f6983"),
+                            ConcurrencyStamp = new Guid("1d0e2b56-2131-499d-824f-f16e0b2bc484"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "water-dot.svg",
@@ -2921,7 +2982,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("9830a808-b80b-41d6-84fb-b186bbec6d45"),
-                            ConcurrencyStamp = new Guid("f3b5b24f-9191-47ba-9596-1280096c02d3"),
+                            ConcurrencyStamp = new Guid("d4d4b2ac-0592-46dd-bed8-3c3665c26cad"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "food-method.svg",
@@ -2932,7 +2993,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("3060bbf4-415c-4767-8ad6-ba49685a31e1"),
-                            ConcurrencyStamp = new Guid("66d1f3e8-2f14-4cb8-a51b-7044a0fc6931"),
+                            ConcurrencyStamp = new Guid("e6c803f7-275b-40a2-956a-111fd458262b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "food.svg",
@@ -2943,7 +3004,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("02fa2cc2-2c01-402b-91fa-84526ca51edc"),
-                            ConcurrencyStamp = new Guid("80d63964-0fb8-4724-a3c3-5ef5c457930a"),
+                            ConcurrencyStamp = new Guid("ae1b00dd-2557-4c83-a72f-e17b314fb8a3"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageName = "maried.svg",
@@ -3002,7 +3063,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = new Guid("f1b853d9-952a-42a2-a948-93dbc3979b4c"),
+                            ConcurrencyStamp = new Guid("5db4ef10-f79a-4bd0-8c43-962eb3780495"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = false,
@@ -3012,7 +3073,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = new Guid("7352964f-7463-4a7e-8d6f-1a5627964841"),
+                            ConcurrencyStamp = new Guid("069ed097-e656-43ed-8b9c-2e692bbe666b"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -3022,7 +3083,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = new Guid("d69d4ba3-3899-4288-bb16-55cf31530e9a"),
+                            ConcurrencyStamp = new Guid("517cc1a6-4e2f-4892-b1d2-92f211df5945"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -3032,7 +3093,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = 4,
-                            ConcurrencyStamp = new Guid("237c312a-53d7-43e0-aa1e-b1a4ca5025b8"),
+                            ConcurrencyStamp = new Guid("93d7a483-d091-4e40-8624-33cd06d5ddf6"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
@@ -3180,8 +3241,8 @@ namespace Dimah.InfraStructure.Migrations
                             IsActive = true,
                             IsEmployee = true,
                             IsMale = true,
-                            PasswordHash = new byte[] { 183, 237, 252, 29, 139, 160, 10, 231, 239, 22, 51, 170, 198, 93, 54, 68, 127, 29, 192, 2, 197, 156, 13, 103, 78, 190, 34, 177, 60, 181, 61, 178, 130, 184, 34, 96, 171, 13, 3, 213, 185, 161, 125, 12, 104, 30, 18, 97, 238, 148, 204, 237, 17, 39, 50, 102, 183, 168, 168, 199, 182, 87, 116, 16 },
-                            PasswordSalt = new byte[] { 85, 182, 38, 10, 218, 236, 40, 143, 201, 211, 171, 121, 31, 218, 176, 193, 176, 212, 45, 63, 156, 179, 70, 67, 208, 205, 144, 86, 216, 125, 71, 124, 64, 39, 19, 178, 244, 184, 13, 123, 13, 20, 23, 168, 102, 19, 36, 136, 91, 131, 164, 43, 1, 10, 126, 171, 104, 213, 29, 186, 37, 147, 200, 194, 59, 60, 224, 53, 48, 255, 153, 53, 72, 235, 13, 204, 117, 246, 82, 203, 228, 222, 226, 91, 104, 23, 169, 126, 80, 2, 172, 163, 235, 125, 52, 215, 80, 6, 215, 212, 123, 173, 151, 206, 207, 197, 241, 141, 216, 110, 206, 189, 244, 75, 131, 99, 233, 36, 7, 156, 49, 59, 179, 150, 63, 159, 143, 243 },
+                            PasswordHash = new byte[] { 237, 105, 153, 220, 182, 176, 236, 132, 5, 237, 128, 71, 183, 221, 43, 191, 96, 238, 184, 131, 124, 30, 130, 190, 221, 201, 125, 228, 66, 106, 98, 189, 255, 7, 154, 183, 200, 161, 230, 66, 124, 147, 245, 195, 151, 40, 174, 25, 247, 34, 58, 138, 165, 14, 150, 131, 147, 2, 90, 240, 89, 28, 114, 9 },
+                            PasswordSalt = new byte[] { 66, 129, 175, 86, 132, 134, 154, 34, 76, 87, 87, 90, 55, 134, 142, 155, 157, 154, 242, 231, 29, 43, 54, 77, 146, 58, 11, 182, 234, 47, 197, 203, 126, 121, 72, 41, 40, 102, 176, 47, 99, 47, 238, 115, 64, 135, 20, 57, 61, 185, 95, 187, 181, 160, 197, 4, 109, 210, 25, 40, 5, 17, 242, 151, 213, 20, 234, 16, 92, 43, 12, 94, 37, 38, 67, 130, 218, 163, 160, 213, 189, 12, 175, 57, 20, 201, 163, 241, 253, 63, 158, 105, 209, 188, 229, 183, 222, 57, 49, 50, 13, 55, 219, 139, 98, 253, 126, 247, 237, 13, 76, 65, 98, 106, 203, 63, 142, 103, 43, 108, 32, 210, 185, 198, 136, 182, 202, 14 },
                             PhoneNumber = "0500000000",
                             TwoFactorEnabled = true,
                             UserName = "superadmin"
@@ -3196,8 +3257,8 @@ namespace Dimah.InfraStructure.Migrations
                             IsActive = true,
                             IsEmployee = false,
                             IsMale = true,
-                            PasswordHash = new byte[] { 183, 237, 252, 29, 139, 160, 10, 231, 239, 22, 51, 170, 198, 93, 54, 68, 127, 29, 192, 2, 197, 156, 13, 103, 78, 190, 34, 177, 60, 181, 61, 178, 130, 184, 34, 96, 171, 13, 3, 213, 185, 161, 125, 12, 104, 30, 18, 97, 238, 148, 204, 237, 17, 39, 50, 102, 183, 168, 168, 199, 182, 87, 116, 16 },
-                            PasswordSalt = new byte[] { 85, 182, 38, 10, 218, 236, 40, 143, 201, 211, 171, 121, 31, 218, 176, 193, 176, 212, 45, 63, 156, 179, 70, 67, 208, 205, 144, 86, 216, 125, 71, 124, 64, 39, 19, 178, 244, 184, 13, 123, 13, 20, 23, 168, 102, 19, 36, 136, 91, 131, 164, 43, 1, 10, 126, 171, 104, 213, 29, 186, 37, 147, 200, 194, 59, 60, 224, 53, 48, 255, 153, 53, 72, 235, 13, 204, 117, 246, 82, 203, 228, 222, 226, 91, 104, 23, 169, 126, 80, 2, 172, 163, 235, 125, 52, 215, 80, 6, 215, 212, 123, 173, 151, 206, 207, 197, 241, 141, 216, 110, 206, 189, 244, 75, 131, 99, 233, 36, 7, 156, 49, 59, 179, 150, 63, 159, 143, 243 },
+                            PasswordHash = new byte[] { 237, 105, 153, 220, 182, 176, 236, 132, 5, 237, 128, 71, 183, 221, 43, 191, 96, 238, 184, 131, 124, 30, 130, 190, 221, 201, 125, 228, 66, 106, 98, 189, 255, 7, 154, 183, 200, 161, 230, 66, 124, 147, 245, 195, 151, 40, 174, 25, 247, 34, 58, 138, 165, 14, 150, 131, 147, 2, 90, 240, 89, 28, 114, 9 },
+                            PasswordSalt = new byte[] { 66, 129, 175, 86, 132, 134, 154, 34, 76, 87, 87, 90, 55, 134, 142, 155, 157, 154, 242, 231, 29, 43, 54, 77, 146, 58, 11, 182, 234, 47, 197, 203, 126, 121, 72, 41, 40, 102, 176, 47, 99, 47, 238, 115, 64, 135, 20, 57, 61, 185, 95, 187, 181, 160, 197, 4, 109, 210, 25, 40, 5, 17, 242, 151, 213, 20, 234, 16, 92, 43, 12, 94, 37, 38, 67, 130, 218, 163, 160, 213, 189, 12, 175, 57, 20, 201, 163, 241, 253, 63, 158, 105, 209, 188, 229, 183, 222, 57, 49, 50, 13, 55, 219, 139, 98, 253, 126, 247, 237, 13, 76, 65, 98, 106, 203, 63, 142, 103, 43, 108, 32, 210, 185, 198, 136, 182, 202, 14 },
                             PhoneNumber = "0500000001",
                             TwoFactorEnabled = true,
                             UserName = "admin"
@@ -3248,7 +3309,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("e8de7eaf-13f0-4c77-b341-45f3cc10bc00"),
-                            ConcurrencyStamp = new Guid("7eda7784-8d5d-4254-a789-3d04a5f906e5"),
+                            ConcurrencyStamp = new Guid("8cbbc32a-632b-4a3b-869f-a8da78fa0436"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 1,
@@ -3257,7 +3318,7 @@ namespace Dimah.InfraStructure.Migrations
                         new
                         {
                             Id = new Guid("0b93bea1-eee3-4838-8513-7ade73017e5a"),
-                            ConcurrencyStamp = new Guid("6010e733-bc86-4297-aa1f-be4a65b64957"),
+                            ConcurrencyStamp = new Guid("b29bc571-6074-4dd4-9e7a-cf9fc8c050b4"),
                             CreatedBy = new Guid("83ee0b03-015e-4441-9294-8a4421d3b124"),
                             CreatedDate = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 2,
@@ -3349,6 +3410,28 @@ namespace Dimah.InfraStructure.Migrations
                     b.Navigation("CreatedUser");
 
                     b.Navigation("ModifiedUser");
+                });
+
+            modelBuilder.Entity("Dimah.Core.Domain.Entities.DailyRequestDetail", b =>
+                {
+                    b.HasOne("Dimah.Core.Domain.Entities.DailyRequestMain", "DailyRequestMain")
+                        .WithMany("DailyRequestDetails")
+                        .HasForeignKey("DailyRequestMainId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("DailyRequestMain");
+                });
+
+            modelBuilder.Entity("Dimah.Core.Domain.Entities.DailyRequestMain", b =>
+                {
+                    b.HasOne("Dimah.Core.Domain.Entities.User", "CreatedUser")
+                        .WithMany("CreatedDailyRequestMains")
+                        .HasForeignKey("CreatedBy")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("CreatedUser");
                 });
 
             modelBuilder.Entity("Dimah.Core.Domain.Entities.Nationality", b =>
@@ -3498,6 +3581,11 @@ namespace Dimah.InfraStructure.Migrations
                     b.Navigation("ChartItems");
                 });
 
+            modelBuilder.Entity("Dimah.Core.Domain.Entities.DailyRequestMain", b =>
+                {
+                    b.Navigation("DailyRequestDetails");
+                });
+
             modelBuilder.Entity("Dimah.Core.Domain.Entities.Nationality", b =>
                 {
                     b.Navigation("Users");
@@ -3520,6 +3608,8 @@ namespace Dimah.InfraStructure.Migrations
                     b.Navigation("CreatedCharityProjects");
 
                     b.Navigation("CreatedChartItems");
+
+                    b.Navigation("CreatedDailyRequestMains");
 
                     b.Navigation("CreatedNationalities");
 

@@ -2,16 +2,33 @@
   <div class="d-flex justify-content-between align-items-center">
     <a href="/#/admin/" class="navbar-brand p-0 m-0">
       <div class="d-flex align-items-center">
-        <img src="assets/images/logo.svg" class="img-fluid" alt="logo" width="170px" />
+        <img src="assets/images/dimah-logo.png" class="img-fluid" alt="logo" width="120px" />
       </div>
     </a>
 
-    <div class="bar icon-toggle-side-menu">
+    <div class="bar icon-toggle-side-menu me-md-5">
       <i class="fa-solid fa-bars-staggered"></i>
     </div>
   </div>
 
   <ul class="d-flex justify-content-between align-items-center list-unstyled mb-0">
+    <div class="dropdown languages">
+      <button class="btn dropdown-toggle px-0" type="button" id="dropdownMenuLanguages" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <img src="assets/images/icons/header/language.svg" class="img-fluid img-filter-grey" alt="languages" width="22">
+      </button>
+      <div class="dropdown-menu right-auto" aria-labelledby="dropdownMenuLanguages">
+        <a class="dropdown-item" (click)="changeLang()">
+          <img src="assets/images/icons/pic/ksa-flag.png" class="img-fluid ms-2" alt="flag" width="26px" />
+          <span>عربى</span>
+        </a>
+        <a class="dropdown-item" (click)="changeLang()">
+          <img src="assets/images/icons/pic/usa-flag.png" class="img-fluid ms-2" alt="flag" width="26px" />
+          <span>EN</span>
+        </a>
+      </div>
+    </div>
+    
     <li class="nav-item dropdown mx-3 profile-dropdown">
       <div class="nav-link dropdown-toggle p-0 primary-text cursor-pointer" id="navbarDropdown" role="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

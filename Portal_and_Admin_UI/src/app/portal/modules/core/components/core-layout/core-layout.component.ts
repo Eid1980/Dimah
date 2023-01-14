@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '@shared/services/global.service';
-import { MenuItem } from 'primeng/api';
 
 declare let $: any;
 declare let Layout: any;
@@ -9,8 +8,7 @@ declare let Layout: any;
   selector: 'app-core-layout',
   templateUrl: './core-layout.component.html',
 })
-export class CoreLayoutComponent implements OnInit, AfterViewInit {
-  items = [] as MenuItem[];
+export class CoreLayoutComponent implements OnInit {
 
   constructor(private globalService: GlobalService) { }
 
@@ -18,12 +16,6 @@ export class CoreLayoutComponent implements OnInit, AfterViewInit {
     Layout();
   }
 
-  ngAfterViewInit() {
-    this.items = [{ label: 'الرئيسية', url: '/', icon: 'pi pi-home' }];
-    this.globalService.subject.subscribe((newItems: any) => {
-      this.items = this.items.concat(newItems);
-    });
-  }
 
   onActivate(event: any) {
     window.scroll({

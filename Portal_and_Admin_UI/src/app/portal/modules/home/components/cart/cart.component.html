@@ -20,8 +20,8 @@
     <div class="col-lg-8 mb-3">
       <div class="table-responsive rounded-26 shadow-box">
         <p-table #currentChartitems [value]="currentChartListDto" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true"
-                 [rowHover]="true" tableStyleClass="table table-borderless mb-0">
-          <ng-template pTemplate="header" class="bg-primary" let-columns>
+                 [rowHover]="true" tableStyleClass="table table-borderless table-primary mb-0">
+          <ng-template pTemplate="header" let-columns>
             <tr>
               <th class="text-white fa-16 text-center mw-150 py-4 align-middle">م</th>
               <th class="text-white fa-16 text-center mw-150 py-4 align-middle">باب الخير</th>
@@ -34,11 +34,11 @@
 
           <ng-template pTemplate="body" let-i="rowIndex" let-currentChartitem>
             <tr>
-              <td> {{i+1}} </td>
-              <td> {{currentChartitem.charityProjectName}} </td>
-              <td> {{currentChartitem.donationValue}} </td>
-              <td> {{currentChartitem.donationPeriod}} </td>
-              <td> {{currentChartitem.donationTotal}} </td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle"> {{i+1}} </td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle"> {{currentChartitem.charityProjectName}} </td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle"> {{currentChartitem.donationValue}} </td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle"> {{currentChartitem.donationPeriod}} </td>
+              <td class="text-muted fa-16 text-center px-3 py-4 align-middle"> {{currentChartitem.donationTotal}} </td>
               <td>
                 <div class="d-flex align-items-center justify-content-center">
                   <a class="text-primary d-flex align-items-center ms-4 cursor-pointer" (click)="openEditItemModal(currentChartitem.id)">
