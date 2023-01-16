@@ -63,6 +63,23 @@ namespace Dimah.Core.Application.Shared
                 .ForMember(dest => dest.DonationTotal, src => src.MapFrom(m => m.DonationPeriod * m.DonationValue));
             #endregion
 
+            #region DailyRequests
+            CreateMap<CreateDailyRequestDto, DailyRequestMain>()
+                .ForMember(dest => dest.DailyRequestStatusId, src => src.MapFrom(m => (int)SystemEnums.DailyRequestStatus.New));
+
+            CreateMap<DailyRequestMain, GetDailyRequestListDto>()
+                .ForMember(dest => dest.StartDate, src => src.MapFrom(m => m.StartDate.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.PayedCount, src => src.MapFrom(m => m.DailyRequestDetails.Where(x => x.IsPayed).Count()))
+                .ForMember(dest => dest.NotPayedCount, src => src.MapFrom(m => m.DailyRequestDetails.Where(x => !x.IsPayed).Count()));
+
+            CreateMap<DailyRequestDetail, GetDailyRequestDetailsListDto>()
+                .ForMember(dest => dest.Day, src => src.MapFrom(m => m.Day.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.IsPayed, src => src.MapFrom(m => m.IsPayed ? "نعم" : "لا"))
+                .ForMember(dest => dest.DonationValue, src => src.MapFrom(m => m.DailyRequestMain.DonationValue))
+                .ForMember(dest => dest.Sms, src => src.MapFrom(m => "رسالة نصية يتم ادارتها"));
+
+            #endregion
+
             #region FileManager
             CreateMap<CreateUploadedFileDto, UploadedFile>();
             CreateMap<UploadedFile, GetUploadedFileDto>();

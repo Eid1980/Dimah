@@ -333,6 +333,20 @@ p-multiselect {
   }
 }
 
+.label-primary{
+  label{
+    font-size: 16px;
+    color: $Primary-1;
+    margin-bottom: 18px;
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  .form-control{
+    background-color: $white !important;
+  }
+}
+
 // dropdown
 .dropdown {
   .dropdown-toggle {

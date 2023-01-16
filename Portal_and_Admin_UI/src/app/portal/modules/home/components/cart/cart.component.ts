@@ -4,6 +4,7 @@ import { GlobalService } from '@shared/services/global.service';
 import { CurrentChartListDto, GetChartItemDetailsDto, UpdateChartItemDto } from '@shared/proxy/chart-items/models';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeChartService } from '@shared/services/change-chart.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,8 +22,8 @@ export class CartComponent implements OnInit {
   detailsDto = {} as GetChartItemDetailsDto;
   isFormSubmitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private chartItemService: ChartItemService,
-    private globalService: GlobalService)
+  constructor(private formBuilder: FormBuilder, private changeChartService: ChangeChartService,
+    private chartItemService: ChartItemService, private globalService: GlobalService)
   {
   }
 
@@ -65,6 +66,7 @@ export class CartComponent implements OnInit {
         this.chartItemService.update(this.updateDto).subscribe((response) => {
           this.globalService.showMessage(response.message);
           if (response.isSuccess) {
+            this.changeChartService.addCount(response.data);
             this.getCurrentChart();
             this.closeEditModal();
           }
@@ -115,6 +117,7 @@ export class CartComponent implements OnInit {
     if (this.operationId) {
       this.chartItemService.delete(this.operationId).subscribe((result) => {
         if (result.isSuccess) {
+          this.changeChartService.addCount(result.data);
           this.getCurrentChart();
         }
         this.globalService.showMessage(result.message);

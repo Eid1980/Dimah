@@ -8,6 +8,13 @@
             Payed = 2,
             Deleted = 3
         }
+        public enum DailyRequestStatus
+        {
+            New = 1,
+            Payed = 2,
+            Finished = 3,
+            Deleted = 4
+        }
 
         public enum Roles
         {

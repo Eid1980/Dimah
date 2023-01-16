@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartItemService } from '@shared/proxy/chart-items/chart-item.service';
 import { GlobalService } from '@shared/services/global.service';
 import { CurrentChartListDto } from '@shared/proxy/chart-items/models';
+import { DailyRequestService } from '@shared/proxy/daily-requests/daily-request.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +12,7 @@ export class PaymentComponent implements OnInit {
   currentChartListDto = [] as CurrentChartListDto[];
   totlalChart: number = 0;
 
-  constructor(private chartItemService: ChartItemService,
+  constructor(private chartItemService: ChartItemService, private dailyRequestService: DailyRequestService,
     private globalService: GlobalService)
   {
   }

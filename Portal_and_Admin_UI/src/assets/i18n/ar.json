@@ -11,7 +11,7 @@
     "settings": "الاعدادات",
     "contactUsRequests": "طلبات تواصل معنا",
     "nationalities": "الجنسيات",
-    "charities": "الجهات",
+    "charities": "الجمعيات",
     "projects": "المشاريع",
     "projectTypes": "أنواع المشاريع",
     "permissions": "الصلاحيات",
@@ -64,6 +64,13 @@
     "detailsTitle": "تفاصيل نوع المشروع"
   },
 
+  "latest-news": {
+    "title": "أخر الأخبار",
+    "addTitle": "إضافة خبر جديد",
+    "editTitle": "تعديل الخبر",
+    "searchTitle": "البحث في أخر الأخبار",
+    "detailsTitle": "تفاصيل الخبر"
+  },
 
 
 

@@ -9,7 +9,7 @@ import { GetUserSessionDto } from '@shared/proxy/accounts/models';
 export class HeaderComponent implements OnInit {
   userInfo = {} as GetUserSessionDto;
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
     this.userInfo = this.accountService.getCurrentUserInfo();
@@ -17,5 +17,9 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.accountService.logOut();
+  }
+
+  changeLang() {
+    console.log("changed");
   }
 }

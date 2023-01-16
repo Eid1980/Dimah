@@ -15,6 +15,7 @@ using Dimah.Core.Application.Services.Nationalities;
 using Dimah.Core.Application.Services.Posters;
 using Dimah.Core.Application.Services.Home;
 using Dimah.Core.Application.Services.ChartItems;
+using Dimah.Core.Application.Services.DailyRequests;
 
 namespace Dimah.API.Configurations
 {
@@ -27,6 +28,7 @@ namespace Dimah.API.Configurations
             builder.Services.AddScoped<ILookupRepository, LookupRepository>();
             #endregion
 
+            builder.Services.AddScoped<IDailyRequestService, DailyRequestService>();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<ICharityService, CharityService>();
             builder.Services.AddScoped<ICharityProjectService, CharityProjectService>();
