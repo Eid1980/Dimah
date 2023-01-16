@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.angular",
+    "\\src",
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\portal\\modules\\home\\components\\cart\\cart.component.html",
+  "SelectedNode": "\\src\\polyfills.ts",
   "PreviewInSolutionExplorer": false
 }
